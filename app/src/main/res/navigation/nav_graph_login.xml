@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_login"
+    app:startDestination="@id/iniciar_sesion"
+>
+    <fragment
+        android:id="@+id/iniciar_sesion"
+        android:label="iniciar_sesion"
+        android:name="com.hefesto.juntasaccioncomunal.ui.fragments.login.iniciarSesion.IniciarSesionFragment"
+        tools:layout="@layout/fragment_iniciar_sesion"
+        >
+
+    </fragment>
+</navigation>
