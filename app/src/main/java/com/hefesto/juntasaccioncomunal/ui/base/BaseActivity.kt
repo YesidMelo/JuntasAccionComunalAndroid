@@ -40,7 +40,13 @@ abstract class BaseActivity<T: ViewModel> : BaseActivityDagger<T>(), LifecycleOw
 
     //region ciclo vida seguros
     open fun safeOnCreate(savedInstanceState: Bundle?) {}
-    override fun getLifecycle(): Lifecycle = lifecycleRegistry!!
+
+    override fun getLifecycle(): Lifecycle {
+        if(lifecycleRegistry == null) {
+            lifecycleRegistry = LifecycleRegistry(this)
+        }
+        return lifecycleRegistry!!
+    }
     abstract fun traerNodoNavegacion(): NodosNavegacionActividades
     //endregion
 
@@ -49,7 +55,7 @@ abstract class BaseActivity<T: ViewModel> : BaseActivityDagger<T>(), LifecycleOw
     //region configuracion ciclo vida
     private fun configuracionCicloVida(savedInstanceState: Bundle?){
         try {
-            lifecycleRegistry = LifecycleRegistry(this)
+            lifecycle
             lifecycleRegistry?.markState(Lifecycle.State.CREATED)
             safeOnCreate(savedInstanceState = savedInstanceState)
         } catch (e: Exception) {

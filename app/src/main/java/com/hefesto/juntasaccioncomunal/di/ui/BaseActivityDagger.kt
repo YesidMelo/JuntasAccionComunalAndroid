@@ -2,9 +2,11 @@ package com.hefesto.juntasaccioncomunal.di.ui
 
 import android.os.Bundle
 import androidx.lifecycle.ViewModel
-import dagger.android.DaggerActivity
+import com.hefesto.juntasaccioncomunal.di.ui.personalizado.DaggerActivityPersonalizado
 
-abstract class BaseActivityDagger<T: ViewModel> : DaggerActivity() {
+
+abstract class BaseActivityDagger<T: ViewModel> : DaggerActivityPersonalizado() {
+    
     private var viewModel : T? = null
 
     abstract fun getViewModel() : T
