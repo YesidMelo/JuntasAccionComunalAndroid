@@ -1,16 +1,23 @@
 package com.hefesto.juntasaccioncomunal.ui.navegacion
 
 import android.view.View
+import androidx.annotation.IdRes
 import com.hefesto.juntasaccioncomunal.ui.base.BaseActivity
+import org.jetbrains.annotations.NotNull
 
 class NavegacionAplicacion {
 
     //region variables
     private lateinit var activity: BaseActivity<*>
+    private var idNavGraph: Int = 0
     //endregion
 
-    fun con(context: BaseActivity<*>) {
+    fun conActivity(context: BaseActivity<*>) {
         this.activity = context
+    }
+
+    fun conIdNavGraph(@IdRes @NotNull idNavGraph: Int) {
+        this.idNavGraph = idNavGraph
     }
 
     fun navegar(
@@ -33,6 +40,11 @@ class NavegacionAplicacion {
             .navegarAActivity()
     }
 
-    fun navegar(de: NodosNavegacionFragments, a: NodosNavegacionFragments) {}
+    fun navegar(
+        de: NodosNavegacionFragments,
+        a: NodosNavegacionFragments
+    ) {
+
+    }
 
 }

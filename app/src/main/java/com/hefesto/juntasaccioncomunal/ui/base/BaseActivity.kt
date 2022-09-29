@@ -2,6 +2,7 @@ package com.hefesto.juntasaccioncomunal.ui.base
 
 import android.os.Bundle
 import android.util.Log
+import androidx.annotation.IdRes
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
@@ -9,6 +10,7 @@ import androidx.lifecycle.ViewModel
 import com.hefesto.juntasaccioncomunal.di.ui.BaseActivityDagger
 import com.hefesto.juntasaccioncomunal.ui.navegacion.NavegacionAplicacion
 import com.hefesto.juntasaccioncomunal.ui.navegacion.NodosNavegacionActividades
+import org.jetbrains.annotations.NotNull
 import javax.inject.Inject
 
 
@@ -28,7 +30,7 @@ abstract class BaseActivity<T: ViewModel> : BaseActivityDagger<T>(), LifecycleOw
     //region ciclo de vida normal
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        navegacionAplicacion.con(context = this)
+        navegacionAplicacion.conActivity(context = this)
         configuracionCicloVida(savedInstanceState = savedInstanceState)
     }
 
@@ -40,7 +42,6 @@ abstract class BaseActivity<T: ViewModel> : BaseActivityDagger<T>(), LifecycleOw
 
     //region ciclo vida seguros
     open fun safeOnCreate(savedInstanceState: Bundle?) {}
-
     override fun getLifecycle(): Lifecycle {
         if(lifecycleRegistry == null) {
             lifecycleRegistry = LifecycleRegistry(this)
@@ -48,10 +49,15 @@ abstract class BaseActivity<T: ViewModel> : BaseActivityDagger<T>(), LifecycleOw
         return lifecycleRegistry!!
     }
     abstract fun traerNodoNavegacion(): NodosNavegacionActividades
+    //region navegacion fragments en activity
+
+    open fun configurarNavegacionFragments(@IdRes @NotNull idNavGraph: Int) {
+        navegacionAplicacion.conIdNavGraph(idNavGraph = idNavGraph)
+    }
+    //endregion
     //endregion
 
     //region metodos privados
-
     //region configuracion ciclo vida
     private fun configuracionCicloVida(savedInstanceState: Bundle?){
         try {
@@ -63,8 +69,6 @@ abstract class BaseActivity<T: ViewModel> : BaseActivityDagger<T>(), LifecycleOw
         }
     }
     //endregion
+
     //endregion
-
-
-
 }

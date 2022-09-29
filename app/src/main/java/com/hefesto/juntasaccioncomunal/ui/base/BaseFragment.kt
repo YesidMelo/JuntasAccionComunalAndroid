@@ -31,14 +31,19 @@ abstract class BaseFragment<T : ViewModel> : BaseFragmentDagger<T>(), LifecycleO
         lifecycleRegistry?.markState(Lifecycle.State.STARTED)
     }
 
-    override fun getLifecycle(): Lifecycle = lifecycleRegistry!!
+    override fun getLifecycle(): Lifecycle {
+        if(lifecycleRegistry == null) {
+            lifecycleRegistry = LifecycleRegistry(this)
+        }
+        return lifecycleRegistry!!
+    }
 
     abstract fun traerNodoNavegacion(): NodosNavegacionFragments
 
     //region configuracion ciclo vida
     private fun configuracionCicloVida(savedInstanceState: Bundle?){
         try {
-            lifecycleRegistry = LifecycleRegistry(this)
+            lifecycle
             lifecycleRegistry?.markState(Lifecycle.State.CREATED)
         } catch (e: Exception) {
             Log.e("Error", "ha surgido un error",e)

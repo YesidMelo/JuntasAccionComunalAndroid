@@ -7,6 +7,7 @@ import com.hefesto.juntasaccioncomunal.di.logica.DatasourcesModule
 import com.hefesto.juntasaccioncomunal.di.logica.RepositoriosModule
 import com.hefesto.juntasaccioncomunal.di.logica.UiModule
 import com.hefesto.juntasaccioncomunal.di.ui.ActivityBuilder
+import com.hefesto.juntasaccioncomunal.di.ui.FragmentBuilder
 import com.hefesto.juntasaccioncomunal.di.ui.modules.NavegacionModule
 import dagger.Component
 import dagger.android.AndroidInjectionModule
@@ -24,6 +25,7 @@ import dagger.android.AndroidInjector
     NavegacionModule::class,
     AndroidInjectionModule::class,
     ActivityBuilder::class,
+    FragmentBuilder::class
 ])
 interface AplicacionComponent : AndroidInjector<MiAplicacion>{
 

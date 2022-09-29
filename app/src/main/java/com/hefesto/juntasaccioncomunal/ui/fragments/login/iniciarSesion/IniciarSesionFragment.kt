@@ -25,11 +25,11 @@ class IniciarSesionFragment : BaseFragment<IniciarSesionFragmentViewModel>() {
     override fun traerViewModel(): IniciarSesionFragmentViewModel = viewModelFragment
 
     override fun onCreateView(
-        inflater: LayoutInflater?,
+        inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentIniciarSesionBinding.inflate(inflater!!)
+        binding = FragmentIniciarSesionBinding.inflate(inflater)
         return binding.root
     }
 

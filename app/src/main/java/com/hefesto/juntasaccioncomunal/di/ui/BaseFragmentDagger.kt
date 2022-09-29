@@ -2,9 +2,9 @@ package com.hefesto.juntasaccioncomunal.di.ui
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
-import dagger.android.DaggerFragment
+import com.hefesto.juntasaccioncomunal.di.ui.personalizado.DaggerFragmentPersonalizado
 
-abstract class BaseFragmentDagger<T: ViewModel> : DaggerFragment() {
+abstract class BaseFragmentDagger<T: ViewModel> : DaggerFragmentPersonalizado() {
 
     //region variables
     private var viewModel: T? = null
@@ -12,7 +12,7 @@ abstract class BaseFragmentDagger<T: ViewModel> : DaggerFragment() {
 
     abstract fun traerViewModel() : T
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
         viewModel = traerViewModel()
     }
