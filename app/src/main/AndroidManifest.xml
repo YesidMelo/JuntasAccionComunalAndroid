@@ -14,10 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JuntasAccionComunal"
         tools:targetApi="31" >
+        <activity android:name=".ui.activities.login.LoginActivity"/>
         <activity
             android:name=".ui.activities.splash.SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.JuntasAccionComunal"
+            android:noHistory="true"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

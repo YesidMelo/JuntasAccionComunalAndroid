@@ -1,6 +1,7 @@
 package com.hefesto.juntasaccioncomunal.ui.activities.splash
 
 import android.os.Bundle
+import android.util.Log
 import com.hefesto.juntasaccioncomunal.databinding.ActivitySplashBinding
 import com.hefesto.juntasaccioncomunal.ui.base.BaseActivity
 import com.hefesto.juntasaccioncomunal.ui.navegacion.NodosNavegacionActividades
@@ -15,12 +16,13 @@ class SplashActivity : BaseActivity<SplashActivityViewModel>() {
     lateinit var viewModelActivity : SplashActivityViewModel
     //endregion
 
-    //region
+    //region bindings
     lateinit var binding: ActivitySplashBinding
     //endregion
 
     //endregion
 
+    //region heredadas
     override fun getViewModel(): SplashActivityViewModel = viewModelActivity
 
     override fun traerNodoNavegacion(): NodosNavegacionActividades = NodosNavegacionActividades.SPLASH_ACTIVITY
@@ -29,5 +31,27 @@ class SplashActivity : BaseActivity<SplashActivityViewModel>() {
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
         super.safeOnCreate(savedInstanceState)
+        ponerEscuchadoresViewModels()
     }
+    //endregion
+
+    //region metodos privados
+    fun ponerEscuchadoresViewModels() {
+        ponerEscuchadorPrecargaAplicacion()
+    }
+
+    fun ponerEscuchadorPrecargaAplicacion() {
+        viewModelActivity.iniciarPrecarga().observe(this) {
+            respuesta ->
+            if (respuesta == null) return@observe
+            if (!respuesta) return@observe
+            navegacionAplicacion.navegar(
+                de = traerNodoNavegacion(),
+                a = NodosNavegacionActividades.LOGIN_ACTIVITY,
+                parVistaTrancicion = Pair(first = "logoApp", binding.lottieLogoApp)
+            )
+            this@SplashActivity.finish()
+        }
+    }
+    //endregion
 }
