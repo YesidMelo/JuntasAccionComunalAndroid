@@ -47,12 +47,8 @@ papp/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/login/iniciarS
 `app/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/ui/LoginActivityUI.kt,c\5\c5e21745b546c7885f90f2fc99eb31f7dc8497c7
 ˜
 happ/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/ui/IniciarSesionFragmentUI.kt,7\d\7d71807ee7c454c3b9d9be958894dd4d8d463b08
-›
-kapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/casosUso/IniciarSesionCasoUso.kt,b\8\b8d312e70e216d6344f67519ea4ce73304e98696
 ¤
 tapp/src/main/java/com/hefesto/juntasaccioncomunal/ui/fragments/login/iniciarSesion/IniciarSesionFragmentViewModel.kt,1\3\133b67d403dc2608c3e5faf35d974cfc3075ee8b
-y
-Iapp/src/main/java/com/hefesto/juntasaccioncomunal/ui/base/BaseFragment.kt,c\b\cbed14bb3b5476946bf75cb53e77859949b96720
 ›
 kapp/src/main/java/com/hefesto/juntasaccioncomunal/ui/fragments/login/iniciarSesion/IniciarSesionFragment.kt,b\c\bc2f2d32f3ad0222730b2f4130ba9b45828aa0c5
 z

@@ -45,11 +45,17 @@ class DialogoInformativo : DaggerDialogFragment() {
 
     //region metodos privados
     private fun configurarDialogo() {
+        configurarBotones()
         configurarLottie()
         configurarTitulo()
         configuracionMensaje()
         configuracionEscuchadorBotonAceptar()
         configuracionEscuchadorBotonCancelar()
+    }
+
+    private fun configurarBotones() {
+        if(tipoDialogo == TipoDialogo.ADVERTENCIA) return
+        binding.buttonCancelar.visibility = View.GONE
     }
 
     private fun configurarLottie() {
