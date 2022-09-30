@@ -38,6 +38,11 @@ abstract class BaseActivity<T: ViewModel> : BaseActivityDagger<T>(), LifecycleOw
         super.onStart()
         lifecycleRegistry?.markState(Lifecycle.State.STARTED)
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        navegacionAplicacion
+    }
     //endregion
 
     //region ciclo vida seguros

@@ -1,6 +1,7 @@
 package com.hefesto.juntasaccioncomunal.ui.activities.splash
 
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import com.hefesto.juntasaccioncomunal.databinding.ActivitySplashBinding
 import com.hefesto.juntasaccioncomunal.ui.base.BaseActivity
@@ -50,7 +51,9 @@ class SplashActivity : BaseActivity<SplashActivityViewModel>() {
                 a = NodosNavegacionActividades.LOGIN_ACTIVITY,
                 parVistaTrancicion = Pair(first = "logoApp", binding.lottieLogoApp)
             )
-            this@SplashActivity.finish()
+            Handler().postDelayed({
+                this@SplashActivity.finish()
+            },5000)
         }
     }
     //endregion

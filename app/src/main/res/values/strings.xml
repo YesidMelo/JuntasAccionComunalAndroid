@@ -3,4 +3,8 @@
     <string name="junta_accion_comunal">Juntas Accion Comunal</string>
     <string name="correo_electronico">Correo electronico</string>
     <string name="contrasenia">Contraseña</string>
+    <string name="iniciar_sesion">Iniciar Sesion</string>
+    <string name="registrarse">Registrarse</string>
+    <string name="repetir_contrasenia">Repetir Contraseña</string>
+    <string name="volver">Volver</string>
 </resources>

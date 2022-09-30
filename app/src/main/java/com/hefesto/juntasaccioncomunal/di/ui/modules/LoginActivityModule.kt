@@ -4,6 +4,7 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.login.ui.IniciarSesion
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.ui.LoginActivityUI
 import com.hefesto.juntasaccioncomunal.ui.activities.login.LoginActivityViewModel
 import com.hefesto.juntasaccioncomunal.ui.fragments.login.iniciarSesion.IniciarSesionFragmentViewModel
+import com.hefesto.juntasaccioncomunal.ui.fragments.login.registrarJAC.RegistrarJACFragmentViewModel
 import dagger.Module
 import dagger.Provides
 
@@ -15,4 +16,7 @@ class LoginActivityModule {
 
     @Provides
     fun providesIniciarSesionFragmentViewModel(iniciarSesionFragmentUI: IniciarSesionFragmentUI) = IniciarSesionFragmentViewModel(iniciarSesionFragmentUI = iniciarSesionFragmentUI)
+
+    @Provides
+    fun providesRegistrarJACFragmentViewModel() = RegistrarJACFragmentViewModel()
 }

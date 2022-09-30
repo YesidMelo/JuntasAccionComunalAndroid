@@ -20,6 +20,7 @@ class NavegacionAplicacion {
         this.idNavGraph = idNavGraph
     }
 
+
     fun navegar(
         de: NodosNavegacionActividades,
         a: NodosNavegacionActividades,
@@ -41,10 +42,17 @@ class NavegacionAplicacion {
     }
 
     fun navegar(
-        de: NodosNavegacionFragments,
-        a: NodosNavegacionFragments
+        a: NodosNavegacionFragments,
+        accion: AccionesNavGrap,
+        de: NodosNavegacionFragments
     ) {
-
+        HelperFragment(
+            a = a,
+            accion = accion,
+            activity = activity,
+            de = de,
+            idNavGraph = idNavGraph
+        ).cambiarFragment()
     }
 
 }

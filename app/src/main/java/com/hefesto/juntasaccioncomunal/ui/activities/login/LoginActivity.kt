@@ -1,6 +1,7 @@
 package com.hefesto.juntasaccioncomunal.ui.activities.login
 
 import android.os.Bundle
+import com.hefesto.juntasaccioncomunal.R
 import com.hefesto.juntasaccioncomunal.databinding.ActivityLoginBinding
 import com.hefesto.juntasaccioncomunal.ui.base.BaseActivity
 import com.hefesto.juntasaccioncomunal.ui.navegacion.NodosNavegacionActividades
@@ -21,12 +22,21 @@ class LoginActivity : BaseActivity<LoginActivityViewModel>() {
     //endregion
 
     //region heredados
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        navegacionAplicacion.navegar(de = NodosNavegacionActividades.LOGIN_ACTIVITY, a= NodosNavegacionActividades.CERRAR_APLICACION)
+    }
+
     override fun getViewModel(): LoginActivityViewModel = viewModelActivity
     override fun traerNodoNavegacion(): NodosNavegacionActividades = NodosNavegacionActividades.LOGIN_ACTIVITY
+
     override fun safeOnCreate(savedInstanceState: Bundle?) {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        configurarNavegacionFragments(idNavGraph = R.id.nav_graph_login)
         super.safeOnCreate(savedInstanceState)
     }
+
     //endregion
 }

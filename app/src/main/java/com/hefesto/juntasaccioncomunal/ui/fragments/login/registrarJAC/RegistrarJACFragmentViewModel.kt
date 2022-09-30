@@ -1,4 +1,6 @@
 package com.hefesto.juntasaccioncomunal.ui.fragments.login.registrarJAC
 
-class RegistrarJACFragmentViewModel {
+import androidx.lifecycle.ViewModel
+
+class RegistrarJACFragmentViewModel : ViewModel(){
 }

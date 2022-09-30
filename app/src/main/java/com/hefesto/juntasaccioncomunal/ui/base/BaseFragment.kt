@@ -23,6 +23,7 @@ abstract class BaseFragment<T : ViewModel> : BaseFragmentDagger<T>(), LifecycleO
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        navegacionAplicacion.conActivity(context = activity as BaseActivity<*>)
         configuracionCicloVida(savedInstanceState = savedInstanceState)
     }
 

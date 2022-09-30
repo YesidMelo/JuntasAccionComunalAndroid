@@ -12,6 +12,19 @@
         android:name="com.hefesto.juntasaccioncomunal.ui.fragments.login.iniciarSesion.IniciarSesionFragment"
         tools:layout="@layout/fragment_iniciar_sesion"
         >
+        <action
+            android:id="@+id/action_iniciar_sesion_to_registrar_jac"
+            app:destination="@id/registrar_jac" />
+    </fragment>
+    <fragment
+        android:id="@+id/registrar_jac"
+        android:label="registrar_jac"
+        android:name="com.hefesto.juntasaccioncomunal.ui.fragments.login.registrarJAC.RegistrarJACFragment"
+        tools:layout="@layout/fragment_registrar_jac"
+        >
 
+        <action
+            android:id="@+id/action_registrar_jac_to_iniciar_sesion"
+            app:destination="@id/iniciar_sesion" />
     </fragment>
 </navigation>
