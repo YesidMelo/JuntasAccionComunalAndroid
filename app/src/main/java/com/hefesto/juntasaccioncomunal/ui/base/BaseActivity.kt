@@ -3,12 +3,14 @@ package com.hefesto.juntasaccioncomunal.ui.base
 import android.os.Bundle
 import android.util.Log
 import androidx.annotation.IdRes
+import androidx.annotation.StringRes
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
 import androidx.lifecycle.ViewModel
 import com.hefesto.juntasaccioncomunal.di.ui.BaseActivityDagger
 import com.hefesto.juntasaccioncomunal.logica.excepciones.LogicaExcepcion
+import com.hefesto.juntasaccioncomunal.logica.excepciones.TiposExcepciones
 import com.hefesto.juntasaccioncomunal.ui.dialogo.DialogoInformativo
 import com.hefesto.juntasaccioncomunal.ui.navegacion.NavegacionAplicacion
 import com.hefesto.juntasaccioncomunal.ui.navegacion.NodosNavegacionActividades
@@ -63,13 +65,29 @@ abstract class BaseActivity<T: ViewModel> : BaseActivityDagger<T>(), LifecycleOw
         try {
             funcion.invoke()
         } catch (e: LogicaExcepcion) {
-            DialogoInformativo.mostrarDialogo(
-                activity = this,
-                tipoDialogo = DialogoInformativo.TipoDialogo.ERROR,
+            mostrarDialogo(
+                tipoDialogo = if (e.tipoExcepcion == TiposExcepciones.GENERADO_USUARIO) DialogoInformativo.TipoDialogo.ERROR_USUARIO else DialogoInformativo.TipoDialogo.ERROR_SISTEMA,
+                titulo = e.stringResTitulo,
                 mensaje = e.stringResMensaje,
-                titulo = e.stringResTitulo
             )
         }
+    }
+
+    fun mostrarDialogo(
+        tipoDialogo: DialogoInformativo.TipoDialogo,
+        @StringRes @NotNull titulo: Int,
+        @StringRes @NotNull mensaje: Int,
+        accionAceptar: (()->Unit)? = null,
+        accionCancelar: (()->Unit)? = null,
+    ) {
+        DialogoInformativo.mostrarDialogo(
+            accionAceptar = accionAceptar,
+            accionCancelar = accionCancelar,
+            activity = this,
+            mensaje = mensaje,
+            tipoDialogo = tipoDialogo,
+            titulo = titulo,
+        )
     }
     //region navegacion fragments en activity
 
@@ -77,6 +95,7 @@ abstract class BaseActivity<T: ViewModel> : BaseActivityDagger<T>(), LifecycleOw
         navegacionAplicacion.conIdNavGraph(idNavGraph = idNavGraph)
     }
     //endregion
+
     //endregion
 
     //region metodos privados

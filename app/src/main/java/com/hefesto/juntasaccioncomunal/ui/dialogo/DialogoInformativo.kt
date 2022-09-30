@@ -18,7 +18,7 @@ import org.jetbrains.annotations.NotNull
 class DialogoInformativo : DaggerDialogFragment() {
 
     //region variables
-    private var tipoDialogo : TipoDialogo = TipoDialogo.ERROR
+    private var tipoDialogo : TipoDialogo = TipoDialogo.ERROR_USUARIO
     @StringRes private var titulo : Int? = null
     @StringRes private var mensaje : Int? = null
     private var accionAceptar: (()->Unit)? = null
@@ -94,7 +94,7 @@ class DialogoInformativo : DaggerDialogFragment() {
     //endregion
 
 
-    enum class TipoDialogo { ERROR, INFORMATIVO, ADVERTENCIA }
+    enum class TipoDialogo { ERROR_USUARIO, ERROR_SISTEMA, INFORMATIVO, ADVERTENCIA }
 
     companion object {
         fun mostrarDialogo(

@@ -47,10 +47,6 @@ papp/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/login/iniciarS
 `app/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/ui/LoginActivityUI.kt,c\5\c5e21745b546c7885f90f2fc99eb31f7dc8497c7
 ˜
 happ/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/ui/IniciarSesionFragmentUI.kt,7\d\7d71807ee7c454c3b9d9be958894dd4d8d463b08
-‡
-Wapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/excepciones/LogicaExcepcion.kt,c\9\c986ab7acfc7185395bf4b9311264c4adc3f82ef
-†
-Vapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/excepciones/LoginExcepcion.kt,f\c\fcce37103ec884c2d2d78d9b0120d73bb1ae3864
 ›
 kapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/casosUso/IniciarSesionCasoUso.kt,b\8\b8d312e70e216d6344f67519ea4ce73304e98696
 ¤
