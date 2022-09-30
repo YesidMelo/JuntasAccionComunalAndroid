@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.hefesto.juntasaccioncomunal.R
 import com.hefesto.juntasaccioncomunal.databinding.FragmentIniciarSesionBinding
+import com.hefesto.juntasaccioncomunal.logica.modelos.login.iniciarSesion.UsuarioInicioSesionModel
 import com.hefesto.juntasaccioncomunal.ui.base.BaseFragment
 import com.hefesto.juntasaccioncomunal.ui.navegacion.AccionesNavGrap
 import com.hefesto.juntasaccioncomunal.ui.navegacion.NodosNavegacionFragments
@@ -47,7 +48,14 @@ class IniciarSesionFragment : BaseFragment<IniciarSesionFragmentViewModel>() {
 
     private fun ponerEscuchadorBotonIniciarSesion() {
         binding.buttonIniciarSesion.setOnClickListener {
-
+            funcionSegura {
+                viewModelFragment.iniciarSesion(
+                    UsuarioInicioSesionModel(
+                        correo = binding.textInputEmail.text?.toString(),
+                        contrasenia = binding.textInputEdittextPassword.text?.toString()
+                    )
+                )
+            }
         }
     }
 

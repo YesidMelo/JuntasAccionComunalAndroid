@@ -47,13 +47,23 @@ abstract class BaseActivity<T: ViewModel> : BaseActivityDagger<T>(), LifecycleOw
 
     //region ciclo vida seguros
     open fun safeOnCreate(savedInstanceState: Bundle?) {}
+
     override fun getLifecycle(): Lifecycle {
         if(lifecycleRegistry == null) {
             lifecycleRegistry = LifecycleRegistry(this)
         }
         return lifecycleRegistry!!
     }
+
     abstract fun traerNodoNavegacion(): NodosNavegacionActividades
+
+    fun funcionSegura(funcion : (()->Unit)) {
+        try {
+            funcion.invoke()
+        } catch (e: Exception) {
+            Log.e("Error", "surgioo un error", e)
+        }
+    }
     //region navegacion fragments en activity
 
     open fun configurarNavegacionFragments(@IdRes @NotNull idNavGraph: Int) {

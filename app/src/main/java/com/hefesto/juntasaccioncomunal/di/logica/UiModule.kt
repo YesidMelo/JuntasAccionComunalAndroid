@@ -1,5 +1,6 @@
 package com.hefesto.juntasaccioncomunal.di.logica
 
+import com.hefesto.juntasaccioncomunal.logica.componentes.login.casosUso.IniciarSesionCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.ui.IniciarSesionFragmentUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.ui.LoginActivityUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.splash.casosUso.PrecargaAplicacionFinalizadaCasoUso
@@ -15,7 +16,7 @@ class UiModule {
     fun providesLoginActivityUI() = LoginActivityUI()
 
     @Provides
-    fun providesIniciarSesionFragmentUI() = IniciarSesionFragmentUI()
+    fun providesIniciarSesionFragmentUI(iniciarSesionCasoUso: IniciarSesionCasoUso) = IniciarSesionFragmentUI(iniciarSesionCasoUso = iniciarSesionCasoUso)
     //endregion
 
     //region splash

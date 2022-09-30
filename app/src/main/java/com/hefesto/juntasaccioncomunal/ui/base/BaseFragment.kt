@@ -24,7 +24,7 @@ abstract class BaseFragment<T : ViewModel> : BaseFragmentDagger<T>(), LifecycleO
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         navegacionAplicacion.conActivity(context = activity as BaseActivity<*>)
-        configuracionCicloVida(savedInstanceState = savedInstanceState)
+        configuracionCicloVida()
     }
 
     override fun onStart() {
@@ -41,8 +41,10 @@ abstract class BaseFragment<T : ViewModel> : BaseFragmentDagger<T>(), LifecycleO
 
     abstract fun traerNodoNavegacion(): NodosNavegacionFragments
 
+    fun funcionSegura(funcion : (()->Unit)) = (activity as BaseActivity<*>).funcionSegura(funcion = funcion)
+
     //region configuracion ciclo vida
-    private fun configuracionCicloVida(savedInstanceState: Bundle?){
+    private fun configuracionCicloVida(){
         try {
             lifecycle
             lifecycleRegistry?.markState(Lifecycle.State.CREATED)
