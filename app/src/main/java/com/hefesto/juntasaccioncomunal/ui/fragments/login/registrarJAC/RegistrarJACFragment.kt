@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.hefesto.juntasaccioncomunal.R
 import com.hefesto.juntasaccioncomunal.databinding.FragmentRegistrarJacBinding
 import com.hefesto.juntasaccioncomunal.ui.base.BaseFragment
+import com.hefesto.juntasaccioncomunal.ui.navegacion.AccionesNavGrap
 import com.hefesto.juntasaccioncomunal.ui.navegacion.NodosNavegacionFragments
 import javax.inject.Inject
 
@@ -27,9 +29,27 @@ class RegistrarJACFragment : BaseFragment<RegistrarJACFragmentViewModel>() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentRegistrarJacBinding.inflate(inflater)
+        navegacionAplicacion.conIdNavGraph(R.id.nav_host_fragment_content_main)
+        ponerEscuchadoresBotones()
         return binding.root
     }
 
     override fun traerViewModel(): RegistrarJACFragmentViewModel = viewModelFragment
     override fun traerNodoNavegacion(): NodosNavegacionFragments = NodosNavegacionFragments.REGISTRAR_JAC
+
+    //region metodos privados
+    private fun ponerEscuchadoresBotones() {
+        ponerEscuchadoresBotonVolver()
+    }
+
+    private fun ponerEscuchadoresBotonVolver() {
+        binding.buttonVolver.setOnClickListener {
+            navegacionAplicacion.navegar(
+                de = NodosNavegacionFragments.REGISTRAR_JAC,
+                a = NodosNavegacionFragments.INICIAR_SESION,
+                accion = AccionesNavGrap.REGISTRAR_JAC_A_INICIAR_SESION
+            )
+        }
+    }
+    //endregion
 }
