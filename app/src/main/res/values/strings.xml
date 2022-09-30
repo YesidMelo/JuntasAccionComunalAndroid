@@ -10,4 +10,6 @@
     <string name="surgio_un_problema">Surgio un problema intentelo mas tarde.</string>
     <string name="no_ha_ingresado_un_correo_electronico_valido">No ha ingresado un correo electronico valido. Vuelvelo a intentar</string>
     <string name="error_app">Sugio un problema</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="aceptar">Aceptar</string>
 </resources>

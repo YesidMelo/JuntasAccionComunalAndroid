@@ -2,4 +2,7 @@
 <resources>
     <dimen name="texto18sp">18sp</dimen>
     <dimen name="texto16sp">16sp</dimen>
+    <dimen name="dimension16dp">16dp</dimen>
+    <dimen name="dimencion200dp">200dp</dimen>
+    <dimen name="dimension12sp">12sp</dimen>>
 </resources>

@@ -8,6 +8,8 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
 import androidx.lifecycle.ViewModel
 import com.hefesto.juntasaccioncomunal.di.ui.BaseActivityDagger
+import com.hefesto.juntasaccioncomunal.logica.excepciones.LogicaExcepcion
+import com.hefesto.juntasaccioncomunal.ui.dialogo.DialogoInformativo
 import com.hefesto.juntasaccioncomunal.ui.navegacion.NavegacionAplicacion
 import com.hefesto.juntasaccioncomunal.ui.navegacion.NodosNavegacionActividades
 import org.jetbrains.annotations.NotNull
@@ -60,8 +62,13 @@ abstract class BaseActivity<T: ViewModel> : BaseActivityDagger<T>(), LifecycleOw
     fun funcionSegura(funcion : (()->Unit)) {
         try {
             funcion.invoke()
-        } catch (e: Exception) {
-            Log.e("Error", "surgioo un error", e)
+        } catch (e: LogicaExcepcion) {
+            DialogoInformativo.mostrarDialogo(
+                activity = this,
+                tipoDialogo = DialogoInformativo.TipoDialogo.ERROR,
+                mensaje = e.stringResMensaje,
+                titulo = e.stringResTitulo
+            )
         }
     }
     //region navegacion fragments en activity
