@@ -86,6 +86,7 @@ class DialogoInformativo : DaggerDialogFragment() {
     private fun configuracionEscuchadorBotonAceptar() {
         binding.buttonAceptar.setOnClickListener {
             dismiss()
+            instancia = null
             accionAceptar?.invoke()
         }
     }
@@ -93,6 +94,7 @@ class DialogoInformativo : DaggerDialogFragment() {
     private fun configuracionEscuchadorBotonCancelar() {
         binding.buttonCancelar.setOnClickListener {
             dismiss()
+            instancia = null
             accionCancelar?.invoke()
         }
     }
@@ -103,6 +105,9 @@ class DialogoInformativo : DaggerDialogFragment() {
     enum class TipoDialogo { ERROR_USUARIO, ERROR_SISTEMA, INFORMATIVO, ADVERTENCIA }
 
     companion object {
+
+        private var instancia : DialogoInformativo? = null
+
         fun mostrarDialogo(
             tipoDialogo: TipoDialogo,
             activity: BaseActivity<*>,
@@ -111,13 +116,14 @@ class DialogoInformativo : DaggerDialogFragment() {
             accionAceptar: (()->Unit)? = null,
             accionCancelar: (()->Unit)? = null,
         ) {
-            val dialogo = DialogoInformativo()
-            dialogo.tipoDialogo = tipoDialogo
-            dialogo.titulo = titulo
-            dialogo.mensaje = mensaje
-            dialogo.accionAceptar = accionAceptar
-            dialogo.accionCancelar = accionCancelar
-            dialogo.show(activity.supportFragmentManager, "dialogo_informativo")
+            if (instancia != null) return
+            instancia = DialogoInformativo()
+            instancia?.tipoDialogo = tipoDialogo
+            instancia?.titulo = titulo
+            instancia?.mensaje = mensaje
+            instancia?.accionAceptar = accionAceptar
+            instancia?.accionCancelar = accionCancelar
+            instancia?.show(activity.supportFragmentManager, "dialogo_informativo")
         }
     }
 }
