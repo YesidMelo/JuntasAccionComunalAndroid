@@ -29,8 +29,6 @@ rapp/src/main/java/com/hefesto/juntasaccioncomunal/ui/fragments/login/registrarJ
 Vapp/src/main/java/com/hefesto/juntasaccioncomunal/ui/activities/login/LoginActivity.kt,a\3\a3da0e449235f45b94c4fc3b97ee7d31745d4aa5
 ã
 [app/src/main/java/com/hefesto/juntasaccioncomunal/ui/navegacion/NodosNavegacionFragments.kt,6\b\6bb948ab8af69d2c2443d76950ac89cc89b58665
-@
-app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
 Ç
 Rapp/src/main/java/com/hefesto/juntasaccioncomunal/ui/navegacion/AccionesNavGrap.kt,2\a\2afa997b4eead5a50e30b60eb1da5aec163a4519
 Å
