@@ -21,7 +21,7 @@ import javax.inject.Inject
 /**
  * documentacion lifecycle aqui : https://developer.android.com/topic/libraries/architecture/lifecycle
  */
-abstract class BaseActivity<T: ViewModel> : BaseActivityDagger<T>(), LifecycleOwner {
+abstract class BaseActivity<T: BaseViewModel> : BaseActivityDagger<T>(), LifecycleOwner {
 
     //region variables
     //region inyecciones
@@ -41,6 +41,7 @@ abstract class BaseActivity<T: ViewModel> : BaseActivityDagger<T>(), LifecycleOw
     override fun onStart() {
         super.onStart()
         lifecycleRegistry?.markState(Lifecycle.State.STARTED)
+        configurarEscuchadorExcepciones()
     }
 
     override fun onBackPressed() {
@@ -111,5 +112,18 @@ abstract class BaseActivity<T: ViewModel> : BaseActivityDagger<T>(), LifecycleOw
     }
     //endregion
 
+    private fun configurarEscuchadorExcepciones() {
+        if(getViewModel().traerBaseUI().cargarEscuchadorExcepcionesCasoUso == null) return
+        getViewModel().traerBaseUI().cargarEscuchadorExcepcionesCasoUso
+            .invoke()
+            .observe(this) {
+                if (it == null) return@observe
+                mostrarDialogo(
+                    tipoDialogo = if (it.tipoExcepcion == TiposExcepciones.GENERADO_USUARIO) DialogoInformativo.TipoDialogo.ERROR_USUARIO else DialogoInformativo.TipoDialogo.ERROR_SISTEMA,
+                    titulo = it.stringResTitulo,
+                    mensaje = it.stringResMensaje,
+                )
+            }
+    }
     //endregion
 }

@@ -1,6 +1,7 @@
 package com.hefesto.juntasaccioncomunal.logica.componentes.login.casosUso
 
 import androidx.lifecycle.MutableLiveData
+import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.LoginRepositorio
 import com.hefesto.juntasaccioncomunal.logica.excepciones.ContraseniaInvalidaExcepcion
 import com.hefesto.juntasaccioncomunal.logica.excepciones.ContraseniaVaciaExcepcion
 import com.hefesto.juntasaccioncomunal.logica.excepciones.CorreoInvalidoLoginExcepcion
@@ -8,19 +9,20 @@ import com.hefesto.juntasaccioncomunal.logica.excepciones.SinCorreoLoginExcepcio
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.iniciarSesion.UsuarioInicioSesionModel
 import com.hefesto.juntasaccioncomunal.logica.utilidades.contraseniaValida
 import com.hefesto.juntasaccioncomunal.logica.utilidades.correoValido
+import javax.inject.Inject
 
 interface IniciarSesionCasoUso {
     fun invoke(usuarioInicioSesionModel: UsuarioInicioSesionModel) : MutableLiveData<Boolean>
 }
 
-class IniciarSesionCasoUsoImpl : IniciarSesionCasoUso {
+class IniciarSesionCasoUsoImpl (
+    @JvmField @Inject var loginRepositorio: LoginRepositorio
+) : IniciarSesionCasoUso {
 
     override fun invoke(usuarioInicioSesionModel: UsuarioInicioSesionModel): MutableLiveData<Boolean> {
         validacionCorreo(usuarioInicioSesionModel = usuarioInicioSesionModel)
         validaContrasenia(usuarioInicioSesionModel = usuarioInicioSesionModel)
-        val liveData = MutableLiveData<Boolean>()
-        liveData.value = true
-        return liveData
+        return loginRepositorio.iniciarSesion(usuarioInicioSesionModel = usuarioInicioSesionModel)
     }
 
     //region metodos privados

@@ -15,7 +15,7 @@ import com.hefesto.juntasaccioncomunal.ui.navegacion.NodosNavegacionFragments
 import org.jetbrains.annotations.NotNull
 import javax.inject.Inject
 
-abstract class BaseFragment<T : ViewModel> : BaseFragmentDagger<T>(), LifecycleOwner {
+abstract class BaseFragment<T : BaseViewModel> : BaseFragmentDagger<T>(), LifecycleOwner {
 
     //region inyecciones
     @Inject

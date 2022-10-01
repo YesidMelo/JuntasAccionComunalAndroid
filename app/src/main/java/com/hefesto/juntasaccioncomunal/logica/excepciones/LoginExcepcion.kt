@@ -25,8 +25,15 @@ class ContraseniaVaciaExcepcion : LogicaExcepcion(
 )
 
 class ContraseniaInvalidaExcepcion : LogicaExcepcion(
-    mensaje = "No es una contrasenai valida",
+    mensaje = "No es una contraseña valida",
     stringResMensaje = R.string.la_contrasenia_es_invalida,
+    stringResTitulo = R.string.iniciar_sesion,
+    tipoExcepcion = TiposExcepciones.GENERADO_USUARIO
+)
+
+class UsuarioNoEstaRegistradoExcepcion : LogicaExcepcion(
+    mensaje = "Usuario no esta registrado. Revisar credenciales",
+    stringResMensaje = R.string.usuario_no_registrado,
     stringResTitulo = R.string.iniciar_sesion,
     tipoExcepcion = TiposExcepciones.GENERADO_USUARIO
 )

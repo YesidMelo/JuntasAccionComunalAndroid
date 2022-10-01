@@ -39,6 +39,7 @@ android {
             buildConfigField("String", "$correoPruebas", "${secretsProd["correoPruebas"]}")
             buildConfigField("String", "$contraseniaPruebas", "${secretsProd["constraseniaPruebas"]}")
         }
+
         debug {
             minifyEnabled false
             buildConfigField("String", "$correoPruebas", "${secretsDev["correoPruebas"]}")

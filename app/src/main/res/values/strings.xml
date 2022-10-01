@@ -15,4 +15,5 @@
     <string name="el_campo_del_correo_vacio">El campo del correo esta vacio.</string>
     <string name="el_campo_contrasenia_vacio">El campo contraseña esta vacio. Vuelvelo a intentar</string>
     <string name="la_contrasenia_es_invalida">La contrasenia es invalida. Debe cumplir con las siguientes caracteristicas:\n\t1. Tener mas 5 o mas caracteres.\n\t2. Tener 20 o menos caracteres</string>
+    <string name="usuario_no_registrado">El usuario no se encuentra. Revisa tus credenciales</string>
 </resources>

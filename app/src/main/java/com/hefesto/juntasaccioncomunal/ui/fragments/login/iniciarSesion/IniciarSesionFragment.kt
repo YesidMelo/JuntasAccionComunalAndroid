@@ -1,6 +1,7 @@
 package com.hefesto.juntasaccioncomunal.ui.fragments.login.iniciarSesion
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -56,7 +57,10 @@ class IniciarSesionFragment : BaseFragment<IniciarSesionFragmentViewModel>() {
                         correo = binding.textInputEmail.text?.toString(),
                         contrasenia = binding.textInputEdittextPassword.text?.toString()
                     )
-                )
+                ).observe(viewLifecycleOwner, {
+                    if (!it) return@observe
+                    Log.e("Error", "Inicio sesion")
+                })
             }
         }
     }
