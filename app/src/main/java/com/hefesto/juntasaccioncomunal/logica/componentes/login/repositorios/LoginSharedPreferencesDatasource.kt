@@ -1,0 +1,6 @@
+package com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios
+
+interface LoginSharedPreferencesDatasource
+
+class LoginSharedPreferencesDatasourceImpl : LoginSharedPreferencesDatasource {
+}
