@@ -4,6 +4,20 @@ plugins {
     id 'kotlin-kapt'
 }
 
+def secretsDevFile = rootProject.file("secrets_dev.properties")
+def secretsDev = new Properties()
+secretsDev.load(new FileInputStream(secretsDevFile))
+
+def secretsProdFile = rootProject.file("secrets_prod.properties")
+def secretsProd = new Properties()
+secretsProd.load(new FileInputStream(secretsProdFile))
+
+//region variables para versiones
+def correoPruebas = "CORREO_PRUEBAS"
+def contraseniaPruebas = "CONTRASENIA_PRUEBAS"
+//endregionn
+
+
 android {
     compileSdk 32
 
@@ -21,6 +35,14 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            buildConfigField("String", "$correoPruebas", "${secretsProd["correoPruebas"]}")
+            buildConfigField("String", "$contraseniaPruebas", "${secretsProd["constraseniaPruebas"]}")
+        }
+        debug {
+            minifyEnabled false
+            buildConfigField("String", "$correoPruebas", "${secretsDev["correoPruebas"]}")
+            buildConfigField("String", "$contraseniaPruebas", "${secretsDev["constraseniaPruebas"]}")
         }
     }
     

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.hefesto.juntasaccioncomunal.BuildConfig
 import com.hefesto.juntasaccioncomunal.R
 import com.hefesto.juntasaccioncomunal.databinding.FragmentIniciarSesionBinding
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.iniciarSesion.UsuarioInicioSesionModel
@@ -35,6 +36,7 @@ class IniciarSesionFragment : BaseFragment<IniciarSesionFragmentViewModel>() {
         binding = FragmentIniciarSesionBinding.inflate(inflater)
         navegacionAplicacion.conIdNavGraph(R.id.nav_host_fragment_content_main)
         ponerEscuchadoresBotones()
+        ponerDefaultsDesarrollo()
         return binding.root
     }
 
@@ -67,6 +69,12 @@ class IniciarSesionFragment : BaseFragment<IniciarSesionFragmentViewModel>() {
                 accion = AccionesNavGrap.INICIAR_SESION_A_REGISTRAR_JAC
             )
         }
+    }
+
+    private fun ponerDefaultsDesarrollo() {
+        if(!BuildConfig.DEBUG) return
+        binding.textInputEmail.setText(BuildConfig.CORREO_PRUEBAS)
+        binding.textInputEdittextPassword.setText(BuildConfig.CONTRASENIA_PRUEBAS)
     }
     //endregion
 }

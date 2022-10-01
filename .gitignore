@@ -15,5 +15,7 @@
 local.properties
 
 #personalizado
+secrets_dev.properties
+secrets_prod.properties
 /app/secrets_dev.properties
 /app/secrets_prod.properties
