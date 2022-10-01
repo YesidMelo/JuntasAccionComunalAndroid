@@ -57,10 +57,15 @@ class IniciarSesionFragment : BaseFragment<IniciarSesionFragmentViewModel>() {
                         correo = binding.textInputEmail.text?.toString(),
                         contrasenia = binding.textInputEdittextPassword.text?.toString()
                     )
-                ).observe(viewLifecycleOwner, {
+                ).observe(viewLifecycleOwner) {
+                    if(it == null) {
+                        mostrarLoading()
+                        return@observe
+                    }
+                    ocultarProgress()
                     if (!it) return@observe
                     Log.e("Error", "Inicio sesion")
-                })
+                }
             }
         }
     }

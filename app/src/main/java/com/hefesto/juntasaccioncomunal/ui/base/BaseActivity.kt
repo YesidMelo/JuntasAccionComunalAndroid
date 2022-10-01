@@ -12,6 +12,7 @@ import com.hefesto.juntasaccioncomunal.di.ui.BaseActivityDagger
 import com.hefesto.juntasaccioncomunal.logica.excepciones.LogicaExcepcion
 import com.hefesto.juntasaccioncomunal.logica.excepciones.TiposExcepciones
 import com.hefesto.juntasaccioncomunal.ui.dialogo.DialogoInformativo
+import com.hefesto.juntasaccioncomunal.ui.dialogo.DialogoLoading
 import com.hefesto.juntasaccioncomunal.ui.navegacion.NavegacionAplicacion
 import com.hefesto.juntasaccioncomunal.ui.navegacion.NodosNavegacionActividades
 import org.jetbrains.annotations.NotNull
@@ -74,6 +75,8 @@ abstract class BaseActivity<T: BaseViewModel> : BaseActivityDagger<T>(), Lifecyc
         }
     }
 
+    //region dialogos
+
     fun mostrarDialogo(
         tipoDialogo: DialogoInformativo.TipoDialogo,
         @StringRes @NotNull titulo: Int,
@@ -90,6 +93,12 @@ abstract class BaseActivity<T: BaseViewModel> : BaseActivityDagger<T>(), Lifecyc
             titulo = titulo,
         )
     }
+
+    fun mostrarProgress() = DialogoLoading.mostrarProgress(activity = this)
+
+    fun ocultarProgress() = DialogoLoading.ocultarrProgress()
+
+    //endregion
     //region navegacion fragments en activity
 
     open fun configurarNavegacionFragments(@IdRes @NotNull idNavGraph: Int) {

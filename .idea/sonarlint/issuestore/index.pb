@@ -35,16 +35,12 @@ Japp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/FragmentBuilder.kt,9\d
 iapp/src/main/java/com/hefesto/juntasaccioncomunal/ui/fragments/login/registrarJAC/RegistrarJACFragment.kt,5\5\55af32a8bcfb85f980458b03608639ea8a620079
 {
 Kapp/src/main/java/com/hefesto/juntasaccioncomunal/di/AplicacionComponent.kt,a\a\aae6ec3a587ee01f999b9e792ad5a094a79c52ef
-z
-Japp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/DialogosBuilder.kt,c\5\c5649a7a04ee7697ef74bd346d8f65ddaa73bbda
 à
 Xapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/excepciones/TiposExcepciones.kt,4\8\486da838b5bcfffa8f201ca093fd1cb6f374e59e
 á
 Wapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/excepciones/LogicaExcepcion.kt,c\9\c986ab7acfc7185395bf4b9311264c4adc3f82ef
 è
 _app/src/main/java/com/hefesto/juntasaccioncomunal/logica/utilidades/ValidacionStringConRegex.kt,6\c\6cfdd867546a46b53cd3c60df5da3a3fa28a95b7
-Ç
-Rapp/src/main/java/com/hefesto/juntasaccioncomunal/ui/dialogo/DialogoInformativo.kt,3\6\365b8a70b0271cb97b4ea4de3f0910e559bd0640
 ú
 lapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/repositorios/LoginDBDatasource.kt,6\1\6144f65dabdcde3a0cc19ade2777eee38b6b20b4
 ù
@@ -72,7 +68,3 @@ F
 secrets_dev.properties,f\3\f379aaa67378b007bf8a0888fe254bfd88d39d49
 †
 papp/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/login/iniciarSesion/UsuarioInicioSesionModel.kt,e\e\eebd0bc6cb49faca0592bc590607610ce6599e1d
-õ
-kapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/repositorios/LoginRepositorio.kt,2\6\2692036e67db8eb21a28c4dd0b8482d1b76b1af1
-õ
-kapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/casosUso/IniciarSesionCasoUso.kt,b\8\b8d312e70e216d6344f67519ea4ce73304e98696

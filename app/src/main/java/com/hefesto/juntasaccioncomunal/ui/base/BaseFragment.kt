@@ -44,6 +44,10 @@ abstract class BaseFragment<T : BaseViewModel> : BaseFragmentDagger<T>(), Lifecy
 
     abstract fun traerNodoNavegacion(): NodosNavegacionFragments
 
+
+
+    //region interaccion activity
+
     fun funcionSegura(funcion : (()->Unit)) = (activity as BaseActivity<*>).funcionSegura(funcion = funcion)
 
     fun mostrarDialogo(
@@ -59,6 +63,10 @@ abstract class BaseFragment<T : BaseViewModel> : BaseFragmentDagger<T>(), Lifecy
         titulo = titulo,
         mensaje = mensaje,
     )
+
+    fun mostrarLoading() = (activity as BaseActivity<*>).mostrarProgress()
+    fun ocultarProgress() = (activity as BaseActivity<*>).ocultarProgress()
+    //endregion
 
     //region configuracion ciclo vida
     private fun configuracionCicloVida(){

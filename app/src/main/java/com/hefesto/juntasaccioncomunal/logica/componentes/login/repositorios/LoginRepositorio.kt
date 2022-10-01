@@ -5,7 +5,7 @@ import com.hefesto.juntasaccioncomunal.logica.modelos.login.iniciarSesion.Usuari
 import javax.inject.Inject
 
 interface LoginRepositorio {
-    fun iniciarSesion(usuarioInicioSesionModel: UsuarioInicioSesionModel) : MutableLiveData<Boolean>
+    fun iniciarSesion(usuarioInicioSesionModel: UsuarioInicioSesionModel) : MutableLiveData<Boolean?>
 }
 
 class LoginRepositorioImpl constructor(
@@ -15,5 +15,5 @@ class LoginRepositorioImpl constructor(
     @JvmField @Inject var loginSharedPreferencesDatasource: LoginSharedPreferencesDatasource
 ) : LoginRepositorio {
 
-    override fun iniciarSesion(usuarioInicioSesionModel: UsuarioInicioSesionModel): MutableLiveData<Boolean> = loginCacheDatasource.iniciarSesion(usuarioInicioSesionModel = usuarioInicioSesionModel)
+    override fun iniciarSesion(usuarioInicioSesionModel: UsuarioInicioSesionModel): MutableLiveData<Boolean?> = loginCacheDatasource.iniciarSesion(usuarioInicioSesionModel = usuarioInicioSesionModel)
 }

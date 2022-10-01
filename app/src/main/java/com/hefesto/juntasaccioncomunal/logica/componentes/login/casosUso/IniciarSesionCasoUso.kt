@@ -12,14 +12,14 @@ import com.hefesto.juntasaccioncomunal.logica.utilidades.correoValido
 import javax.inject.Inject
 
 interface IniciarSesionCasoUso {
-    fun invoke(usuarioInicioSesionModel: UsuarioInicioSesionModel) : MutableLiveData<Boolean>
+    fun invoke(usuarioInicioSesionModel: UsuarioInicioSesionModel) : MutableLiveData<Boolean?>
 }
 
 class IniciarSesionCasoUsoImpl (
     @JvmField @Inject var loginRepositorio: LoginRepositorio
 ) : IniciarSesionCasoUso {
 
-    override fun invoke(usuarioInicioSesionModel: UsuarioInicioSesionModel): MutableLiveData<Boolean> {
+    override fun invoke(usuarioInicioSesionModel: UsuarioInicioSesionModel): MutableLiveData<Boolean?> {
         validacionCorreo(usuarioInicioSesionModel = usuarioInicioSesionModel)
         validaContrasenia(usuarioInicioSesionModel = usuarioInicioSesionModel)
         return loginRepositorio.iniciarSesion(usuarioInicioSesionModel = usuarioInicioSesionModel)
