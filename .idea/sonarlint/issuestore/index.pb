@@ -1,8 +1,6 @@
 
 ”
 dapp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/personalizado/DaggerActivityPersonalizado.kt,a\2\a2c637934733605f6fb3fb9c0e964568a9160932
-P
- app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
 z
 Japp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/ActivityBuilder.kt,e\9\e9f0e94d39fdaf83210b452ce2cd00d1cd6c8cf2
 x
