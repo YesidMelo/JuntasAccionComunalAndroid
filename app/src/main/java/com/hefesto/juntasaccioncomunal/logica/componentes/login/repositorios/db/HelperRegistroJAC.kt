@@ -1,6 +1,5 @@
 package com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.JacDao
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.mapper.convertirAJACEntity
@@ -33,7 +32,7 @@ class HelperRegistroJAC constructor(
 
     //region metodos privados
     private fun existeCorreo(): Boolean {
-        val jacEntity = jacDao.encontrarRegistro(codigoJAC = jacRegistroModel.CodigoJAC!! , email = jacRegistroModel.Correo!!)
+        val jacEntity = jacDao.encontrarRegistroPorCorreoYCodigoJAC(codigoJAC = jacRegistroModel.CodigoJAC!! , email = jacRegistroModel.Correo!!)
         if(jacEntity != null) {
             escuchadorExcepciones.postValue(EstaJuntaYaSeEncuentraRegistradaException())
             return true

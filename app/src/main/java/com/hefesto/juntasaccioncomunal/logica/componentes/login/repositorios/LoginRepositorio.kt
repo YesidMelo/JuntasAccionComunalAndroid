@@ -18,7 +18,7 @@ class LoginRepositorioImpl constructor(
     @JvmField @Inject var loginSharedPreferencesDatasource: LoginSharedPreferencesDatasource
 ) : LoginRepositorio {
 
-    override fun iniciarSesion(usuarioInicioSesionModel: UsuarioInicioSesionModel): MutableLiveData<Boolean?> = loginCacheDatasource.iniciarSesion(usuarioInicioSesionModel = usuarioInicioSesionModel)
+    override fun iniciarSesion(usuarioInicioSesionModel: UsuarioInicioSesionModel): MutableLiveData<Boolean?> = loginDBDatasource.iniciarSesion(usuarioInicioSesionModel = usuarioInicioSesionModel)
 
     override fun registrarJAC(jacRegistroModel: JACRegistroModel): MutableLiveData<Boolean?> = loginDBDatasource.registrarJAC(jacRegistroModel = jacRegistroModel)
 

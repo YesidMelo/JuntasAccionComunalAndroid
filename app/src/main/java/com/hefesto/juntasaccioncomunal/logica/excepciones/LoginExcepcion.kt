@@ -38,6 +38,13 @@ class UsuarioNoEstaRegistradoExcepcion : LogicaExcepcion(
     tipoExcepcion = TiposExcepciones.GENERADO_USUARIO
 )
 
+class RevisaCredencialesExcepcion : LogicaExcepcion(
+    mensaje = "El usuario o la contraseña estan equivocadas. Vuelve a intentarlo",
+    stringResMensaje = R.string.usuario_o_contrasenia_equivocado,
+    stringResTitulo = R.string.iniciar_sesion,
+    tipoExcepcion = TiposExcepciones.GENERADO_USUARIO
+)
+
 class NombreJACNoValidoExcepcion :  LogicaExcepcion(
     mensaje = "El nombre de la jac no es valido",
     stringResMensaje = R.string.el_nombre_jac_invalido,

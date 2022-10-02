@@ -26,4 +26,5 @@
     <string name="los_campos_contrasenia_repetir_contrasenia_no_coinciden">Los campos contraseña y repetir contraseña no coinciden. Vuelverlo a intentar.</string>
     <string name="jac_ya_registrada">Esta JAC ya esta registrada.\n Reintenta iniciar sesion.</string>
     <string name="registro_exitoso_jac">Se ha hecho el registro exitos de la JAC. Se validara la informacion para la activacion en la plataforma.</string>
+    <string name="usuario_o_contrasenia_equivocado">El usuario o la contraseña son incorrectos vuelve a intentarlo</string>
 </resources>
