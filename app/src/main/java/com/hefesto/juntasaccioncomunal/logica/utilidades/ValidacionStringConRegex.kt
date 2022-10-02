@@ -1,5 +1,6 @@
 package com.hefesto.juntasaccioncomunal.logica.utilidades
 
+import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.RegexEnum
 import java.util.regex.Pattern
 
 fun correoValido(correo: String) : Boolean {

@@ -1,4 +1,4 @@
-package com.hefesto.juntasaccioncomunal.logica.utilidades
+package com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores
 
 enum class RegexEnum constructor(private val regex: String) {
     CONSTRASENIA("[a-zA-Z0-9@\$]{5,20}"),

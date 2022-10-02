@@ -3,7 +3,7 @@ package com.hefesto.juntasaccioncomunal.logica.componentes.splash.repositorios
 import androidx.lifecycle.MutableLiveData
 import com.hefesto.juntasaccioncomunal.fuentesDatos.cache.MemoriaCache
 import com.hefesto.juntasaccioncomunal.logica.excepciones.LogicaExcepcion
-import com.hefesto.juntasaccioncomunal.logica.utilidades.IdentificadorElementosCacheEnum
+import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.IdentificadorElementosCacheEnum
 import javax.inject.Inject
 
 interface SplashCacheDatasource {

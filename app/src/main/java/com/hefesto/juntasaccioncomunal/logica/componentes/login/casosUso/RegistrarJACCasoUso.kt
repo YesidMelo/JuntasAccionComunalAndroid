@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.LoginRepositorio
 import com.hefesto.juntasaccioncomunal.logica.excepciones.*
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarJAC.JACRegistroModel
-import com.hefesto.juntasaccioncomunal.logica.utilidades.RegexEnum
+import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.RegexEnum
 import com.hefesto.juntasaccioncomunal.logica.utilidades.correoValido
 import com.hefesto.juntasaccioncomunal.logica.utilidades.validarConRegex
 import javax.inject.Inject

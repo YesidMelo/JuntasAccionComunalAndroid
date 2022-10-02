@@ -7,7 +7,7 @@ import com.hefesto.juntasaccioncomunal.logica.excepciones.ContraseniaVaciaExcepc
 import com.hefesto.juntasaccioncomunal.logica.excepciones.CorreoInvalidoLoginExcepcion
 import com.hefesto.juntasaccioncomunal.logica.excepciones.SinCorreoLoginExcepcion
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.iniciarSesion.UsuarioInicioSesionModel
-import com.hefesto.juntasaccioncomunal.logica.utilidades.RegexEnum
+import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.RegexEnum
 import com.hefesto.juntasaccioncomunal.logica.utilidades.correoValido
 import com.hefesto.juntasaccioncomunal.logica.utilidades.validarConRegex
 import javax.inject.Inject
