@@ -1,14 +1,17 @@
 package com.hefesto.juntasaccioncomunal.ui.fragments.login.registrarJAC
 
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.ui.BaseUI
-import com.hefesto.juntasaccioncomunal.logica.componentes.login.ui.IniciarSesionFragmentUI
+import com.hefesto.juntasaccioncomunal.logica.componentes.login.ui.RegistrarJACFragmentUI
+import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarJAC.JACRegistroModel
 import com.hefesto.juntasaccioncomunal.ui.base.BaseViewModel
 import javax.inject.Inject
 
-class RegistrarJACFragmentViewModel : BaseViewModel(){
+class RegistrarJACFragmentViewModel constructor(
+    @JvmField @Inject var registrarJACFragmentUI: RegistrarJACFragmentUI
+) : BaseViewModel(){
 
-    @Inject
-    lateinit var iniciarSesionFragmentUI: IniciarSesionFragmentUI
+    override fun traerBaseUI(): BaseUI = registrarJACFragmentUI
 
-    override fun traerBaseUI(): BaseUI = iniciarSesionFragmentUI
+    fun registrarJAC(jacRegistroModel: JACRegistroModel) = registrarJACFragmentUI.registrarJAC(jacRegistroModel = jacRegistroModel)
+
 }

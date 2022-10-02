@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.repositorios.BaseCacheDatasource
 import com.hefesto.juntasaccioncomunal.logica.excepciones.UsuarioNoEstaRegistradoExcepcion
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.iniciarSesion.UsuarioInicioSesionModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarJAC.JACRegistroModel
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -11,6 +12,7 @@ import javax.inject.Inject
 
 interface LoginCacheDatasource {
     fun iniciarSesion(usuarioInicioSesionModel: UsuarioInicioSesionModel) : MutableLiveData<Boolean?>
+    fun registrarJAC(jacRegistroModel: JACRegistroModel) : MutableLiveData<Boolean?>
 }
 
 class LoginCacheDatasourceImpl constructor(
@@ -19,6 +21,7 @@ class LoginCacheDatasourceImpl constructor(
 
     //region variables
     private var inicioSesionExitosa = MutableLiveData<Boolean?>()
+    private var registroJACExitoso = MutableLiveData<Boolean?>()
     //endregion
 
     override fun iniciarSesion(usuarioInicioSesionModel: UsuarioInicioSesionModel): MutableLiveData<Boolean?> {
@@ -29,6 +32,15 @@ class LoginCacheDatasourceImpl constructor(
             baseCacheDatasource.traerExcepcionesLiveData().postValue(UsuarioNoEstaRegistradoExcepcion())
         }
         return inicioSesionExitosa
+    }
+
+    override fun registrarJAC(jacRegistroModel: JACRegistroModel): MutableLiveData<Boolean?> {
+        GlobalScope.launch {
+            registroJACExitoso.postValue(null)
+            delay(5000)
+            registroJACExitoso.postValue(true)
+        }
+        return registroJACExitoso
     }
 
 }

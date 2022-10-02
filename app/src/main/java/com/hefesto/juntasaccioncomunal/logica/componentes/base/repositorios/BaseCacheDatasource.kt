@@ -3,7 +3,7 @@ package com.hefesto.juntasaccioncomunal.logica.componentes.base.repositorios
 import androidx.lifecycle.MutableLiveData
 import com.hefesto.juntasaccioncomunal.fuentesDatos.cache.MemoriaCache
 import com.hefesto.juntasaccioncomunal.logica.excepciones.LogicaExcepcion
-import com.hefesto.juntasaccioncomunal.logica.utilidades.IdentificadorElementosCache
+import com.hefesto.juntasaccioncomunal.logica.utilidades.IdentificadorElementosCacheEnum
 import javax.inject.Inject
 
 interface BaseCacheDatasource {
@@ -20,7 +20,7 @@ open class BaseCacheDatasourceImpl constructor(
 
     //region metodos privados
     private fun traerEscuchadorExcepcion() : MutableLiveData<LogicaExcepcion?>? {
-        return memoriaCache.traerObjeto<MutableLiveData<LogicaExcepcion?>>(llave = IdentificadorElementosCache.EXCEPCIONES_APP)
+        return memoriaCache.traerObjeto<MutableLiveData<LogicaExcepcion?>>(llave = IdentificadorElementosCacheEnum.EXCEPCIONES_APP)
     }
     //endregion
 }

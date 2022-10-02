@@ -1,11 +1,13 @@
 package com.hefesto.juntasaccioncomunal.ui.fragments.login.registrarJAC
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.hefesto.juntasaccioncomunal.R
 import com.hefesto.juntasaccioncomunal.databinding.FragmentRegistrarJacBinding
+import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarJAC.JACRegistroModel
 import com.hefesto.juntasaccioncomunal.ui.base.BaseFragment
 import com.hefesto.juntasaccioncomunal.ui.navegacion.AccionesNavGrap
 import com.hefesto.juntasaccioncomunal.ui.navegacion.NodosNavegacionFragments
@@ -40,6 +42,7 @@ class RegistrarJACFragment : BaseFragment<RegistrarJACFragmentViewModel>() {
     //region metodos privados
     private fun ponerEscuchadoresBotones() {
         ponerEscuchadoresBotonVolver()
+        ponerEscuchadorBotonRegistrar()
     }
 
     private fun ponerEscuchadoresBotonVolver() {
@@ -49,6 +52,29 @@ class RegistrarJACFragment : BaseFragment<RegistrarJACFragmentViewModel>() {
                 a = NodosNavegacionFragments.INICIAR_SESION,
                 accion = AccionesNavGrap.REGISTRAR_JAC_A_INICIAR_SESION
             )
+        }
+    }
+    private fun ponerEscuchadorBotonRegistrar() {
+        binding.buttonRegistrar.setOnClickListener {
+            funcionSegura {
+                traerViewModel()
+                    .registrarJAC(JACRegistroModel(
+                        NombreJAC = binding.editTextNombreJAC.text?.toString(),
+                        CodigoJAC = binding.editTextCodigoJAC.text?.toString(),
+                        Correo = binding.editTextCorreo.text?.toString(),
+                        Contrasenia = binding.editTextContrasenia.text?.toString(),
+                        RepetirContrasenia = binding.editTextRepetirContrasenia.text?.toString()
+                    ))
+                    .observe(viewLifecycleOwner) {
+                        if (it == null) {
+                            mostrarLoading()
+                            return@observe
+                        }
+                        ocultarProgress()
+                        if (!it) return@observe
+                        Log.e("Error", "Se ha registrado")
+                    }
+            }
         }
     }
     //endregion

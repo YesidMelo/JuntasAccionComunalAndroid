@@ -7,8 +7,9 @@ import com.hefesto.juntasaccioncomunal.logica.excepciones.ContraseniaVaciaExcepc
 import com.hefesto.juntasaccioncomunal.logica.excepciones.CorreoInvalidoLoginExcepcion
 import com.hefesto.juntasaccioncomunal.logica.excepciones.SinCorreoLoginExcepcion
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.iniciarSesion.UsuarioInicioSesionModel
-import com.hefesto.juntasaccioncomunal.logica.utilidades.contraseniaValida
+import com.hefesto.juntasaccioncomunal.logica.utilidades.RegexEnum
 import com.hefesto.juntasaccioncomunal.logica.utilidades.correoValido
+import com.hefesto.juntasaccioncomunal.logica.utilidades.validarConRegex
 import javax.inject.Inject
 
 interface IniciarSesionCasoUso {
@@ -37,7 +38,7 @@ class IniciarSesionCasoUsoImpl (
         if (usuarioInicioSesionModel.contrasenia == null) throw ContraseniaVaciaExcepcion()
         if (usuarioInicioSesionModel.contrasenia.isEmpty()) throw ContraseniaVaciaExcepcion()
         if (usuarioInicioSesionModel.contrasenia.isBlank()) throw ContraseniaVaciaExcepcion()
-        if(!contraseniaValida(contrasenia = usuarioInicioSesionModel.contrasenia)) throw ContraseniaInvalidaExcepcion()
+        if(!validarConRegex(string = usuarioInicioSesionModel.contrasenia, regex = RegexEnum.CONSTRASENIA)) throw ContraseniaInvalidaExcepcion()
 
     }
     //endregion

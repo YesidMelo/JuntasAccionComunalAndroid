@@ -16,4 +16,12 @@
     <string name="el_campo_contrasenia_vacio">El campo contraseña esta vacio. Vuelvelo a intentar</string>
     <string name="la_contrasenia_es_invalida">La contrasenia es invalida. Debe cumplir con las siguientes caracteristicas:\n\t1. Tener mas 5 o mas caracteres.\n\t2. Tener 20 o menos caracteres</string>
     <string name="usuario_no_registrado">El usuario no se encuentra. Revisa tus credenciales</string>
+    <string name="nombre_jac">Nombre Junta accion comuna</string>
+    <string name="codigo_jac">Codigo junta accion comunal</string>
+    <string name="el_nombre_jac_invalido">El nombre de la Junta de accion comunal no es valido.\n debe cumplir con los siguientes requisitos:\n\n\t1. Tener 5 o mas caracteres.\n\t</string>
+    <string name="registro_jac">Registro Junta accion comunal</string>
+    <string name="el_codigo_jac_invalido">El codigo de la Junta de accion comunal no es valido.\nDebe tener minimo 5 caracteres</string>
+    <string name="el_campo_repetir_contrasenia_esta_vacio">El campo repetir contraseña esta vacio.Vuelvelo a intentar.</string>
+    <string name="repetir_contrasenia_no_es_valido">El campo repetir contraseña no es valido.\nDebe cumplir con los siguientes requisitos:\n\t1. Tener 5 o mas caracteres.\n\t2. Tener 20 o menos caracteres</string>
+    <string name="los_campos_contrasenia_repetir_contrasenia_no_coinciden">Los campos contraseña y repetir contraseña no coinciden. Vuelverlo a intentar.</string>
 </resources>

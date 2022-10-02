@@ -15,8 +15,6 @@ Mapp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/BaseActivityDagger.kt,
 ]app/src/main/java/com/hefesto/juntasaccioncomunal/ui/navegacion/NodosNavegacionActividades.kt,3\0\3002f71b949875e0a47a2ea727e6db97ff6a5d74
 É
 Sapp/src/main/java/com/hefesto/juntasaccioncomunal/ui/navegacion/HelperActivities.kt,3\d\3d08af37ff733f4c3a1be388ef544557533fbac4
-Ü
-Vapp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/modules/LoginActivityModule.kt,d\7\d77b861b124deddbe059fcafdc2853d383668e30
 ã
 [app/src/main/java/com/hefesto/juntasaccioncomunal/ui/navegacion/NodosNavegacionFragments.kt,6\b\6bb948ab8af69d2c2443d76950ac89cc89b58665
 Ç
@@ -27,18 +25,12 @@ Qapp/src/main/java/com/hefesto/juntasaccioncomunal/ui/navegacion/HelperFragment.
 Mapp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/BaseFragmentDagger.kt,2\c\2cd0642cdaae6544922ad1d225c7a1533080c755
 á
 Wapp/src/main/java/com/hefesto/juntasaccioncomunal/ui/navegacion/NavegacionAplicacion.kt,5\c\5c4b32e9af39b0a72ad4d48686d6cce4ccaaaae1
-z
-Japp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/FragmentBuilder.kt,9\d\9dd8a9507b1cc239a8460037eecd573f5a0d74af
-ô
-iapp/src/main/java/com/hefesto/juntasaccioncomunal/ui/fragments/login/registrarJAC/RegistrarJACFragment.kt,5\5\55af32a8bcfb85f980458b03608639ea8a620079
 {
 Kapp/src/main/java/com/hefesto/juntasaccioncomunal/di/AplicacionComponent.kt,a\a\aae6ec3a587ee01f999b9e792ad5a094a79c52ef
 à
 Xapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/excepciones/TiposExcepciones.kt,4\8\486da838b5bcfffa8f201ca093fd1cb6f374e59e
 á
 Wapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/excepciones/LogicaExcepcion.kt,c\9\c986ab7acfc7185395bf4b9311264c4adc3f82ef
-è
-_app/src/main/java/com/hefesto/juntasaccioncomunal/logica/utilidades/ValidacionStringConRegex.kt,6\c\6cfdd867546a46b53cd3c60df5da3a3fa28a95b7
 ú
 lapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/repositorios/LoginDBDatasource.kt,6\1\6144f65dabdcde3a0cc19ade2777eee38b6b20b4
 ù

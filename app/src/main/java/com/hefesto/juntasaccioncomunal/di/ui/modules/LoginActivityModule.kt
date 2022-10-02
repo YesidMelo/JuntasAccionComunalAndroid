@@ -2,6 +2,7 @@ package com.hefesto.juntasaccioncomunal.di.ui.modules
 
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.ui.IniciarSesionFragmentUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.ui.LoginActivityUI
+import com.hefesto.juntasaccioncomunal.logica.componentes.login.ui.RegistrarJACFragmentUI
 import com.hefesto.juntasaccioncomunal.ui.activities.login.LoginActivityViewModel
 import com.hefesto.juntasaccioncomunal.ui.fragments.login.iniciarSesion.IniciarSesionFragmentViewModel
 import com.hefesto.juntasaccioncomunal.ui.fragments.login.registrarJAC.RegistrarJACFragmentViewModel
@@ -18,5 +19,5 @@ class LoginActivityModule {
     fun providesIniciarSesionFragmentViewModel(iniciarSesionFragmentUI: IniciarSesionFragmentUI) = IniciarSesionFragmentViewModel(iniciarSesionFragmentUI = iniciarSesionFragmentUI)
 
     @Provides
-    fun providesRegistrarJACFragmentViewModel() = RegistrarJACFragmentViewModel()
+    fun providesRegistrarJACFragmentViewModel(registrarJACFragmentUI: RegistrarJACFragmentUI) = RegistrarJACFragmentViewModel(registrarJACFragmentUI = registrarJACFragmentUI)
 }
