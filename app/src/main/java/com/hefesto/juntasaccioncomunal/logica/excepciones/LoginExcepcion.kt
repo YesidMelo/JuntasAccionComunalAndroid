@@ -72,3 +72,10 @@ class ElCampoContraseniaYRepetirContraseniaNoCoincidenException : LogicaExcepcio
     stringResTitulo = R.string.registro_jac,
     tipoExcepcion = TiposExcepciones.GENERADO_USUARIO
 )
+
+class EstaJuntaYaSeEncuentraRegistradaException : LogicaExcepcion(
+    mensaje = "JAC ya esta registrada",
+    stringResMensaje = R.string.jac_ya_registrada,
+    stringResTitulo = R.string.registro_jac,
+    tipoExcepcion = TiposExcepciones.GENERADO_USUARIO
+)

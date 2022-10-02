@@ -13,8 +13,13 @@ def secretsProd = new Properties()
 secretsProd.load(new FileInputStream(secretsProdFile))
 
 //region variables para versiones
+def probandoInicioSesion = "PROBANDO_INICIO_SESION"
+def probandoRegistroJAC = "PROBANDO_REGISTRO_JAC"
 def correoPruebas = "CORREO_PRUEBAS"
 def contraseniaPruebas = "CONTRASENIA_PRUEBAS"
+def nombreJAC = "NOMBRE_JAC"
+def codigoJAC = "CODIGO_JAC"
+def repetirConstraseniaPruebas = "REPETIR_CONSTRASENIA_JAC"
 //endregionn
 
 
@@ -36,14 +41,28 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
+            buildConfigField("boolean", "$probandoInicioSesion", "${secretsProd["probandoInicioSesion"]}")
+            buildConfigField("boolean", "$probandoRegistroJAC", "${secretsProd["probandoRegistroJAC"]}")
+
             buildConfigField("String", "$correoPruebas", "${secretsProd["correoPruebas"]}")
             buildConfigField("String", "$contraseniaPruebas", "${secretsProd["constraseniaPruebas"]}")
+            buildConfigField("String", "$nombreJAC", "${secretsProd["nombreJAC"]}")
+            buildConfigField("String", "$codigoJAC", "${secretsProd["codigoJAC"]}")
+            buildConfigField("String", "$nombreJAC", "${secretsProd["nombreJAC"]}")
+            buildConfigField("String", "$repetirConstraseniaPruebas", "${secretsProd["repetirConstraseniaPruebas"]}")
         }
 
         debug {
             minifyEnabled false
+            buildConfigField("boolean", "$probandoInicioSesion", "${secretsDev["probandoInicioSesion"]}")
+            buildConfigField("boolean", "$probandoRegistroJAC", "${secretsDev["probandoRegistroJAC"]}")
+
             buildConfigField("String", "$correoPruebas", "${secretsDev["correoPruebas"]}")
             buildConfigField("String", "$contraseniaPruebas", "${secretsDev["constraseniaPruebas"]}")
+            buildConfigField("String", "$nombreJAC", "${secretsDev["nombreJAC"]}")
+            buildConfigField("String", "$codigoJAC", "${secretsDev["codigoJAC"]}")
+            buildConfigField("String", "$nombreJAC", "${secretsDev["nombreJAC"]}")
+            buildConfigField("String", "$repetirConstraseniaPruebas", "${secretsDev["repetirConstraseniaPruebas"]}")
         }
     }
     
@@ -64,6 +83,7 @@ android {
 ext {
     lottieVersion = "3.4.0"
     daggerVersion = "2.35.1"
+    room_version = "2.4.3"
 }
 
 dependencies {
@@ -88,4 +108,10 @@ dependencies {
 
     //lottie
     implementation "com.airbnb.android:lottie:$lottieVersion"
+
+    //room
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    testImplementation "androidx.room:room-testing:$room_version"
 }

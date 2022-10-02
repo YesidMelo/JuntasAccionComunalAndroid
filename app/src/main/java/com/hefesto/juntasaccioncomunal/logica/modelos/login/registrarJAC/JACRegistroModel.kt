@@ -1,6 +1,7 @@
 package com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarJAC
 
 data class JACRegistroModel(
+    var jacId: Int?=  null,
     var NombreJAC : String? = null,
     var CodigoJAC : String? = null,
     var Correo: String? = null,

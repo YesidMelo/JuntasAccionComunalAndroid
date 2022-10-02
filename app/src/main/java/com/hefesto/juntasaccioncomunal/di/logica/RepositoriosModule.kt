@@ -4,8 +4,7 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.base.repositorios.Base
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.repositorios.BaseRepositorio
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.repositorios.BaseRepositorioImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.*
-import com.hefesto.juntasaccioncomunal.logica.componentes.splash.casosUso.PrecargaAplicacionFinalizadaCasoUso
-import com.hefesto.juntasaccioncomunal.logica.componentes.splash.casosUso.PrecargaAplicacionFinalizadaCasoUsoImpl
+import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.LoginDBDatasource
 import com.hefesto.juntasaccioncomunal.logica.componentes.splash.repositorios.*
 import dagger.Module
 import dagger.Provides

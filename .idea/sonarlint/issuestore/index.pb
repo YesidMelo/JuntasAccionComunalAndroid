@@ -3,8 +3,6 @@
 dapp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/personalizado/DaggerActivityPersonalizado.kt,a\2\a2c637934733605f6fb3fb9c0e964568a9160932
 z
 Japp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/ActivityBuilder.kt,e\9\e9f0e94d39fdaf83210b452ce2cd00d1cd6c8cf2
-x
-Happ/src/main/java/com/hefesto/juntasaccioncomunal/di/AplicacionModule.kt,1\7\17393b005994148415f159536612577e6d287156
 q
 Aapp/src/main/java/com/hefesto/juntasaccioncomunal/MiAplicacion.kt,6\c\6cfe98e06167927d4eda13383dda2550a9bdd152
 ”
@@ -25,8 +23,6 @@ Qapp/src/main/java/com/hefesto/juntasaccioncomunal/ui/navegacion/HelperFragment.
 Mapp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/BaseFragmentDagger.kt,2\c\2cd0642cdaae6544922ad1d225c7a1533080c755
 ‡
 Wapp/src/main/java/com/hefesto/juntasaccioncomunal/ui/navegacion/NavegacionAplicacion.kt,5\c\5c4b32e9af39b0a72ad4d48686d6cce4ccaaaae1
-{
-Kapp/src/main/java/com/hefesto/juntasaccioncomunal/di/AplicacionComponent.kt,a\a\aae6ec3a587ee01f999b9e792ad5a094a79c52ef
 ˆ
 Xapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/excepciones/TiposExcepciones.kt,4\8\486da838b5bcfffa8f201ca093fd1cb6f374e59e
 ‡
@@ -50,11 +46,5 @@ X
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
-G
-secrets_prod.properties,2\e\2e3ac723e10752b7848824960b9c0701b34b7e78
-@
-app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
-F
-secrets_dev.properties,f\3\f379aaa67378b007bf8a0888fe254bfd88d39d49
  
 papp/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/login/iniciarSesion/UsuarioInicioSesionModel.kt,e\e\eebd0bc6cb49faca0592bc590607610ce6599e1d

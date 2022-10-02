@@ -12,7 +12,6 @@ import javax.inject.Inject
 
 interface LoginCacheDatasource {
     fun iniciarSesion(usuarioInicioSesionModel: UsuarioInicioSesionModel) : MutableLiveData<Boolean?>
-    fun registrarJAC(jacRegistroModel: JACRegistroModel) : MutableLiveData<Boolean?>
 }
 
 class LoginCacheDatasourceImpl constructor(
@@ -34,13 +33,5 @@ class LoginCacheDatasourceImpl constructor(
         return inicioSesionExitosa
     }
 
-    override fun registrarJAC(jacRegistroModel: JACRegistroModel): MutableLiveData<Boolean?> {
-        GlobalScope.launch {
-            registroJACExitoso.postValue(null)
-            delay(5000)
-            registroJACExitoso.postValue(true)
-        }
-        return registroJACExitoso
-    }
 
 }

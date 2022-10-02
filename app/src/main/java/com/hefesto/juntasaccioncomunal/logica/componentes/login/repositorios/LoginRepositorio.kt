@@ -1,6 +1,7 @@
 package com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios
 
 import androidx.lifecycle.MutableLiveData
+import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.LoginDBDatasource
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.iniciarSesion.UsuarioInicioSesionModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarJAC.JACRegistroModel
 import javax.inject.Inject
@@ -19,6 +20,6 @@ class LoginRepositorioImpl constructor(
 
     override fun iniciarSesion(usuarioInicioSesionModel: UsuarioInicioSesionModel): MutableLiveData<Boolean?> = loginCacheDatasource.iniciarSesion(usuarioInicioSesionModel = usuarioInicioSesionModel)
 
-    override fun registrarJAC(jacRegistroModel: JACRegistroModel): MutableLiveData<Boolean?> =loginCacheDatasource.registrarJAC(jacRegistroModel = jacRegistroModel)
+    override fun registrarJAC(jacRegistroModel: JACRegistroModel): MutableLiveData<Boolean?> = loginDBDatasource.registrarJAC(jacRegistroModel = jacRegistroModel)
 
 }

@@ -1,6 +1,7 @@
 package com.hefesto.juntasaccioncomunal.di
 
 import com.hefesto.juntasaccioncomunal.MiAplicacion
+import com.hefesto.juntasaccioncomunal.di.fuenteDatos.BaseDatosModule
 import com.hefesto.juntasaccioncomunal.di.fuenteDatos.CacheModule
 import com.hefesto.juntasaccioncomunal.di.logica.CasosUsoModule
 import com.hefesto.juntasaccioncomunal.di.logica.DatasourcesModule
@@ -17,6 +18,7 @@ import dagger.android.AndroidInjector
 @Component(modules = [
     //fuenteDatos
     CacheModule::class,
+    BaseDatosModule::class,
     //logica
     DatasourcesModule::class,
     RepositoriosModule::class,

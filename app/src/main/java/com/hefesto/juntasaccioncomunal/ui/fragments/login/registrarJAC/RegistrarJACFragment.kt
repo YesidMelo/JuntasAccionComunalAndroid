@@ -1,14 +1,15 @@
 package com.hefesto.juntasaccioncomunal.ui.fragments.login.registrarJAC
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.hefesto.juntasaccioncomunal.BuildConfig
 import com.hefesto.juntasaccioncomunal.R
 import com.hefesto.juntasaccioncomunal.databinding.FragmentRegistrarJacBinding
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarJAC.JACRegistroModel
 import com.hefesto.juntasaccioncomunal.ui.base.BaseFragment
+import com.hefesto.juntasaccioncomunal.ui.dialogo.DialogoInformativo
 import com.hefesto.juntasaccioncomunal.ui.navegacion.AccionesNavGrap
 import com.hefesto.juntasaccioncomunal.ui.navegacion.NodosNavegacionFragments
 import javax.inject.Inject
@@ -33,6 +34,7 @@ class RegistrarJACFragment : BaseFragment<RegistrarJACFragmentViewModel>() {
         binding = FragmentRegistrarJacBinding.inflate(inflater)
         navegacionAplicacion.conIdNavGraph(R.id.nav_host_fragment_content_main)
         ponerEscuchadoresBotones()
+        ponerDefaultsDesarrollo()
         return binding.root
     }
 
@@ -46,14 +48,17 @@ class RegistrarJACFragment : BaseFragment<RegistrarJACFragmentViewModel>() {
     }
 
     private fun ponerEscuchadoresBotonVolver() {
-        binding.buttonVolver.setOnClickListener {
-            navegacionAplicacion.navegar(
-                de = NodosNavegacionFragments.REGISTRAR_JAC,
-                a = NodosNavegacionFragments.INICIAR_SESION,
-                accion = AccionesNavGrap.REGISTRAR_JAC_A_INICIAR_SESION
-            )
-        }
+        binding.buttonVolver.setOnClickListener { navegarAIniciarSesion()        }
     }
+
+    private fun navegarAIniciarSesion() {
+        navegacionAplicacion.navegar(
+            de = NodosNavegacionFragments.REGISTRAR_JAC,
+            a = NodosNavegacionFragments.INICIAR_SESION,
+            accion = AccionesNavGrap.REGISTRAR_JAC_A_INICIAR_SESION
+        )
+    }
+
     private fun ponerEscuchadorBotonRegistrar() {
         binding.buttonRegistrar.setOnClickListener {
             funcionSegura {
@@ -66,16 +71,31 @@ class RegistrarJACFragment : BaseFragment<RegistrarJACFragmentViewModel>() {
                         RepetirContrasenia = binding.editTextRepetirContrasenia.text?.toString()
                     ))
                     .observe(viewLifecycleOwner) {
-                        if (it == null) {
-                            mostrarLoading()
-                            return@observe
-                        }
+                        if (it == null) { mostrarLoading(); return@observe; }
                         ocultarProgress()
                         if (!it) return@observe
-                        Log.e("Error", "Se ha registrado")
+                        notificacionRegistroExitoso()
                     }
             }
         }
+    }
+
+    private fun notificacionRegistroExitoso() {
+        mostrarDialogo(
+            tipoDialogo = DialogoInformativo.TipoDialogo.INFORMATIVO,
+            titulo = R.string.registro_jac,
+            mensaje = R.string.registro_exitoso_jac,
+            accionAceptar = ::navegarAIniciarSesion
+        )
+    }
+
+    private fun ponerDefaultsDesarrollo() {
+        if(!BuildConfig.PROBANDO_REGISTRO_JAC) return
+        binding.editTextCorreo.setText(BuildConfig.CORREO_PRUEBAS)
+        binding.editTextNombreJAC.setText(BuildConfig.NOMBRE_JAC)
+        binding.editTextCodigoJAC.setText(BuildConfig.CODIGO_JAC)
+        binding.editTextContrasenia.setText(BuildConfig.CONTRASENIA_PRUEBAS)
+        binding.editTextRepetirContrasenia.setText(BuildConfig.REPETIR_CONSTRASENIA_JAC)
     }
     //endregion
 }

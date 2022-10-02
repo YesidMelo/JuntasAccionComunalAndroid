@@ -81,7 +81,7 @@ class IniciarSesionFragment : BaseFragment<IniciarSesionFragmentViewModel>() {
     }
 
     private fun ponerDefaultsDesarrollo() {
-        if(!BuildConfig.DEBUG) return
+        if(!BuildConfig.PROBANDO_INICIO_SESION) return
         binding.textInputEmail.setText(BuildConfig.CORREO_PRUEBAS)
         binding.textInputEdittextPassword.setText(BuildConfig.CONTRASENIA_PRUEBAS)
     }

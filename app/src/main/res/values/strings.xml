@@ -24,4 +24,6 @@
     <string name="el_campo_repetir_contrasenia_esta_vacio">El campo repetir contraseña esta vacio.Vuelvelo a intentar.</string>
     <string name="repetir_contrasenia_no_es_valido">El campo repetir contraseña no es valido.\nDebe cumplir con los siguientes requisitos:\n\t1. Tener 5 o mas caracteres.\n\t2. Tener 20 o menos caracteres</string>
     <string name="los_campos_contrasenia_repetir_contrasenia_no_coinciden">Los campos contraseña y repetir contraseña no coinciden. Vuelverlo a intentar.</string>
+    <string name="jac_ya_registrada">Esta JAC ya esta registrada.\n Reintenta iniciar sesion.</string>
+    <string name="registro_exitoso_jac">Se ha hecho el registro exitos de la JAC. Se validara la informacion para la activacion en la plataforma.</string>
 </resources>
