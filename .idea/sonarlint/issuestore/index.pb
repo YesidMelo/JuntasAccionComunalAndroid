@@ -162,7 +162,5 @@ wapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/caso
 zapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/login/registrarAfiliado/JACDisponibleParaAfiliadoModel.kt,d\a\dad667e9932e666b47143690deb813a4c21aae4d
 £
 sapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/login/registrarAfiliado/AfiliadoARegistrarModel.kt,7\a\7ac46ef90eb0990f62f47247bdcb78302b1df5fc
-ê
-`app/src/main/java/com/hefesto/juntasaccioncomunal/logica/utilidades/enumeradores/TipoTelefono.kt,0\3\030fdcb43ec13220fbcee390c1ff800af03eb39d
 é
 ^app/src/main/java/com/hefesto/juntasaccioncomunal/logica/utilidades/enumeradores/RolesEnApp.kt,2\7\278ec6d138a43abcf458770eb6ab7967718a4e75

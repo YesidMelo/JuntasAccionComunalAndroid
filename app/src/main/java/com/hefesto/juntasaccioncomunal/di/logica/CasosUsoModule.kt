@@ -51,6 +51,10 @@ class CasosUsoModule {
     fun providesTraerTipoDocumentosCasoUso() : TraerTipoDocumentosCasoUso
     = TraerTipoDocumentosCasoUsoImpl(context = MiAplicacion.traerInstancia()!!.applicationContext)
 
+    @Provides
+    fun providesTraerTiposTelefonoCasoUso(): TraerTiposTelefonoCasoUso
+    = TraerTiposTelefonoCasoUsoImpl(context = MiAplicacion.traerInstancia()!!.applicationContext)
+
     //endregion
 
     //region splash

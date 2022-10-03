@@ -30,6 +30,8 @@ class RegistrarAfiliadoFragmentViewModel constructor(
 
     fun traerTiposDocumento() = registrarAfiliadoUI.traerTiposDocumento()
 
+    fun traerTiposTelefono() = registrarAfiliadoUI.traerTiposTelefono()
+
     fun cargo(elementoCarga : ElementosCarga) {
         mapaDeCarga[elementoCarga] = true
         var cargoTodo = true
@@ -41,6 +43,7 @@ class RegistrarAfiliadoFragmentViewModel constructor(
 
     enum class ElementosCarga {
         JACS_DISPONIBLES,
-        TIPOS_DOCUMENTO
+        TIPOS_DOCUMENTO,
+        TIPOS_TELEFONO
     }
 }

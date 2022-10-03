@@ -88,6 +88,7 @@ class RegistrarAfiliadoFragment : BaseFragment<RegistrarAfiliadoFragmentViewMode
         ponerEscuchadorLoading()
         precargaJacsDisponibles()
         precargarTiposDocumento()
+        precargarTiposTelefono()
     }
 
     private fun limpiaCacheViewModel() {
@@ -126,6 +127,18 @@ class RegistrarAfiliadoFragment : BaseFragment<RegistrarAfiliadoFragmentViewMode
                     val adapter = ArrayAdapter(context!!, android.R.layout.simple_list_item_1, it)
                     binding.spinnerRegistroTiposDocumeto.adapter = adapter
                     traerViewModel().cargo(elementoCarga = RegistrarAfiliadoFragmentViewModel.ElementosCarga.TIPOS_DOCUMENTO)
+                }
+        }
+    }
+
+    private fun precargarTiposTelefono() {
+        funcionSegura {
+            traerViewModel()
+                .traerTiposTelefono()
+                .observe(viewLifecycleOwner) {
+                    val adapter = ArrayAdapter(context!!, android.R.layout.simple_list_item_1, it)
+                    binding.spinnerRegistroTipoTelefono.adapter = adapter
+                    traerViewModel().cargo(elementoCarga = RegistrarAfiliadoFragmentViewModel.ElementosCarga.TIPOS_TELEFONO)
                 }
         }
     }

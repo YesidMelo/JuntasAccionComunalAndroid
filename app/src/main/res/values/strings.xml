@@ -43,4 +43,6 @@
     <string name="tarjeta_identidad">Tarjeta identidad</string>
     <string name="cedula_ciudadania">Cedula ciudadania</string>
     <string name="cedula_extranjeria">Cedula extranjeria</string>
+    <string name="telefono_fijo">Telefono fijo</string>
+    <string name="telefono_movil">Telefono movil</string>
 </resources>

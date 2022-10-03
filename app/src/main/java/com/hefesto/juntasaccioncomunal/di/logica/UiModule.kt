@@ -38,12 +38,14 @@ class UiModule {
         escuchadorExcepcionesCasoUso: CargarEscuchadorExcepcionesCasoUso,
         registrarAfiliadoCasoUso: RegistrarAfiliadoCasoUso,
         traerListaJACsRegistradasCasoUso: TraerListaJACsRegistradasCasoUso,
-        traerTipoDocumentosCasoUso: TraerTipoDocumentosCasoUso
+        traerTipoDocumentosCasoUso: TraerTipoDocumentosCasoUso,
+        traerTiposTelefonoCasoUso: TraerTiposTelefonoCasoUso
     ) = RegistrarAfiliadoFragmentUI(
         escuchadorExcepciones = escuchadorExcepcionesCasoUso,
         registrarAfiliadoCasoUso = registrarAfiliadoCasoUso,
         traerListaJACsRegistradasCasoUso = traerListaJACsRegistradasCasoUso,
-        traerTipoDocumentosCasoUso= traerTipoDocumentosCasoUso
+        traerTipoDocumentosCasoUso= traerTipoDocumentosCasoUso,
+        traerTiposTelefonoCasoUso= traerTiposTelefonoCasoUso
     )
 
     //endregion
