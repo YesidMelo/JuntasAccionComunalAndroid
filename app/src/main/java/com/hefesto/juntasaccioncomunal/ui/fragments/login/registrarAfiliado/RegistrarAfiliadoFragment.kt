@@ -87,6 +87,7 @@ class RegistrarAfiliadoFragment : BaseFragment<RegistrarAfiliadoFragmentViewMode
         limpiaCacheViewModel()
         ponerEscuchadorLoading()
         precargaJacsDisponibles()
+        precargarTiposDocumento()
     }
 
     private fun limpiaCacheViewModel() {
@@ -112,10 +113,23 @@ class RegistrarAfiliadoFragment : BaseFragment<RegistrarAfiliadoFragmentViewMode
                     if(it == null) return@observe
                     val adapter = ArrayAdapter(context!!, android.R.layout.simple_list_item_1, it)
                     binding.autoCompleteTextViewJacsDisponibles.setAdapter(adapter)
-                    traerViewModel().cargo(RegistrarAfiliadoFragmentViewModel.ElementosCarga.JACS_DISPONIBLES)
+                    traerViewModel().cargo(elementoCarga = RegistrarAfiliadoFragmentViewModel.ElementosCarga.JACS_DISPONIBLES)
                 }
         }
     }
+
+    private fun precargarTiposDocumento() {
+        funcionSegura {
+            traerViewModel()
+                .traerTiposDocumento()
+                .observe(viewLifecycleOwner) {
+                    val adapter = ArrayAdapter(context!!, android.R.layout.simple_list_item_1, it)
+                    binding.spinnerRegistroTiposDocumeto.adapter = adapter
+                    traerViewModel().cargo(elementoCarga = RegistrarAfiliadoFragmentViewModel.ElementosCarga.TIPOS_DOCUMENTO)
+                }
+        }
+    }
+
     //endregion
     //endregion
 }

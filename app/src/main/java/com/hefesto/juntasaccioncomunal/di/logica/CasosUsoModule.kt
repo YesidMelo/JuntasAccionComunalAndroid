@@ -1,5 +1,6 @@
 package com.hefesto.juntasaccioncomunal.di.logica
 
+import com.hefesto.juntasaccioncomunal.MiAplicacion
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.casosUso.CargarEscuchadorExcepcionesCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.casosUso.CargarEscuchadorExcepcionesCasoUsoImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.repositorios.BaseRepositorio
@@ -45,6 +46,10 @@ class CasosUsoModule {
     ) : TraerListaJACsRegistradasCasoUso = TraerListaJACsRegistradasCasoUsoImpl(
         loginRepositorio = loginRepositorio
     )
+
+    @Provides
+    fun providesTraerTipoDocumentosCasoUso() : TraerTipoDocumentosCasoUso
+    = TraerTipoDocumentosCasoUsoImpl(context = MiAplicacion.traerInstancia()!!.applicationContext)
 
     //endregion
 

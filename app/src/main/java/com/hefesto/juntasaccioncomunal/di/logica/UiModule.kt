@@ -1,10 +1,7 @@
 package com.hefesto.juntasaccioncomunal.di.logica
 
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.casosUso.CargarEscuchadorExcepcionesCasoUso
-import com.hefesto.juntasaccioncomunal.logica.componentes.login.casosUso.IniciarSesionCasoUso
-import com.hefesto.juntasaccioncomunal.logica.componentes.login.casosUso.RegistrarAfiliadoCasoUso
-import com.hefesto.juntasaccioncomunal.logica.componentes.login.casosUso.RegistrarJACCasoUso
-import com.hefesto.juntasaccioncomunal.logica.componentes.login.casosUso.TraerListaJACsRegistradasCasoUso
+import com.hefesto.juntasaccioncomunal.logica.componentes.login.casosUso.*
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.ui.IniciarSesionFragmentUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.ui.LoginActivityUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.ui.RegistrarAfiliadoFragmentUI
@@ -40,11 +37,13 @@ class UiModule {
     fun providesRegistroAfiliadoFragmentUI(
         escuchadorExcepcionesCasoUso: CargarEscuchadorExcepcionesCasoUso,
         registrarAfiliadoCasoUso: RegistrarAfiliadoCasoUso,
-        traerListaJACsRegistradasCasoUso: TraerListaJACsRegistradasCasoUso
+        traerListaJACsRegistradasCasoUso: TraerListaJACsRegistradasCasoUso,
+        traerTipoDocumentosCasoUso: TraerTipoDocumentosCasoUso
     ) = RegistrarAfiliadoFragmentUI(
         escuchadorExcepciones = escuchadorExcepcionesCasoUso,
         registrarAfiliadoCasoUso = registrarAfiliadoCasoUso,
-        traerListaJACsRegistradasCasoUso = traerListaJACsRegistradasCasoUso
+        traerListaJACsRegistradasCasoUso = traerListaJACsRegistradasCasoUso,
+        traerTipoDocumentosCasoUso= traerTipoDocumentosCasoUso
     )
 
     //endregion

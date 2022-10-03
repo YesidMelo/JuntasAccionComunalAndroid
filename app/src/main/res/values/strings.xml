@@ -39,4 +39,8 @@
     <string name="tipo_telefono">Tipo telefono</string>
     <string name="telefono">Telefono</string>
     <string name="fecha_nacimiento">Fecha nacimiento</string>
+    <string name="registro_civil">Registro civil</string>
+    <string name="tarjeta_identidad">Tarjeta identidad</string>
+    <string name="cedula_ciudadania">Cedula ciudadania</string>
+    <string name="cedula_extranjeria">Cedula extranjeria</string>
 </resources>
