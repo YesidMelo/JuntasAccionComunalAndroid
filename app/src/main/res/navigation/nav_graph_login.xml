@@ -15,7 +15,11 @@
         <action
             android:id="@+id/action_iniciar_sesion_to_registrar_jac"
             app:destination="@id/registrar_jac" />
+        <action
+            android:id="@+id/action_iniciar_sesion_to_registrar_afiliado"
+            app:destination="@id/registrar_afiliado" />
     </fragment>
+
     <fragment
         android:id="@+id/registrar_jac"
         android:label="registrar_jac"
@@ -25,6 +29,18 @@
 
         <action
             android:id="@+id/action_registrar_jac_to_iniciar_sesion"
+            app:destination="@id/iniciar_sesion" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/registrar_afiliado"
+        android:label="registrar_afiliado"
+        android:name="com.hefesto.juntasaccioncomunal.ui.fragments.login.registrarAfiliado.RegistrarAfiliadoFragment"
+        tools:layout="@layout/fragment_registro_afiliado"
+    >
+
+        <action
+            android:id="@+id/action_registrar_afiliado_to_iniciar_sesion"
             app:destination="@id/iniciar_sesion" />
     </fragment>
 </navigation>

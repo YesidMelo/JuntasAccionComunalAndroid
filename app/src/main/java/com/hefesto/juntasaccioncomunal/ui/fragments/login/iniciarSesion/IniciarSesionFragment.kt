@@ -47,6 +47,7 @@ class IniciarSesionFragment : BaseFragment<IniciarSesionFragmentViewModel>() {
     private fun ponerEscuchadoresBotones() {
         ponerEscuchadorBotonIniciarSesion()
         ponerEscuchadorBotonRegistrarJAC()
+        ponerEscuchadorBotonRegistrarAfiliado()
     }
 
     private fun ponerEscuchadorBotonIniciarSesion() {
@@ -62,7 +63,7 @@ class IniciarSesionFragment : BaseFragment<IniciarSesionFragmentViewModel>() {
                         mostrarLoading()
                         return@observe
                     }
-                    ocultarProgress()
+                    ocultarLoading()
                     if (!it) return@observe
                     Log.e("Error", "Inicio sesion")
                 }
@@ -71,11 +72,21 @@ class IniciarSesionFragment : BaseFragment<IniciarSesionFragmentViewModel>() {
     }
 
     private fun ponerEscuchadorBotonRegistrarJAC() {
-        binding.textViewRegistrarse.setOnClickListener{
+        binding.textViewRegistrarJac.setOnClickListener{
             navegacionAplicacion.navegar(
                 de = NodosNavegacionFragments.INICIAR_SESION,
                 a= NodosNavegacionFragments.REGISTRAR_JAC,
                 accion = AccionesNavGrap.INICIAR_SESION_A_REGISTRAR_JAC
+            )
+        }
+    }
+
+    private fun ponerEscuchadorBotonRegistrarAfiliado() {
+        binding.textViewRegistrarAfiliado.setOnClickListener{
+            navegacionAplicacion.navegar(
+                de = NodosNavegacionFragments.INICIAR_SESION,
+                a= NodosNavegacionFragments.REGISTRAR_AFILIADO,
+                accion = AccionesNavGrap.INICIAR_SESION_A_REGISTRAR_AFILIADO
             )
         }
     }

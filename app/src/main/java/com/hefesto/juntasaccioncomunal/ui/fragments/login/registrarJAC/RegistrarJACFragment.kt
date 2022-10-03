@@ -72,7 +72,7 @@ class RegistrarJACFragment : BaseFragment<RegistrarJACFragmentViewModel>() {
                     ))
                     .observe(viewLifecycleOwner) {
                         if (it == null) { mostrarLoading(); return@observe; }
-                        ocultarProgress()
+                        ocultarLoading()
                         if (!it) return@observe
                         notificacionRegistroExitoso()
                     }

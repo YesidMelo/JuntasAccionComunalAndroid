@@ -65,7 +65,7 @@ abstract class BaseFragment<T : BaseViewModel> : BaseFragmentDagger<T>(), Lifecy
     )
 
     fun mostrarLoading() = (activity as BaseActivity<*>).mostrarProgress()
-    fun ocultarProgress() = (activity as BaseActivity<*>).ocultarProgress()
+    fun ocultarLoading() = (activity as BaseActivity<*>).ocultarProgress()
     //endregion
 
     //region configuracion ciclo vida

@@ -24,6 +24,13 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
+            <TextView
+                android:id="@+id/textView_titulo_registrar_jac"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/registrar_jac"
+                android:textAlignment="center" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInput_nombreJAC"
                 android:layout_width="match_parent"

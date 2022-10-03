@@ -1,6 +1,7 @@
 package com.hefesto.juntasaccioncomunal.di.logica
 
 import com.hefesto.juntasaccioncomunal.fuentesDatos.cache.MemoriaCache
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.AfiliadoDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.JacDao
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.repositorios.BaseCacheDatasource
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.repositorios.BaseCacheDatasourceImpl
@@ -33,8 +34,16 @@ class DatasourcesModule {
     fun providesLoginCacheDatasource(baseCacheDatasource: BaseCacheDatasource): LoginCacheDatasource = LoginCacheDatasourceImpl(baseCacheDatasource = baseCacheDatasource)
 
     @Provides
-    fun providesLoginDbDatasource(memoriaCache: MemoriaCache, jacDao: JacDao)  : LoginDBDatasource
-    = LoginDBDatasourceImpl(memoriaCacheLocal = memoriaCache, jacDao = jacDao)
+    fun providesLoginDbDatasource(
+        afiliadoDao: AfiliadoDao,
+        jacDao: JacDao,
+        memoriaCache: MemoriaCache
+    )  : LoginDBDatasource
+    = LoginDBDatasourceImpl(
+        afiliadoDao= afiliadoDao,
+        jacDao = jacDao,
+        memoriaCacheLocal = memoriaCache
+    )
 
     @Provides
     fun providesLoginSharedPreferencesDatasource(): LoginSharedPreferencesDatasource = LoginSharedPreferencesDatasourceImpl()

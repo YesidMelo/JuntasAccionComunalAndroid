@@ -27,4 +27,16 @@
     <string name="jac_ya_registrada">Esta JAC ya esta registrada.\n Reintenta iniciar sesion.</string>
     <string name="registro_exitoso_jac">Se ha hecho el registro exitos de la JAC. Se validara la informacion para la activacion en la plataforma.</string>
     <string name="usuario_o_contrasenia_equivocado">El usuario o la contraseña son incorrectos vuelve a intentarlo</string>
+    <string name="registrar_afiliado">Registrar afiliado</string>
+    <string name="registrar_jac">Registrar JAC</string>
+    <string name="registrarse_afiliado">Registrarse como afiliado</string>
+    <string name="ingresa_nombre_jac">Ingresa el nombre de la Jac</string>
+    <string name="ingresar_nombre_afiliado">Ingresar Nombres</string>
+    <string name="ingresar_apellido_afiliado">Ingresar Apellidos</string>
+    <string name="tipo_documento">Tipo documento</string>
+    <string name="numero_documento">Numero Documento</string>
+    <string name="direccion">Direccion</string>
+    <string name="tipo_telefono">Tipo telefono</string>
+    <string name="telefono">Telefono</string>
+    <string name="fecha_nacimiento">Fecha nacimiento</string>
 </resources>

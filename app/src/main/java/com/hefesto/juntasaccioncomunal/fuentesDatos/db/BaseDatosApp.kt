@@ -4,11 +4,16 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.AfiliadoDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.JacDao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.AfiliadoEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.JACEntity
 
 @Database(
-    entities = [JACEntity::class],
+    entities = [
+        AfiliadoEntity::class,
+        JACEntity::class
+   ],
     version = 1
 )
 abstract class BaseDatosApp : RoomDatabase() {
@@ -27,5 +32,6 @@ abstract class BaseDatosApp : RoomDatabase() {
         }
     }
 
+    abstract fun AfiliadoDao(): AfiliadoDao
     abstract fun JacDao() : JacDao
 }

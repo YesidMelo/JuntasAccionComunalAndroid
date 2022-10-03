@@ -1,4 +1,4 @@
-package com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db
+package com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers
 
 import androidx.lifecycle.MutableLiveData
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.JacDao

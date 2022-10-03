@@ -2,6 +2,7 @@ package com.hefesto.juntasaccioncomunal.di.ui
 
 import com.hefesto.juntasaccioncomunal.di.ui.modules.LoginActivityModule
 import com.hefesto.juntasaccioncomunal.ui.fragments.login.iniciarSesion.IniciarSesionFragment
+import com.hefesto.juntasaccioncomunal.ui.fragments.login.registrarAfiliado.RegistrarAfiliadoFragment
 import com.hefesto.juntasaccioncomunal.ui.fragments.login.registrarJAC.RegistrarJACFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -15,5 +16,8 @@ abstract class FragmentBuilder {
 
     @ContributesAndroidInjector(modules = [LoginActivityModule::class])
     abstract fun contributeRegistrarJACFragment() : RegistrarJACFragment
+
+    @ContributesAndroidInjector(modules = [LoginActivityModule::class])
+    abstract fun contributeRegistrarAfiliadoFragment() : RegistrarAfiliadoFragment
     //endregion
 }
