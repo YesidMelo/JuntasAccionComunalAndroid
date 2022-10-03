@@ -13,6 +13,7 @@ import com.hefesto.juntasaccioncomunal.ui.navegacion.NavegacionAplicacion
 import com.hefesto.juntasaccioncomunal.ui.navegacion.NodosNavegacionActividades
 import com.hefesto.juntasaccioncomunal.ui.navegacion.NodosNavegacionFragments
 import org.jetbrains.annotations.NotNull
+import java.util.*
 import javax.inject.Inject
 
 abstract class BaseFragment<T : BaseViewModel> : BaseFragmentDagger<T>(), LifecycleOwner {
@@ -66,6 +67,12 @@ abstract class BaseFragment<T : BaseViewModel> : BaseFragmentDagger<T>(), Lifecy
 
     fun mostrarLoading() = (activity as BaseActivity<*>).mostrarProgress()
     fun ocultarLoading() = (activity as BaseActivity<*>).ocultarProgress()
+
+    fun mostrarDialogoCalendario(
+        accionAceptar: ((Date) -> Unit)?,
+        accionCancelar: (() -> Unit)? = null
+    ) = (activity as BaseActivity<*>).mostrarDialogoCalendario(accionAceptar = accionAceptar, accionCancelar = accionCancelar)
+
     //endregion
 
     //region configuracion ciclo vida

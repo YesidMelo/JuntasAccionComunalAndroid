@@ -89,6 +89,7 @@ class RegistrarAfiliadoFragment : BaseFragment<RegistrarAfiliadoFragmentViewMode
         precargaJacsDisponibles()
         precargarTiposDocumento()
         precargarTiposTelefono()
+        ponerEscuchadorFecha()
     }
 
     private fun limpiaCacheViewModel() {
@@ -140,6 +141,14 @@ class RegistrarAfiliadoFragment : BaseFragment<RegistrarAfiliadoFragmentViewMode
                     binding.spinnerRegistroTipoTelefono.adapter = adapter
                     traerViewModel().cargo(elementoCarga = RegistrarAfiliadoFragmentViewModel.ElementosCarga.TIPOS_TELEFONO)
                 }
+        }
+    }
+
+    private fun ponerEscuchadorFecha() {
+        binding.textviewFechaNacimiento.setOnClickListener{
+            mostrarDialogoCalendario(accionAceptar = {
+
+            })
         }
     }
 

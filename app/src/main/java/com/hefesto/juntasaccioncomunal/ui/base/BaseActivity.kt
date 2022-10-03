@@ -11,11 +11,13 @@ import androidx.lifecycle.ViewModel
 import com.hefesto.juntasaccioncomunal.di.ui.BaseActivityDagger
 import com.hefesto.juntasaccioncomunal.logica.excepciones.LogicaExcepcion
 import com.hefesto.juntasaccioncomunal.logica.excepciones.TiposExcepciones
+import com.hefesto.juntasaccioncomunal.ui.dialogo.DialogoCalendario
 import com.hefesto.juntasaccioncomunal.ui.dialogo.DialogoInformativo
 import com.hefesto.juntasaccioncomunal.ui.dialogo.DialogoLoading
 import com.hefesto.juntasaccioncomunal.ui.navegacion.NavegacionAplicacion
 import com.hefesto.juntasaccioncomunal.ui.navegacion.NodosNavegacionActividades
 import org.jetbrains.annotations.NotNull
+import java.util.*
 import javax.inject.Inject
 
 
@@ -97,6 +99,17 @@ abstract class BaseActivity<T: BaseViewModel> : BaseActivityDagger<T>(), Lifecyc
     fun mostrarProgress() = DialogoLoading.mostrarProgress(activity = this)
 
     fun ocultarProgress() = DialogoLoading.ocultarrProgress()
+
+    fun mostrarDialogoCalendario(
+        accionAceptar: ((Date) -> Unit)?,
+        accionCancelar: (() -> Unit)? = null
+    ) {
+        DialogoCalendario.mostrarDialogo(
+            activity = this,
+            accionAceptar = accionAceptar,
+            accionCancelar = accionCancelar
+        )
+    }
 
     //endregion
     //region navegacion fragments en activity
