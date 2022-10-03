@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.LoginDBDatasource
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.iniciarSesion.UsuarioInicioSesionModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarAfiliado.AfiliadoARegistrarModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarAfiliado.JACDisponibleParaAfiliadoModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarJAC.JACRegistroModel
 import javax.inject.Inject
 
@@ -11,6 +12,7 @@ interface LoginRepositorio {
     fun iniciarSesion(usuarioInicioSesionModel: UsuarioInicioSesionModel) : MutableLiveData<Boolean?>
     fun registrarJAC(jacRegistroModel: JACRegistroModel) : MutableLiveData<Boolean?>
     fun registrarAfiliado(afiliadoARegistrarModel: AfiliadoARegistrarModel) : MutableLiveData<Boolean?>
+    fun traerJacsRegistradas(): MutableLiveData<List<JACDisponibleParaAfiliadoModel>?>
 }
 
 class LoginRepositorioImpl constructor(
@@ -25,5 +27,7 @@ class LoginRepositorioImpl constructor(
     override fun registrarJAC(jacRegistroModel: JACRegistroModel): MutableLiveData<Boolean?> = loginDBDatasource.registrarJAC(jacRegistroModel = jacRegistroModel)
 
     override fun registrarAfiliado(afiliadoARegistrarModel: AfiliadoARegistrarModel): MutableLiveData<Boolean?> = loginDBDatasource.registrarAfiliado(afiliadoARegistrarModel = afiliadoARegistrarModel)
+
+    override fun traerJacsRegistradas(): MutableLiveData<List<JACDisponibleParaAfiliadoModel>?> = loginDBDatasource.traerJacsRegistradas()
 
 }

@@ -39,6 +39,13 @@ class CasosUsoModule {
         loginRepositorio = loginRepositorio
     )
 
+    @Provides
+    fun providesTraerListaJACsRegistradasCasoUso(
+        loginRepositorio: LoginRepositorio
+    ) : TraerListaJACsRegistradasCasoUso = TraerListaJACsRegistradasCasoUsoImpl(
+        loginRepositorio = loginRepositorio
+    )
+
     //endregion
 
     //region splash

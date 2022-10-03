@@ -4,6 +4,7 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.base.casosUso.CargarEs
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.casosUso.IniciarSesionCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.casosUso.RegistrarAfiliadoCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.casosUso.RegistrarJACCasoUso
+import com.hefesto.juntasaccioncomunal.logica.componentes.login.casosUso.TraerListaJACsRegistradasCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.ui.IniciarSesionFragmentUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.ui.LoginActivityUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.ui.RegistrarAfiliadoFragmentUI
@@ -38,10 +39,12 @@ class UiModule {
     @Provides
     fun providesRegistroAfiliadoFragmentUI(
         escuchadorExcepcionesCasoUso: CargarEscuchadorExcepcionesCasoUso,
-        registrarAfiliadoCasoUso: RegistrarAfiliadoCasoUso
+        registrarAfiliadoCasoUso: RegistrarAfiliadoCasoUso,
+        traerListaJACsRegistradasCasoUso: TraerListaJACsRegistradasCasoUso
     ) = RegistrarAfiliadoFragmentUI(
         escuchadorExcepciones = escuchadorExcepcionesCasoUso,
-        registrarAfiliadoCasoUso = registrarAfiliadoCasoUso
+        registrarAfiliadoCasoUso = registrarAfiliadoCasoUso,
+        traerListaJACsRegistradasCasoUso = traerListaJACsRegistradasCasoUso
     )
 
     //endregion

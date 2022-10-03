@@ -5,9 +5,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import com.hefesto.juntasaccioncomunal.R
 import com.hefesto.juntasaccioncomunal.databinding.FragmentRegistroAfiliadoBinding
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarAfiliado.AfiliadoARegistrarModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarAfiliado.JACDisponibleParaAfiliadoModel
 import com.hefesto.juntasaccioncomunal.ui.base.BaseFragment
 import com.hefesto.juntasaccioncomunal.ui.navegacion.AccionesNavGrap
 import com.hefesto.juntasaccioncomunal.ui.navegacion.NodosNavegacionFragments
@@ -29,6 +31,7 @@ class RegistrarAfiliadoFragment : BaseFragment<RegistrarAfiliadoFragmentViewMode
     ): View {
         binding = FragmentRegistroAfiliadoBinding.inflate(inflater)
         navegacionAplicacion.conIdNavGraph(R.id.nav_host_fragment_content_main)
+        precargarElementosEnUI()
         ponerEscuchadorBotones()
         return binding.root
     }
@@ -77,6 +80,42 @@ class RegistrarAfiliadoFragment : BaseFragment<RegistrarAfiliadoFragmentViewMode
         return AfiliadoARegistrarModel()
     }
 
+    //endregion
+
+    //region precargaUI
+    private fun precargarElementosEnUI() {
+        limpiaCacheViewModel()
+        ponerEscuchadorLoading()
+        precargaJacsDisponibles()
+    }
+
+    private fun limpiaCacheViewModel() {
+        funcionSegura { traerViewModel().inicializarMapaDeCarga()}
+    }
+
+    private fun ponerEscuchadorLoading() {
+        traerViewModel().cargaCompleta.observe(viewLifecycleOwner) {
+            if (!it) {
+                mostrarLoading()
+                return@observe
+            }
+            ocultarLoading()
+        }
+    }
+
+
+    private fun precargaJacsDisponibles() {
+        funcionSegura {
+            traerViewModel()
+                .traerListaJacsRegistradas()
+                .observe(viewLifecycleOwner) {
+                    if(it == null) return@observe
+                    val adapter = ArrayAdapter(context!!, android.R.layout.simple_list_item_1, it)
+                    binding.autoCompleteTextViewJacsDisponibles.setAdapter(adapter)
+                    traerViewModel().cargo(RegistrarAfiliadoFragmentViewModel.ElementosCarga.JACS_DISPONIBLES)
+                }
+        }
+    }
     //endregion
     //endregion
 }

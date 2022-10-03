@@ -8,15 +8,18 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.base.repositorios.Base
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperIniciarSesion
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperRegistroAfilado
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperRegistroJAC
+import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperTraerListaJACSRegistrados
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.iniciarSesion.UsuarioInicioSesionModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarAfiliado.AfiliadoARegistrarModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarAfiliado.JACDisponibleParaAfiliadoModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarJAC.JACRegistroModel
 import javax.inject.Inject
 
 interface  LoginDBDatasource {
-    fun registrarJAC(jacRegistroModel: JACRegistroModel): MutableLiveData<Boolean?>
-    fun registrarAfiliado(afiliadoARegistrarModel: AfiliadoARegistrarModel): MutableLiveData<Boolean?>
     fun iniciarSesion(usuarioInicioSesionModel: UsuarioInicioSesionModel) : MutableLiveData<Boolean?>
+    fun registrarAfiliado(afiliadoARegistrarModel: AfiliadoARegistrarModel): MutableLiveData<Boolean?>
+    fun registrarJAC(jacRegistroModel: JACRegistroModel): MutableLiveData<Boolean?>
+    fun traerJacsRegistradas(): MutableLiveData<List<JACDisponibleParaAfiliadoModel>?>
 }
 
 class LoginDBDatasourceImpl constructor(
@@ -29,17 +32,9 @@ class LoginDBDatasourceImpl constructor(
     private val registroExitosoJAC = MutableLiveData<Boolean?>()
     private val registroExitosoAfiliado = MutableLiveData<Boolean?>()
     private val inicioSesionExitoso = MutableLiveData<Boolean?>()
+    private val listaJacsRegistradas = MutableLiveData<List<JACDisponibleParaAfiliadoModel>?>()
     //endregion
 
-    override fun registrarJAC(jacRegistroModel: JACRegistroModel): MutableLiveData<Boolean?> {
-        HelperRegistroJAC(
-            jacRegistroModel = jacRegistroModel,
-            registroExitosoJAC = registroExitosoJAC,
-            escuchadorExcepciones = traerExcepcionesLiveData(),
-            jacDao = jacDao
-        ).registrarJAC()
-        return registroExitosoJAC
-    }
 
     override fun registrarAfiliado(afiliadoARegistrarModel: AfiliadoARegistrarModel): MutableLiveData<Boolean?> {
         HelperRegistroAfilado(
@@ -49,6 +44,16 @@ class LoginDBDatasourceImpl constructor(
             afiliadoDao = afiliadoDao
         ).registrar()
         return registroExitosoAfiliado
+    }
+
+    override fun registrarJAC(jacRegistroModel: JACRegistroModel): MutableLiveData<Boolean?> {
+        HelperRegistroJAC(
+            jacRegistroModel = jacRegistroModel,
+            registroExitosoJAC = registroExitosoJAC,
+            escuchadorExcepciones = traerExcepcionesLiveData(),
+            jacDao = jacDao
+        ).registrarJAC()
+        return registroExitosoJAC
     }
 
     override fun iniciarSesion(usuarioInicioSesionModel: UsuarioInicioSesionModel): MutableLiveData<Boolean?> {
@@ -61,4 +66,12 @@ class LoginDBDatasourceImpl constructor(
         return inicioSesionExitoso
     }
 
+    override fun traerJacsRegistradas(): MutableLiveData<List<JACDisponibleParaAfiliadoModel>?> {
+        HelperTraerListaJACSRegistrados(
+            listaJacsRegistradas = listaJacsRegistradas,
+            jacDao = jacDao,
+            escuchadorExcepciones = traerExcepcionesLiveData()
+        ).traerLista()
+        return listaJacsRegistradas
+    }
 }
