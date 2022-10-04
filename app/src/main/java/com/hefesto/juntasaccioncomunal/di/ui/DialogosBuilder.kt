@@ -15,6 +15,4 @@ abstract class DialogosBuilder {
     @ContributesAndroidInjector(modules = [])
     abstract fun contributeDialogoLoading() : DialogoLoading
 
-    @ContributesAndroidInjector(modules = [])
-    abstract fun contributeDialogoCalendario() : DialogoCalendario
 }

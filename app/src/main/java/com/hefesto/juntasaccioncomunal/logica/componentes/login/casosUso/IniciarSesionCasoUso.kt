@@ -2,8 +2,8 @@ package com.hefesto.juntasaccioncomunal.logica.componentes.login.casosUso
 
 import androidx.lifecycle.MutableLiveData
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.LoginRepositorio
-import com.hefesto.juntasaccioncomunal.logica.excepciones.ContraseniaInvalidaExcepcion
-import com.hefesto.juntasaccioncomunal.logica.excepciones.ContraseniaVaciaExcepcion
+import com.hefesto.juntasaccioncomunal.logica.excepciones.ContraseniaInvalidaIniciarSesionExcepcion
+import com.hefesto.juntasaccioncomunal.logica.excepciones.ContraseniaVaciaIniciarSesionExcepcion
 import com.hefesto.juntasaccioncomunal.logica.excepciones.CorreoInvalidoLoginExcepcion
 import com.hefesto.juntasaccioncomunal.logica.excepciones.SinCorreoLoginExcepcion
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.iniciarSesion.UsuarioInicioSesionModel
@@ -35,10 +35,10 @@ class IniciarSesionCasoUsoImpl (
     }
 
     private fun validaContrasenia(usuarioInicioSesionModel: UsuarioInicioSesionModel) {
-        if (usuarioInicioSesionModel.contrasenia == null) throw ContraseniaVaciaExcepcion()
-        if (usuarioInicioSesionModel.contrasenia.isEmpty()) throw ContraseniaVaciaExcepcion()
-        if (usuarioInicioSesionModel.contrasenia.isBlank()) throw ContraseniaVaciaExcepcion()
-        if(!validarConRegex(string = usuarioInicioSesionModel.contrasenia, regex = RegexEnum.CONSTRASENIA)) throw ContraseniaInvalidaExcepcion()
+        if (usuarioInicioSesionModel.contrasenia == null) throw ContraseniaVaciaIniciarSesionExcepcion()
+        if (usuarioInicioSesionModel.contrasenia.isEmpty()) throw ContraseniaVaciaIniciarSesionExcepcion()
+        if (usuarioInicioSesionModel.contrasenia.isBlank()) throw ContraseniaVaciaIniciarSesionExcepcion()
+        if(!validarConRegex(string = usuarioInicioSesionModel.contrasenia, regex = RegexEnum.CONSTRASENIA)) throw ContraseniaInvalidaIniciarSesionExcepcion()
 
     }
     //endregion

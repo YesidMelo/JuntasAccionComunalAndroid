@@ -6,11 +6,9 @@ import androidx.annotation.StringRes
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
-import androidx.lifecycle.ViewModel
 import com.hefesto.juntasaccioncomunal.di.ui.BaseFragmentDagger
 import com.hefesto.juntasaccioncomunal.ui.dialogo.DialogoInformativo
 import com.hefesto.juntasaccioncomunal.ui.navegacion.NavegacionAplicacion
-import com.hefesto.juntasaccioncomunal.ui.navegacion.NodosNavegacionActividades
 import com.hefesto.juntasaccioncomunal.ui.navegacion.NodosNavegacionFragments
 import org.jetbrains.annotations.NotNull
 import java.util.*
@@ -69,9 +67,16 @@ abstract class BaseFragment<T : BaseViewModel> : BaseFragmentDagger<T>(), Lifecy
     fun ocultarLoading() = (activity as BaseActivity<*>).ocultarProgress()
 
     fun mostrarDialogoCalendario(
-        accionAceptar: ((Date) -> Unit)?,
-        accionCancelar: (() -> Unit)? = null
-    ) = (activity as BaseActivity<*>).mostrarDialogoCalendario(accionAceptar = accionAceptar, accionCancelar = accionCancelar)
+        accionFechaSeleccionada: ((Date) -> Unit)?,
+        calendarFechaSeleccionada: Calendar? = null,
+        calendarFechaMaximaSeleccion: Calendar? = null,
+        calendarFechaMinimaSeleccion: Calendar? = null
+    ) = (activity as BaseActivity<*>).mostrarDialogoCalendario(
+        accionFechaSeleccionada = accionFechaSeleccionada,
+        calendarFechaSeleccionada = calendarFechaSeleccionada,
+        calendarFechaMaximaSeleccion = calendarFechaMaximaSeleccion,
+        calendarFechaMinimaSeleccion = calendarFechaMinimaSeleccion
+    )
 
     //endregion
 

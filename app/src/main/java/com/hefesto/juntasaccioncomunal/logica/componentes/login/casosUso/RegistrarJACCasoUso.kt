@@ -34,28 +34,28 @@ class RegistrarJACCasoUsoImpl constructor(
     }
 
     private fun validarCodigoJAC(jacRegistroModel: JACRegistroModel) {
-        if(jacRegistroModel.CodigoJAC.isNullOrEmpty()) throw CodigoJACNoValidoExcepcion()
-        if(jacRegistroModel.CodigoJAC.isNullOrBlank()) throw CodigoJACNoValidoExcepcion()
-        if(!validarConRegex(string = jacRegistroModel.CodigoJAC!!, regex = RegexEnum.CODIGO_JAC)) throw CodigoJACNoValidoExcepcion()
+        if(jacRegistroModel.CodigoJAC.isNullOrEmpty()) throw CodigoJACNoValidoRegistroJACExcepcion()
+        if(jacRegistroModel.CodigoJAC.isNullOrBlank()) throw CodigoJACNoValidoRegistroJACExcepcion()
+        if(!validarConRegex(string = jacRegistroModel.CodigoJAC!!, regex = RegexEnum.CODIGO_JAC)) throw CodigoJACNoValidoRegistroJACExcepcion()
     }
 
     private fun validarCorreo(jacRegistroModel: JACRegistroModel) {
-        if(jacRegistroModel.Correo.isNullOrEmpty()) throw SinCorreoLoginExcepcion()
-        if(jacRegistroModel.Correo.isNullOrBlank()) throw SinCorreoLoginExcepcion()
-        if(!correoValido(correo = jacRegistroModel.Correo!!)) throw CorreoInvalidoLoginExcepcion()
+        if(jacRegistroModel.Correo.isNullOrEmpty()) throw SinCorreoRegistrarJACExcepcion()
+        if(jacRegistroModel.Correo.isNullOrBlank()) throw SinCorreoRegistrarJACExcepcion()
+        if(!correoValido(correo = jacRegistroModel.Correo!!)) throw CorreoInvalidoRegistroJacExcepcion()
     }
 
     private fun validarContrasenia(jacRegistroModel: JACRegistroModel) {
-        if(jacRegistroModel.Contrasenia.isNullOrEmpty()) throw RepetirContraseniaJACVacioExcepcion()
-        if(jacRegistroModel.Contrasenia.isNullOrBlank()) throw RepetirContraseniaJACVacioExcepcion()
-        if(!validarConRegex(string = jacRegistroModel.Contrasenia!!, regex = RegexEnum.CONSTRASENIA)) throw RepetirContraseniaJACNoEsValidoException()
+        if(jacRegistroModel.Contrasenia.isNullOrEmpty()) throw RepetirContraseniaRegistroJACVacioExcepcion()
+        if(jacRegistroModel.Contrasenia.isNullOrBlank()) throw RepetirContraseniaRegistroJACVacioExcepcion()
+        if(!validarConRegex(string = jacRegistroModel.Contrasenia!!, regex = RegexEnum.CONSTRASENIA)) throw RepetirContraseniaRegistrarJACNoEsValidoException()
     }
 
     private fun validarRepetirContrasenia(jacRegistroModel: JACRegistroModel) {
-        if(jacRegistroModel.RepetirContrasenia.isNullOrEmpty()) throw RepetirContraseniaJACVacioExcepcion()
-        if(jacRegistroModel.RepetirContrasenia.isNullOrBlank()) throw RepetirContraseniaJACVacioExcepcion()
-        if(!validarConRegex(string = jacRegistroModel.RepetirContrasenia!!, regex = RegexEnum.CONSTRASENIA)) throw RepetirContraseniaJACNoEsValidoException()
-        if(jacRegistroModel.Contrasenia != jacRegistroModel.RepetirContrasenia) throw ElCampoContraseniaYRepetirContraseniaNoCoincidenException()
+        if(jacRegistroModel.RepetirContrasenia.isNullOrEmpty()) throw RepetirContraseniaRegistroJACVacioExcepcion()
+        if(jacRegistroModel.RepetirContrasenia.isNullOrBlank()) throw RepetirContraseniaRegistroJACVacioExcepcion()
+        if(!validarConRegex(string = jacRegistroModel.RepetirContrasenia!!, regex = RegexEnum.CONSTRASENIA)) throw RepetirContraseniaRegistrarJACNoEsValidoException()
+        if(jacRegistroModel.Contrasenia != jacRegistroModel.RepetirContrasenia) throw ElCampoContraseniaYRepetirContraseniaNoCoincidenRegistrarJacException()
     }
     //endregion
 }

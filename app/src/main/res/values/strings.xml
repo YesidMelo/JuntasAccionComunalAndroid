@@ -1,4 +1,8 @@
 <resources>
+    <!--region restircciones edittext-->
+    <string name="restriccion_solo_alfanumerico">0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZÑabcdefghijklmnopqrstuvwxyzñ</string>
+    <string name="restriccion_solo_alfabeto">ABCDEFGHIJKLMNOPQRSTUVWXYZÑabcdefghijklmnopqrstuvwxyzñ</string>
+    <!--endregion-->
     <string name="app_name">JuntasAccionComunal</string>
     <string name="junta_accion_comunal">Juntas Accion Comunal</string>
     <string name="correo_electronico">Correo electronico</string>
@@ -45,4 +49,21 @@
     <string name="cedula_extranjeria">Cedula extranjeria</string>
     <string name="telefono_fijo">Telefono fijo</string>
     <string name="telefono_movil">Telefono movil</string>
+    <string name="no_ingreso_jac_existente">No selecciono una JAC registrada en nuestro sistema. Intentelo nuevamente</string>
+    <string name="registro_afiliado_jac">Registro afiliado JAC</string>
+    <string name="no_ha_ingresado_nombre">El campo nombre esta vacio. intentalo nuevamente </string>
+    <string name="el_nombre_afiliado_invalido">El nombre del afiliado no es valido. Intentelo de nuevo.</string>
+    <string name="no_ha_ingresado_apellidos">No ha ingresado un apellido. Intentelo nuevamente.</string>
+    <string name="apellido_invalido">El apellido no es valido. Intentelo nuevamente.</string>
+    <string name="no_ha_ingresado_una_fecha_nacimiento">No ha ingresado una fecha de nacimiento. Intentelo nuevamente.</string>
+    <string name="no_cumple_edad_minima_afiliacion">La fecha ingresada no cumple con la edad minima de afiliacion.</string>
+    <string name="hint_seleccion_fecha">Año / Mes / Dia</string>
+    <string name="no_ha_seleccionado_un_tipo_documento">No ha seleccionado un tipo de documento. Vuelvelo a intentar</string>
+    <string name="no_ha_ingresado_numero_documento">No ha ingresado un numero de documento. Vuelvelo a intentar.</string>
+    <string name="numero_documento_invalido">El numero de documento es invalido. Vuelvelo a intentar</string>
+    <string name="no_ha_ingresado_una_direccion">No ha ingresado una direccion. Vuelvelo a intentar</string>
+    <string name="no_ingreso_una_direccion_correcta">No ha ingresado una direccion valida. Intentelo nuevamente</string>
+    <string name="no_ha_seleccionado_un_tipo_de_telefono">No ha seleccionado un tipo de telefono. Vuelvelo a intentar.</string>
+    <string name="campo_telefono_vacio">No ha ingresado un telefono. Intentelo nuevamente</string>
+    <string name="el_telefono_no_es_valido">El numero de telefono no es valido. Vuelvelo a intentar</string>
 </resources>

@@ -1,58 +1,52 @@
 package com.hefesto.juntasaccioncomunal.ui.dialogo
 
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.view.WindowManager
-import com.hefesto.juntasaccioncomunal.databinding.DialogfragmentCalendarioBinding
+import android.app.DatePickerDialog
+import android.widget.DatePicker
 import com.hefesto.juntasaccioncomunal.ui.base.BaseActivity
-import dagger.android.support.DaggerDialogFragment
-import java.util.Date
+import java.util.*
 
-class DialogoCalendario : DaggerDialogFragment() {
+class DialogoCalendario: DatePickerDialog.OnDateSetListener {
 
     //region variables
+    private lateinit var activity: BaseActivity<*>
+    private lateinit var calendar: Calendar
+    private lateinit var datePickerDialog: DatePickerDialog
+
+    private var calendarFechaMaximaSeleccion: Calendar? = null
+    private var calendarFechaMinimaSeleccion: Calendar? = null
     private var accionAceptar : ((Date)->Unit)? = null
-    private var accionCancelar : (()->Unit)? = null
-    private lateinit var binding: DialogfragmentCalendarioBinding
     //endregion
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = DialogfragmentCalendarioBinding.inflate(inflater)
-        ponerEscuchadorBotones()
-        return binding.root
+    private fun inicializar() {
+        datePickerDialog = DatePickerDialog(
+            activity,
+            this,
+            calendar.get(Calendar.YEAR),
+            calendar.get(Calendar.MONTH),
+            calendar.get(Calendar.DAY_OF_MONTH)
+        )
+        configurarFechaMaxima()
+        configurarFechaMinima()
+        datePickerDialog.show()
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        dialog?.window?.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT)
+    override fun onDateSet(p0: DatePicker?, p1: Int, p2: Int, p3: Int) {
+        instancia = null
+        val calendarRespuesta = Calendar.getInstance()
+        calendarRespuesta.set(Calendar.YEAR, p1)
+        calendarRespuesta.set(Calendar.MONTH, p2)
+        calendarRespuesta.set(Calendar.DAY_OF_MONTH, p3)
+        accionAceptar?.invoke(calendarRespuesta.time)
     }
 
-    private fun ponerEscuchadorBotones() {
-        ponerEscuchadorBotonAceptar()
-        ponerEscuchadorBotonCancelar()
+    private fun configurarFechaMaxima() {
+        if(calendarFechaMaximaSeleccion == null) return
+        datePickerDialog.datePicker.maxDate = calendarFechaMaximaSeleccion!!.time.time
     }
 
-    private fun ponerEscuchadorBotonCancelar() {
-        binding.buttonCancelarDialogoFecha.setOnClickListener {
-            dismiss()
-            instancia = null
-        }
-    }
-
-    private fun ponerEscuchadorBotonAceptar() {
-        binding.buttonAceptarDialogoFecha.setOnClickListener {
-            dismiss()
-            instancia = null
-        }
+    private fun configurarFechaMinima() {
+        if(calendarFechaMinimaSeleccion == null) return
+        datePickerDialog.datePicker.minDate = calendarFechaMinimaSeleccion!!.time.time
     }
 
     companion object {
@@ -61,15 +55,20 @@ class DialogoCalendario : DaggerDialogFragment() {
 
         fun mostrarDialogo(
             activity: BaseActivity<*>,
-            accionAceptar : ((Date)->Unit)? = null,
-            accionCancelar : (()->Unit)? = null,
+            calendar: Calendar,
+            accionFechaSeleccionada : ((Date)->Unit)? = null,
+            calendarFechaMaximaSeleccion: Calendar? = null,
+            calendarFechaMinimaSeleccion: Calendar? = null
         )
         {
             if(instancia != null) return
             instancia = DialogoCalendario()
-            instancia?.accionAceptar = accionAceptar
-            instancia?.accionCancelar = accionCancelar
-            instancia?.show(activity.supportFragmentManager,"dialogoCalendario")
+            instancia?.activity = activity
+            instancia?.accionAceptar = accionFechaSeleccionada
+            instancia?.calendar = calendar
+            instancia?.calendarFechaMaximaSeleccion = calendarFechaMaximaSeleccion
+            instancia?.calendarFechaMinimaSeleccion= calendarFechaMinimaSeleccion
+            instancia?.inicializar()
         }
 
     }

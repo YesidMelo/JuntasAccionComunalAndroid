@@ -56,10 +56,6 @@ qapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/splash/rep
 Tapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/cache/MemoriaCache.kt,1\7\1783a16ccbe4a025bdb6bb59d9a49c37aeebe0b0
 P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
-è
-_app/src/main/java/com/hefesto/juntasaccioncomunal/logica/utilidades/ValidacionStringConRegex.kt,6\c\6cfdd867546a46b53cd3c60df5da3a3fa28a95b7
-ö
-japp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/casosUso/RegistrarJACCasoUso.kt,0\9\0908c7f7055f8c8c369018259bd3ce4744f36f26
 Å
 Qapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/BaseDao.kt,e\4\e4c09754032b6c60ebcf4a414f96046891e85a8b
 ù
@@ -84,10 +80,6 @@ kapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/caso
 oapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/repositorios/LoginCacheDatasource.kt,d\1\d1c01caa4052b47cbf8b67f184aa0a588a90a9a4
 ò
 happ/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/ui/IniciarSesionFragmentUI.kt,7\d\7d71807ee7c454c3b9d9be958894dd4d8d463b08
-Ü
-Vapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/excepciones/LoginExcepcion.kt,f\c\fcce37103ec884c2d2d78d9b0120d73bb1ae3864
-ç
-]app/src/main/java/com/hefesto/juntasaccioncomunal/logica/utilidades/enumeradores/RegexEnum.kt,0\0\008f7eb17038aac3cdc03d63c36cd3e17221976b
 £
 sapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/utilidades/enumeradores/IdentificadorElementosCacheEnum.kt,7\1\711d8a35cac2ee3583f93a32efeaca7f15f595d7
 ¢
@@ -128,8 +120,6 @@ bapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/entities/logi
 Vapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/login/JacDao.kt,0\b\0b6dc2d47cc51e37be271f33284d038c162c821b
 ß
 wapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/repositorios/db/helpers/HelperRegistroJAC.kt,0\a\0a434cc5c7cf17100d056953d9e3dbf39d0cf5a5
-ü
-oapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/casosUso/RegistrarAfiliadoCasoUso.kt,1\d\1df8e61c02ec59cdb350beef8cf7cd5d7fe3beab
 ´
 {app/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/repositorios/db/helpers/HelperRegistroAfilado.kt,6\7\67d6d705d2d0db1366fc7fa2b8bc11b33ee1169a
 ©
@@ -146,7 +136,5 @@ wapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/caso
 Öapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/repositorios/db/helpers/HelperTraerListaJACSRegistrados.kt,c\1\c1aeb9b9685fa4c983c305f803cc49dbc133a868
 ™
 zapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/login/registrarAfiliado/JACDisponibleParaAfiliadoModel.kt,d\a\dad667e9932e666b47143690deb813a4c21aae4d
-£
-sapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/login/registrarAfiliado/AfiliadoARegistrarModel.kt,7\a\7ac46ef90eb0990f62f47247bdcb78302b1df5fc
 é
 ^app/src/main/java/com/hefesto/juntasaccioncomunal/logica/utilidades/enumeradores/RolesEnApp.kt,2\7\278ec6d138a43abcf458770eb6ab7967718a4e75

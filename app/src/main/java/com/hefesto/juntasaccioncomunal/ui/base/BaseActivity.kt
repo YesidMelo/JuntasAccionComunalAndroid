@@ -7,7 +7,6 @@ import androidx.annotation.StringRes
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
-import androidx.lifecycle.ViewModel
 import com.hefesto.juntasaccioncomunal.di.ui.BaseActivityDagger
 import com.hefesto.juntasaccioncomunal.logica.excepciones.LogicaExcepcion
 import com.hefesto.juntasaccioncomunal.logica.excepciones.TiposExcepciones
@@ -101,13 +100,18 @@ abstract class BaseActivity<T: BaseViewModel> : BaseActivityDagger<T>(), Lifecyc
     fun ocultarProgress() = DialogoLoading.ocultarrProgress()
 
     fun mostrarDialogoCalendario(
-        accionAceptar: ((Date) -> Unit)?,
-        accionCancelar: (() -> Unit)? = null
+        accionFechaSeleccionada: ((Date) -> Unit)?,
+        calendarFechaSeleccionada: Calendar? = null,
+        calendarFechaMaximaSeleccion: Calendar? = null,
+        calendarFechaMinimaSeleccion: Calendar? = null
     ) {
+        val calendarFinalFechaSeleccionada = calendarFechaSeleccionada?:Calendar.getInstance()
         DialogoCalendario.mostrarDialogo(
             activity = this,
-            accionAceptar = accionAceptar,
-            accionCancelar = accionCancelar
+            accionFechaSeleccionada = accionFechaSeleccionada,
+            calendar = calendarFinalFechaSeleccionada,
+            calendarFechaMaximaSeleccion = calendarFechaMaximaSeleccion,
+            calendarFechaMinimaSeleccion = calendarFechaMinimaSeleccion
         )
     }
 

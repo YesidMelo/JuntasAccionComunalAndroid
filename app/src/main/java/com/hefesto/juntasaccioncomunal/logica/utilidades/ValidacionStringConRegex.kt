@@ -10,17 +10,3 @@ fun correoValido(correo: String) : Boolean {
 fun validarConRegex(string : String, regex: RegexEnum) : Boolean {
     return Pattern.matches(regex.traerRegex(),string)
 }
-
-/*
-fun contraseniaValida(contrasenia: String) : Boolean {
-    return Pattern.matches(RegexEnum.CONSTRASENIA.traerRegex(),contrasenia)
-}
-
-fun validarNombre(nombre: String) : Boolean {
-    return Pattern.matches(RegexEnum.NOMBRE_JAC.traerRegex(),nombre)
-}
-
-fun validar(nombre: String) : Boolean {
-    return Pattern.matches(RegexEnum.NOMBRE_JAC.traerRegex(),nombre)
-}
-*/
