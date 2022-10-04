@@ -3,6 +3,9 @@ package com.hefesto.juntasaccioncomunal.logica.componentes.splash.casosUso
 import android.os.Handler
 import androidx.lifecycle.MutableLiveData
 import com.hefesto.juntasaccioncomunal.logica.componentes.splash.repositorios.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 interface PrecargaAplicacionFinalizadaCasoUso {
@@ -20,11 +23,19 @@ class PrecargaAplicacionFinalizadaCasoUsoImpl(
 
     override fun invoke(): MutableLiveData<Boolean> {
         if (cargando) return cargo
-        splashRepositorio.iniciarEscuchadorExcepciones()
-        Handler().postDelayed(
-        {
-            cargo.value = true
-        }, 5000)
+        iniciarCarga()
         return cargo
     }
+
+    //metodos privados
+    private fun iniciarCarga() {
+        GlobalScope.launch {
+            delay(5000)
+            splashRepositorio.iniciarEscuchadorExcepciones()
+            splashRepositorio.cargarConstantesEnDB()
+            cargo.postValue(true)
+        }
+    }
+    //endregion
+
 }

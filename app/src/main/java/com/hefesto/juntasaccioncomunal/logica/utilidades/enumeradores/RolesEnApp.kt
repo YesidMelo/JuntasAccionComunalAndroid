@@ -1,15 +1,16 @@
 package com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores
 
-enum class RolesEnApp constructor(private val id: Int) {
-    ADMINISTRADOR(id = 1),
-    JAC(id = 2),
-    PRESIDENTE(id = 3),
-    VICEPRESIDENTE(id = 4),
-    SECRETARIO(id = 5),
-    FISCAL(id = 6),
-    TESORERO(id = 7),
-    AFILIADO(id = 8),
+enum class RolesEnApp constructor(private val id: Int, private val nombre : String) {
+    ADMINISTRADOR(id = 1, nombre = "Administracion"),
+    JAC(id = 2, nombre = "JAC"),
+    PRESIDENTE(id = 3, nombre = "Presidente"),
+    VICEPRESIDENTE(id = 4, nombre = "Vicepresidente"),
+    SECRETARIO(id = 5, nombre = "Secretario"),
+    FISCAL(id = 6, nombre = "Fiscal"),
+    TESORERO(id = 7, nombre = "Tesorero"),
+    AFILIADO(id = 8, nombre = "Afiliado"),
     ;
 
     fun traerId() = id
+    fun traerNombre() = nombre
 }

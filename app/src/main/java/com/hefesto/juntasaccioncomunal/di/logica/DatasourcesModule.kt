@@ -1,8 +1,14 @@
 package com.hefesto.juntasaccioncomunal.di.logica
 
 import com.hefesto.juntasaccioncomunal.fuentesDatos.cache.MemoriaCache
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.FuncionesRolAppDao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.RolesAppDao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.TipoDocumentoDao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.TipoTelefonoDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.AfiliadoDao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.EstadoAfiliacionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.JacDao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.RolAfiliacionDao
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.repositorios.BaseCacheDatasource
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.repositorios.BaseCacheDatasourceImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.repositorios.BaseDBDatasource
@@ -69,7 +75,21 @@ class DatasourcesModule {
     fun providesSplashCacheDatasource(memoriaCache: MemoriaCache): SplashCacheDatasource = SplashCacheDatasourceImpl(cache = memoriaCache)
 
     @Provides
-    fun providesSplashDBDatasource(): SplashDBDatasource = SplashDBDatasourceImpl()
+    fun providesSplashDBDatasource(
+        estadoAfiliacionDao: EstadoAfiliacionDao,
+        funcionesRolAppDao: FuncionesRolAppDao,
+        rolAfiliacionDao: RolAfiliacionDao,
+        rolesAppDao: RolesAppDao,
+        tipoDocumentoDao: TipoDocumentoDao,
+        tipoTelefonoDao: TipoTelefonoDao
+    ): SplashDBDatasource = SplashDBDatasourceImpl(
+        estadoAfiliacionDao = estadoAfiliacionDao,
+        funcionesRolAppDao = funcionesRolAppDao,
+        rolAfiliacionDao = rolAfiliacionDao,
+        rolesAppDao = rolesAppDao,
+        tipoDocumentoDao = tipoDocumentoDao,
+        tipoTelefonoDao = tipoTelefonoDao
+    )
 
     @Provides
     fun provideSplashSharedPreferencesDatasource(): SplashSharedPreferencesDatasource = SplashSharedPreferencesDatasourceImpl()
