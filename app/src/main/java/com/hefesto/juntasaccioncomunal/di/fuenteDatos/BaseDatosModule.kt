@@ -10,12 +10,14 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.AfiliadoDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Correo_Dao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Direccion_Dao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Jac_EstadoAfiliacionDao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Telefono_Dao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.CorreoDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.DireccionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.EstadoAfiliacionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.JacDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Jac_Afiliado_Direccion_Dao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.RolAfiliacionDao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Telefono_Dao
 import dagger.Module
 import dagger.Provides
 
@@ -33,6 +35,9 @@ class BaseDatosModule {
 
     @Provides
     fun providesAfiliado_Jac_EstadoAfiliacionDao(baseDatosApp: BaseDatosApp): Afiliado_Jac_EstadoAfiliacionDao = baseDatosApp.afiliado_Jac_EstadoAfiliacionDao()
+
+    @Provides
+    fun providesAfiliado_Telefono_Dao(baseDatosApp: BaseDatosApp): Afiliado_Telefono_Dao = baseDatosApp.afiliado_Telefono_Dao()
 
     @Provides
     fun providesAfiliadoDireccionDao(baseDatosApp: BaseDatosApp): Afiliado_Direccion_Dao = baseDatosApp.afiliado_Direccion_Dao()
@@ -60,6 +65,9 @@ class BaseDatosModule {
 
     @Provides
     fun providesRolesAppDao(baseDatosApp: BaseDatosApp): RolesAppDao = baseDatosApp.rolesAppDao()
+
+    @Provides
+    fun providesTelefonoDao(baseDatosApp: BaseDatosApp): Telefono_Dao = baseDatosApp.telefonoDao()
 
     @Provides
     fun providesTipoDocumentoDao(baseDatosApp: BaseDatosApp): TipoDocumentoDao = baseDatosApp.TipoDocumentoDao()

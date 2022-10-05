@@ -4,10 +4,12 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.AfiliadoDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Correo_Dao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Direccion_Dao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Jac_EstadoAfiliacionDao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Telefono_Dao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.CorreoDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.DireccionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.JacDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Jac_Afiliado_Direccion_Dao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Telefono_Dao
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperIniciarSesion
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperRegistroAfilado
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperRegistroJAC
@@ -15,6 +17,7 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.registroAfiliado.HelperRegistroAfiliadoEntity
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.registroAfiliado.HelperRegistroCorreoAfiliadoEntity
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.registroAfiliado.HelperRegistroDireccionAfiliadoEntity
+import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.registroAfiliado.HelperRegistroTelefono
 import dagger.Module
 import dagger.Provides
 
@@ -57,6 +60,17 @@ class HelpersDBDatasourceModule {
         jacAfiliadoDireccionDao = jacAfiliadoDireccionDao
     )
 
+    @Provides
+    fun providesHelperRegistroTelefono(
+        afiliadoDao: AfiliadoDao,
+        afiliadoTelefonoDao: Afiliado_Telefono_Dao,
+        telefonoDao: Telefono_Dao
+    ) : HelperRegistroTelefono = HelperRegistroTelefono(
+        afiliadoDao = afiliadoDao,
+        afiliadoTelefonoDao = afiliadoTelefonoDao,
+        telefonoDao = telefonoDao
+    )
+
     //endregion
 
     //region segundo nivel
@@ -65,11 +79,13 @@ class HelpersDBDatasourceModule {
     fun providesHelperRegistroAfiliado(
         helperRegistroAfiliadoEntity : HelperRegistroAfiliadoEntity,
         helperRegistroCorreoAfiliadoEntity : HelperRegistroCorreoAfiliadoEntity,
-        helperRegistroDireccionAfiliadoEntity: HelperRegistroDireccionAfiliadoEntity
+        helperRegistroDireccionAfiliadoEntity: HelperRegistroDireccionAfiliadoEntity,
+        helperRegistroTelefono: HelperRegistroTelefono
     ) : HelperRegistroAfilado = HelperRegistroAfilado(
         helperRegistroAfiliadoEntity = helperRegistroAfiliadoEntity,
         helperRegistroCorreoAfiliadoEntity = helperRegistroCorreoAfiliadoEntity,
-        helperRegistroDireccionAfiliadoEntity = helperRegistroDireccionAfiliadoEntity
+        helperRegistroDireccionAfiliadoEntity = helperRegistroDireccionAfiliadoEntity,
+        helperRegistroTelefonoEntity = helperRegistroTelefono
     )
 
     @Provides

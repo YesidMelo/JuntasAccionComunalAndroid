@@ -4,13 +4,11 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.BaseEntity
 
-/**
- * telefono del afiliado
- */
 @Entity
-data class TelefonosEntity (
+data class Afiliado_Telefono_Entity (
     @PrimaryKey(autoGenerate = true)
+    var registroID: Int? = null,
+    var afiliadoId: Int? = null,
     var telefonoId: Int? = null,
-    var telefono: String? = null,
-    var tipoTelefonoId: Int? = null
+    var observaciones: String? = null
 ): BaseEntity()

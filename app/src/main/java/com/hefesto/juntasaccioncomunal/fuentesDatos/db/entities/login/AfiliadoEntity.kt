@@ -12,5 +12,6 @@ data class AfiliadoEntity(
     val apellidos: String? = null,
     val tipoDocumento: Int? = null,
     val documento: String? = null,
-    val fechaNacimiento: String? = null
+    val fechaNacimiento: String? = null,
+    val contrasenia: String? = null
 ): BaseEntity()
