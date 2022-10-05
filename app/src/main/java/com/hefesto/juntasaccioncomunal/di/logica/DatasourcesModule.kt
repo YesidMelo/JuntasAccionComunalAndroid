@@ -6,6 +6,9 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.RolesAppDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.TipoDocumentoDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.TipoTelefonoDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.AfiliadoDao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Correo_Dao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Jac_EstadoAfiliacionDao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.CorreoDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.EstadoAfiliacionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.JacDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.RolAfiliacionDao
@@ -54,11 +57,17 @@ class DatasourcesModule {
     @Provides
     fun providesLoginDbDatasource(
         afiliadoDao: AfiliadoDao,
+        afiliadoCorreoDao: Afiliado_Correo_Dao,
+        correoDao: CorreoDao,
+        afiliado_Jac_EstadoAfiliacionDao: Afiliado_Jac_EstadoAfiliacionDao,
         jacDao: JacDao,
         memoriaCache: MemoriaCache
     )  : LoginDBDatasource
     = LoginDBDatasourceImpl(
         afiliadoDao= afiliadoDao,
+        afiliado_Jac_EstadoAfiliacionDao = afiliado_Jac_EstadoAfiliacionDao,
+        afiliadoCorreoDao = afiliadoCorreoDao,
+        correoDao = correoDao,
         jacDao = jacDao,
         memoriaCacheLocal = memoriaCache
     )

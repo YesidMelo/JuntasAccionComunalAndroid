@@ -3,6 +3,9 @@ package com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db
 import androidx.lifecycle.MutableLiveData
 import com.hefesto.juntasaccioncomunal.fuentesDatos.cache.MemoriaCache
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.AfiliadoDao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Correo_Dao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Jac_EstadoAfiliacionDao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.CorreoDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.JacDao
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.repositorios.BaseDBDatasourceImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperIniciarSesion
@@ -24,8 +27,11 @@ interface  LoginDBDatasource {
 
 class LoginDBDatasourceImpl constructor(
     @JvmField @Inject var afiliadoDao: AfiliadoDao,
+    @JvmField @Inject var afiliadoCorreoDao: Afiliado_Correo_Dao,
+    @JvmField @Inject var afiliado_Jac_EstadoAfiliacionDao : Afiliado_Jac_EstadoAfiliacionDao,
+    @JvmField @Inject var correoDao: CorreoDao,
     @JvmField @Inject var memoriaCacheLocal: MemoriaCache,
-    @JvmField @Inject var jacDao: JacDao,
+    @JvmField @Inject var jacDao: JacDao
     ): BaseDBDatasourceImpl(memoriaCache = memoriaCacheLocal), LoginDBDatasource {
 
     //region variables
@@ -38,10 +44,13 @@ class LoginDBDatasourceImpl constructor(
 
     override fun registrarAfiliado(afiliadoARegistrarModel: AfiliadoARegistrarModel): MutableLiveData<Boolean?> {
         HelperRegistroAfilado(
+            afiliadoDao = afiliadoDao,
             afiliadoARegistrarModel = afiliadoARegistrarModel,
+            afiliado_Jac_EstadoAfiliacionDao = afiliado_Jac_EstadoAfiliacionDao,
+            afiliadoCorreoDao = afiliadoCorreoDao,
+            correoDao= correoDao,
             escuchadorExcepciones = traerExcepcionesLiveData(),
             escuchadorRegistroAfiliadoExitoso = registroExitosoAfiliado,
-            afiliadoDao = afiliadoDao
         ).registrar()
         return registroExitosoAfiliado
     }

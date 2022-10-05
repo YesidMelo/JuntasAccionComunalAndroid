@@ -98,14 +98,10 @@ Qapp/src/main/java/com/hefesto/juntasaccioncomunal/ui/navegacion/HelperFragment.
 Xapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/entities/BaseEntity.kt,2\7\271461bb4c9678501ae60ccc96dfc315ef713183
 †
 Vapp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/modules/LoginActivityModule.kt,d\7\d77b861b124deddbe059fcafdc2853d383668e30
-‹
-[app/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/login/AfiliadoDao.kt,5\d\5d13b9b34038c732a9f4e7608bd4b97a05a7c776
 †
 Vapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/login/JacDao.kt,0\b\0b6dc2d47cc51e37be271f33284d038c162c821b
 §
 wapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/repositorios/db/helpers/HelperRegistroJAC.kt,0\a\0a434cc5c7cf17100d056953d9e3dbf39d0cf5a5
-©
-yapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/repositorios/db/helpers/HelperIniciarSesion.kt,7\5\7598c689074604fe46fcca9170cdda560d2ae421
 ¦
 vapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/repositorios/db/mapper/JacRegistroMapper.kt,1\e\1e925cff3094f03f75ee909caf55dbcd83f12adc
 §
@@ -166,5 +162,3 @@ sapp/src/main/java/com/hefesto/juntasaccioncomunal/ui/fragments/login/registrarA
 Vapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/excepciones/LoginExcepcion.kt,f\c\fcce37103ec884c2d2d78d9b0120d73bb1ae3864
 ›
 kapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/repositorios/LoginRepositorio.kt,2\6\2692036e67db8eb21a28c4dd0b8482d1b76b1af1
-Ÿ
-oapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/repositorios/db/LoginDBDatasource.kt,e\9\e903fe3dffd3cffa5b8b1ec79dbbe2474e597936
