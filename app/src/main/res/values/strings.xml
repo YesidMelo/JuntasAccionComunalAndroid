@@ -66,4 +66,5 @@
     <string name="no_ha_seleccionado_un_tipo_de_telefono">No ha seleccionado un tipo de telefono. Vuelvelo a intentar.</string>
     <string name="campo_telefono_vacio">No ha ingresado un telefono. Intentelo nuevamente</string>
     <string name="el_telefono_no_es_valido">El numero de telefono no es valido. Vuelvelo a intentar</string>
+    <string name="afiliado_registrado_en_la_junta">Este afiliado ya se encuentra registrado en la junta. Habla con el/la secretario/a para mas informacion.</string>
 </resources>

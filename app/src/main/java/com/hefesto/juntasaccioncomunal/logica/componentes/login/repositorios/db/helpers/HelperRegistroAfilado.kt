@@ -5,6 +5,7 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.registroAfiliado.HelperRegistroCorreoAfiliadoEntity
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.registroAfiliado.HelperRegistroDireccionAfiliadoEntity
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.registroAfiliado.HelperRegistroTelefono
+import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.registroAfiliado.HelperValidarExisteUsuarioEnJAC
 import com.hefesto.juntasaccioncomunal.logica.excepciones.LogicaExcepcion
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarAfiliado.AfiliadoARegistrarModel
 import kotlinx.coroutines.GlobalScope
@@ -16,7 +17,8 @@ class HelperRegistroAfilado constructor(
     @JvmField @Inject var helperRegistroAfiliadoEntity : HelperRegistroAfiliadoEntity,
     @JvmField @Inject var helperRegistroCorreoAfiliadoEntity : HelperRegistroCorreoAfiliadoEntity,
     @JvmField @Inject var helperRegistroDireccionAfiliadoEntity : HelperRegistroDireccionAfiliadoEntity,
-    @JvmField @Inject var helperRegistroTelefonoEntity : HelperRegistroTelefono
+    @JvmField @Inject var helperRegistroTelefonoEntity : HelperRegistroTelefono,
+    @JvmField @Inject var helperValidarExisteUsuarioEnJAC: HelperValidarExisteUsuarioEnJAC
 ) {
 
     //variables variables
@@ -43,13 +45,28 @@ class HelperRegistroAfilado constructor(
     fun registrar() {
         GlobalScope.launch {
             escuchadorRegistroAfiliadoExitoso.postValue(null)
-
-            helperRegistroAfiliadoEntity.conAfiliadoARegistrarModel(afiliadoARegistrarModel = afiliadoARegistrarModel).guardarAfiliado()
-            helperRegistroCorreoAfiliadoEntity.conAfiliadoARegistrarModel(afiliadoARegistrarModel = afiliadoARegistrarModel).guardarCorreo()
-            helperRegistroDireccionAfiliadoEntity.conAfiliadoARegistrarModel(afiliadoARegistrarModel = afiliadoARegistrarModel).guardarDireccion()
-            helperRegistroTelefonoEntity.conAfiliadoARegistrar(afiliadoARegistrarModel = afiliadoARegistrarModel).guardarTelefono()
+            if(
+                helperValidarExisteUsuarioEnJAC
+                    .conAfiliadoARegistrarModel(afiliadoARegistrarModel = afiliadoARegistrarModel)
+                    .conEscuchadorExcepciones(escuchadorExcepciones = escuchadorExcepciones)
+                    .existeUsuario()
+            ) {
+                escuchadorRegistroAfiliadoExitoso.postValue(false)
+                return@launch
+            }
+            registrarAfiliadoADB()
             delay(5000)
             escuchadorRegistroAfiliadoExitoso.postValue(true)
         }
     }
+
+    //region metodos privados
+    private suspend fun registrarAfiliadoADB() {
+        helperRegistroAfiliadoEntity.conAfiliadoARegistrarModel(afiliadoARegistrarModel = afiliadoARegistrarModel).guardarAfiliado()
+        helperRegistroCorreoAfiliadoEntity.conAfiliadoARegistrarModel(afiliadoARegistrarModel = afiliadoARegistrarModel).guardarCorreo()
+        helperRegistroDireccionAfiliadoEntity.conAfiliadoARegistrarModel(afiliadoARegistrarModel = afiliadoARegistrarModel).guardarDireccion()
+        helperRegistroTelefonoEntity.conAfiliadoARegistrar(afiliadoARegistrarModel = afiliadoARegistrarModel).guardarTelefono()
+    }
+
+    //endregion
 }

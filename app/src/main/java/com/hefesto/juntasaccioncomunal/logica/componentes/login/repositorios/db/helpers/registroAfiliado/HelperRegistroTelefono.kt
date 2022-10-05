@@ -38,26 +38,32 @@ class HelperRegistroTelefono constructor(
 
     //region metodos privados
     private fun registrarTelefonoEntity() {
+        if(traerNumeroTelefonoId() != null) return
         val telefonoEntity = afiliadoARegistrarModel.traerTelefonoEntity()
         telefonoDao.insertarElemento(elemento = telefonoEntity)
     }
 
     private fun registrarRelacionAfiliadoTelefonoEntity() {
-        val afiliadoId = afiliadoDao.traerIdPorTipoDocumentoYDocumento(
+
+        afiliadoTelefonoDao.insertarElemento(elemento = Afiliado_Telefono_Entity(
+            afiliadoId = traerAfiliadoId(),
+            telefonoId = traerNumeroTelefonoId()
+        ))
+
+    }
+
+    private fun traerAfiliadoId() : Int? {
+        return afiliadoDao.traerIdPorTipoDocumentoYDocumento(
             documento = afiliadoARegistrarModel.numeroDocumento!!,
             tipoDocumento = afiliadoARegistrarModel.tipoDocumento!!.tipoDocumento.traerId()
         )
+    }
 
-        val numeroTelefonoId = telefonoDao.traerIdPorTipoTelefonoYNumero(
+    private fun traerNumeroTelefonoId() : Int? {
+        return telefonoDao.traerIdPorTipoTelefonoYNumero(
             numeroTelefono = afiliadoARegistrarModel.telefono!!,
             tipoTelefono = afiliadoARegistrarModel.tipoTelefono!!.tipoTelefono.traerId()
         )
-
-        afiliadoTelefonoDao.insertarElemento(elemento = Afiliado_Telefono_Entity(
-            afiliadoId = afiliadoId,
-            telefonoId = numeroTelefonoId
-        ))
-
     }
 
     //endregion

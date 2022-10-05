@@ -32,22 +32,26 @@ class HelperRegistroAfiliadoEntity constructor(
 
     //region metodos privados
     private fun guardarEntidad() {
+        if (traerAfiliadoId() != null) return
         val afiliadoEntity = afiliadoARegistrarModel.traerAfiliadoEntity()
         afiliadoDao.insertarElemento(afiliadoEntity)
     }
 
     private fun guardarRelacionAfiliadoJACEstadoAfiliacion() {
-        val afiliadoId = afiliadoDao.traerIdPorTipoDocumentoYDocumento(
-            tipoDocumento = afiliadoARegistrarModel.tipoDocumento!!.tipoDocumento.traerId(),
-            documento = afiliadoARegistrarModel.numeroDocumento!!
-        )
         val afiliadoJacEstadoAfiliacion = Afiliado_Jac_EstadoAfiliacionEntity(
-            afiliadoId = afiliadoId,
+            afiliadoId = traerAfiliadoId(),
             jacId = afiliadoARegistrarModel.jacSeleccionado?.id,
             estadoAfiliacionId = EstadoAfiliacion.PRE_AFILIADO.traerId(),
             fechaActualizacion = afiliadoARegistrarModel.fechaInscripcion?.convertirAFormato(formato = FormatosFecha.ISO_8610)
         )
         afiliado_Jac_EstadoAfiliacionDao.insertarElemento(elemento = afiliadoJacEstadoAfiliacion)
+    }
+
+    private fun traerAfiliadoId() : Int? {
+        return afiliadoDao.traerIdPorTipoDocumentoYDocumento(
+            tipoDocumento = afiliadoARegistrarModel.tipoDocumento!!.tipoDocumento.traerId(),
+            documento = afiliadoARegistrarModel.numeroDocumento!!
+        )
     }
 
     //endregion

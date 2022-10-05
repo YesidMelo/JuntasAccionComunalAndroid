@@ -35,34 +35,54 @@ class HelperRegistroDireccionAfiliadoEntity constructor(
 
     //region metodos privados
     private fun guardarRegistroDireccion() {
+        if(traerDireccionId() != null) return
         val direccionEntity = afiliadoARegistrarModel.traerDireccionEntity()
         direccionDao.insertarElemento(elemento = direccionEntity)
     }
 
     private fun guardarRegistroAfiliadoDireccion() {
-        val direccionId = direccionDao.traerIdPorDireccion(direccion = afiliadoARegistrarModel.direccion!!)
-        val afiliadoId = afiliadoDao.traerIdPorTipoDocumentoYDocumento(
-            tipoDocumento = afiliadoARegistrarModel.tipoDocumento!!.tipoDocumento.traerId(),
-            documento = afiliadoARegistrarModel.numeroDocumento!!
-        )
+        if(traerRegistroAfiliadoDirecion() != null) return
         afiliadoDireccionDao.insertarElemento(elemento = Afiliado_Direccion_Entity(
-            afiliadoId = afiliadoId,
-            direccionId = direccionId
+            afiliadoId = traerAfiliadoId(),
+            direccionId = traerDireccionId()
         ))
     }
 
     private fun guardarRegistroJacAfiliadoDireccion() {
-        val direccionId = direccionDao.traerIdPorDireccion(direccion = afiliadoARegistrarModel.direccion!!)
-        val afiliadoId = afiliadoDao.traerIdPorTipoDocumentoYDocumento(
-            tipoDocumento = afiliadoARegistrarModel.tipoDocumento!!.tipoDocumento.traerId(),
-            documento = afiliadoARegistrarModel.numeroDocumento!!
-        )
+        if(traerRegistroJACAfiliadoDireccion() != null) return
         jacAfiliadoDireccionDao.insertarElemento(elemento = Jac_Afiliado_Direccion_Entity(
             jacId = afiliadoARegistrarModel.jacSeleccionado!!.id,
-            direccionId = direccionId,
-            afiliadoId = afiliadoId,
+            direccionId = traerDireccionId(),
+            afiliadoId = traerAfiliadoId(),
             fechaInscripcion = afiliadoARegistrarModel.fechaInscripcion!!.convertirAFormato(FormatosFecha.ISO_8610)
         ))
     }
+
+    private fun traerAfiliadoId() : Int? {
+        return afiliadoDao.traerIdPorTipoDocumentoYDocumento(
+            tipoDocumento = afiliadoARegistrarModel.tipoDocumento!!.tipoDocumento.traerId(),
+            documento = afiliadoARegistrarModel.numeroDocumento!!
+        )
+    }
+
+    private fun traerDireccionId() : Int? {
+        return direccionDao.traerIdPorDireccion(direccion = afiliadoARegistrarModel.direccion!!)
+    }
+
+    private fun traerRegistroAfiliadoDirecion() : Int? {
+        return afiliadoDireccionDao.traerNumeroRegistro(
+            afiliadoId = traerAfiliadoId()!!,
+            direccionId = traerDireccionId()!!
+        )
+    }
+
+    private fun traerRegistroJACAfiliadoDireccion() : Int? {
+        return jacAfiliadoDireccionDao.traerNumeroRegistro(
+            jacId = afiliadoARegistrarModel.jacSeleccionado!!.id,
+            direccionId = traerDireccionId()!!,
+            afiliadoId = traerAfiliadoId()!!,
+        )
+    }
+
     //endregion
 }

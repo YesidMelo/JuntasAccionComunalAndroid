@@ -148,8 +148,6 @@ japp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/caso
 oapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/casosUso/RegistrarAfiliadoCasoUso.kt,1\d\1df8e61c02ec59cdb350beef8cf7cd5d7fe3beab
 £
 sapp/src/main/java/com/hefesto/juntasaccioncomunal/ui/fragments/login/registrarAfiliado/RegistrarAfiliadoFragment.kt,4\e\4e84252f6ab4a740609658ce70e6b05438466894
-Ü
-Vapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/excepciones/LoginExcepcion.kt,f\c\fcce37103ec884c2d2d78d9b0120d73bb1ae3864
 õ
 kapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/repositorios/LoginRepositorio.kt,2\6\2692036e67db8eb21a28c4dd0b8482d1b76b1af1
 ê
@@ -162,8 +160,6 @@ qapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/splash/rep
 iapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/entities/general/TipoDocumentoEntity.kt,e\5\e56cdc3f79580c9a9589cd43e6b53202131ba55d
 ò
 happ/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/entities/general/TipoTelefonoEntity.kt,c\4\c448a5687e61eafefe89a1fe0adeeb816818b17a
-Å
-Qapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/BaseDao.kt,e\4\e4c09754032b6c60ebcf4a414f96046891e85a8b
 Å
 Qapp/src/main/java/com/hefesto/juntasaccioncomunal/di/logica/RepositoriosModule.kt,9\7\97586d0f8e54ad85d8ed400e1a868cd16b005ce5
 ´
@@ -212,8 +208,6 @@ uapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/splash/rep
 capp/src/main/java/com/hefesto/juntasaccioncomunal/logica/utilidades/enumeradores/FuncionesRolApp.kt,3\d\3d1c4bdb471182f49b202fa7266fb8b3b97f473b
 ö
 japp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/entities/login/EstadoAfiliacionEntity.kt,a\d\ad1908b76a62039ce3ba32bdd4582da836152e62
-ß
-wapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/entities/login/Afiliado_Jac_EstadoAfiliacionEntity.kt,3\3\335a0388fa2c9e25b2f7f3ffa28de48ee1858e98
 ë
 aapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/entities/login/CorreosEntity.kt,7\8\78cb934495cf9cb93f55daeaccd7c68cd676edb0
 ö
@@ -230,18 +224,10 @@ yapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/repo
 Öapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/repositorios/db/helpers/HelperTraerListaJACSRegistrados.kt,c\1\c1aeb9b9685fa4c983c305f803cc49dbc133a868
 Ä
 Papp/src/main/java/com/hefesto/juntasaccioncomunal/di/logica/DatasourcesModule.kt,2\e\2e9ffb4ee47fd6e7f76ef3c23b96e9bf198afd52
- 
-ôapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/repositorios/db/helpers/registroAfiliado/HelperRegistroCorreoAfiliadoEntity.kt,8\7\87c9380d609f5259f52763024345fffe7998d20e
-ƒ
-ìapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/repositorios/db/helpers/registroAfiliado/HelperRegistroAfiliadoEntity.kt,d\3\d3936b2488619edec38c35fb9e6c898b4a372d75
 ï
 eapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/entities/login/DireccionesEntity.kt,d\6\d6055b3cbc52cab3f84c67d75efa2041fbb2b7f7
 ì
 capp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/login/Afiliado_Correo_Dao.kt,2\a\2a93d0f8a779432cefb0418303262c4901bd09da
-†
-papp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/login/Afiliado_Jac_EstadoAfiliacionDao.kt,e\e\ee35d1f0014d182d2e6ed0d33b04acfafd7c5a58
-ã
-[app/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/login/AfiliadoDao.kt,5\d\5d13b9b34038c732a9f4e7608bd4b97a05a7c776
 â
 Yapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/login/CorreoDao.kt,d\d\ddd0496f1771e27086f59b4e5bfe956c72cc091d
 ì
@@ -252,13 +238,7 @@ Vapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/login/Ja
 `app/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/login/RolAfiliacionDao.kt,4\d\4df46881169fd6fa04ee86a62b151464a55ef9c2
 å
 \app/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/login/DireccionDao.kt,7\8\7880aee0c7583fe036c3e1062bdc4c0d73c83068
-ñ
-fapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/login/Afiliado_Direccion_Dao.kt,f\9\f9dd4de5e53dd2fd8819271ecb0f999b410cc426
 °
 qapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/entities/login/Jac_Afiliado_Direccion_Entity.kt,a\7\a71dcb98c0a7b106477a2385e8d9b448b44ac254
-Õ
-úapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/repositorios/db/helpers/registroAfiliado/HelperRegistroDireccionAfiliadoEntity.kt,0\b\0b2a5e6fd926fa22bb94f2f6d5bd891f4ec35f16
 ù
 mapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/entities/login/Afiliado_Direccion_Entity.kt,1\8\184bc45e46d46ba6f4593f0d37dcd6f259e3808b
-ö
-japp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/login/Jac_Afiliado_Direccion_Dao.kt,8\9\89be028447ffcf4378cc8cb799a401f6d316a5bb

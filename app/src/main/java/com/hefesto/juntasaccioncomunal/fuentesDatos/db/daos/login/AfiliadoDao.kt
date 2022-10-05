@@ -8,7 +8,7 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.AfiliadoEn
 @Dao
 interface AfiliadoDao : BaseDao<AfiliadoEntity> {
 
-    @Query("SELECT AfiliadoEntity.afiliadoId FROM AfiliadoEntity WHERE AfiliadoEntity.afiliadoId = :tipoDocumento AND AfiliadoEntity.documento = :documento")
+    @Query("SELECT AfiliadoEntity.afiliadoId FROM AfiliadoEntity WHERE AfiliadoEntity.tipoDocumento = :tipoDocumento AND AfiliadoEntity.documento = :documento")
     fun traerIdPorTipoDocumentoYDocumento(tipoDocumento: Int, documento: String) : Int?
 
 }

@@ -18,6 +18,7 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.registroAfiliado.HelperRegistroCorreoAfiliadoEntity
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.registroAfiliado.HelperRegistroDireccionAfiliadoEntity
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.registroAfiliado.HelperRegistroTelefono
+import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.registroAfiliado.HelperValidarExisteUsuarioEnJAC
 import dagger.Module
 import dagger.Provides
 
@@ -27,6 +28,16 @@ class HelpersDBDatasourceModule {
     //region login
 
     //region primer nivel
+
+    @Provides
+    fun providesHelperValidarExisteUsuarioEnJAC(
+        afiliadoDao: AfiliadoDao,
+        afiliadoJacEstadoafiliaciondao: Afiliado_Jac_EstadoAfiliacionDao
+    ) : HelperValidarExisteUsuarioEnJAC = HelperValidarExisteUsuarioEnJAC(
+        afiliadoDao = afiliadoDao,
+        afiliadoJacEstadoafiliaciondao = afiliadoJacEstadoafiliaciondao
+    )
+
     @Provides
     fun providesHelperRegistroAfiliadoEntity(
         afiliadoDao: AfiliadoDao,
@@ -80,12 +91,14 @@ class HelpersDBDatasourceModule {
         helperRegistroAfiliadoEntity : HelperRegistroAfiliadoEntity,
         helperRegistroCorreoAfiliadoEntity : HelperRegistroCorreoAfiliadoEntity,
         helperRegistroDireccionAfiliadoEntity: HelperRegistroDireccionAfiliadoEntity,
-        helperRegistroTelefono: HelperRegistroTelefono
+        helperRegistroTelefono: HelperRegistroTelefono,
+        helperValidarExisteUsuarioEnJAC: HelperValidarExisteUsuarioEnJAC
     ) : HelperRegistroAfilado = HelperRegistroAfilado(
         helperRegistroAfiliadoEntity = helperRegistroAfiliadoEntity,
         helperRegistroCorreoAfiliadoEntity = helperRegistroCorreoAfiliadoEntity,
         helperRegistroDireccionAfiliadoEntity = helperRegistroDireccionAfiliadoEntity,
-        helperRegistroTelefonoEntity = helperRegistroTelefono
+        helperRegistroTelefonoEntity = helperRegistroTelefono,
+        helperValidarExisteUsuarioEnJAC = helperValidarExisteUsuarioEnJAC
     )
 
     @Provides

@@ -123,6 +123,13 @@ class EstaJuntaYaSeEncuentraRegistradaException : LogicaExcepcion(
     tipoExcepcion = TiposExcepciones.GENERADO_USUARIO
 )
 
+class EsteAfiliadoYaSeEncuentraRegistrado : LogicaExcepcion(
+    mensaje = "Afiliado ya registrado en la junta",
+    stringResMensaje = R.string.afiliado_registrado_en_la_junta,
+    stringResTitulo = R.string.registro_afiliado_jac,
+    tipoExcepcion = TiposExcepciones.GENERADO_USUARIO
+)
+
 class NoCumpleConLaFechaMinimaParaLaInscripcionExcepcion : LogicaExcepcion(
     mensaje = "No tiene la edad minima para la inscripcion como afiliado",
     stringResMensaje = R.string.no_cumple_edad_minima_afiliacion,

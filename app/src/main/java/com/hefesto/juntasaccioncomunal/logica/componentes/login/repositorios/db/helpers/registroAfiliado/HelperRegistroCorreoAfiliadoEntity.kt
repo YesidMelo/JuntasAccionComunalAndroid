@@ -32,22 +32,30 @@ class HelperRegistroCorreoAfiliadoEntity constructor(
     //region metodos privados
 
     private fun registrarCorreo() {
+        if(traerCorreoId() != null) return
         val correoEntity = afiliadoARegistrarModel.traerCorreoEntity()
         correoDao.insertarElemento(correoEntity)
     }
 
     private fun vincularAfiliadoACorreo() {
-        val correoId = correoDao.traerId(correo = afiliadoARegistrarModel.correo!!)
-        val afiliadoId = afiliadoDao.traerIdPorTipoDocumentoYDocumento(
-            tipoDocumento = afiliadoARegistrarModel.tipoDocumento!!.tipoDocumento.traerId(),
-            documento = afiliadoARegistrarModel.numeroDocumento!!
-        )
         val afiliadoCorreoEntity = Afiliado_Correo_Entity(
             registro = null,
-            afiliadoId = afiliadoId,
-            correoId = correoId
+            afiliadoId = traerAfiliadoId(),
+            correoId = traerCorreoId()
         )
         afiliadoCorreoDao.insertarElemento(afiliadoCorreoEntity)
     }
+
+    private fun traerCorreoId() : Int? {
+        return correoDao.traerId(correo = afiliadoARegistrarModel.correo!!)
+    }
+
+    private fun traerAfiliadoId() : Int? {
+        return afiliadoDao.traerIdPorTipoDocumentoYDocumento(
+            tipoDocumento = afiliadoARegistrarModel.tipoDocumento!!.tipoDocumento.traerId(),
+            documento = afiliadoARegistrarModel.numeroDocumento!!
+        )
+    }
+
     //endregion
 }
