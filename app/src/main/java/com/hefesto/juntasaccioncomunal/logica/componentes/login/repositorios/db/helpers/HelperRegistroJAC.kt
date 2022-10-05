@@ -9,13 +9,32 @@ import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarJAC.JACRegi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 class HelperRegistroJAC constructor(
-    private val jacRegistroModel: JACRegistroModel,
-    private val registroExitosoJAC : MutableLiveData<Boolean?>,
-    private val escuchadorExcepciones: MutableLiveData<LogicaExcepcion?>,
-    private val jacDao: JacDao
+    @JvmField @Inject var jacDao: JacDao
 ) {
+
+    //region variables
+    private lateinit var jacRegistroModel: JACRegistroModel
+    private lateinit var registroExitosoJAC : MutableLiveData<Boolean?>
+    private lateinit var escuchadorExcepciones: MutableLiveData<LogicaExcepcion?>
+    //endregion
+
+    fun conJACRegistroModel(jacRegistroModel: JACRegistroModel) : HelperRegistroJAC {
+        this.jacRegistroModel = jacRegistroModel
+        return this
+    }
+
+    fun conRegistroExitosoLiveData(registroExitosoJAC : MutableLiveData<Boolean?>) : HelperRegistroJAC {
+        this.registroExitosoJAC = registroExitosoJAC
+        return this
+    }
+
+    fun conEscuchadorExcepciones(escuchadorExcepciones: MutableLiveData<LogicaExcepcion?>) : HelperRegistroJAC {
+        this.escuchadorExcepciones = escuchadorExcepciones
+        return this
+    }
 
     fun registrarJAC(){
         GlobalScope.launch {

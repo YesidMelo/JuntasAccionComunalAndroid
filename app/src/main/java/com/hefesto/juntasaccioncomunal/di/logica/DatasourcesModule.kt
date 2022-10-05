@@ -24,6 +24,10 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.Log
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.LoginSharedPreferencesDatasourceImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.LoginDBDatasource
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.LoginDBDatasourceImpl
+import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperIniciarSesion
+import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperRegistroAfilado
+import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperRegistroJAC
+import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperTraerListaJACSRegistrados
 import com.hefesto.juntasaccioncomunal.logica.componentes.splash.repositorios.SplashApiDatasource
 import com.hefesto.juntasaccioncomunal.logica.componentes.splash.repositorios.SplashApiDatasourceImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.splash.repositorios.SplashCacheDatasource
@@ -56,20 +60,18 @@ class DatasourcesModule {
 
     @Provides
     fun providesLoginDbDatasource(
-        afiliadoDao: AfiliadoDao,
-        afiliadoCorreoDao: Afiliado_Correo_Dao,
-        correoDao: CorreoDao,
-        afiliado_Jac_EstadoAfiliacionDao: Afiliado_Jac_EstadoAfiliacionDao,
-        jacDao: JacDao,
-        memoriaCache: MemoriaCache
+        memoriaCache: MemoriaCache,
+        helperRegistroJAC: HelperRegistroJAC,
+        helperIniciarSesion: HelperIniciarSesion,
+        helperTraerListaJACSRegistrados: HelperTraerListaJACSRegistrados,
+        helperRegistroAfilado: HelperRegistroAfilado
     )  : LoginDBDatasource
     = LoginDBDatasourceImpl(
-        afiliadoDao= afiliadoDao,
-        afiliado_Jac_EstadoAfiliacionDao = afiliado_Jac_EstadoAfiliacionDao,
-        afiliadoCorreoDao = afiliadoCorreoDao,
-        correoDao = correoDao,
-        jacDao = jacDao,
-        memoriaCacheLocal = memoriaCache
+        memoriaCacheLocal = memoriaCache,
+        helperRegistroJAC = helperRegistroJAC,
+        helperIniciarSesion = helperIniciarSesion,
+        helperTraerListaJACSRegistrados = helperTraerListaJACSRegistrados,
+        helperRegistroAfilado = helperRegistroAfilado
     )
 
     @Provides

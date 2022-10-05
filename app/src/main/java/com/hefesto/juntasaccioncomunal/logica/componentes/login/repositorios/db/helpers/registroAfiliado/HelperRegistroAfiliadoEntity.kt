@@ -8,16 +8,26 @@ import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarAfiliado.Af
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.EstadoAfiliacion
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.FormatosFecha
 import com.hefesto.juntasaccioncomunal.logica.utilidades.extenciones.convertirAFormato
+import javax.inject.Inject
 
-class HelperAfiliadoEntity constructor(
-    val afiliadoARegistrarModel: AfiliadoARegistrarModel,
-    val afiliado_Jac_EstadoAfiliacionDao : Afiliado_Jac_EstadoAfiliacionDao,
-    val afiliadoDao: AfiliadoDao
+class HelperRegistroAfiliadoEntity constructor(
+    @JvmField @Inject var afiliado_Jac_EstadoAfiliacionDao : Afiliado_Jac_EstadoAfiliacionDao,
+    @JvmField @Inject var afiliadoDao: AfiliadoDao
 ) {
+
+    //region variables
+    private lateinit var afiliadoARegistrarModel: AfiliadoARegistrarModel
+    //endregion
+
 
     suspend fun guardarAfiliado() {
         guardarEntidad()
         guardarRelacionAfiliadoJACEstadoAfiliacion()
+    }
+
+    fun conAfiliadoARegistrarModel(afiliadoARegistrarModel: AfiliadoARegistrarModel) : HelperRegistroAfiliadoEntity {
+        this.afiliadoARegistrarModel = afiliadoARegistrarModel
+        return this
     }
 
     //region metodos privados

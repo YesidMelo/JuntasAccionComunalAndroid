@@ -58,8 +58,6 @@ mapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/base/repos
 app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
 —
 gapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/login/registrarJAC/JACRegistroModel.kt,7\c\7c1fc928108d8dc2fed4a7e7d109fd74a495b529
-{
-Kapp/src/main/java/com/hefesto/juntasaccioncomunal/di/AplicacionComponent.kt,a\a\aae6ec3a587ee01f999b9e792ad5a094a79c52ef
 x
 Happ/src/main/java/com/hefesto/juntasaccioncomunal/di/AplicacionModule.kt,1\7\17393b005994148415f159536612577e6d287156
 š
@@ -100,14 +98,10 @@ Xapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/entities/Base
 Vapp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/modules/LoginActivityModule.kt,d\7\d77b861b124deddbe059fcafdc2853d383668e30
 †
 Vapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/login/JacDao.kt,0\b\0b6dc2d47cc51e37be271f33284d038c162c821b
-§
-wapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/repositorios/db/helpers/HelperRegistroJAC.kt,0\a\0a434cc5c7cf17100d056953d9e3dbf39d0cf5a5
 ¦
 vapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/repositorios/db/mapper/JacRegistroMapper.kt,1\e\1e925cff3094f03f75ee909caf55dbcd83f12adc
 §
 wapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/casosUso/TraerListaJACsRegistradasCasoUso.kt,f\1\f140eb3bff4563b0bf1875490b61011c55d908ef
-¶
-…app/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/repositorios/db/helpers/HelperTraerListaJACSRegistrados.kt,c\1\c1aeb9b9685fa4c983c305f803cc49dbc133a868
 ª
 zapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/login/registrarAfiliado/JACDisponibleParaAfiliadoModel.kt,d\a\dad667e9932e666b47143690deb813a4c21aae4d
 ž

@@ -6,18 +6,28 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.CorreoDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.Afiliado_Correo_Entity
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.mapper.traerCorreoEntity
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarAfiliado.AfiliadoARegistrarModel
+import javax.inject.Inject
 
-class HelperCorreoAfiliadoEntity constructor(
-    val afiliadoARegistrarModel: AfiliadoARegistrarModel,
-    val afiliadoCorreoDao: Afiliado_Correo_Dao,
-    val afiliadoDao: AfiliadoDao,
-    val correoDao: CorreoDao
+class HelperRegistroCorreoAfiliadoEntity constructor(
+    @JvmField @Inject var afiliadoCorreoDao: Afiliado_Correo_Dao,
+    @JvmField @Inject var afiliadoDao: AfiliadoDao,
+    @JvmField @Inject var correoDao: CorreoDao
 ) {
+
+    //region variables
+    private lateinit var afiliadoARegistrarModel: AfiliadoARegistrarModel
+    //endregion
 
     suspend fun guardarCorreo() {
         registrarCorreo()
         vincularAfiliadoACorreo()
     }
+
+    fun conAfiliadoARegistrarModel(afiliadoARegistrarModel: AfiliadoARegistrarModel) : HelperRegistroCorreoAfiliadoEntity {
+        this.afiliadoARegistrarModel = afiliadoARegistrarModel
+        return this
+    }
+
 
     //region metodos privados
 

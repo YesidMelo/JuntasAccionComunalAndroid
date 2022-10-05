@@ -9,13 +9,17 @@ import com.hefesto.juntasaccioncomunal.logica.modelos.login.iniciarSesion.Usuari
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 class HelperIniciarSesion constructor(
-    private var inicioSesionExitosa : MutableLiveData<Boolean?>,
-    private var usuarioInicioSesionModel: UsuarioInicioSesionModel,
-    private var escuchadorExcepciones: MutableLiveData<LogicaExcepcion?>,
-    private val jacDao: JacDao
+    @JvmField @Inject var jacDao: JacDao
 ) {
+
+    //region variables
+    private lateinit var inicioSesionExitosa : MutableLiveData<Boolean?>
+    private lateinit var usuarioInicioSesionModel: UsuarioInicioSesionModel
+    private lateinit var escuchadorExcepciones: MutableLiveData<LogicaExcepcion?>
+    //endregion
 
     fun iniciarSesion() {
         GlobalScope.launch {
@@ -26,6 +30,22 @@ class HelperIniciarSesion constructor(
             inicioSesionExitosa.postValue(true)
         }
     }
+
+    fun conInicioSesionExitosa(inicioSesionExitosa : MutableLiveData<Boolean?>) : HelperIniciarSesion {
+        this.inicioSesionExitosa = inicioSesionExitosa
+        return this
+    }
+
+    fun conUsuarioInicioSesionModel(usuarioInicioSesionModel: UsuarioInicioSesionModel) : HelperIniciarSesion {
+        this.usuarioInicioSesionModel = usuarioInicioSesionModel
+        return this
+    }
+
+    fun conEscuchadorExcepciones(escuchadorExcepciones: MutableLiveData<LogicaExcepcion?>) : HelperIniciarSesion {
+        this.escuchadorExcepciones = escuchadorExcepciones
+        return this
+    }
+
 
     //region metodos privados
     private fun elCorreoExiste() : Boolean {

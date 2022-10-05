@@ -8,12 +8,16 @@ import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarAfiliado.JA
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 class HelperTraerListaJACSRegistrados constructor(
-    private val listaJacsRegistradas : MutableLiveData<List<JACDisponibleParaAfiliadoModel>?>,
-    private val jacDao: JacDao,
-    private val escuchadorExcepciones: MutableLiveData<LogicaExcepcion?>
+    @JvmField @Inject var jacDao: JacDao,
 ) {
+
+    //region variables
+    private lateinit var listaJacsRegistradas : MutableLiveData<List<JACDisponibleParaAfiliadoModel>?>
+    private lateinit var escuchadorExcepciones: MutableLiveData<LogicaExcepcion?>
+    //endregion
 
     fun traerLista() {
         GlobalScope.launch {
@@ -22,6 +26,17 @@ class HelperTraerListaJACSRegistrados constructor(
             cargoListaDesdeDBLocal()
         }
     }
+
+    fun conListaJacsRegistradas(listaJacsRegistradas : MutableLiveData<List<JACDisponibleParaAfiliadoModel>?>) : HelperTraerListaJACSRegistrados {
+        this.listaJacsRegistradas = listaJacsRegistradas
+        return this
+    }
+
+    fun conEscuchadorExcepciones(escuchadorExcepciones: MutableLiveData<LogicaExcepcion?>) : HelperTraerListaJACSRegistrados {
+        this.escuchadorExcepciones = escuchadorExcepciones
+        return this
+    }
+
 
     //region metodos privados
     private fun cargoListaDesdeDBLocal(): Boolean {

@@ -26,12 +26,12 @@ interface  LoginDBDatasource {
 }
 
 class LoginDBDatasourceImpl constructor(
-    @JvmField @Inject var afiliadoDao: AfiliadoDao,
-    @JvmField @Inject var afiliadoCorreoDao: Afiliado_Correo_Dao,
-    @JvmField @Inject var afiliado_Jac_EstadoAfiliacionDao : Afiliado_Jac_EstadoAfiliacionDao,
-    @JvmField @Inject var correoDao: CorreoDao,
     @JvmField @Inject var memoriaCacheLocal: MemoriaCache,
-    @JvmField @Inject var jacDao: JacDao
+
+    @JvmField @Inject var helperRegistroJAC: HelperRegistroJAC,
+    @JvmField @Inject var helperIniciarSesion: HelperIniciarSesion,
+    @JvmField @Inject var helperTraerListaJACSRegistrados: HelperTraerListaJACSRegistrados,
+    @JvmField @Inject var helperRegistroAfilado: HelperRegistroAfilado,
     ): BaseDBDatasourceImpl(memoriaCache = memoriaCacheLocal), LoginDBDatasource {
 
     //region variables
@@ -43,44 +43,37 @@ class LoginDBDatasourceImpl constructor(
 
 
     override fun registrarAfiliado(afiliadoARegistrarModel: AfiliadoARegistrarModel): MutableLiveData<Boolean?> {
-        HelperRegistroAfilado(
-            afiliadoDao = afiliadoDao,
-            afiliadoARegistrarModel = afiliadoARegistrarModel,
-            afiliado_Jac_EstadoAfiliacionDao = afiliado_Jac_EstadoAfiliacionDao,
-            afiliadoCorreoDao = afiliadoCorreoDao,
-            correoDao= correoDao,
-            escuchadorExcepciones = traerExcepcionesLiveData(),
-            escuchadorRegistroAfiliadoExitoso = registroExitosoAfiliado,
-        ).registrar()
+        helperRegistroAfilado
+            .conAfiliadoARegistrarModel(afiliadoARegistrarModel = afiliadoARegistrarModel)
+            .conEscuchadorRegistroAfiliadoExitoso(escuchadorRegistroAfiliadoExitoso = registroExitosoAfiliado)
+            .conEscuchadorExcepciones(escuchadorExcepciones = traerExcepcionesLiveData())
+            .registrar()
         return registroExitosoAfiliado
     }
 
     override fun registrarJAC(jacRegistroModel: JACRegistroModel): MutableLiveData<Boolean?> {
-        HelperRegistroJAC(
-            jacRegistroModel = jacRegistroModel,
-            registroExitosoJAC = registroExitosoJAC,
-            escuchadorExcepciones = traerExcepcionesLiveData(),
-            jacDao = jacDao
-        ).registrarJAC()
+        helperRegistroJAC
+            .conRegistroExitosoLiveData(registroExitosoJAC= registroExitosoJAC)
+            .conJACRegistroModel(jacRegistroModel = jacRegistroModel)
+            .conEscuchadorExcepciones(escuchadorExcepciones = traerExcepcionesLiveData())
+            .registrarJAC()
         return registroExitosoJAC
     }
 
     override fun iniciarSesion(usuarioInicioSesionModel: UsuarioInicioSesionModel): MutableLiveData<Boolean?> {
-        HelperIniciarSesion(
-            jacDao = jacDao,
-            usuarioInicioSesionModel = usuarioInicioSesionModel,
-            escuchadorExcepciones = traerExcepcionesLiveData(),
-            inicioSesionExitosa = inicioSesionExitoso
-        ).iniciarSesion()
+        helperIniciarSesion
+            .conInicioSesionExitosa(inicioSesionExitosa = inicioSesionExitoso)
+            .conEscuchadorExcepciones(escuchadorExcepciones = traerExcepcionesLiveData())
+            .conUsuarioInicioSesionModel(usuarioInicioSesionModel = usuarioInicioSesionModel)
+            .iniciarSesion()
         return inicioSesionExitoso
     }
 
     override fun traerJacsRegistradas(): MutableLiveData<List<JACDisponibleParaAfiliadoModel>?> {
-        HelperTraerListaJACSRegistrados(
-            listaJacsRegistradas = listaJacsRegistradas,
-            jacDao = jacDao,
-            escuchadorExcepciones = traerExcepcionesLiveData()
-        ).traerLista()
+        helperTraerListaJACSRegistrados
+            .conListaJacsRegistradas(listaJacsRegistradas = listaJacsRegistradas)
+            .conEscuchadorExcepciones(escuchadorExcepciones = traerExcepcionesLiveData())
+            .traerLista()
         return listaJacsRegistradas
     }
 }
