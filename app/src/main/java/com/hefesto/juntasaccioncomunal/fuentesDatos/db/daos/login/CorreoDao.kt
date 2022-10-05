@@ -9,5 +9,5 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.CorreosEnt
 interface CorreoDao : BaseDao<CorreosEntity>{
 
     @Query("SELECT CorreosEntity.registro FROM CorreosEntity WHERE CorreosEntity.correo = :correo")
-    fun traerId(correo : String): Int
+    fun traerId(correo : String): Int?
 }

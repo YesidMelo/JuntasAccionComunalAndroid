@@ -8,10 +8,13 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.TipoDocument
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.TipoTelefonoDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.AfiliadoDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Correo_Dao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Direccion_Dao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Jac_EstadoAfiliacionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.CorreoDao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.DireccionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.EstadoAfiliacionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.JacDao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Jac_Afiliado_Direccion_Dao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.RolAfiliacionDao
 import dagger.Module
 import dagger.Provides
@@ -32,7 +35,13 @@ class BaseDatosModule {
     fun providesAfiliado_Jac_EstadoAfiliacionDao(baseDatosApp: BaseDatosApp): Afiliado_Jac_EstadoAfiliacionDao = baseDatosApp.afiliado_Jac_EstadoAfiliacionDao()
 
     @Provides
+    fun providesAfiliadoDireccionDao(baseDatosApp: BaseDatosApp): Afiliado_Direccion_Dao = baseDatosApp.afiliado_Direccion_Dao()
+
+    @Provides
     fun providesCorreoDao(baseDatosApp: BaseDatosApp): CorreoDao = baseDatosApp.correoDao()
+
+    @Provides
+    fun providesDireccionDao(baseDatosApp: BaseDatosApp): DireccionDao = baseDatosApp.direccionDao()
 
     @Provides
     fun providesEstadoAfiliacionDao(baseDatosApp: BaseDatosApp): EstadoAfiliacionDao = baseDatosApp.EstadoAfiliacionDao()
@@ -42,6 +51,9 @@ class BaseDatosModule {
 
     @Provides
     fun providesJacDao(baseDatosApp: BaseDatosApp): JacDao = baseDatosApp.JacDao()
+
+    @Provides
+    fun providesJacAfiliadoDireccionDao(baseDatosApp: BaseDatosApp): Jac_Afiliado_Direccion_Dao = baseDatosApp.Jac_Afiliado_Direccion_Dao()
 
     @Provides
     fun providesRolAfiliacionDao(baseDatosApp: BaseDatosApp): RolAfiliacionDao = baseDatosApp.rolAfiliacionDao()

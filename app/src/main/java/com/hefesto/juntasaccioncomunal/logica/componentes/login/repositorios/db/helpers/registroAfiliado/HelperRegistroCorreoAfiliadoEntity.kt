@@ -38,7 +38,7 @@ class HelperRegistroCorreoAfiliadoEntity constructor(
 
     private fun vincularAfiliadoACorreo() {
         val correoId = correoDao.traerId(correo = afiliadoARegistrarModel.correo!!)
-        val afiliadoId = afiliadoDao.traerId(
+        val afiliadoId = afiliadoDao.traerIdPorTipoDocumentoYDocumento(
             tipoDocumento = afiliadoARegistrarModel.tipoDocumento!!.tipoDocumento.traerId(),
             documento = afiliadoARegistrarModel.numeroDocumento!!
         )

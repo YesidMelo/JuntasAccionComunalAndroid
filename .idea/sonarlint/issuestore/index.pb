@@ -96,8 +96,6 @@ Qapp/src/main/java/com/hefesto/juntasaccioncomunal/ui/navegacion/HelperFragment.
 Xapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/entities/BaseEntity.kt,2\7\271461bb4c9678501ae60ccc96dfc315ef713183
 †
 Vapp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/modules/LoginActivityModule.kt,d\7\d77b861b124deddbe059fcafdc2853d383668e30
-†
-Vapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/login/JacDao.kt,0\b\0b6dc2d47cc51e37be271f33284d038c162c821b
 ¦
 vapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/repositorios/db/mapper/JacRegistroMapper.kt,1\e\1e925cff3094f03f75ee909caf55dbcd83f12adc
 §

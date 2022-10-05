@@ -37,7 +37,7 @@ class HelperRegistroAfiliadoEntity constructor(
     }
 
     private fun guardarRelacionAfiliadoJACEstadoAfiliacion() {
-        val afiliadoId = afiliadoDao.traerId(
+        val afiliadoId = afiliadoDao.traerIdPorTipoDocumentoYDocumento(
             tipoDocumento = afiliadoARegistrarModel.tipoDocumento!!.tipoDocumento.traerId(),
             documento = afiliadoARegistrarModel.numeroDocumento!!
         )
