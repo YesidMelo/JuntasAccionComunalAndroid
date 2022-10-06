@@ -17,6 +17,7 @@ import com.hefesto.juntasaccioncomunal.logica.utilidades.constantes.ConstantesFe
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.FormatosFecha
 import com.hefesto.juntasaccioncomunal.logica.utilidades.extenciones.convertirAFormato
 import com.hefesto.juntasaccioncomunal.ui.base.BaseFragment
+import com.hefesto.juntasaccioncomunal.ui.dialogo.DialogoInformativo
 import com.hefesto.juntasaccioncomunal.ui.navegacion.AccionesNavGrap
 import com.hefesto.juntasaccioncomunal.ui.navegacion.NodosNavegacionFragments
 import java.util.*
@@ -71,18 +72,20 @@ class RegistrarAfiliadoFragment : BaseFragment<RegistrarAfiliadoFragmentViewMode
 
     private fun ponerEscuchadorBotonRegistrarAfiliado() {
         binding.buttonRegistrarAfiliado.setOnClickListener {
-            funcionSegura {
-                traerViewModel()
-                    .registrarAfiliado(traerInformacionAfiliadoDeLaVista())
-                    .observe(viewLifecycleOwner) {
-                        if(it == null) {
-                            mostrarLoading()
-                            return@observe
+            mostrarAdvertenciaPreviaRegistro {
+                funcionSegura {
+                    traerViewModel()
+                        .registrarAfiliado(traerInformacionAfiliadoDeLaVista())
+                        .observe(viewLifecycleOwner) {
+                            if(it == null) {
+                                mostrarLoading()
+                                return@observe
+                            }
+                            ocultarLoading()
+                            if (!it) return@observe
+                            mostrarDialogoRegistroExitoso()
                         }
-                        ocultarLoading()
-                        if (!it) return@observe
-                        Log.e("Error", "Se registro el afiliado")
-                    }
+                }
             }
         }
     }
@@ -197,5 +200,32 @@ class RegistrarAfiliadoFragment : BaseFragment<RegistrarAfiliadoFragmentViewMode
     }
 
     //endregion
+
+    //region dialogos
+    private fun mostrarDialogoRegistroExitoso() {
+        mostrarDialogo(
+            tipoDialogo = DialogoInformativo.TipoDialogo.INFORMATIVO,
+            titulo = R.string.registro_afiliado_jac,
+            mensaje = R.string.registro_afiliado_exitoso,
+            accionAceptar = {
+                navegacionAplicacion.navegar(
+                    de = NodosNavegacionFragments.REGISTRAR_AFILIADO,
+                    a = NodosNavegacionFragments.INICIAR_SESION,
+                    accion = AccionesNavGrap.REGISTRAR_AFILIADO_A_INICIAR_SESION
+                )
+            }
+        )
+    }
+
+    private fun mostrarAdvertenciaPreviaRegistro(funcion : ()->Unit) {
+        mostrarDialogo(
+            tipoDialogo = DialogoInformativo.TipoDialogo.ADVERTENCIA,
+            titulo = R.string.registro_afiliado_jac,
+            mensaje = R.string.deseas_continuar_con_el_registro,
+            accionAceptar = funcion
+        )
+    }
+    //endregion
+
     //endregion
 }

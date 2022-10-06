@@ -67,4 +67,6 @@
     <string name="campo_telefono_vacio">No ha ingresado un telefono. Intentelo nuevamente</string>
     <string name="el_telefono_no_es_valido">El numero de telefono no es valido. Vuelvelo a intentar</string>
     <string name="afiliado_registrado_en_la_junta">Este afiliado ya se encuentra registrado en la junta. Habla con el/la secretario/a para mas informacion.</string>
+    <string name="registro_afiliado_exitoso">El registro del afiliado a la jac a sido exitoso.</string>
+    <string name="deseas_continuar_con_el_registro">Deseas continuar con el registro del afiliacion?</string>
 </resources>

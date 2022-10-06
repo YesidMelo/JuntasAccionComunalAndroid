@@ -61,21 +61,23 @@ class RegistrarJACFragment : BaseFragment<RegistrarJACFragmentViewModel>() {
 
     private fun ponerEscuchadorBotonRegistrar() {
         binding.buttonRegistrar.setOnClickListener {
-            funcionSegura {
-                traerViewModel()
-                    .registrarJAC(JACRegistroModel(
-                        NombreJAC = binding.editTextNombreJAC.text?.toString(),
-                        CodigoJAC = binding.editTextCodigoJAC.text?.toString(),
-                        Correo = binding.editTextCorreo.text?.toString(),
-                        Contrasenia = binding.editTextContrasenia.text?.toString(),
-                        RepetirContrasenia = binding.editTextRepetirContrasenia.text?.toString()
-                    ))
-                    .observe(viewLifecycleOwner) {
-                        if (it == null) { mostrarLoading(); return@observe; }
-                        ocultarLoading()
-                        if (!it) return@observe
-                        notificacionRegistroExitoso()
-                    }
+            mostrarAdvertenciaPreviaRegistro {
+                funcionSegura {
+                    traerViewModel()
+                        .registrarJAC(JACRegistroModel(
+                            NombreJAC = binding.editTextNombreJAC.text?.toString(),
+                            CodigoJAC = binding.editTextCodigoJAC.text?.toString(),
+                            Correo = binding.editTextCorreo.text?.toString(),
+                            Contrasenia = binding.editTextContrasenia.text?.toString(),
+                            RepetirContrasenia = binding.editTextRepetirContrasenia.text?.toString()
+                        ))
+                        .observe(viewLifecycleOwner) {
+                            if (it == null) { mostrarLoading(); return@observe; }
+                            ocultarLoading()
+                            if (!it) return@observe
+                            notificacionRegistroExitoso()
+                        }
+                }
             }
         }
     }
@@ -86,6 +88,15 @@ class RegistrarJACFragment : BaseFragment<RegistrarJACFragmentViewModel>() {
             titulo = R.string.registro_jac,
             mensaje = R.string.registro_exitoso_jac,
             accionAceptar = ::navegarAIniciarSesion
+        )
+    }
+
+    private fun mostrarAdvertenciaPreviaRegistro(funcion: ()->Unit) {
+        mostrarDialogo(
+            tipoDialogo = DialogoInformativo.TipoDialogo.ADVERTENCIA,
+            titulo = R.string.registrar_jac,
+            mensaje = R.string.deseas_continuar_con_el_registro,
+            accionAceptar = funcion
         )
     }
 

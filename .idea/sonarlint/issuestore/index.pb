@@ -48,14 +48,10 @@ iapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/base/repos
 Zapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/splash/ui/SplashUI.kt,6\1\61bfd54025f628daa58aca62f720ce431f557c76
 Ñ
 Tapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/cache/MemoriaCache.kt,1\7\1783a16ccbe4a025bdb6bb59d9a49c37aeebe0b0
-P
- app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
 ù
 mapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/base/repositorios/BaseCacheDatasource.kt,c\1\c148a151a977a45863719a4d5f75a479f4ccab42
 <
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
-@
-app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
 ó
 gapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/login/registrarJAC/JACRegistroModel.kt,7\c\7c1fc928108d8dc2fed4a7e7d109fd74a495b529
 x
@@ -86,10 +82,6 @@ Japp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/FragmentBuilder.kt,9\d
 kapp/src/main/java/com/hefesto/juntasaccioncomunal/ui/fragments/login/iniciarSesion/IniciarSesionFragment.kt,b\c\bc2f2d32f3ad0222730b2f4130ba9b45828aa0c5
 Ç
 Rapp/src/main/java/com/hefesto/juntasaccioncomunal/ui/navegacion/AccionesNavGrap.kt,2\a\2afa997b4eead5a50e30b60eb1da5aec163a4519
-á
-Wapp/src/main/java/com/hefesto/juntasaccioncomunal/ui/navegacion/NavegacionAplicacion.kt,5\c\5c4b32e9af39b0a72ad4d48686d6cce4ccaaaae1
-Å
-Qapp/src/main/java/com/hefesto/juntasaccioncomunal/ui/navegacion/HelperFragment.kt,2\a\2adb7d7d8c7a9918dccffbb3fa6384e570ca74f0
 à
 Xapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/entities/BaseEntity.kt,2\7\271461bb4c9678501ae60ccc96dfc315ef713183
 Ü
@@ -146,8 +138,6 @@ _app/src/main/java/com/hefesto/juntasaccioncomunal/logica/utilidades/ValidacionS
 japp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/casosUso/RegistrarJACCasoUso.kt,0\9\0908c7f7055f8c8c369018259bd3ce4744f36f26
 ü
 oapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/casosUso/RegistrarAfiliadoCasoUso.kt,1\d\1df8e61c02ec59cdb350beef8cf7cd5d7fe3beab
-£
-sapp/src/main/java/com/hefesto/juntasaccioncomunal/ui/fragments/login/registrarAfiliado/RegistrarAfiliadoFragment.kt,4\e\4e84252f6ab4a740609658ce70e6b05438466894
 õ
 kapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/repositorios/LoginRepositorio.kt,2\6\2692036e67db8eb21a28c4dd0b8482d1b76b1af1
 ê

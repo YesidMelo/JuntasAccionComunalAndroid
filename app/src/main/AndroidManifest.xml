@@ -16,12 +16,16 @@
         tools:targetApi="31"
         android:screenOrientation="portrait"
         >
-        <activity android:name=".ui.activities.login.LoginActivity" />
+        <activity
+            android:name=".ui.activities.login.LoginActivity"
+            android:hardwareAccelerated="true"
+            />
         <activity
             android:name=".ui.activities.splash.SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.JuntasAccionComunal"
             android:noHistory="true"
+            android:hardwareAccelerated="true"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
