@@ -7,6 +7,7 @@ import com.hefesto.juntasaccioncomunal.logica.excepciones.LogicaExcepcion
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarAfiliado.JACDisponibleParaAfiliadoModel
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -15,34 +16,17 @@ class HelperTraerListaJACSRegistrados constructor(
 ) {
 
     //region variables
-    private lateinit var listaJacsRegistradas : MutableLiveData<List<JACDisponibleParaAfiliadoModel>?>
     private lateinit var escuchadorExcepciones: MutableLiveData<LogicaExcepcion?>
     //endregion
-
-    fun traerLista() {
-        GlobalScope.launch {
-            listaJacsRegistradas.postValue(null)
-            delay(5000)
-            cargoListaDesdeDBLocal()
-        }
-    }
-
-    fun conListaJacsRegistradas(listaJacsRegistradas : MutableLiveData<List<JACDisponibleParaAfiliadoModel>?>) : HelperTraerListaJACSRegistrados {
-        this.listaJacsRegistradas = listaJacsRegistradas
-        return this
-    }
 
     fun conEscuchadorExcepciones(escuchadorExcepciones: MutableLiveData<LogicaExcepcion?>) : HelperTraerListaJACSRegistrados {
         this.escuchadorExcepciones = escuchadorExcepciones
         return this
     }
 
-
-    //region metodos privados
-    private fun cargoListaDesdeDBLocal(): Boolean {
-        val lista = jacDao.traerListaTodosLosRegistros()
-        listaJacsRegistradas.postValue(lista.convertirAListaJacDisponibleParaAfiliacion())
-        return true
+    fun traerLista() = flow<List<JACDisponibleParaAfiliadoModel>?> {
+        emit(null)
+        delay(5000)
+        emit(jacDao.traerListaTodosLosRegistros().convertirAListaJacDisponibleParaAfiliacion())
     }
-    //endregion
 }

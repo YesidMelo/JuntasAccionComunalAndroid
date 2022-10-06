@@ -9,9 +9,8 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.registroAfiliado.HelperValidarExisteUsuarioEnJAC
 import com.hefesto.juntasaccioncomunal.logica.excepciones.LogicaExcepcion
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarAfiliado.AfiliadoARegistrarModel
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class HelperRegistroAfilado constructor(
@@ -25,7 +24,6 @@ class HelperRegistroAfilado constructor(
 
     //variables variables
     private lateinit var afiliadoARegistrarModel: AfiliadoARegistrarModel
-    private lateinit var escuchadorRegistroAfiliadoExitoso: MutableLiveData<Boolean?>
     private lateinit var escuchadorExcepciones: MutableLiveData<LogicaExcepcion?>
     //enregion
 
@@ -34,32 +32,17 @@ class HelperRegistroAfilado constructor(
         return this
     }
 
-    fun conEscuchadorRegistroAfiliadoExitoso(escuchadorRegistroAfiliadoExitoso: MutableLiveData<Boolean?>) : HelperRegistroAfilado {
-        this.escuchadorRegistroAfiliadoExitoso = escuchadorRegistroAfiliadoExitoso
-        return this
-    }
-
     fun conEscuchadorExcepciones(escuchadorExcepciones: MutableLiveData<LogicaExcepcion?>) : HelperRegistroAfilado {
         this.escuchadorExcepciones = escuchadorExcepciones
         return this
     }
 
-    fun registrar() {
-        GlobalScope.launch {
-            escuchadorRegistroAfiliadoExitoso.postValue(null)
-            if(
-                helperValidarExisteUsuarioEnJAC
-                    .conAfiliadoARegistrarModel(afiliadoARegistrarModel = afiliadoARegistrarModel)
-                    .conEscuchadorExcepciones(escuchadorExcepciones = escuchadorExcepciones)
-                    .existeUsuario()
-            ) {
-                escuchadorRegistroAfiliadoExitoso.postValue(false)
-                return@launch
-            }
-            registrarAfiliadoADB()
-            delay(5000)
-            escuchadorRegistroAfiliadoExitoso.postValue(true)
-        }
+    fun registrar() = flow <Boolean?> {
+        emit(null)
+        if(existeUsuario()) { emit(false); return@flow; }
+        registrarAfiliadoADB()
+        delay(5000)
+        emit(true)
     }
 
     //region metodos privados
@@ -69,6 +52,13 @@ class HelperRegistroAfilado constructor(
         helperRegistroDireccionAfiliadoEntity.conAfiliadoARegistrarModel(afiliadoARegistrarModel = afiliadoARegistrarModel).guardarDireccion()
         helperRegistroTelefonoEntity.conAfiliadoARegistrar(afiliadoARegistrarModel = afiliadoARegistrarModel).guardarTelefono()
         helperRegistroCredencialesSesionAfiliado.conAfiliadoARegistrarModel(afiliadoARegistrarModel = afiliadoARegistrarModel).guardarCredencialesSesion()
+    }
+
+    private suspend fun existeUsuario() : Boolean {
+        return helperValidarExisteUsuarioEnJAC
+            .conAfiliadoARegistrarModel(afiliadoARegistrarModel = afiliadoARegistrarModel)
+            .conEscuchadorExcepciones(escuchadorExcepciones = escuchadorExcepciones)
+            .existeUsuario()
     }
 
     //endregion

@@ -6,6 +6,9 @@ import com.hefesto.juntasaccioncomunal.logica.modelos.login.iniciarSesion.Usuari
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarAfiliado.AfiliadoARegistrarModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarAfiliado.JACDisponibleParaAfiliadoModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarJAC.JACRegistroModel
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 interface LoginRepositorio {
@@ -22,12 +25,47 @@ class LoginRepositorioImpl constructor(
     @JvmField @Inject var loginSharedPreferencesDatasource: LoginSharedPreferencesDatasource
 ) : LoginRepositorio {
 
-    override fun iniciarSesion(usuarioInicioSesionModel: UsuarioInicioSesionModel): MutableLiveData<Boolean?> = loginDBDatasource.iniciarSesion(usuarioInicioSesionModel = usuarioInicioSesionModel)
+    //region variables
+    private val iniciarSesionLiveData = MutableLiveData<Boolean?>()
+    private val escuchadorRegistroAfiliadoExitoso = MutableLiveData<Boolean?>()
+    private val registroExitosoJAC = MutableLiveData<Boolean?>()
+    private val listaJACLivedata = MutableLiveData<List<JACDisponibleParaAfiliadoModel>?>()
+    //endregion
 
-    override fun registrarJAC(jacRegistroModel: JACRegistroModel): MutableLiveData<Boolean?> = loginDBDatasource.registrarJAC(jacRegistroModel = jacRegistroModel)
+    override fun iniciarSesion(usuarioInicioSesionModel: UsuarioInicioSesionModel): MutableLiveData<Boolean?> {
+        GlobalScope.launch {
+            loginDBDatasource
+                .iniciarSesion(usuarioInicioSesionModel = usuarioInicioSesionModel)
+                .collect { iniciarSesionLiveData.postValue(it) }
+        }
+        return iniciarSesionLiveData
+    }
 
-    override fun registrarAfiliado(afiliadoARegistrarModel: AfiliadoARegistrarModel): MutableLiveData<Boolean?> = loginDBDatasource.registrarAfiliado(afiliadoARegistrarModel = afiliadoARegistrarModel)
+    override fun registrarJAC(jacRegistroModel: JACRegistroModel): MutableLiveData<Boolean?> {
+        GlobalScope.launch {
+            loginDBDatasource
+                .registrarJAC(jacRegistroModel = jacRegistroModel)
+                .collect{registroExitosoJAC.postValue(it)}
+        }
+        return registroExitosoJAC
+    }
 
-    override fun traerJacsRegistradas(): MutableLiveData<List<JACDisponibleParaAfiliadoModel>?> = loginDBDatasource.traerJacsRegistradas()
+    override fun registrarAfiliado(afiliadoARegistrarModel: AfiliadoARegistrarModel): MutableLiveData<Boolean?> {
+        GlobalScope.launch {
+            loginDBDatasource
+                .registrarAfiliado(afiliadoARegistrarModel = afiliadoARegistrarModel)
+                .collect { escuchadorRegistroAfiliadoExitoso.postValue(it)}
+        }
+        return escuchadorRegistroAfiliadoExitoso
+    }
+
+    override fun traerJacsRegistradas(): MutableLiveData<List<JACDisponibleParaAfiliadoModel>?> {
+        GlobalScope.launch {
+            loginDBDatasource
+                .traerJacsRegistradas()
+                .collect{ listaJACLivedata.postValue(it)}
+        }
+        return listaJACLivedata
+    }
 
 }

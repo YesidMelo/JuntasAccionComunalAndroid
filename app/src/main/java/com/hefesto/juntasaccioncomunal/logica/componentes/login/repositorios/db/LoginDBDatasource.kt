@@ -16,13 +16,14 @@ import com.hefesto.juntasaccioncomunal.logica.modelos.login.iniciarSesion.Usuari
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarAfiliado.AfiliadoARegistrarModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarAfiliado.JACDisponibleParaAfiliadoModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarJAC.JACRegistroModel
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 interface  LoginDBDatasource {
-    fun iniciarSesion(usuarioInicioSesionModel: UsuarioInicioSesionModel) : MutableLiveData<Boolean?>
-    fun registrarAfiliado(afiliadoARegistrarModel: AfiliadoARegistrarModel): MutableLiveData<Boolean?>
-    fun registrarJAC(jacRegistroModel: JACRegistroModel): MutableLiveData<Boolean?>
-    fun traerJacsRegistradas(): MutableLiveData<List<JACDisponibleParaAfiliadoModel>?>
+    fun iniciarSesion(usuarioInicioSesionModel: UsuarioInicioSesionModel) : Flow<Boolean?>
+    fun registrarAfiliado(afiliadoARegistrarModel: AfiliadoARegistrarModel): Flow<Boolean?>
+    fun registrarJAC(jacRegistroModel: JACRegistroModel): Flow<Boolean?>
+    fun traerJacsRegistradas(): Flow<List<JACDisponibleParaAfiliadoModel>?>
 }
 
 class LoginDBDatasourceImpl constructor(
@@ -35,45 +36,34 @@ class LoginDBDatasourceImpl constructor(
     ): BaseDBDatasourceImpl(memoriaCache = memoriaCacheLocal), LoginDBDatasource {
 
     //region variables
-    private val registroExitosoJAC = MutableLiveData<Boolean?>()
-    private val registroExitosoAfiliado = MutableLiveData<Boolean?>()
-    private val inicioSesionExitoso = MutableLiveData<Boolean?>()
     private val listaJacsRegistradas = MutableLiveData<List<JACDisponibleParaAfiliadoModel>?>()
     //endregion
 
 
-    override fun registrarAfiliado(afiliadoARegistrarModel: AfiliadoARegistrarModel): MutableLiveData<Boolean?> {
-        helperRegistroAfilado
+    override fun registrarAfiliado(afiliadoARegistrarModel: AfiliadoARegistrarModel): Flow<Boolean?> {
+        return helperRegistroAfilado
             .conAfiliadoARegistrarModel(afiliadoARegistrarModel = afiliadoARegistrarModel)
-            .conEscuchadorRegistroAfiliadoExitoso(escuchadorRegistroAfiliadoExitoso = registroExitosoAfiliado)
             .conEscuchadorExcepciones(escuchadorExcepciones = traerExcepcionesLiveData())
             .registrar()
-        return registroExitosoAfiliado
     }
 
-    override fun registrarJAC(jacRegistroModel: JACRegistroModel): MutableLiveData<Boolean?> {
-        helperRegistroJAC
-            .conRegistroExitosoLiveData(registroExitosoJAC= registroExitosoJAC)
+    override fun registrarJAC(jacRegistroModel: JACRegistroModel): Flow<Boolean?> {
+        return helperRegistroJAC
             .conJACRegistroModel(jacRegistroModel = jacRegistroModel)
             .conEscuchadorExcepciones(escuchadorExcepciones = traerExcepcionesLiveData())
             .registrarJAC()
-        return registroExitosoJAC
     }
 
-    override fun iniciarSesion(usuarioInicioSesionModel: UsuarioInicioSesionModel): MutableLiveData<Boolean?> {
-        helperIniciarSesion
-            .conInicioSesionExitosa(inicioSesionExitosa = inicioSesionExitoso)
+    override fun iniciarSesion(usuarioInicioSesionModel: UsuarioInicioSesionModel): Flow<Boolean?> {
+        return helperIniciarSesion
             .conEscuchadorExcepciones(escuchadorExcepciones = traerExcepcionesLiveData())
             .conUsuarioInicioSesionModel(usuarioInicioSesionModel = usuarioInicioSesionModel)
             .iniciarSesion()
-        return inicioSesionExitoso
     }
 
-    override fun traerJacsRegistradas(): MutableLiveData<List<JACDisponibleParaAfiliadoModel>?> {
-        helperTraerListaJACSRegistrados
-            .conListaJacsRegistradas(listaJacsRegistradas = listaJacsRegistradas)
+    override fun traerJacsRegistradas(): Flow<List<JACDisponibleParaAfiliadoModel>?> {
+        return helperTraerListaJACSRegistrados
             .conEscuchadorExcepciones(escuchadorExcepciones = traerExcepcionesLiveData())
             .traerLista()
-        return listaJacsRegistradas
     }
 }

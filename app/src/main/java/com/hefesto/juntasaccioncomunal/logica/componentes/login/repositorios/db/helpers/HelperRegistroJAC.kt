@@ -10,9 +10,8 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.
 import com.hefesto.juntasaccioncomunal.logica.excepciones.EstaJuntaYaSeEncuentraRegistradaException
 import com.hefesto.juntasaccioncomunal.logica.excepciones.LogicaExcepcion
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarJAC.JACRegistroModel
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class HelperRegistroJAC constructor(
@@ -23,7 +22,6 @@ class HelperRegistroJAC constructor(
 
     //region variables
     private lateinit var jacRegistroModel: JACRegistroModel
-    private lateinit var registroExitosoJAC : MutableLiveData<Boolean?>
     private lateinit var escuchadorExcepciones: MutableLiveData<LogicaExcepcion?>
     //endregion
 
@@ -32,30 +30,21 @@ class HelperRegistroJAC constructor(
         return this
     }
 
-    fun conRegistroExitosoLiveData(registroExitosoJAC : MutableLiveData<Boolean?>) : HelperRegistroJAC {
-        this.registroExitosoJAC = registroExitosoJAC
-        return this
-    }
-
     fun conEscuchadorExcepciones(escuchadorExcepciones: MutableLiveData<LogicaExcepcion?>) : HelperRegistroJAC {
         this.escuchadorExcepciones = escuchadorExcepciones
         return this
     }
 
-    fun registrarJAC(){
-        GlobalScope.launch {
-            registroExitosoJAC.postValue(null)
-            if (existeCorreo()) {
-                registroExitosoJAC.postValue(false)
-                return@launch
-            }
-            adicionarRegistroCorreo()
-            adicionarRegistroCredencialesSesion()
-            adicionarRegistroJAC()
-            delay(5000)
-            registroExitosoJAC.postValue(true)
-        }
+    fun registrarJAC() = flow<Boolean?> {
+        emit(null)
+        if (existeCorreo()) { emit(false); return@flow }
+        adicionarRegistroCorreo()
+        adicionarRegistroCredencialesSesion()
+        adicionarRegistroJAC()
+        delay(5000)
+        emit(true)
     }
+
 
     //region metodos privados
     private fun existeCorreo(): Boolean {
