@@ -14,10 +14,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JuntasAccionComunal"
         tools:targetApi="31"
-        android:screenOrientation="portrait"
         >
         <activity
             android:name=".ui.activities.login.LoginActivity"
+            android:hardwareAccelerated="true"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".ui.activities.home.HomeActivity"
+            android:screenOrientation="portrait"
             android:hardwareAccelerated="true"
             />
         <activity
@@ -26,6 +31,7 @@
             android:theme="@style/Theme.JuntasAccionComunal"
             android:noHistory="true"
             android:hardwareAccelerated="true"
+            android:screenOrientation="portrait"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

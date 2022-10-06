@@ -1,6 +1,8 @@
 package com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers
 
 import androidx.lifecycle.MutableLiveData
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.AfiliadoDao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.CorreoDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.JacDao
 import com.hefesto.juntasaccioncomunal.logica.excepciones.LogicaExcepcion
 import com.hefesto.juntasaccioncomunal.logica.excepciones.RevisaCredencialesExcepcion
@@ -12,7 +14,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class HelperIniciarSesion constructor(
-    @JvmField @Inject var jacDao: JacDao
+    @JvmField @Inject var jacDao: JacDao,
+    @JvmField @Inject var correoDao: CorreoDao
 ) {
 
     //region variables
@@ -50,7 +53,8 @@ class HelperIniciarSesion constructor(
     //region metodos privados
     private fun elCorreoExiste() : Boolean {
         val jacEntity = jacDao.encontrarRegistroPorCorreo(email = usuarioInicioSesionModel.correo!!)
-        if (jacEntity == null) {
+        val correoId = correoDao.traerId(correo = usuarioInicioSesionModel.correo!!)
+        if (jacEntity == null && correoId == null) {
             inicioSesionExitosa.postValue(false)
             escuchadorExcepciones.postValue(UsuarioNoEstaRegistradoExcepcion())
             return false
@@ -59,7 +63,11 @@ class HelperIniciarSesion constructor(
     }
 
     private fun lasCredencialesSonCorrectas() : Boolean{
-        val jacEntity = jacDao.encontrarRegistroPorCorreoYContrasenia(email = usuarioInicioSesionModel.correo!!, contrasenia = usuarioInicioSesionModel.contrasenia!!)
+        val jacEntity = jacDao.encontrarRegistroPorCorreoYContrasenia(
+            email = usuarioInicioSesionModel.correo!!,
+            contrasenia = usuarioInicioSesionModel.contrasenia!!
+        )
+
         if (jacEntity == null) {
             inicioSesionExitosa.postValue(false)
             escuchadorExcepciones.postValue(RevisaCredencialesExcepcion())

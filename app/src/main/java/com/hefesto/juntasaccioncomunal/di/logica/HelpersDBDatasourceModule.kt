@@ -102,7 +102,13 @@ class HelpersDBDatasourceModule {
     )
 
     @Provides
-    fun providesHelperIniciarSesion(jacDao: JacDao) : HelperIniciarSesion = HelperIniciarSesion(jacDao = jacDao)
+    fun providesHelperIniciarSesion(
+        jacDao: JacDao,
+        correoDao: CorreoDao
+    ) : HelperIniciarSesion = HelperIniciarSesion(
+        jacDao = jacDao,
+        correoDao = correoDao
+    )
 
     @Provides
     fun providesHelperRegistroJAC(jacDao: JacDao) : HelperRegistroJAC = HelperRegistroJAC(jacDao = jacDao)
