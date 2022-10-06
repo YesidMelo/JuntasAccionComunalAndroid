@@ -118,11 +118,9 @@ class HelpersDBDatasourceModule {
 
     @Provides
     fun providesHelperIniciarSesion(
-        jacDao: JacDao,
-        correoDao: CorreoDao
+        credencialesSesionDao: CredencialesSesionDao
     ) : HelperIniciarSesion = HelperIniciarSesion(
-        jacDao = jacDao,
-        correoDao = correoDao
+        credencialesSesionDao = credencialesSesionDao
     )
 
     @Provides

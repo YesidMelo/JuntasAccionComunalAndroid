@@ -1,9 +1,7 @@
 package com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers
 
 import androidx.lifecycle.MutableLiveData
-import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.AfiliadoDao
-import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.CorreoDao
-import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.JacDao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.CredencialesSesionDao
 import com.hefesto.juntasaccioncomunal.logica.excepciones.LogicaExcepcion
 import com.hefesto.juntasaccioncomunal.logica.excepciones.RevisaCredencialesExcepcion
 import com.hefesto.juntasaccioncomunal.logica.excepciones.UsuarioNoEstaRegistradoExcepcion
@@ -14,8 +12,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class HelperIniciarSesion constructor(
-    @JvmField @Inject var jacDao: JacDao,
-    @JvmField @Inject var correoDao: CorreoDao
+    @JvmField @Inject var credencialesSesionDao: CredencialesSesionDao
 ) {
 
     //region variables
@@ -52,11 +49,8 @@ class HelperIniciarSesion constructor(
 
     //region metodos privados
     private fun elCorreoExiste() : Boolean {
-        //todo ojo implementar las vistas y entidades de sesion
-        //val jacEntity = jacDao.encontrarRegistroPorCorreo(email = usuarioInicioSesionModel.correo!!)
-        val jacEntity = null
-        val correoId = correoDao.traerId(correo = usuarioInicioSesionModel.correo!!)
-        if (jacEntity == null && correoId == null) {
+        val credencialesSesionId = credencialesSesionDao.traerRegistroId(correo = usuarioInicioSesionModel.correo!!)
+        if (credencialesSesionId == null) {
             inicioSesionExitosa.postValue(false)
             escuchadorExcepciones.postValue(UsuarioNoEstaRegistradoExcepcion())
             return false
@@ -65,16 +59,12 @@ class HelperIniciarSesion constructor(
     }
 
     private fun lasCredencialesSonCorrectas() : Boolean {
-        //todo ojo implementar las vistas y entidades de sesion
-        /*
-        val jacEntity = jacDao.encontrarRegistroPorCorreoYContrasenia(
-            email = usuarioInicioSesionModel.correo!!,
+        val credencialesSesionView = credencialesSesionDao.traerCredencialesSesionView(
+            correo = usuarioInicioSesionModel.correo!!,
             contrasenia = usuarioInicioSesionModel.contrasenia!!
         )
-        */
-        val jacEntity = null
 
-        if (jacEntity == null) {
+        if (credencialesSesionView == null) {
             inicioSesionExitosa.postValue(false)
             escuchadorExcepciones.postValue(RevisaCredencialesExcepcion())
             return false
