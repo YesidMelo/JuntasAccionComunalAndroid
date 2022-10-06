@@ -14,6 +14,7 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Direc
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Jac_EstadoAfiliacionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Telefono_Dao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.CorreoDao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.CredencialesSesionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.DireccionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.EstadoAfiliacionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.JacDao
@@ -30,6 +31,8 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.Afiliado_D
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.Afiliado_Jac_EstadoAfiliacionEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.Afiliado_Telefono_Entity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.CorreosEntity
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.CredencialesSesionEntity
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.CredencialesSesionView
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.DireccionesEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.EstadoAfiliacionEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.JACEntity
@@ -45,6 +48,7 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.TelefonosE
         Afiliado_Jac_EstadoAfiliacionEntity::class,
         Afiliado_Telefono_Entity::class,
         CorreosEntity::class,
+        CredencialesSesionEntity::class,
         DireccionesEntity::class,
         EstadoAfiliacionEntity::class,
         FuncionesRolAppEntity::class,
@@ -56,6 +60,9 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.TelefonosE
         TipoDocumentoEntity::class,
         TipoTelefonoEntity::class
    ],
+    views = [
+        CredencialesSesionView::class
+    ],
     version = 1
 )
 abstract class BaseDatosApp : RoomDatabase() {
@@ -80,6 +87,7 @@ abstract class BaseDatosApp : RoomDatabase() {
     abstract fun afiliado_Jac_EstadoAfiliacionDao() : Afiliado_Jac_EstadoAfiliacionDao
     abstract fun afiliado_Telefono_Dao() : Afiliado_Telefono_Dao
     abstract fun correoDao() : CorreoDao
+    abstract fun credencialesSesionDao(): CredencialesSesionDao
     abstract fun direccionDao() : DireccionDao
     abstract fun EstadoAfiliacionDao() : EstadoAfiliacionDao
     abstract fun funcionesRolAppDao() : FuncionesRolAppDao

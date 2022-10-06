@@ -12,6 +12,7 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Direc
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Jac_EstadoAfiliacionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Telefono_Dao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.CorreoDao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.CredencialesSesionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.DireccionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.EstadoAfiliacionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.JacDao
@@ -44,6 +45,9 @@ class BaseDatosModule {
 
     @Provides
     fun providesCorreoDao(baseDatosApp: BaseDatosApp): CorreoDao = baseDatosApp.correoDao()
+
+    @Provides
+    fun providesCredencialesSesionDao(baseDatosApp: BaseDatosApp): CredencialesSesionDao = baseDatosApp.credencialesSesionDao()
 
     @Provides
     fun providesDireccionDao(baseDatosApp: BaseDatosApp): DireccionDao = baseDatosApp.direccionDao()

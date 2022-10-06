@@ -52,7 +52,7 @@ class IniciarSesionFragment : BaseFragment<IniciarSesionFragmentViewModel>() {
 
     private fun ponerEscuchadorBotonIniciarSesion() {
         binding.buttonIniciarSesion.setOnClickListener {
-            funcionSegura {
+            funcionSegura( funcion =  {
                 viewModelFragment.iniciarSesion(
                     UsuarioInicioSesionModel(
                         correo = binding.textInputEmail.text?.toString(),
@@ -67,7 +67,7 @@ class IniciarSesionFragment : BaseFragment<IniciarSesionFragmentViewModel>() {
                     if (!it) return@observe
                     Log.e("Error", "Inicio sesion")
                 }
-            }
+            })
         }
     }
 

@@ -52,7 +52,9 @@ class HelperIniciarSesion constructor(
 
     //region metodos privados
     private fun elCorreoExiste() : Boolean {
-        val jacEntity = jacDao.encontrarRegistroPorCorreo(email = usuarioInicioSesionModel.correo!!)
+        //todo ojo implementar las vistas y entidades de sesion
+        //val jacEntity = jacDao.encontrarRegistroPorCorreo(email = usuarioInicioSesionModel.correo!!)
+        val jacEntity = null
         val correoId = correoDao.traerId(correo = usuarioInicioSesionModel.correo!!)
         if (jacEntity == null && correoId == null) {
             inicioSesionExitosa.postValue(false)
@@ -62,11 +64,15 @@ class HelperIniciarSesion constructor(
         return true
     }
 
-    private fun lasCredencialesSonCorrectas() : Boolean{
+    private fun lasCredencialesSonCorrectas() : Boolean {
+        //todo ojo implementar las vistas y entidades de sesion
+        /*
         val jacEntity = jacDao.encontrarRegistroPorCorreoYContrasenia(
             email = usuarioInicioSesionModel.correo!!,
             contrasenia = usuarioInicioSesionModel.contrasenia!!
         )
+        */
+        val jacEntity = null
 
         if (jacEntity == null) {
             inicioSesionExitosa.postValue(false)

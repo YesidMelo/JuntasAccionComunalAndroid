@@ -6,6 +6,7 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Direc
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Jac_EstadoAfiliacionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Telefono_Dao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.CorreoDao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.CredencialesSesionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.DireccionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.JacDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Jac_Afiliado_Direccion_Dao
@@ -16,6 +17,7 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperTraerListaJACSRegistrados
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.registroAfiliado.HelperRegistroAfiliadoEntity
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.registroAfiliado.HelperRegistroCorreoAfiliadoEntity
+import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.registroAfiliado.HelperRegistroCredencialesSesionAfiliado
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.registroAfiliado.HelperRegistroDireccionAfiliadoEntity
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.registroAfiliado.HelperRegistroTelefono
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.registroAfiliado.HelperValidarExisteUsuarioEnJAC
@@ -30,15 +32,6 @@ class HelpersDBDatasourceModule {
     //region primer nivel
 
     @Provides
-    fun providesHelperValidarExisteUsuarioEnJAC(
-        afiliadoDao: AfiliadoDao,
-        afiliadoJacEstadoafiliaciondao: Afiliado_Jac_EstadoAfiliacionDao
-    ) : HelperValidarExisteUsuarioEnJAC = HelperValidarExisteUsuarioEnJAC(
-        afiliadoDao = afiliadoDao,
-        afiliadoJacEstadoafiliaciondao = afiliadoJacEstadoafiliaciondao
-    )
-
-    @Provides
     fun providesHelperRegistroAfiliadoEntity(
         afiliadoDao: AfiliadoDao,
         afiliadoJacEstadoafiliaciondao: Afiliado_Jac_EstadoAfiliacionDao
@@ -48,7 +41,7 @@ class HelpersDBDatasourceModule {
     )
 
     @Provides
-    fun provideHelperRegistroCorreoAfiliadoEntity(
+    fun providesHelperRegistroCorreoAfiliadoEntity(
         afiliadoCorreoDao: Afiliado_Correo_Dao,
         afiliadoDao: AfiliadoDao,
         correoDao: CorreoDao
@@ -56,6 +49,17 @@ class HelpersDBDatasourceModule {
         afiliadoCorreoDao = afiliadoCorreoDao,
         afiliadoDao = afiliadoDao,
         correoDao = correoDao
+    )
+
+    @Provides
+    fun providesHelperRegistroCredencialesSesionAfiliado(
+        afiliadoDao: AfiliadoDao,
+        correoDao: CorreoDao,
+        credencialesSesionDao: CredencialesSesionDao
+    ) : HelperRegistroCredencialesSesionAfiliado = HelperRegistroCredencialesSesionAfiliado(
+        afiliadoDao = afiliadoDao,
+        correoDao = correoDao,
+        credencialesSesionDao = credencialesSesionDao
     )
 
     @Provides
@@ -82,6 +86,15 @@ class HelpersDBDatasourceModule {
         telefonoDao = telefonoDao
     )
 
+    @Provides
+    fun providesHelperValidarExisteUsuarioEnJAC(
+        afiliadoDao: AfiliadoDao,
+        afiliadoJacEstadoafiliaciondao: Afiliado_Jac_EstadoAfiliacionDao
+    ) : HelperValidarExisteUsuarioEnJAC = HelperValidarExisteUsuarioEnJAC(
+        afiliadoDao = afiliadoDao,
+        afiliadoJacEstadoafiliaciondao = afiliadoJacEstadoafiliaciondao
+    )
+
     //endregion
 
     //region segundo nivel
@@ -92,13 +105,15 @@ class HelpersDBDatasourceModule {
         helperRegistroCorreoAfiliadoEntity : HelperRegistroCorreoAfiliadoEntity,
         helperRegistroDireccionAfiliadoEntity: HelperRegistroDireccionAfiliadoEntity,
         helperRegistroTelefono: HelperRegistroTelefono,
-        helperValidarExisteUsuarioEnJAC: HelperValidarExisteUsuarioEnJAC
+        helperValidarExisteUsuarioEnJAC: HelperValidarExisteUsuarioEnJAC,
+        helperRegistroCredencialesSesionAfiliado: HelperRegistroCredencialesSesionAfiliado
     ) : HelperRegistroAfilado = HelperRegistroAfilado(
         helperRegistroAfiliadoEntity = helperRegistroAfiliadoEntity,
         helperRegistroCorreoAfiliadoEntity = helperRegistroCorreoAfiliadoEntity,
         helperRegistroDireccionAfiliadoEntity = helperRegistroDireccionAfiliadoEntity,
         helperRegistroTelefonoEntity = helperRegistroTelefono,
-        helperValidarExisteUsuarioEnJAC = helperValidarExisteUsuarioEnJAC
+        helperValidarExisteUsuarioEnJAC = helperValidarExisteUsuarioEnJAC,
+        helperRegistroCredencialesSesionAfiliado = helperRegistroCredencialesSesionAfiliado
     )
 
     @Provides
@@ -111,7 +126,15 @@ class HelpersDBDatasourceModule {
     )
 
     @Provides
-    fun providesHelperRegistroJAC(jacDao: JacDao) : HelperRegistroJAC = HelperRegistroJAC(jacDao = jacDao)
+    fun providesHelperRegistroJAC(
+        jacDao: JacDao,
+        correoDao: CorreoDao,
+        credencialesSesionDao: CredencialesSesionDao
+    ) : HelperRegistroJAC = HelperRegistroJAC(
+        jacDao = jacDao,
+        correoDao = correoDao,
+        credencialesSesionDao = credencialesSesionDao
+    )
 
     @Provides
     fun providesHelperTraerListaJACSRegistrados(jacDao: JacDao) : HelperTraerListaJACSRegistrados = HelperTraerListaJACSRegistrados(jacDao = jacDao)

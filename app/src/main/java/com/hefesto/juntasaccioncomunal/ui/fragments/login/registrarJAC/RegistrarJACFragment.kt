@@ -64,28 +64,34 @@ class RegistrarJACFragment : BaseFragment<RegistrarJACFragmentViewModel>() {
             mostrarAdvertenciaPreviaRegistro {
                 binding.buttonRegistrar.isEnabled = false
                 binding.buttonVolver.isEnabled = false
-                funcionSegura {
-                    traerViewModel()
-                        .registrarJAC(JACRegistroModel(
-                            NombreJAC = binding.editTextNombreJAC.text?.toString(),
-                            CodigoJAC = binding.editTextCodigoJAC.text?.toString(),
-                            Correo = binding.editTextCorreo.text?.toString(),
-                            Contrasenia = binding.editTextContrasenia.text?.toString(),
-                            RepetirContrasenia = binding.editTextRepetirContrasenia.text?.toString()
-                        ))
-                        .observe(viewLifecycleOwner) {
-                            if (it == null) { mostrarLoading(); return@observe; }
-                            ocultarLoading()
-                            if (!it) {
-                                binding.buttonRegistrar.isEnabled = true
-                                binding.buttonVolver.isEnabled = true
-                                return@observe
-                            }
-                            notificacionRegistroExitoso()
-                        }
-                }
+                funcionSegura( funcion = ::realizarRegistro, aceptarFallo = ::habilitarBotones )
             }
         }
+    }
+
+    private fun realizarRegistro() {
+        traerViewModel()
+            .registrarJAC(JACRegistroModel(
+                NombreJAC = binding.editTextNombreJAC.text?.toString(),
+                CodigoJAC = binding.editTextCodigoJAC.text?.toString(),
+                Correo = binding.editTextCorreo.text?.toString(),
+                Contrasenia = binding.editTextContrasenia.text?.toString(),
+                RepetirContrasenia = binding.editTextRepetirContrasenia.text?.toString()
+            ))
+            .observe(viewLifecycleOwner) {
+                if (it == null) { mostrarLoading(); return@observe; }
+                ocultarLoading()
+                if (!it) {
+                    habilitarBotones()
+                    return@observe
+                }
+                notificacionRegistroExitoso()
+            }
+    }
+
+    private fun habilitarBotones() {
+        binding.buttonRegistrar.isEnabled = true
+        binding.buttonVolver.isEnabled = true
     }
 
     private fun notificacionRegistroExitoso() {

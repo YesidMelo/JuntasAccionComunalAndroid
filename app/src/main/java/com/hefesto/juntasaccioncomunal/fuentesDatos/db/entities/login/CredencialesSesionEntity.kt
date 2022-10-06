@@ -5,9 +5,9 @@ import androidx.room.PrimaryKey
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.BaseEntity
 
 @Entity
-data class JACEntity(
-    @PrimaryKey(autoGenerate = true) var jacID: Int? = null,
-    var nombreJAC: String?,
-    var codigoJAC: String?,
-    var credencialesSesion: Int? = null
+data class CredencialesSesionEntity(
+    @PrimaryKey(autoGenerate = true)
+    var registro : Int? = null,
+    var correoId: Int? = null,
+    var contrasenia: String? = null
 ) : BaseEntity()

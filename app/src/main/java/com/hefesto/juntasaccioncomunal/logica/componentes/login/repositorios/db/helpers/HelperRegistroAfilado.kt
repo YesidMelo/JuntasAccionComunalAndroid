@@ -3,6 +3,7 @@ package com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db
 import androidx.lifecycle.MutableLiveData
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.registroAfiliado.HelperRegistroAfiliadoEntity
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.registroAfiliado.HelperRegistroCorreoAfiliadoEntity
+import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.registroAfiliado.HelperRegistroCredencialesSesionAfiliado
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.registroAfiliado.HelperRegistroDireccionAfiliadoEntity
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.registroAfiliado.HelperRegistroTelefono
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.registroAfiliado.HelperValidarExisteUsuarioEnJAC
@@ -18,7 +19,8 @@ class HelperRegistroAfilado constructor(
     @JvmField @Inject var helperRegistroCorreoAfiliadoEntity : HelperRegistroCorreoAfiliadoEntity,
     @JvmField @Inject var helperRegistroDireccionAfiliadoEntity : HelperRegistroDireccionAfiliadoEntity,
     @JvmField @Inject var helperRegistroTelefonoEntity : HelperRegistroTelefono,
-    @JvmField @Inject var helperValidarExisteUsuarioEnJAC: HelperValidarExisteUsuarioEnJAC
+    @JvmField @Inject var helperValidarExisteUsuarioEnJAC: HelperValidarExisteUsuarioEnJAC,
+    @JvmField @Inject var helperRegistroCredencialesSesionAfiliado : HelperRegistroCredencialesSesionAfiliado
 ) {
 
     //variables variables
@@ -66,6 +68,7 @@ class HelperRegistroAfilado constructor(
         helperRegistroCorreoAfiliadoEntity.conAfiliadoARegistrarModel(afiliadoARegistrarModel = afiliadoARegistrarModel).guardarCorreo()
         helperRegistroDireccionAfiliadoEntity.conAfiliadoARegistrarModel(afiliadoARegistrarModel = afiliadoARegistrarModel).guardarDireccion()
         helperRegistroTelefonoEntity.conAfiliadoARegistrar(afiliadoARegistrarModel = afiliadoARegistrarModel).guardarTelefono()
+        helperRegistroCredencialesSesionAfiliado.conAfiliadoARegistrarModel(afiliadoARegistrarModel = afiliadoARegistrarModel).guardarCredencialesSesion()
     }
 
     //endregion

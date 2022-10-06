@@ -64,7 +64,7 @@ abstract class BaseActivity<T: BaseViewModel> : BaseActivityDagger<T>(), Lifecyc
 
     abstract fun traerNodoNavegacion(): NodosNavegacionActividades
 
-    fun funcionSegura(funcion : (()->Unit)) {
+    fun funcionSegura(funcion : (()->Unit), aceptarFallo: (()->Unit)? = null) {
         try {
             funcion.invoke()
         } catch (e: LogicaExcepcion) {
@@ -72,6 +72,7 @@ abstract class BaseActivity<T: BaseViewModel> : BaseActivityDagger<T>(), Lifecyc
                 tipoDialogo = if (e.tipoExcepcion == TiposExcepciones.GENERADO_USUARIO) DialogoInformativo.TipoDialogo.ERROR_USUARIO else DialogoInformativo.TipoDialogo.ERROR_SISTEMA,
                 titulo = e.stringResTitulo,
                 mensaje = e.stringResMensaje,
+                accionAceptar = aceptarFallo
             )
         }
     }

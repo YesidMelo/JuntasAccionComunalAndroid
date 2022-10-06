@@ -47,7 +47,8 @@ abstract class BaseFragment<T : BaseViewModel> : BaseFragmentDagger<T>(), Lifecy
 
     //region interaccion activity
 
-    fun funcionSegura(funcion : (()->Unit)) = (activity as BaseActivity<*>).funcionSegura(funcion = funcion)
+    fun funcionSegura(funcion : (()->Unit), aceptarFallo: (()->Unit)? = null)
+    = (activity as BaseActivity<*>).funcionSegura(funcion = funcion, aceptarFallo = aceptarFallo)
 
     fun mostrarDialogo(
         tipoDialogo: DialogoInformativo.TipoDialogo,

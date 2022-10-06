@@ -7,11 +7,11 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.BaseEntity
 @Entity
 data class AfiliadoEntity(
     @PrimaryKey(autoGenerate = true)
-    val afiliadoId: Int? = null,
-    val nombres: String? = null,
-    val apellidos: String? = null,
-    val tipoDocumento: Int? = null,
-    val documento: String? = null,
-    val fechaNacimiento: String? = null,
-    val contrasenia: String? = null
+    var afiliadoId: Int? = null,
+    var nombres: String? = null,
+    var apellidos: String? = null,
+    var tipoDocumento: Int? = null,
+    var documento: String? = null,
+    var fechaNacimiento: String? = null,
+    var credencialesSesion: Int? = null
 ): BaseEntity()

@@ -11,4 +11,7 @@ interface AfiliadoDao : BaseDao<AfiliadoEntity> {
     @Query("SELECT t.afiliadoId FROM AfiliadoEntity t WHERE t.tipoDocumento = :tipoDocumento AND t.documento = :documento")
     fun traerIdPorTipoDocumentoYDocumento(tipoDocumento: Int, documento: String) : Int?
 
+    @Query("SELECT * FROM AfiliadoEntity t WHERE t.tipoDocumento = :tipoDocumento AND t.documento = :documento")
+    fun traerAfiliadoEntityPorTipoDocumentoYDocumento(tipoDocumento: Int, documento: String) : AfiliadoEntity?
+
 }

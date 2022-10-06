@@ -11,13 +11,7 @@ interface JacDao : BaseDao<JACEntity> {
     @Query("SELECT * FROM JACEntity")
     fun traerListaTodosLosRegistros(): List<JACEntity>
 
-    @Query("SELECT * FROM JACEntity WHERE JACEntity.correoJAC = :email OR JACEntity.codigoJAC = :codigoJAC")
-    fun encontrarRegistroPorCorreoYCodigoJAC(email : String, codigoJAC: String) : JACEntity?
-
-    @Query("SELECT * FROM JACEntity WHERE JACEntity.correoJAC = :email")
-    fun encontrarRegistroPorCorreo(email : String) : JACEntity?
-
-    @Query("SELECT * FROM JACEntity WHERE JACEntity.correoJAC = :email AND JACEntity.contraseniaJAC = :contrasenia")
-    fun encontrarRegistroPorCorreoYContrasenia(email : String, contrasenia: String) : JACEntity?
+    @Query("SELECT * FROM JACEntity WHERE JACEntity.codigoJAC = :codigoJAC")
+    fun encontrarRegistroPorCorreoYCodigoJAC(codigoJAC: String) : JACEntity?
 
 }

@@ -73,27 +73,33 @@ class RegistrarAfiliadoFragment : BaseFragment<RegistrarAfiliadoFragmentViewMode
     private fun ponerEscuchadorBotonRegistrarAfiliado() {
         binding.buttonRegistrarAfiliado.setOnClickListener {
             mostrarAdvertenciaPreviaRegistro {
-                funcionSegura {
-                    binding.buttonRegistrarAfiliado.isEnabled = false
-                    binding.buttonRegistroAfiliadosVolver.isEnabled = false
-                    traerViewModel()
-                        .registrarAfiliado(traerInformacionAfiliadoDeLaVista())
-                        .observe(viewLifecycleOwner) {
-                            if(it == null) {
-                                mostrarLoading()
-                                return@observe
-                            }
-                            ocultarLoading()
-                            if (!it) {
-                                binding.buttonRegistrarAfiliado.isEnabled = true
-                                binding.buttonRegistroAfiliadosVolver.isEnabled = true
-                                return@observe
-                            }
-                            mostrarDialogoRegistroExitoso()
-                        }
-                }
+                funcionSegura(funcion = ::registrarAfiliado, aceptarFallo = ::habilitarBotones)
             }
         }
+    }
+
+    private fun registrarAfiliado() {
+        binding.buttonRegistrarAfiliado.isEnabled = false
+        binding.buttonRegistroAfiliadosVolver.isEnabled = false
+        traerViewModel()
+            .registrarAfiliado(traerInformacionAfiliadoDeLaVista())
+            .observe(viewLifecycleOwner) {
+                if(it == null) {
+                    mostrarLoading()
+                    return@observe
+                }
+                ocultarLoading()
+                if (!it) {
+                    habilitarBotones()
+                    return@observe
+                }
+                mostrarDialogoRegistroExitoso()
+            }
+    }
+
+    private fun habilitarBotones() {
+        binding.buttonRegistrarAfiliado.isEnabled = true
+        binding.buttonRegistroAfiliadosVolver.isEnabled = true
     }
 
     private fun traerInformacionAfiliadoDeLaVista() : AfiliadoARegistrarModel {
@@ -129,7 +135,7 @@ class RegistrarAfiliadoFragment : BaseFragment<RegistrarAfiliadoFragmentViewMode
     }
 
     private fun limpiaCacheViewModel() {
-        funcionSegura { traerViewModel().inicializarMapaDeCarga()}
+        funcionSegura(funcion = { traerViewModel().inicializarMapaDeCarga()})
     }
 
     private fun ponerEscuchadorLoading() {
@@ -144,7 +150,7 @@ class RegistrarAfiliadoFragment : BaseFragment<RegistrarAfiliadoFragmentViewMode
 
 
     private fun precargaJacsDisponibles() {
-        funcionSegura {
+        funcionSegura ( funcion = {
             traerViewModel()
                 .traerListaJacsRegistradas()
                 .observe(viewLifecycleOwner) {
@@ -158,11 +164,11 @@ class RegistrarAfiliadoFragment : BaseFragment<RegistrarAfiliadoFragmentViewMode
                         jacSeleccionada = adapter.getItem(indexSelected)
                     }
                 }
-        }
+        })
     }
 
     private fun precargarTiposDocumento() {
-        funcionSegura {
+        funcionSegura(funcion = {
             traerViewModel()
                 .traerTiposDocumento()
                 .observe(viewLifecycleOwner) {
@@ -171,11 +177,11 @@ class RegistrarAfiliadoFragment : BaseFragment<RegistrarAfiliadoFragmentViewMode
                     traerViewModel().cargo(elementoCarga = RegistrarAfiliadoFragmentViewModel.ElementosCarga.TIPOS_DOCUMENTO)
                     tipoDocumentoModel =  binding.spinnerRegistroTiposDocumeto.selectedItem as TipoDocumentoModel
                 }
-        }
+        })
     }
 
     private fun precargarTiposTelefono() {
-        funcionSegura {
+        funcionSegura (funcion = {
             traerViewModel()
                 .traerTiposTelefono()
                 .observe(viewLifecycleOwner) {
@@ -184,7 +190,7 @@ class RegistrarAfiliadoFragment : BaseFragment<RegistrarAfiliadoFragmentViewMode
                     traerViewModel().cargo(elementoCarga = RegistrarAfiliadoFragmentViewModel.ElementosCarga.TIPOS_TELEFONO)
                     tipoTelefonoModel = binding.spinnerRegistroTipoTelefono.selectedItem as TipoTelefonoModel
                 }
-        }
+        })
     }
 
     private fun precargarFecha() {
@@ -229,10 +235,7 @@ class RegistrarAfiliadoFragment : BaseFragment<RegistrarAfiliadoFragmentViewMode
             titulo = R.string.registro_afiliado_jac,
             mensaje = R.string.deseas_continuar_con_el_registro,
             accionAceptar = funcion,
-            accionCancelar = {
-                binding.buttonRegistrarAfiliado.isEnabled = true
-                binding.buttonRegistroAfiliadosVolver.isEnabled = true
-            }
+            accionCancelar = ::habilitarBotones
         )
     }
     //endregion
