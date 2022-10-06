@@ -62,6 +62,8 @@ class RegistrarJACFragment : BaseFragment<RegistrarJACFragmentViewModel>() {
     private fun ponerEscuchadorBotonRegistrar() {
         binding.buttonRegistrar.setOnClickListener {
             mostrarAdvertenciaPreviaRegistro {
+                binding.buttonRegistrar.isEnabled = false
+                binding.buttonVolver.isEnabled = false
                 funcionSegura {
                     traerViewModel()
                         .registrarJAC(JACRegistroModel(
@@ -74,7 +76,11 @@ class RegistrarJACFragment : BaseFragment<RegistrarJACFragmentViewModel>() {
                         .observe(viewLifecycleOwner) {
                             if (it == null) { mostrarLoading(); return@observe; }
                             ocultarLoading()
-                            if (!it) return@observe
+                            if (!it) {
+                                binding.buttonRegistrar.isEnabled = true
+                                binding.buttonVolver.isEnabled = true
+                                return@observe
+                            }
                             notificacionRegistroExitoso()
                         }
                 }
@@ -96,7 +102,11 @@ class RegistrarJACFragment : BaseFragment<RegistrarJACFragmentViewModel>() {
             tipoDialogo = DialogoInformativo.TipoDialogo.ADVERTENCIA,
             titulo = R.string.registrar_jac,
             mensaje = R.string.deseas_continuar_con_el_registro,
-            accionAceptar = funcion
+            accionAceptar = funcion,
+            accionCancelar = {
+                binding.buttonRegistrar.isEnabled = true
+                binding.buttonVolver.isEnabled = true
+            }
         )
     }
 

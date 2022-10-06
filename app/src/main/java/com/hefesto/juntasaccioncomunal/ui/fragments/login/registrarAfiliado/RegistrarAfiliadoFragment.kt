@@ -74,6 +74,8 @@ class RegistrarAfiliadoFragment : BaseFragment<RegistrarAfiliadoFragmentViewMode
         binding.buttonRegistrarAfiliado.setOnClickListener {
             mostrarAdvertenciaPreviaRegistro {
                 funcionSegura {
+                    binding.buttonRegistrarAfiliado.isEnabled = false
+                    binding.buttonRegistroAfiliadosVolver.isEnabled = false
                     traerViewModel()
                         .registrarAfiliado(traerInformacionAfiliadoDeLaVista())
                         .observe(viewLifecycleOwner) {
@@ -82,7 +84,11 @@ class RegistrarAfiliadoFragment : BaseFragment<RegistrarAfiliadoFragmentViewMode
                                 return@observe
                             }
                             ocultarLoading()
-                            if (!it) return@observe
+                            if (!it) {
+                                binding.buttonRegistrarAfiliado.isEnabled = true
+                                binding.buttonRegistroAfiliadosVolver.isEnabled = true
+                                return@observe
+                            }
                             mostrarDialogoRegistroExitoso()
                         }
                 }
@@ -222,7 +228,11 @@ class RegistrarAfiliadoFragment : BaseFragment<RegistrarAfiliadoFragmentViewMode
             tipoDialogo = DialogoInformativo.TipoDialogo.ADVERTENCIA,
             titulo = R.string.registro_afiliado_jac,
             mensaje = R.string.deseas_continuar_con_el_registro,
-            accionAceptar = funcion
+            accionAceptar = funcion,
+            accionCancelar = {
+                binding.buttonRegistrarAfiliado.isEnabled = true
+                binding.buttonRegistroAfiliadosVolver.isEnabled = true
+            }
         )
     }
     //endregion
