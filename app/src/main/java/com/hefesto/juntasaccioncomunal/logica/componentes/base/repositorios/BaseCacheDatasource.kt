@@ -8,6 +8,7 @@ import javax.inject.Inject
 
 interface BaseCacheDatasource {
     fun traerExcepcionesLiveData(): MutableLiveData<LogicaExcepcion?>
+    fun traerMemoriaCache(): MemoriaCache
 }
 
 open class BaseCacheDatasourceImpl constructor(
@@ -17,6 +18,8 @@ open class BaseCacheDatasourceImpl constructor(
     override fun traerExcepcionesLiveData(): MutableLiveData<LogicaExcepcion?> {
         return traerEscuchadorExcepcion()?: MutableLiveData<LogicaExcepcion?>()
     }
+
+    override fun traerMemoriaCache(): MemoriaCache = memoriaCache
 
     //region metodos privados
     private fun traerEscuchadorExcepcion() : MutableLiveData<LogicaExcepcion?>? {

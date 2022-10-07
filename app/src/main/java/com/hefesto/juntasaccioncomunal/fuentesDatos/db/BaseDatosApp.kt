@@ -32,13 +32,14 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.Afiliado_J
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.Afiliado_Telefono_Entity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.CorreosEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.CredencialesSesionEntity
-import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.CredencialesSesionView
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.login.CredencialesSesionView
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.DireccionesEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.EstadoAfiliacionEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.JACEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.Jac_Afiliado_Direccion_Entity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.RolAfiliacionEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.TelefonosEntity
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.login.AfiliadoEnSesionView
 
 @Database(
     entities = [
@@ -61,7 +62,8 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.TelefonosE
         TipoTelefonoEntity::class
    ],
     views = [
-        CredencialesSesionView::class
+        CredencialesSesionView::class,
+        AfiliadoEnSesionView::class
     ],
     version = 1
 )

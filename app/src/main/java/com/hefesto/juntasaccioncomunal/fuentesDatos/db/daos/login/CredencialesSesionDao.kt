@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Query
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.BaseDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.CredencialesSesionEntity
-import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.CredencialesSesionView
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.login.CredencialesSesionView
 
 @Dao
 interface CredencialesSesionDao : BaseDao<CredencialesSesionEntity> {

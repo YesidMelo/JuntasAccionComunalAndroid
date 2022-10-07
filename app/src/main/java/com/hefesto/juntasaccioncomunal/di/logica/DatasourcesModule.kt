@@ -27,6 +27,7 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperIniciarSesion
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperRegistroAfilado
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperRegistroJAC
+import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperTraerDetalleUsuarioSesion
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperTraerListaJACSRegistrados
 import com.hefesto.juntasaccioncomunal.logica.componentes.splash.repositorios.SplashApiDatasource
 import com.hefesto.juntasaccioncomunal.logica.componentes.splash.repositorios.SplashApiDatasourceImpl
@@ -64,14 +65,16 @@ class DatasourcesModule {
         helperRegistroJAC: HelperRegistroJAC,
         helperIniciarSesion: HelperIniciarSesion,
         helperTraerListaJACSRegistrados: HelperTraerListaJACSRegistrados,
-        helperRegistroAfilado: HelperRegistroAfilado
+        helperRegistroAfilado: HelperRegistroAfilado,
+        helperTraerDetalleUsuarioSesion: HelperTraerDetalleUsuarioSesion
     )  : LoginDBDatasource
     = LoginDBDatasourceImpl(
         memoriaCacheLocal = memoriaCache,
         helperRegistroJAC = helperRegistroJAC,
         helperIniciarSesion = helperIniciarSesion,
         helperTraerListaJACSRegistrados = helperTraerListaJACSRegistrados,
-        helperRegistroAfilado = helperRegistroAfilado
+        helperRegistroAfilado = helperRegistroAfilado,
+        helperTraerDetalleUsuarioSesion = helperTraerDetalleUsuarioSesion
     )
 
     @Provides

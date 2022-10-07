@@ -11,7 +11,9 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.base.repositorios.Base
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperIniciarSesion
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperRegistroAfilado
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperRegistroJAC
+import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperTraerDetalleUsuarioSesion
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperTraerListaJACSRegistrados
+import com.hefesto.juntasaccioncomunal.logica.modelos.login.iniciarSesion.UsuarioEnSesionModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.iniciarSesion.UsuarioInicioSesionModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarAfiliado.AfiliadoARegistrarModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarAfiliado.JACDisponibleParaAfiliadoModel
@@ -24,6 +26,7 @@ interface  LoginDBDatasource {
     fun registrarAfiliado(afiliadoARegistrarModel: AfiliadoARegistrarModel): Flow<Boolean?>
     fun registrarJAC(jacRegistroModel: JACRegistroModel): Flow<Boolean?>
     fun traerJacsRegistradas(): Flow<List<JACDisponibleParaAfiliadoModel>?>
+    fun traerDetalleUsuarioSesion(usuarioInicioSesionModel: UsuarioInicioSesionModel) : Flow<UsuarioEnSesionModel>
 }
 
 class LoginDBDatasourceImpl constructor(
@@ -33,6 +36,7 @@ class LoginDBDatasourceImpl constructor(
     @JvmField @Inject var helperIniciarSesion: HelperIniciarSesion,
     @JvmField @Inject var helperTraerListaJACSRegistrados: HelperTraerListaJACSRegistrados,
     @JvmField @Inject var helperRegistroAfilado: HelperRegistroAfilado,
+    @JvmField @Inject var helperTraerDetalleUsuarioSesion: HelperTraerDetalleUsuarioSesion
     ): BaseDBDatasourceImpl(memoriaCache = memoriaCacheLocal), LoginDBDatasource {
 
     //region variables
@@ -65,5 +69,11 @@ class LoginDBDatasourceImpl constructor(
         return helperTraerListaJACSRegistrados
             .conEscuchadorExcepciones(escuchadorExcepciones = traerExcepcionesLiveData())
             .traerLista()
+    }
+
+    override fun traerDetalleUsuarioSesion(usuarioInicioSesionModel: UsuarioInicioSesionModel): Flow<UsuarioEnSesionModel> {
+        return helperTraerDetalleUsuarioSesion
+            .conUsuarioInicioSesionModel(usuarioInicioSesionModel = usuarioInicioSesionModel)
+            .traerDetalleUsuarioSesion()
     }
 }

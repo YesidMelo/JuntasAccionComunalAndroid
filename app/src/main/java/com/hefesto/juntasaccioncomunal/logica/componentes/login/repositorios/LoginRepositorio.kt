@@ -36,7 +36,18 @@ class LoginRepositorioImpl constructor(
         GlobalScope.launch {
             loginDBDatasource
                 .iniciarSesion(usuarioInicioSesionModel = usuarioInicioSesionModel)
-                .collect { iniciarSesionLiveData.postValue(it) }
+                .collect {
+                    iniciarSesionLiveData.postValue(it)
+                    if (it == null) return@collect
+                    if (!it) return@collect
+                    loginDBDatasource
+                        .traerDetalleUsuarioSesion(usuarioInicioSesionModel = usuarioInicioSesionModel)
+                        .collect{
+                            usuarioEnSesionModel ->
+                            loginCacheDatasource
+                                .guardarDetalleUsuarioSesion(detalleUsuarioEnSesionModel = usuarioEnSesionModel)
+                        }
+                }
         }
         return iniciarSesionLiveData
     }

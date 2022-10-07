@@ -1,4 +1,4 @@
-package com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login
+package com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.login
 
 import androidx.room.DatabaseView
 

@@ -14,6 +14,7 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Telefono_Dao
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperIniciarSesion
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperRegistroAfilado
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperRegistroJAC
+import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperTraerDetalleUsuarioSesion
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperTraerListaJACSRegistrados
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.registroAfiliado.HelperRegistroAfiliadoEntity
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.registroAfiliado.HelperRegistroCorreoAfiliadoEntity
@@ -84,6 +85,13 @@ class HelpersDBDatasourceModule {
         afiliadoDao = afiliadoDao,
         afiliadoTelefonoDao = afiliadoTelefonoDao,
         telefonoDao = telefonoDao
+    )
+
+    @Provides
+    fun providesHelperTraerDetalleUsuarioSesion(
+        afiliadoDao: AfiliadoDao
+    ) : HelperTraerDetalleUsuarioSesion = HelperTraerDetalleUsuarioSesion(
+        afiliadoDao = afiliadoDao
     )
 
     @Provides

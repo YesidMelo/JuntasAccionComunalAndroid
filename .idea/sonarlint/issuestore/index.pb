@@ -32,8 +32,6 @@ X
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
-†
-papp/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/login/iniciarSesion/UsuarioInicioSesionModel.kt,e\e\eebd0bc6cb49faca0592bc590607610ce6599e1d
 Ü
 Vapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/base/ui/BaseUI.kt,d\4\d429273f36e126ced40738e77ffcc02248b062ec
 ®
@@ -44,18 +42,12 @@ iapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/base/repos
 Zapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/splash/ui/SplashUI.kt,6\1\61bfd54025f628daa58aca62f720ce431f557c76
 Ñ
 Tapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/cache/MemoriaCache.kt,1\7\1783a16ccbe4a025bdb6bb59d9a49c37aeebe0b0
-ù
-mapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/base/repositorios/BaseCacheDatasource.kt,c\1\c148a151a977a45863719a4d5f75a479f4ccab42
 <
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
 x
 Happ/src/main/java/com/hefesto/juntasaccioncomunal/di/AplicacionModule.kt,1\7\17393b005994148415f159536612577e6d287156
 ö
 japp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/base/repositorios/BaseDBDatasource.kt,e\4\e4064535c2baa2be064eb1984114923385f0352c
-ü
-oapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/repositorios/LoginCacheDatasource.kt,d\1\d1c01caa4052b47cbf8b67f184aa0a588a90a9a4
-£
-sapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/utilidades/enumeradores/IdentificadorElementosCacheEnum.kt,7\1\711d8a35cac2ee3583f93a32efeaca7f15f595d7
 ¢
 rapp/src/main/java/com/hefesto/juntasaccioncomunal/ui/fragments/login/registrarJAC/RegistrarJACFragmentViewModel.kt,a\0\a0f06b1374b08de05e308c292927954f0e3356cf
 ó
@@ -170,8 +162,6 @@ japp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/entities/logi
 japp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/entities/login/Afiliado_Correo_Entity.kt,2\2\22f3f8e399e75359b376fd09fe3f3eabc259e3f7
 Ü
 Vapp/src/main/java/com/hefesto/juntasaccioncomunal/ui/activities/login/LoginActivity.kt,a\3\a3da0e449235f45b94c4fc3b97ee7d31745d4aa5
-Ä
-Papp/src/main/java/com/hefesto/juntasaccioncomunal/di/logica/DatasourcesModule.kt,2\e\2e9ffb4ee47fd6e7f76ef3c23b96e9bf198afd52
 ï
 eapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/entities/login/DireccionesEntity.kt,d\6\d6055b3cbc52cab3f84c67d75efa2041fbb2b7f7
 ì
