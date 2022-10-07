@@ -19,15 +19,6 @@ class HelperIniciarSesion constructor(
     private lateinit var escuchadorExcepciones: MutableLiveData<LogicaExcepcion?>
     //endregion
 
-
-    fun iniciarSesion() = flow<Boolean?> {
-        emit(null)
-        delay(5000)
-        if (!elCorreoExiste()) { emit(false); return@flow }
-        if(!lasCredencialesSonCorrectas()) { emit(false); return@flow }
-        emit(true)
-    }
-
     fun conUsuarioInicioSesionModel(usuarioInicioSesionModel: UsuarioInicioSesionModel) : HelperIniciarSesion {
         this.usuarioInicioSesionModel = usuarioInicioSesionModel
         return this
@@ -36,6 +27,14 @@ class HelperIniciarSesion constructor(
     fun conEscuchadorExcepciones(escuchadorExcepciones: MutableLiveData<LogicaExcepcion?>) : HelperIniciarSesion {
         this.escuchadorExcepciones = escuchadorExcepciones
         return this
+    }
+
+    fun iniciarSesion() = flow<Boolean?> {
+        emit(null)
+        delay(5000)
+        if (!elCorreoExiste()) { emit(false); return@flow }
+        if(!lasCredencialesSonCorrectas()) { emit(false); return@flow }
+        emit(true)
     }
 
 

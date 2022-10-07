@@ -5,13 +5,15 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.login.JACEnSesionVi
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.iniciarSesion.AfiliadoEnSesionModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.iniciarSesion.JACEnSesionModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.iniciarSesion.UsuarioEnSesionModel
+import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.EstadoAfiliacion
 
 fun AfiliadoEnSesionView.convertirAAfiliadoEnSesionModel() : AfiliadoEnSesionModel {
     return AfiliadoEnSesionModel(
         id = this.afiliadoId,
         nombres = this.nombres,
         apellidos = this.apellidos,
-        correo = this.correo
+        correo = this.correo,
+        estadoAfiliacion = EstadoAfiliacion.PRE_AFILIADO
     )
 }
 

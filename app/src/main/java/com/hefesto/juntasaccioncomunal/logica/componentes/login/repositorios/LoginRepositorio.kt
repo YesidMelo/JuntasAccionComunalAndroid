@@ -37,15 +37,16 @@ class LoginRepositorioImpl constructor(
             loginDBDatasource
                 .iniciarSesion(usuarioInicioSesionModel = usuarioInicioSesionModel)
                 .collect {
-                    iniciarSesionLiveData.postValue(it)
-                    if (it == null) return@collect
-                    if (!it) return@collect
+
+                    if (it == null) { iniciarSesionLiveData.postValue(it); return@collect }
+                    if (!it) { iniciarSesionLiveData.postValue(it); return@collect }
                     loginDBDatasource
                         .traerDetalleUsuarioSesion(usuarioInicioSesionModel = usuarioInicioSesionModel)
                         .collect{
                             usuarioEnSesionModel ->
                             loginCacheDatasource
                                 .guardarDetalleUsuarioSesion(detalleUsuarioEnSesionModel = usuarioEnSesionModel)
+                            iniciarSesionLiveData.postValue(it)
                         }
                 }
         }

@@ -14,4 +14,15 @@ enum class RolesEnApp constructor(private val id: Int, private val nombre : Stri
 
     fun traerId() = id
     fun traerNombre() = nombre
+
+    companion object {
+
+        fun traerRolAppPorId(id: Int) : RolesEnApp {
+            for(rol in values()) {
+                if(id != rol.traerId()) continue
+                return rol
+            }
+            return PREAFILIADO
+        }
+    }
 }

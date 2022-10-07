@@ -6,6 +6,7 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.mapper.convertirAJACEnSesionModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.iniciarSesion.UsuarioEnSesionModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.iniciarSesion.UsuarioInicioSesionModel
+import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.EstadoAfiliacion
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.RolesEnApp
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
@@ -33,8 +34,10 @@ class HelperTraerDetalleUsuarioSesion constructor(
 
     //region metodos privados
     private fun registrarAfiliadoSesion(usuarioEnSesionModel: UsuarioEnSesionModel) {
-        val afiliadoEnSesionView = afiliadoDao.traerDetalleUsuarioEnSesionPorCorreo(correo = usuarioInicioSesionModel.correo!!)
-        usuarioEnSesionModel.afiliadoEnSesionModel = afiliadoEnSesionView?.convertirAAfiliadoEnSesionModel()
+        val afiliadoEnSesionView = afiliadoDao.traerDetalleUsuarioEnSesionPorCorreo(correo = usuarioInicioSesionModel.correo!!)?:return
+        usuarioEnSesionModel.afiliadoEnSesionModel = afiliadoEnSesionView.convertirAAfiliadoEnSesionModel()
+        usuarioEnSesionModel.afiliadoEnSesionModel?.estadoAfiliacion = EstadoAfiliacion.traerEstadoAfiliacionPorId(id = afiliadoEnSesionView.estadoAfiliacionId)
+        usuarioEnSesionModel.rolApp = RolesEnApp.traerRolAppPorId(id = afiliadoEnSesionView.rolEnLaAppId)
     }
 
     private fun registrarJacEnSesion(usuarioEnSesionModel: UsuarioEnSesionModel) {

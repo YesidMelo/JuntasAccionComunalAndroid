@@ -9,4 +9,14 @@ enum class EstadoAfiliacion (private val id: Int) {
     FALLECIDO(id = 6),
     ;
     fun traerId() = id
+
+    companion object {
+        fun traerEstadoAfiliacionPorId(id : Int) : EstadoAfiliacion {
+            for(estadoAfiliacion in values()) {
+                if (estadoAfiliacion.traerId() != id) continue
+                return estadoAfiliacion
+            }
+            return EstadoAfiliacion.PRE_AFILIADO
+        }
+    }
 }
