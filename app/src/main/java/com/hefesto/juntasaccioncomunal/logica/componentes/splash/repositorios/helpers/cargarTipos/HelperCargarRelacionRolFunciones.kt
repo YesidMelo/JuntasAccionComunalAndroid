@@ -11,13 +11,23 @@ class HelperCargarRelacionRolFunciones (
 
     suspend fun cargarRelacion() {
         val lista = emptyList<RolApp_FuncionesApp_Entity>().toMutableList()
-        FuncionesRolApp.values().forEach {
+        for (funcionRolapp in FuncionesRolApp.values()) {
+            if (traerRegistroId(funcionesRolApp = funcionRolapp) != null) continue
             lista.add(RolApp_FuncionesApp_Entity(
-                rolAppId = it.traerRolEncargado().traerId(),
-                funcionAppId = it.traerId()
+                rolAppId = funcionRolapp.traerRolEncargado().traerId(),
+                funcionAppId = funcionRolapp.traerId()
             ))
         }
-
+        if (lista.isEmpty()) return
         rolappFuncionesappDao.insertarElementos(elementos = lista)
     }
+
+    //region metodos privados
+    private fun traerRegistroId(funcionesRolApp: FuncionesRolApp) : Int? {
+        return rolappFuncionesappDao.traerRegistroIdPorRolAppIdYFuncionAppId(
+            rolAppId = funcionesRolApp.traerRolEncargado().traerId(),
+            funcionAppId = funcionesRolApp.traerId()
+        )
+    }
+    //endregion
 }
