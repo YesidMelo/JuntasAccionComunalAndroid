@@ -4,6 +4,7 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.AfiliadoDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Jac_EstadoAfiliacionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.Afiliado_Jac_EstadoAfiliacionEntity
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.mapper.traerAfiliadoEntity
+import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.mapper.traerAfiliadoJACEstadoAfiliacionEntity
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarAfiliado.AfiliadoARegistrarModel
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.EstadoAfiliacion
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.FormatosFecha
@@ -38,12 +39,8 @@ class HelperRegistroAfiliadoEntity constructor(
     }
 
     private fun guardarRelacionAfiliadoJACEstadoAfiliacion() {
-        val afiliadoJacEstadoAfiliacion = Afiliado_Jac_EstadoAfiliacionEntity(
-            afiliadoId = traerAfiliadoId(),
-            jacId = afiliadoARegistrarModel.jacSeleccionado?.id,
-            estadoAfiliacionId = EstadoAfiliacion.PRE_AFILIADO.traerId(),
-            fechaActualizacion = afiliadoARegistrarModel.fechaInscripcion?.convertirAFormato(formato = FormatosFecha.ISO_8610)
-        )
+        val afiliadoJacEstadoAfiliacion = afiliadoARegistrarModel.traerAfiliadoJACEstadoAfiliacionEntity()
+        afiliadoJacEstadoAfiliacion.afiliadoId = traerAfiliadoId()
         afiliado_Jac_EstadoAfiliacionDao.insertarElemento(elemento = afiliadoJacEstadoAfiliacion)
     }
 

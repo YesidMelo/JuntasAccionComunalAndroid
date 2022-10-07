@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.BaseEntity
 
 /**
- * tabla rompimiento entre afiliado entity y jacentity
+ * tabla rompimiento entre afiliado entity, jac entity, estado afiliacion entity, rolapp entity,
  */
 @Entity
 data class Afiliado_Jac_EstadoAfiliacionEntity(
@@ -13,6 +13,7 @@ data class Afiliado_Jac_EstadoAfiliacionEntity(
     var registro : Int? = null,
     var afiliadoId: Int? = null,
     var jacId : Int? = null,
+    var rolEnLaAppId: Int? = null,
     var estadoAfiliacionId: Int? = null,
     var fechaActualizacion : String? = null,
     var observaciones: String? = null,

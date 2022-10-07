@@ -11,6 +11,7 @@ import com.hefesto.juntasaccioncomunal.databinding.FragmentIniciarSesionBinding
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.iniciarSesion.UsuarioInicioSesionModel
 import com.hefesto.juntasaccioncomunal.ui.base.BaseFragment
 import com.hefesto.juntasaccioncomunal.ui.navegacion.AccionesNavGrap
+import com.hefesto.juntasaccioncomunal.ui.navegacion.NodosNavegacionActividades
 import com.hefesto.juntasaccioncomunal.ui.navegacion.NodosNavegacionFragments
 import javax.inject.Inject
 
@@ -65,7 +66,10 @@ class IniciarSesionFragment : BaseFragment<IniciarSesionFragmentViewModel>() {
                     }
                     ocultarLoading()
                     if (!it) return@observe
-                    Log.e("Error", "Inicio sesion")
+                    navegacionAplicacion.navegar(
+                        de = NodosNavegacionActividades.LOGIN_ACTIVITY,
+                        a = NodosNavegacionActividades.HOME_ACTIVITY
+                    )
                 }
             })
         }

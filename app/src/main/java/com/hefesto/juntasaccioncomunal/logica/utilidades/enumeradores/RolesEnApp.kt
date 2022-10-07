@@ -9,6 +9,7 @@ enum class RolesEnApp constructor(private val id: Int, private val nombre : Stri
     FISCAL(id = 6, nombre = "Fiscal"),
     TESORERO(id = 7, nombre = "Tesorero"),
     AFILIADO(id = 8, nombre = "Afiliado"),
+    PREAFILIADO(id = 9, nombre = "pre-afiliado"),
     ;
 
     fun traerId() = id

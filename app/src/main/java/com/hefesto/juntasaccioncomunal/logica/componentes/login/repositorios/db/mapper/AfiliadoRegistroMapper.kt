@@ -1,13 +1,18 @@
 package com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.mapper
 
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.AfiliadoEntity
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.Afiliado_Jac_EstadoAfiliacionEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.CorreosEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.CredencialesSesionEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.DireccionesEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.TelefonosEntity
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarAfiliado.AfiliadoARegistrarModel
+import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.EstadoAfiliacion
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.FormatosFecha
+import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.RolDeAfiliacion
+import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.RolesEnApp
 import com.hefesto.juntasaccioncomunal.logica.utilidades.extenciones.convertirAFormato
+import java.util.*
 
 fun AfiliadoARegistrarModel.traerAfiliadoEntity() : AfiliadoEntity {
     return AfiliadoEntity(
@@ -48,5 +53,14 @@ fun AfiliadoARegistrarModel.traerCredencialesSesionEntity() : CredencialesSesion
         registro = null,
         correoId = null,
         contrasenia = this.contrasenia
+    )
+}
+
+fun AfiliadoARegistrarModel.traerAfiliadoJACEstadoAfiliacionEntity() : Afiliado_Jac_EstadoAfiliacionEntity {
+    return Afiliado_Jac_EstadoAfiliacionEntity(
+        rolEnLaAppId = RolesEnApp.PREAFILIADO.traerId(),
+        estadoAfiliacionId = EstadoAfiliacion.PRE_AFILIADO.traerId(),
+        fechaActualizacion = Date().convertirAFormato(formato = FormatosFecha.ISO_8610),
+        jacId = this.jacSeleccionado?.id
     )
 }
