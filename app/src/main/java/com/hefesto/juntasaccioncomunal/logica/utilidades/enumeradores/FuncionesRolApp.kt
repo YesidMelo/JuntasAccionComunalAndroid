@@ -11,4 +11,14 @@ enum class FuncionesRolApp constructor(
     fun traerId() = id
     fun traerNombre() = nombre
     fun traerRolEncargado() = rolEncargado
+
+    companion object {
+        fun traerFuncionRolPorId(id : Int) : FuncionesRolApp? {
+            for (funcion in values()) {
+                if (id != funcion.id) continue
+                return funcion
+            }
+            return null
+        }
+    }
 }

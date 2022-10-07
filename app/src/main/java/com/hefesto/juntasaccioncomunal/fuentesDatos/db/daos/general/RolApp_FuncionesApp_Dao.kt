@@ -10,4 +10,7 @@ interface RolApp_FuncionesApp_Dao : BaseDao<RolApp_FuncionesApp_Entity> {
 
     @Query("SELECT rfe.registro FROM RolApp_FuncionesApp_Entity rfe WHERE  rfe.funcionAppId = :funcionAppId AND  rfe.rolAppId = :rolAppId")
     fun traerRegistroIdPorRolAppIdYFuncionAppId(rolAppId: Int, funcionAppId: Int) : Int?
+
+    @Query("SELECT rfe.funcionAppId FROM RolApp_FuncionesApp_Entity rfe WHERE rfe.rolAppId = :rolAppId")
+    fun traerListaFuncionesAppPorRol(rolAppId: Int): List<Int>
 }
