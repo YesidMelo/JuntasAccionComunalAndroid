@@ -4,7 +4,7 @@ enum class RegexEnum constructor(private val regex: String) {
     APELLIDO_AFILIADO("[a-zA-Z0-9\\s]{3,50}"),
     CODIGO_JAC("[0-9]{1,20}"),
     CONSTRASENIA("[a-zA-Z0-9@\$]{5,20}"),
-    DIRECCION("[a-zA-Z0-9]{4,20}"),
+    DIRECCION("[a-zA-Z0-9\\s\\-]{4,20}"),
     DOCUMENTO_IDENTIDAD("[a-zA-Z0-9]{4,20}"),
     NOMBRE_AFILIADO("[a-zA-Z0-9\\s]{3,50}"),
     NOMBRE_JAC("[a-zA-Z0-9\\s]{5,20}"),

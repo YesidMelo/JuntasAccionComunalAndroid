@@ -89,9 +89,11 @@ class HelpersDBDatasourceModule {
 
     @Provides
     fun providesHelperTraerDetalleUsuarioSesion(
-        afiliadoDao: AfiliadoDao
+        afiliadoDao: AfiliadoDao,
+        jacDao: JacDao
     ) : HelperTraerDetalleUsuarioSesion = HelperTraerDetalleUsuarioSesion(
-        afiliadoDao = afiliadoDao
+        afiliadoDao = afiliadoDao,
+        jacDao = jacDao
     )
 
     @Provides

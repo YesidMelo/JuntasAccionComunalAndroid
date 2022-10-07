@@ -96,8 +96,6 @@ aapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/utilidades/constantes/
 aapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/utilidades/enumeradores/FormatosFecha.kt,4\3\43a2cc3946ba72e7487c1cb90916479ecd16eb78
 è
 _app/src/main/java/com/hefesto/juntasaccioncomunal/logica/utilidades/ValidacionStringConRegex.kt,6\c\6cfdd867546a46b53cd3c60df5da3a3fa28a95b7
-ç
-]app/src/main/java/com/hefesto/juntasaccioncomunal/logica/utilidades/enumeradores/RegexEnum.kt,0\0\008f7eb17038aac3cdc03d63c36cd3e17221976b
 ö
 japp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/casosUso/RegistrarJACCasoUso.kt,0\9\0908c7f7055f8c8c369018259bd3ce4744f36f26
 ü

@@ -40,6 +40,7 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.Jac_Afilia
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.RolAfiliacionEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.TelefonosEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.login.AfiliadoEnSesionView
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.login.JACEnSesionView
 
 @Database(
     entities = [
@@ -62,8 +63,9 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.login.AfiliadoEnSes
         TipoTelefonoEntity::class
    ],
     views = [
+        AfiliadoEnSesionView::class,
         CredencialesSesionView::class,
-        AfiliadoEnSesionView::class
+        JACEnSesionView::class
     ],
     version = 1
 )
