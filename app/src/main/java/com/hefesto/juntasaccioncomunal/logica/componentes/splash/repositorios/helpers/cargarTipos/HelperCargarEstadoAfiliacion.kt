@@ -3,8 +3,11 @@ package com.hefesto.juntasaccioncomunal.logica.componentes.splash.repositorios.h
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.EstadoAfiliacionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.EstadoAfiliacionEntity
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.EstadoAfiliacion
+import javax.inject.Inject
 
-class HelperCargarEstadoAfiliacion constructor(var estadoAfiliacionDao: EstadoAfiliacionDao){
+class HelperCargarEstadoAfiliacion constructor(
+    @JvmField @Inject var estadoAfiliacionDao: EstadoAfiliacionDao
+){
 
     suspend fun cargar() {
         val lista = emptyList<EstadoAfiliacionEntity>().toMutableList()

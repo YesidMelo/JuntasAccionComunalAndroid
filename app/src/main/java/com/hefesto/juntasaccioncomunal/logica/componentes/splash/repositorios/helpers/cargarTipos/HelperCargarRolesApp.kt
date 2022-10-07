@@ -3,9 +3,10 @@ package com.hefesto.juntasaccioncomunal.logica.componentes.splash.repositorios.h
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.RolesAppDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.general.RolesAppEntity
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.RolesEnApp
+import javax.inject.Inject
 
 class HelperCargarRolesApp constructor(
-    var rolesAppDao: RolesAppDao
+    @JvmField @Inject var rolesAppDao: RolesAppDao
 ) {
 
     suspend fun cargar() {

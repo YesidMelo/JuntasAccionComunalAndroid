@@ -3,9 +3,10 @@ package com.hefesto.juntasaccioncomunal.logica.componentes.splash.repositorios.h
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.TipoDocumentoDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.general.TipoDocumentoEntity
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.TipoDocumento
+import javax.inject.Inject
 
 class HelperCargarTiposDocumento constructor(
-    var tipoDocumentoDao: TipoDocumentoDao
+    @JvmField @Inject var tipoDocumentoDao: TipoDocumentoDao
 ) {
 
     suspend fun cargar() {

@@ -3,6 +3,7 @@ package com.hefesto.juntasaccioncomunal.di.fuenteDatos
 import com.hefesto.juntasaccioncomunal.MiAplicacion
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.BaseDatosApp
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.FuncionesRolAppDao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.RolApp_FuncionesApp_Dao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.RolesAppDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.TipoDocumentoDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.TipoTelefonoDao
@@ -69,6 +70,9 @@ class BaseDatosModule {
 
     @Provides
     fun providesRolesAppDao(baseDatosApp: BaseDatosApp): RolesAppDao = baseDatosApp.rolesAppDao()
+
+    @Provides
+    fun providesRolAppFuncionesAppDao(baseDatosApp: BaseDatosApp) : RolApp_FuncionesApp_Dao = baseDatosApp.rolApp_funcionApp_dao()
 
     @Provides
     fun providesTelefonoDao(baseDatosApp: BaseDatosApp): Telefono_Dao = baseDatosApp.telefonoDao()

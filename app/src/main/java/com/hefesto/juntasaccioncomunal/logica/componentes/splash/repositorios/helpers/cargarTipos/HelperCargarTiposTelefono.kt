@@ -4,7 +4,9 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.TipoTelefono
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.general.TipoTelefonoEntity
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.TipoTelefono
 
-class HelperCargarTiposTelefono constructor(var tipoTelefonoDao: TipoTelefonoDao) {
+class HelperCargarTiposTelefono constructor(
+    var tipoTelefonoDao: TipoTelefonoDao
+) {
 
     suspend fun cargar() {
         val lista = emptyList<TipoTelefonoEntity>().toMutableList()

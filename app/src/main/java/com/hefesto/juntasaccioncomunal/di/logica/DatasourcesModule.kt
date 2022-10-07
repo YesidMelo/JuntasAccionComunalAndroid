@@ -37,6 +37,7 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.splash.repositorios.Sp
 import com.hefesto.juntasaccioncomunal.logica.componentes.splash.repositorios.SplashDBDatasourceImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.splash.repositorios.SplashSharedPreferencesDatasource
 import com.hefesto.juntasaccioncomunal.logica.componentes.splash.repositorios.SplashSharedPreferencesDatasourceImpl
+import com.hefesto.juntasaccioncomunal.logica.componentes.splash.repositorios.helpers.HelperCargarTipos
 import dagger.Module
 import dagger.Provides
 
@@ -90,19 +91,9 @@ class DatasourcesModule {
 
     @Provides
     fun providesSplashDBDatasource(
-        estadoAfiliacionDao: EstadoAfiliacionDao,
-        funcionesRolAppDao: FuncionesRolAppDao,
-        rolAfiliacionDao: RolAfiliacionDao,
-        rolesAppDao: RolesAppDao,
-        tipoDocumentoDao: TipoDocumentoDao,
-        tipoTelefonoDao: TipoTelefonoDao
+        helperCargarTipos : HelperCargarTipos
     ): SplashDBDatasource = SplashDBDatasourceImpl(
-        estadoAfiliacionDao = estadoAfiliacionDao,
-        funcionesRolAppDao = funcionesRolAppDao,
-        rolAfiliacionDao = rolAfiliacionDao,
-        rolesAppDao = rolesAppDao,
-        tipoDocumentoDao = tipoDocumentoDao,
-        tipoTelefonoDao = tipoTelefonoDao
+        helperCargarTipos = helperCargarTipos
     )
 
     @Provides

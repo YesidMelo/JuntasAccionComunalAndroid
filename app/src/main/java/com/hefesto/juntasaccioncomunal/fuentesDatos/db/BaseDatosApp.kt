@@ -5,6 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.FuncionesRolAppDao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.RolApp_FuncionesApp_Dao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.RolesAppDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.TipoDocumentoDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.TipoTelefonoDao
@@ -22,6 +23,7 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Jac_Afiliado_D
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.RolAfiliacionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Telefono_Dao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.general.FuncionesRolAppEntity
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.general.RolApp_FuncionesApp_Entity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.general.RolesAppEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.general.TipoDocumentoEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.general.TipoTelefonoEntity
@@ -58,6 +60,7 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.login.JACEnSesionVi
         Jac_Afiliado_Direccion_Entity::class,
         RolAfiliacionEntity::class,
         RolesAppEntity::class,
+        RolApp_FuncionesApp_Entity::class,
         TelefonosEntity::class,
         TipoDocumentoEntity::class,
         TipoTelefonoEntity::class
@@ -99,6 +102,7 @@ abstract class BaseDatosApp : RoomDatabase() {
     abstract fun Jac_Afiliado_Direccion_Dao(): Jac_Afiliado_Direccion_Dao
     abstract fun rolAfiliacionDao(): RolAfiliacionDao
     abstract fun rolesAppDao() : RolesAppDao
+    abstract fun rolApp_funcionApp_dao() : RolApp_FuncionesApp_Dao
     abstract fun telefonoDao() : Telefono_Dao
     abstract fun TipoDocumentoDao() : TipoDocumentoDao
     abstract fun TipoTelefonoDao() : TipoTelefonoDao
