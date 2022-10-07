@@ -1,6 +1,7 @@
 package com.hefesto.juntasaccioncomunal.di.logica
 
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.FuncionesRolAppDao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.RolApp_FuncionesApp_Dao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.RolesAppDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.TipoDocumentoDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.TipoTelefonoDao
@@ -31,6 +32,7 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.
 import com.hefesto.juntasaccioncomunal.logica.componentes.splash.repositorios.helpers.HelperCargarTipos
 import com.hefesto.juntasaccioncomunal.logica.componentes.splash.repositorios.helpers.cargarTipos.HelperCargarEstadoAfiliacion
 import com.hefesto.juntasaccioncomunal.logica.componentes.splash.repositorios.helpers.cargarTipos.HelperCargarFuncionesApp
+import com.hefesto.juntasaccioncomunal.logica.componentes.splash.repositorios.helpers.cargarTipos.HelperCargarRelacionRolFunciones
 import com.hefesto.juntasaccioncomunal.logica.componentes.splash.repositorios.helpers.cargarTipos.HelperCargarRolAfiliacion
 import com.hefesto.juntasaccioncomunal.logica.componentes.splash.repositorios.helpers.cargarTipos.HelperCargarRolesApp
 import com.hefesto.juntasaccioncomunal.logica.componentes.splash.repositorios.helpers.cargarTipos.HelperCargarTiposDocumento
@@ -178,6 +180,14 @@ class HelpersDBDatasourceModule {
     ) : HelperCargarFuncionesApp = HelperCargarFuncionesApp(
         funcionesRolAppDao = funcionesRolAppDao
     )
+
+    @Provides
+    fun providesHelperCargarRelacionRolFunciones(
+        rolappFuncionesappDao: RolApp_FuncionesApp_Dao
+    ) : HelperCargarRelacionRolFunciones = HelperCargarRelacionRolFunciones(
+        rolappFuncionesappDao = rolappFuncionesappDao
+    )
+
     @Provides
     fun providesHelperCargarRolAfiliacion(
         rolAfiliacionDao: RolAfiliacionDao
@@ -214,6 +224,7 @@ class HelpersDBDatasourceModule {
         helperCargarEstadoAfiliacion : HelperCargarEstadoAfiliacion,
         helperCargarFuncionesApp: HelperCargarFuncionesApp,
         helperCargarRolAfiliacion: HelperCargarRolAfiliacion,
+        helperCargarRelacionRolFunciones: HelperCargarRelacionRolFunciones,
         helperCargarRolesApp: HelperCargarRolesApp,
         helperCargarTiposDocumento: HelperCargarTiposDocumento,
         helperCargarTiposTelefono: HelperCargarTiposTelefono
@@ -221,6 +232,7 @@ class HelpersDBDatasourceModule {
         helperCargarEstadoAfiliacion = helperCargarEstadoAfiliacion,
         helperCargarFuncionesApp= helperCargarFuncionesApp,
         helperCargarRolAfiliacion= helperCargarRolAfiliacion,
+        helperCargarRelacionRolFunciones = helperCargarRelacionRolFunciones,
         helperCargarRolesApp= helperCargarRolesApp,
         helperCargarTiposDocumento= helperCargarTiposDocumento,
         helperCargarTiposTelefono= helperCargarTiposTelefono

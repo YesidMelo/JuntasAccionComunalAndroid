@@ -15,6 +15,7 @@ class SplashDBDatasourceImpl constructor(
     override suspend fun cargarTipos() {
         helperCargarTipos.cargarEstadosAfiliacion()
         helperCargarTipos.cargarFuncionesApp()
+        helperCargarTipos.cargarRelacionesRolAppFuncionesApp()
         helperCargarTipos.cargarRolAfiliacion()
         helperCargarTipos.cargarRolesApp()
         helperCargarTipos.cargarTiposDocumento()
