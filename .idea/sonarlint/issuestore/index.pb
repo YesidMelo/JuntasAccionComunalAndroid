@@ -160,9 +160,5 @@ Japp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/ActivityBuilder.kt,e\9
 mapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/navegacion/enumeradores/AccionesNavGrap.kt,4\0\409aafd4b56a19e54d247a317237b50ef4db0fb7
 ¦
 vapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/navegacion/enumeradores/NodosNavegacionFragments.kt,2\1\21d558508253f131de5c339956e648c54f2d9b72
-©
-yapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/navegacion/helpers/helpersActivity/HelperActivities.kt,c\6\c659f26ec66cfbc2753bb011311779c199ca9da2
-¨
-xapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/navegacion/helpers/helpersFragments/HelperFragment.kt,2\8\28dea7e928013b7aa8f9c8401b925582f8d32dc4
 {
 Kapp/src/main/java/com/hefesto/juntasaccioncomunal/di/AplicacionComponent.kt,a\a\aae6ec3a587ee01f999b9e792ad5a094a79c52ef

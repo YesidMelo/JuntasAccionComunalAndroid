@@ -12,9 +12,13 @@ import org.jetbrains.annotations.NotNull
 import javax.inject.Inject
 
 interface NavegacionAplicacion {
+
     fun conActivity(activity: BaseActivity<*>) : NavegacionAplicacion
+
     fun conIdNavGraph(@IdRes @NotNull idNavGraph: Int) : NavegacionAplicacion
+
     fun traerResultadoNavegacionFragments() : Boolean
+
     fun navegar(
         de: NodosNavegacionActividades,
         a: NodosNavegacionActividades,
@@ -49,7 +53,7 @@ class NavegacionAplicacionImpl constructor(
         return this
     }
 
-    override fun traerResultadoNavegacionFragments(): Boolean = true
+    override fun traerResultadoNavegacionFragments(): Boolean = helperFragment.reportarNavegacion()
 
     override fun navegar(
         de: NodosNavegacionActividades,
@@ -78,11 +82,11 @@ class NavegacionAplicacionImpl constructor(
     ): NavegacionAplicacion {
         val navGraphId = idNavGraph?: return this
         helperFragment
-            .cona(a = a)
-            .conaccion(accion = accion)
-            .conactivity(activity = activity)
-            .conde(de = de)
-            .conidNavGraph(idNavGraph = navGraphId)
+            .conA(a = a)
+            .conAccion(accion = accion)
+            .conActivity(activity = activity)
+            .conDe(de = de)
+            .conIdNavGraph(idNavGraph = navGraphId)
             .cambiarFragment()
         return this
     }

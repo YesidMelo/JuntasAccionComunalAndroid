@@ -5,6 +5,9 @@ import androidx.navigation.ui.AppBarConfiguration
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseActivity
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.AccionesNavGrap
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class HelperFragment {
 
@@ -16,39 +19,36 @@ class HelperFragment {
     private var idNavGraph: Int? = null
     //endregion
 
-    fun  cona(a: NodosNavegacionFragments) : HelperFragment {
+    fun  conA(a: NodosNavegacionFragments) : HelperFragment {
         this.a = a
         return this
     }
 
-    fun  conaccion(accion : AccionesNavGrap) : HelperFragment {
+    fun  conAccion(accion : AccionesNavGrap) : HelperFragment {
         this.accion = accion
         return this
     }
 
-    fun  conactivity(activity: BaseActivity<*>) : HelperFragment {
+    fun  conActivity(activity: BaseActivity<*>) : HelperFragment {
         this.activity = activity
         return this
     }
 
-    fun  conde(de: NodosNavegacionFragments) : HelperFragment {
+    fun  conDe(de: NodosNavegacionFragments) : HelperFragment {
         this.de = de
         return this
     }
 
-    fun  conidNavGraph(idNavGraph: Int) : HelperFragment {
+    fun  conIdNavGraph(idNavGraph: Int) : HelperFragment {
         this.idNavGraph = idNavGraph
         return this
     }
 
-
-
     fun cambiarFragment() {
         val navGraphId = idNavGraph?:return
         val navController = activity.findNavController(navGraphId)
-        val appBarConfiguration = AppBarConfiguration(navController.graph)
+        //val appBarConfiguration = AppBarConfiguration(navController.graph)
         //activity.setupActionBarWithNavController(navController = navController, appBarConfiguration)
-
         navController.navigate(accion.traerIdAccion())
     }
 
