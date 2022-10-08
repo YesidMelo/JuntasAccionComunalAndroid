@@ -21,11 +21,6 @@
             android:screenOrientation="portrait"
             />
         <activity
-            android:name=".interfaceUsuario.activities.home.HomeActivity"
-            android:screenOrientation="portrait"
-            android:hardwareAccelerated="true"
-            />
-        <activity
             android:name=".interfaceUsuario.activities.splash.SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.JuntasAccionComunal"
