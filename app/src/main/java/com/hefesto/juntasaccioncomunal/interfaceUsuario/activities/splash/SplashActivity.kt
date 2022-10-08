@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.os.Handler
 import com.hefesto.juntasaccioncomunal.databinding.ActivitySplashBinding
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseActivity
-import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.NodosNavegacionActividades
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionActividades
 import javax.inject.Inject
 
 class SplashActivity : BaseActivity<SplashActivityViewModel>() {

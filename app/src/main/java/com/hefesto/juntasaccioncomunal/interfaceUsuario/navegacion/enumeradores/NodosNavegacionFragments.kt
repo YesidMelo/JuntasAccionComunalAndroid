@@ -1,4 +1,4 @@
-package com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion
+package com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores
 
 enum class NodosNavegacionFragments {
     INICIAR_SESION,

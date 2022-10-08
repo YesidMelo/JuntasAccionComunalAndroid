@@ -10,8 +10,8 @@ import com.hefesto.juntasaccioncomunal.databinding.FragmentRegistrarJacBinding
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarJAC.JACRegistroModel
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.dialogo.DialogoInformativo
-import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.AccionesNavGrap
-import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.NodosNavegacionFragments
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.AccionesNavGrap
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
 import javax.inject.Inject
 
 class RegistrarJACFragment : BaseFragment<RegistrarJACFragmentViewModel>() {

@@ -17,8 +17,8 @@ import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.FormatosFe
 import com.hefesto.juntasaccioncomunal.logica.utilidades.extenciones.convertirAFormato
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.dialogo.DialogoInformativo
-import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.AccionesNavGrap
-import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.NodosNavegacionFragments
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.AccionesNavGrap
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
 import java.util.*
 import javax.inject.Inject
 

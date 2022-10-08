@@ -9,9 +9,9 @@ import com.hefesto.juntasaccioncomunal.R
 import com.hefesto.juntasaccioncomunal.databinding.FragmentIniciarSesionBinding
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.iniciarSesion.UsuarioInicioSesionModel
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
-import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.AccionesNavGrap
-import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.NodosNavegacionActividades
-import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.NodosNavegacionFragments
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.AccionesNavGrap
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionActividades
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
 import javax.inject.Inject
 
 class IniciarSesionFragment : BaseFragment<IniciarSesionFragmentViewModel>() {

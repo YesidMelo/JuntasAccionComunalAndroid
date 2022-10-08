@@ -1,4 +1,4 @@
-package com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion
+package com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores
 
 import androidx.annotation.IdRes
 import com.hefesto.juntasaccioncomunal.R

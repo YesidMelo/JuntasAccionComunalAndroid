@@ -14,7 +14,7 @@ import com.hefesto.juntasaccioncomunal.interfaceUsuario.dialogo.DialogoCalendari
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.dialogo.DialogoInformativo
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.dialogo.DialogoLoading
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.NavegacionAplicacion
-import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.NodosNavegacionActividades
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionActividades
 import org.jetbrains.annotations.NotNull
 import java.util.*
 import javax.inject.Inject
@@ -36,7 +36,7 @@ abstract class BaseActivity<T: BaseViewModel> : BaseActivityDagger<T>(), Lifecyc
     //region ciclo de vida normal
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        navegacionAplicacion.conActivity(context = this)
+        navegacionAplicacion.conActivity(activity = this)
         configuracionCicloVida(savedInstanceState = savedInstanceState)
     }
 
@@ -50,6 +50,12 @@ abstract class BaseActivity<T: BaseViewModel> : BaseActivityDagger<T>(), Lifecyc
         super.onBackPressed()
         navegacionAplicacion
     }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return navegacionAplicacion.traerResultadoNavegacionFragments()
+    }
+
+
     //endregion
 
     //region ciclo vida seguros

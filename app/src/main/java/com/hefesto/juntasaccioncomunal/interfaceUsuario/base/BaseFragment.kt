@@ -9,7 +9,7 @@ import androidx.lifecycle.LifecycleRegistry
 import com.hefesto.juntasaccioncomunal.di.ui.BaseFragmentDagger
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.dialogo.DialogoInformativo
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.NavegacionAplicacion
-import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.NodosNavegacionFragments
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
 import org.jetbrains.annotations.NotNull
 import java.util.*
 import javax.inject.Inject
@@ -25,7 +25,7 @@ abstract class BaseFragment<T : BaseViewModel> : BaseFragmentDagger<T>(), Lifecy
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        navegacionAplicacion.conActivity(context = activity as BaseActivity<*>)
+        navegacionAplicacion.conActivity(activity = activity as BaseActivity<*>)
         configuracionCicloVida()
     }
 

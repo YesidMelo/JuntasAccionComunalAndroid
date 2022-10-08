@@ -4,7 +4,7 @@ import android.os.Bundle
 import com.hefesto.juntasaccioncomunal.R
 import com.hefesto.juntasaccioncomunal.databinding.ActivityLoginBinding
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseActivity
-import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.NodosNavegacionActividades
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionActividades
 import javax.inject.Inject
 
 class LoginActivity : BaseActivity<LoginActivityViewModel>() {

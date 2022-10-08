@@ -1,4 +1,4 @@
-package com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion
+package com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.helpers.helpersActivity
 
 import android.content.Context
 import android.content.Intent
@@ -7,20 +7,49 @@ import android.os.Parcelable
 import android.view.View
 import androidx.core.app.ActivityOptionsCompat
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseActivity
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionActividades
 import java.io.Serializable
 
-class HelperActivities constructor(
-    private val activity: BaseActivity<*>,
-    private val de: NodosNavegacionActividades,
-    private val a: NodosNavegacionActividades,
-    private val listaPutExtra: List<Pair<String, Any?>>,
-    private val parVistaTrancicion: Pair<String, View>? = null
-) {
+class HelperActivities {
 
     //region variables
     private var intent: Intent? = null
     private var activityOptionsCompat : ActivityOptionsCompat? = null
+
+    private lateinit var activity: BaseActivity<*>
+    private lateinit var de: NodosNavegacionActividades
+    private lateinit var a: NodosNavegacionActividades
+    private lateinit var listaPutExtra: List<Pair<String, Any?>>
+    private var parVistaTrancicion: Pair<String, View>? = null
     //endregion
+
+    fun conActivity(activity: BaseActivity<*>) : HelperActivities {
+        this.activity = activity
+        return this
+    }
+
+    fun conDe(de: NodosNavegacionActividades) : HelperActivities {
+        this.de = de
+        return this
+    }
+
+    fun conA(a: NodosNavegacionActividades) : HelperActivities {
+        this.a = a
+        return this
+    }
+
+    fun conListaPutExtra(listaPutExtra: List<Pair<String, Any?>>) : HelperActivities {
+        this.listaPutExtra = listaPutExtra
+        return this
+    }
+
+    fun conParVistaTrancicion(parVistaTrancicion: Pair<String, View>?) : HelperActivities {
+        this.parVistaTrancicion = parVistaTrancicion
+        return this
+    }
+
+
+
 
     //region metodos publicos
     fun crearIntent() : HelperActivities {
@@ -58,8 +87,8 @@ class HelperActivities constructor(
     }
 
     fun crearActivityOptionsCompat() : HelperActivities {
-        if(parVistaTrancicion == null) return this
-        activityOptionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, parVistaTrancicion.second, parVistaTrancicion.first)
+        val trancisionVista = parVistaTrancicion ?: return this
+        activityOptionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, trancisionVista.second, trancisionVista.first)
         return this
     }
 

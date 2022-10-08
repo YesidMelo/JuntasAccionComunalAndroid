@@ -1,4 +1,4 @@
-package com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion
+package com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores
 
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.activities.login.LoginActivity
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.activities.splash.SplashActivity
