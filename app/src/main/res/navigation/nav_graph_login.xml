@@ -9,7 +9,7 @@
     <fragment
         android:id="@+id/iniciar_sesion"
         android:label="iniciar_sesion"
-        android:name="com.hefesto.juntasaccioncomunal.ui.fragments.login.iniciarSesion.IniciarSesionFragment"
+        android:name="com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.login.iniciarSesion.IniciarSesionFragment"
         tools:layout="@layout/fragment_iniciar_sesion"
         >
         <action
@@ -23,7 +23,7 @@
     <fragment
         android:id="@+id/registrar_jac"
         android:label="registrar_jac"
-        android:name="com.hefesto.juntasaccioncomunal.ui.fragments.login.registrarJAC.RegistrarJACFragment"
+        android:name="com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.login.registrarJAC.RegistrarJACFragment"
         tools:layout="@layout/fragment_registrar_jac"
         >
 
@@ -35,7 +35,7 @@
     <fragment
         android:id="@+id/registrar_afiliado"
         android:label="registrar_afiliado"
-        android:name="com.hefesto.juntasaccioncomunal.ui.fragments.login.registrarAfiliado.RegistrarAfiliadoFragment"
+        android:name="com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.login.registrarAfiliado.RegistrarAfiliadoFragment"
         tools:layout="@layout/fragment_registro_afiliado"
     >
 

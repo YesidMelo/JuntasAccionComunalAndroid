@@ -1,9 +1,9 @@
 package com.hefesto.juntasaccioncomunal.di.ui
 
 import com.hefesto.juntasaccioncomunal.di.ui.modules.LoginActivityModule
-import com.hefesto.juntasaccioncomunal.ui.fragments.login.iniciarSesion.IniciarSesionFragment
-import com.hefesto.juntasaccioncomunal.ui.fragments.login.registrarAfiliado.RegistrarAfiliadoFragment
-import com.hefesto.juntasaccioncomunal.ui.fragments.login.registrarJAC.RegistrarJACFragment
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.login.iniciarSesion.IniciarSesionFragment
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.login.registrarAfiliado.RegistrarAfiliadoFragment
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.login.registrarJAC.RegistrarJACFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

@@ -3,9 +3,9 @@ package com.hefesto.juntasaccioncomunal.di.ui
 import com.hefesto.juntasaccioncomunal.di.ui.modules.HomeActivityModule
 import com.hefesto.juntasaccioncomunal.di.ui.modules.LoginActivityModule
 import com.hefesto.juntasaccioncomunal.di.ui.modules.SplashActivityModule
-import com.hefesto.juntasaccioncomunal.ui.activities.home.HomeActivity
-import com.hefesto.juntasaccioncomunal.ui.activities.login.LoginActivity
-import com.hefesto.juntasaccioncomunal.ui.activities.splash.SplashActivity
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.activities.home.HomeActivity
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.activities.login.LoginActivity
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.activities.splash.SplashActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

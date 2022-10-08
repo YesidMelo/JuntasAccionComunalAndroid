@@ -4,10 +4,10 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.login.ui.IniciarSesion
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.ui.LoginActivityUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.ui.RegistrarAfiliadoFragmentUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.ui.RegistrarJACFragmentUI
-import com.hefesto.juntasaccioncomunal.ui.activities.login.LoginActivityViewModel
-import com.hefesto.juntasaccioncomunal.ui.fragments.login.iniciarSesion.IniciarSesionFragmentViewModel
-import com.hefesto.juntasaccioncomunal.ui.fragments.login.registrarAfiliado.RegistrarAfiliadoFragmentViewModel
-import com.hefesto.juntasaccioncomunal.ui.fragments.login.registrarJAC.RegistrarJACFragmentViewModel
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.activities.login.LoginActivityViewModel
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.login.iniciarSesion.IniciarSesionFragmentViewModel
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.login.registrarAfiliado.RegistrarAfiliadoFragmentViewModel
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.login.registrarJAC.RegistrarJACFragmentViewModel
 import dagger.Module
 import dagger.Provides
 

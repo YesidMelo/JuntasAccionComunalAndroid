@@ -1,8 +1,7 @@
 package com.hefesto.juntasaccioncomunal.di.ui
 
-import com.hefesto.juntasaccioncomunal.ui.dialogo.DialogoCalendario
-import com.hefesto.juntasaccioncomunal.ui.dialogo.DialogoInformativo
-import com.hefesto.juntasaccioncomunal.ui.dialogo.DialogoLoading
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.dialogo.DialogoInformativo
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.dialogo.DialogoLoading
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
