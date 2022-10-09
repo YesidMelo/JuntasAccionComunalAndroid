@@ -16,6 +16,14 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.base.repositorios.Base
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.repositorios.BaseCacheDatasourceImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.repositorios.BaseDBDatasource
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.repositorios.BaseDBDatasourceImpl
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.HomeApiDatasource
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.HomeApiDatasourceImpl
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.HomeCacheDatasource
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.HomeCacheDatasourceImpl
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.HomeDBDatasource
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.HomeDBDatasourceImpl
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.HomeSharedPreferencesDatasource
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.HomeSharedPreferencesDatasourceImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.LoginApiDatasource
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.LoginApiDatasourceImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.LoginCacheDatasource
@@ -52,6 +60,24 @@ class DatasourcesModule {
     fun providesBaseDBDatasource(memoriaCache: MemoriaCache) : BaseDBDatasource = BaseDBDatasourceImpl(memoriaCache = memoriaCache)
     //endregion
 
+    //region home
+    @Provides
+    fun providesHomeApiDatasource() : HomeApiDatasource = HomeApiDatasourceImpl()
+
+    @Provides
+    fun providesHomeCacheDatasource(
+        memoriaCache: MemoriaCache
+    ) : HomeCacheDatasource = HomeCacheDatasourceImpl(
+        memoriaCache = memoriaCache
+    )
+
+    @Provides
+    fun providesHomeDBDatasource(): HomeDBDatasource = HomeDBDatasourceImpl()
+
+    @Provides
+    fun providesHomeSharedPreferencesDatesources(): HomeSharedPreferencesDatasource = HomeSharedPreferencesDatasourceImpl()
+
+    //endregion
 
     //region login
     @Provides

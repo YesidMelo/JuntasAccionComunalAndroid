@@ -1,7 +1,9 @@
 package com.hefesto.juntasaccioncomunal.di.logica
 
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.casosUso.CargarEscuchadorExcepcionesCasoUso
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.panelControl.TraerFuncionalidadesCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.HomeActivityUI
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.PanelControlFragmenUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.casosUso.IniciarSesionCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.casosUso.RegistrarAfiliadoCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.casosUso.RegistrarJACCasoUso
@@ -23,6 +25,15 @@ class UiModule {
     //region home
     @Provides
     fun providesHomeActivityUI(escuchadorExcepcionesCasoUso: CargarEscuchadorExcepcionesCasoUso) = HomeActivityUI(escuchadorExcepciones = escuchadorExcepcionesCasoUso)
+
+    @Provides
+    fun providesPanelControlFragmenUI(
+        escuchadorExcepcionesCasoUso: CargarEscuchadorExcepcionesCasoUso,
+        traerFuncionalidadesCasoUso: TraerFuncionalidadesCasoUso
+    ) : PanelControlFragmenUI = PanelControlFragmenUI(
+        escuchadorExcepciones = escuchadorExcepcionesCasoUso,
+        traerFuncionalidadesCasoUso = traerFuncionalidadesCasoUso
+    )
 
     //endregion
 

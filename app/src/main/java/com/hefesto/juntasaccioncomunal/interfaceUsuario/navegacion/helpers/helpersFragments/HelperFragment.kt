@@ -1,13 +1,9 @@
 package com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.helpers.helpersFragments
 
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseActivity
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.AccionesNavGrap
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 class HelperFragment {
 
@@ -17,6 +13,7 @@ class HelperFragment {
     private lateinit var activity: BaseActivity<*>
     private lateinit var de: NodosNavegacionFragments
     private var idNavGraph: Int? = null
+    private var escuchadorCambioNodo : ((NodosNavegacionFragments)->Unit)? = null
     //endregion
 
     fun  conA(a: NodosNavegacionFragments) : HelperFragment {
@@ -44,12 +41,18 @@ class HelperFragment {
         return this
     }
 
+    fun conEscuchadorCambioNodo (escuchadorCambioNodo : ((NodosNavegacionFragments)->Unit)?) : HelperFragment {
+        this.escuchadorCambioNodo = escuchadorCambioNodo
+        return this
+    }
+
     fun cambiarFragment() {
         val navGraphId = idNavGraph?:return
         val navController = activity.findNavController(navGraphId)
         //val appBarConfiguration = AppBarConfiguration(navController.graph)
         //activity.setupActionBarWithNavController(navController = navController, appBarConfiguration)
         navController.navigate(accion.traerIdAccion())
+        escuchadorCambioNodo?.invoke(a)
     }
 
     fun reportarNavegacion() = true

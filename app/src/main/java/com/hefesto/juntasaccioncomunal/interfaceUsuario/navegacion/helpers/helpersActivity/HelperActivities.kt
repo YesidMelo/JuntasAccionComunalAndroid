@@ -48,9 +48,6 @@ class HelperActivities {
         return this
     }
 
-
-
-
     //region metodos publicos
     fun crearIntent() : HelperActivities {
         if (a.traerClaseActivity() == null) return this
@@ -108,6 +105,7 @@ class HelperActivities {
             return true
         }
         activity.startActivity(intent, activityOptionsCompat!!.toBundle())
+        activity.finish()
         return true
     }
     //endregion

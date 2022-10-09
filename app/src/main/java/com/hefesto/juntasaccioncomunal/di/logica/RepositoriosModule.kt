@@ -3,6 +3,12 @@ package com.hefesto.juntasaccioncomunal.di.logica
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.repositorios.BaseCacheDatasource
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.repositorios.BaseRepositorio
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.repositorios.BaseRepositorioImpl
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.HomeApiDatasource
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.HomeCacheDatasource
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.HomeDBDatasource
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.HomeRepositorio
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.HomeRepositorioImpl
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.HomeSharedPreferencesDatasource
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.LoginApiDatasource
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.LoginCacheDatasource
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.LoginRepositorio
@@ -27,6 +33,22 @@ class RepositoriosModule {
         baseCacheDatasource: BaseCacheDatasource
     ): BaseRepositorio = BaseRepositorioImpl(baseCacheDatasource = baseCacheDatasource)
     //endregion
+
+    //region home
+    @Provides
+    fun providesHomeRepositorio(
+        homeApiDatasource: HomeApiDatasource,
+        homeCacheDatasource: HomeCacheDatasource,
+        homeDBDatasource: HomeDBDatasource,
+        homeSharedPreferencesDatasource: HomeSharedPreferencesDatasource
+    ) : HomeRepositorio = HomeRepositorioImpl(
+        homeApiDatasource = homeApiDatasource,
+        homeCacheDatasource = homeCacheDatasource,
+        homeDBDatasource = homeDBDatasource,
+        homeSharedPreferencesDatasource = homeSharedPreferencesDatasource
+    )
+    //endregion
+
 
     //region login
 

@@ -17,8 +17,15 @@
         >
         <activity
             android:name=".interfaceUsuario.activities.login.LoginActivity"
+            android:screenOrientation="portrait"
+            android:hardwareAccelerated="true"
+            android:noHistory="true"
+            />
+        <activity
+            android:name=".interfaceUsuario.activities.home.HomeActivity"
             android:hardwareAccelerated="true"
             android:screenOrientation="portrait"
+            android:noHistory="true"
             />
         <activity
             android:name=".interfaceUsuario.activities.splash.SplashActivity"

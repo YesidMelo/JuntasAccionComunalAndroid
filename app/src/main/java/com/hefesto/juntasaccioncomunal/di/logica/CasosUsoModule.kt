@@ -4,6 +4,9 @@ import com.hefesto.juntasaccioncomunal.MiAplicacion
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.casosUso.CargarEscuchadorExcepcionesCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.casosUso.CargarEscuchadorExcepcionesCasoUsoImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.repositorios.BaseRepositorio
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.panelControl.TraerFuncionalidadesCasoUso
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.panelControl.TraerFuncionalidadesCasoUsoImpl
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.HomeRepositorio
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.casosUso.IniciarSesionCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.casosUso.IniciarSesionCasoUsoImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.casosUso.RegistrarAfiliadoCasoUso
@@ -31,6 +34,15 @@ class CasosUsoModule {
     fun providesCargarEscuchadorExcepcionesCasoUso(
         baseRepositorio: BaseRepositorio
     ): CargarEscuchadorExcepcionesCasoUso = CargarEscuchadorExcepcionesCasoUsoImpl(baseRepositorio = baseRepositorio)
+    //endregion
+
+    //region home
+    @Provides
+    fun providesTraerFuncionalidadesCasoUso(
+        homeRepositorio: HomeRepositorio
+    ) : TraerFuncionalidadesCasoUso = TraerFuncionalidadesCasoUsoImpl(
+        homeRepositorio = homeRepositorio
+    )
     //endregion
 
     //region login

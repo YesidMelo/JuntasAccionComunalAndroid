@@ -1,6 +1,8 @@
 package com.hefesto.juntasaccioncomunal.di.ui
 
+import com.hefesto.juntasaccioncomunal.di.ui.modules.HomeActivityModule
 import com.hefesto.juntasaccioncomunal.di.ui.modules.LoginActivityModule
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.panelControl.PanelControlFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.login.iniciarSesion.IniciarSesionFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.login.registrarAfiliado.RegistrarAfiliadoFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.login.registrarJAC.RegistrarJACFragment
@@ -9,6 +11,12 @@ import dagger.android.ContributesAndroidInjector
 
 @Module
 abstract class FragmentBuilder {
+
+    //region home
+    @ContributesAndroidInjector(modules = [HomeActivityModule::class])
+    abstract fun providesPanelControlFragment() : PanelControlFragment
+    //endregion
+
 
     //region login
     @ContributesAndroidInjector(modules = [LoginActivityModule::class])

@@ -19,6 +19,8 @@ interface NavegacionAplicacion {
 
     fun traerResultadoNavegacionFragments() : Boolean
 
+    fun notificacionCambioNodo(escuchadorNodoActual: ((NodosNavegacionFragments) -> Unit)? = null)
+
     fun navegar(
         de: NodosNavegacionActividades,
         a: NodosNavegacionActividades,
@@ -54,6 +56,11 @@ class NavegacionAplicacionImpl constructor(
     }
 
     override fun traerResultadoNavegacionFragments(): Boolean = helperFragment.reportarNavegacion()
+
+    override fun notificacionCambioNodo(escuchadorNodoActual: ((NodosNavegacionFragments) -> Unit)? ) {
+        helperFragment.conEscuchadorCambioNodo(escuchadorCambioNodo = escuchadorNodoActual)
+    }
+
 
     override fun navegar(
         de: NodosNavegacionActividades,

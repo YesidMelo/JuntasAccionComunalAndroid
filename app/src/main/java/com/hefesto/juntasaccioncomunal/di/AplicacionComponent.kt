@@ -6,6 +6,7 @@ import com.hefesto.juntasaccioncomunal.di.fuenteDatos.CacheModule
 import com.hefesto.juntasaccioncomunal.di.logica.CasosUsoModule
 import com.hefesto.juntasaccioncomunal.di.logica.DatasourcesModule
 import com.hefesto.juntasaccioncomunal.di.logica.HelpersDBDatasourceModule
+import com.hefesto.juntasaccioncomunal.di.logica.HelpersFragmentsModule
 import com.hefesto.juntasaccioncomunal.di.logica.RepositoriosModule
 import com.hefesto.juntasaccioncomunal.di.logica.UiModule
 import com.hefesto.juntasaccioncomunal.di.ui.ActivityBuilder
@@ -27,6 +28,7 @@ import dagger.android.AndroidInjector
     CasosUsoModule::class,
     UiModule::class,
     //ui
+    HelpersFragmentsModule::class,
     NavegacionModule::class,
     AndroidInjectionModule::class,
     ActivityBuilder::class,
