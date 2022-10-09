@@ -16,8 +16,7 @@ import javax.inject.Inject
 
 abstract class BaseFragment<T : BaseViewModel> : BaseFragmentDagger<T>(), LifecycleOwner {
 
-    //region inyecciones
-    @Inject
+    //region variables
     lateinit var navegacionAplicacion : NavegacionAplicacion
     //endregion
 
@@ -25,7 +24,7 @@ abstract class BaseFragment<T : BaseViewModel> : BaseFragmentDagger<T>(), Lifecy
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        navegacionAplicacion.conActivity(activity = activity as BaseActivity<*>)
+        navegacionAplicacion = (activity as BaseActivity<*>).navegacionAplicacion
         configuracionCicloVida()
     }
 

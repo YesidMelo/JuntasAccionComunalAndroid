@@ -34,7 +34,7 @@ class LoginActivity : BaseActivity<LoginActivityViewModel>() {
     override fun safeOnCreate(savedInstanceState: Bundle?) {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        configurarNavegacionFragments(idNavGraph = R.id.nav_graph_login)
+        navegacionAplicacion.conIdNavGraph(R.id.nav_host_fragment_content_main)
         super.safeOnCreate(savedInstanceState)
     }
 

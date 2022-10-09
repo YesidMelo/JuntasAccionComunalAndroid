@@ -35,7 +35,6 @@ class IniciarSesionFragment : BaseFragment<IniciarSesionFragmentViewModel>() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentIniciarSesionBinding.inflate(inflater)
-        navegacionAplicacion.conIdNavGraph(R.id.nav_host_fragment_content_main)
         ponerEscuchadoresBotones()
         ponerDefaultsDesarrollo()
         return binding.root

@@ -41,7 +41,6 @@ class RegistrarAfiliadoFragment : BaseFragment<RegistrarAfiliadoFragmentViewMode
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentRegistroAfiliadoBinding.inflate(inflater)
-        navegacionAplicacion.conIdNavGraph(R.id.nav_host_fragment_content_main)
         precargarElementosEnUI()
         ponerEscuchadorBotones()
         return binding.root

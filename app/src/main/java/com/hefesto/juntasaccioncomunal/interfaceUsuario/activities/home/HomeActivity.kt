@@ -28,7 +28,7 @@ class HomeActivity : BaseActivity<HomeActivityViewModel>() {
         configurarEncabezadoPanelControl(actual = NodosNavegacionFragments.PANEL_CONTROL)
         configurarEscuchadorFragmentActual()
         configurarCerrarSesion()
-        configurarNavegacionFragments(idNavGraph = R.id.nav_graph_home)
+        navegacionAplicacion.conIdNavGraph(idNavGraph = R.id.nav_host_fragment_content_home)
         super.safeOnCreate(savedInstanceState)
     }
 

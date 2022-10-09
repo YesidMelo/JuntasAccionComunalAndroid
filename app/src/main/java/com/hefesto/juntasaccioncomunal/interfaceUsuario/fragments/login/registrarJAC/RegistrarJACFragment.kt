@@ -32,7 +32,6 @@ class RegistrarJACFragment : BaseFragment<RegistrarJACFragmentViewModel>() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentRegistrarJacBinding.inflate(inflater)
-        navegacionAplicacion.conIdNavGraph(R.id.nav_host_fragment_content_main)
         ponerEscuchadoresBotones()
         ponerDefaultsDesarrollo()
         return binding.root
