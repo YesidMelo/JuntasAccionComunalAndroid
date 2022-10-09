@@ -78,6 +78,10 @@ abstract class BaseFragment<T : BaseViewModel> : BaseFragmentDagger<T>(), Lifecy
         calendarFechaMinimaSeleccion = calendarFechaMinimaSeleccion
     )
 
+    fun conEscuchadorAccionBotonAtras(escuchadorAccionBotonAtras : (()->Unit)) {
+        (activity as BaseActivity<*>).escuchadorAccionBotonAtras = escuchadorAccionBotonAtras
+    }
+
     //endregion
 
     //region configuracion ciclo vida

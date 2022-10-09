@@ -42,9 +42,13 @@ class HomeActivity : BaseActivity<HomeActivityViewModel>() {
     private fun configurarBotonAtras(actual: NodosNavegacionFragments) {
         if (actual == NodosNavegacionFragments.PANEL_CONTROL) {
             binding.encabezadoHome.imageViewVolver.visibility = View.GONE
+            escuchadorAccionBotonAtras = null
             return
         }
         binding.encabezadoHome.imageViewVolver.visibility = View.VISIBLE
+        binding.encabezadoHome.imageViewVolver.setOnClickListener {
+            escuchadorAccionBotonAtras?.invoke()
+        }
     }
 
     private fun configurarEscuchadorFragmentActual() {

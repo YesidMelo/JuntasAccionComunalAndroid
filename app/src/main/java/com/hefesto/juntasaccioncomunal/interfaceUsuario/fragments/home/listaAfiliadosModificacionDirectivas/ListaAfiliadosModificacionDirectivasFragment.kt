@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import com.hefesto.juntasaccioncomunal.R
 import com.hefesto.juntasaccioncomunal.databinding.FragmentListaAfiliadosModificacionDirectivasBinding
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.AccionesNavGrap
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
 import javax.inject.Inject
 
@@ -28,6 +29,20 @@ class ListaAfiliadosModificacionDirectivasFragment : BaseFragment<ListaAfiliados
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentListaAfiliadosModificacionDirectivasBinding.inflate(inflater)
+        configurarBotonAtras()
         return binding.root
     }
+
+    //region metodos privados
+    private fun configurarBotonAtras() {
+        conEscuchadorAccionBotonAtras {
+            navegacionAplicacion.navegar(
+                a = NodosNavegacionFragments.PANEL_CONTROL,
+                accion =AccionesNavGrap.LISTA_AFILIADOS_MODIFICACION_DIRECTIVA_A_PANEL_CONTROL,
+                de = NodosNavegacionFragments.LISTA_AFILIADOS_MODIFICACION_DIRECTIVAS
+            )
+        }
+    }
+    //endregion
+
 }

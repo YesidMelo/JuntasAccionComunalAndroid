@@ -31,6 +31,8 @@ abstract class BaseActivity<T: BaseViewModel> : BaseActivityDagger<T>(), Lifecyc
     lateinit var navegacionAplicacion : NavegacionAplicacion
     //endregion
     private var lifecycleRegistry: LifecycleRegistry? = null
+
+    var escuchadorAccionBotonAtras : (()->Unit)? = null
     //endregion
 
     //region ciclo de vida normal
@@ -57,6 +59,7 @@ abstract class BaseActivity<T: BaseViewModel> : BaseActivityDagger<T>(), Lifecyc
 
 
     //endregion
+
 
     //region ciclo vida seguros
     open fun safeOnCreate(savedInstanceState: Bundle?) {}
@@ -123,6 +126,7 @@ abstract class BaseActivity<T: BaseViewModel> : BaseActivityDagger<T>(), Lifecyc
     }
 
     //endregion
+
     //region navegacion fragments en activity
 
     open fun configurarNavegacionFragments(@IdRes @NotNull idNavGraph: Int) {

@@ -23,6 +23,9 @@
         android:name="com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.listaAfiliadosModificacionDirectivas.ListaAfiliadosModificacionDirectivasFragment"
         tools:layout="@layout/fragment_lista_afiliados_modificacion_directivas"
         >
+        <action
+            android:id="@+id/action_listaAfiliadosModificacionDirectiva_to_panel_control"
+            app:destination="@id/panel_control" />
     </fragment>
 
 </navigation>
