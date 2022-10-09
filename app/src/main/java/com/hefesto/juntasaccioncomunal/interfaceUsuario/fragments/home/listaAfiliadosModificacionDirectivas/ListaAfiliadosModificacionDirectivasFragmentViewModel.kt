@@ -10,4 +10,6 @@ class ListaAfiliadosModificacionDirectivasFragmentViewModel constructor(
 ) : BaseViewModel() {
 
     override fun traerBaseUI(): BaseUI = listaAfiliadosModificacionDirectivasFragmentUI
+
+    fun traerListaAfiliadosModificacionDirectiva() = listaAfiliadosModificacionDirectivasFragmentUI.traerListaAfiliadosModificacionDirectiva()
 }

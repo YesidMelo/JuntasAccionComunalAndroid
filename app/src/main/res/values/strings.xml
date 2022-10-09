@@ -73,4 +73,18 @@
     <string name="asignar_rol_dentro_directiva">Asignar rol dentro de la directiva</string>
     <string name="panel_control">Panel control</string>
     <string name="lista_afiliados_modificacion_directivas">Lista afiliados disponibles modificacion directivas</string>
+    <string name="administracion">Administracion</string>
+    <string name="jac">JAC</string>
+    <string name="presidente">Presidente</string>
+    <string name="vicepresidente">Vicepresidente</string>
+    <string name="secretario">Secretario</string>
+    <string name="fiscal">Fiscal</string>
+    <string name="tesorero">Tesorero</string>
+    <string name="afiliado">Afiliado</string>
+    <string name="pre_afiliado">Pre-afiliado</string>
+    <string name="activo">Activo</string>
+    <string name="inactivo">Inactivo</string>
+    <string name="desafiliado">Desafiliado</string>
+    <string name="expulsado">Expulsado</string>
+    <string name="fallecido">Fallecido</string>
 </resources>

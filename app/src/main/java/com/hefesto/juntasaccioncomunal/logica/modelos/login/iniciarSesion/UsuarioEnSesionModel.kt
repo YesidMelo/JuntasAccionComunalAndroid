@@ -5,6 +5,7 @@ import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.RolesEnApp
 
 data class UsuarioEnSesionModel(
     var rolApp : RolesEnApp? = null,
+    var jacId: Int? = null,
     var funcionesRolApp: List<FuncionesRolApp>? = null,
     var jacEnSesionModel: JACEnSesionModel? = null,
     var afiliadoEnSesionModel: AfiliadoEnSesionModel? = null

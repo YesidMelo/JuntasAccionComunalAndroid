@@ -132,8 +132,6 @@ japp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/login/Ja
 app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
 Ÿ
 oapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/repositorios/LoginCacheDatasource.kt,d\1\d1c01caa4052b47cbf8b67f184aa0a588a90a9a4
-œ
-lapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/login/iniciarSesion/UsuarioEnSesionModel.kt,b\e\be6f53cf1943a3537340af73cf9779fb14b79b09
 ˜
 happ/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/login/iniciarSesion/JACEnSesionModel.kt,b\9\b9a58daec1ed329b1b7ff809ee35930d0034906c
 †

@@ -42,12 +42,14 @@ class HelperTraerDetalleUsuarioSesion constructor(
         usuarioEnSesionModel.afiliadoEnSesionModel = afiliadoEnSesionView.convertirAAfiliadoEnSesionModel()
         usuarioEnSesionModel.afiliadoEnSesionModel?.estadoAfiliacion = EstadoAfiliacion.traerEstadoAfiliacionPorId(id = afiliadoEnSesionView.estadoAfiliacionId)
         usuarioEnSesionModel.rolApp = RolesEnApp.traerRolAppPorId(id = afiliadoEnSesionView.rolEnLaAppId)
+        usuarioEnSesionModel.jacId = afiliadoEnSesionView.jacId
     }
 
     private fun registrarJacEnSesion(usuarioEnSesionModel: UsuarioEnSesionModel) {
         val jacEnSesionView = jacDao.traerJAcEnSesion(correo = usuarioInicioSesionModel.correo!!)?:return
         usuarioEnSesionModel.jacEnSesionModel = jacEnSesionView.convertirAJACEnSesionModel()
         usuarioEnSesionModel.rolApp = RolesEnApp.JAC
+        usuarioEnSesionModel.jacId = jacEnSesionView.jacID
     }
 
     private fun registrarFuncionesPorRol(usuarioEnSesionModel: UsuarioEnSesionModel) {

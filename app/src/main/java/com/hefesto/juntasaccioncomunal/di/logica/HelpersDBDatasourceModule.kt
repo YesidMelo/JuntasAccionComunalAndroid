@@ -18,6 +18,7 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.JacDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Jac_Afiliado_Direccion_Dao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.RolAfiliacionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Telefono_Dao
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.HelperListaAfiliadosModificacionDirectivaDB
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperIniciarSesion
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperRegistroAfilado
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperRegistroJAC
@@ -42,6 +43,23 @@ import dagger.Provides
 
 @Module
 class HelpersDBDatasourceModule {
+
+    //region home
+
+    //region primer nivel
+    @Provides
+    fun providesHelperListaAfiliadosModificacionDirectivaDB(
+        afiliadoDao: AfiliadoDao
+    ) : HelperListaAfiliadosModificacionDirectivaDB = HelperListaAfiliadosModificacionDirectivaDB(
+        afiladoDao = afiliadoDao
+    )
+    //endregion
+
+    //region segundo nivel
+    //endregion
+
+    //endregion
+
 
     //region login
 

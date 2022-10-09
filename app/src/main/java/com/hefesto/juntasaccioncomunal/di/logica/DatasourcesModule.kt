@@ -1,17 +1,6 @@
 package com.hefesto.juntasaccioncomunal.di.logica
 
 import com.hefesto.juntasaccioncomunal.fuentesDatos.cache.MemoriaCache
-import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.FuncionesRolAppDao
-import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.RolesAppDao
-import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.TipoDocumentoDao
-import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.TipoTelefonoDao
-import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.AfiliadoDao
-import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Correo_Dao
-import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Jac_EstadoAfiliacionDao
-import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.CorreoDao
-import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.EstadoAfiliacionDao
-import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.JacDao
-import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.RolAfiliacionDao
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.repositorios.BaseCacheDatasource
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.repositorios.BaseCacheDatasourceImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.repositorios.BaseDBDatasource
@@ -20,10 +9,11 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.HomeA
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.HomeApiDatasourceImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.HomeCacheDatasource
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.HomeCacheDatasourceImpl
-import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.HomeDBDatasource
-import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.HomeDBDatasourceImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.HomeSharedPreferencesDatasource
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.HomeSharedPreferencesDatasourceImpl
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.HomeDBDatasource
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.HomeDBDatasourceImpl
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.HelperListaAfiliadosModificacionDirectivaDB
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.LoginApiDatasource
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.LoginApiDatasourceImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.LoginCacheDatasource
@@ -72,7 +62,11 @@ class DatasourcesModule {
     )
 
     @Provides
-    fun providesHomeDBDatasource(): HomeDBDatasource = HomeDBDatasourceImpl()
+    fun providesHomeDBDatasource(
+        helperListaAfiliadosModificacionDirectivaDB: HelperListaAfiliadosModificacionDirectivaDB
+    ): HomeDBDatasource = HomeDBDatasourceImpl(
+        helperListaAfiliadosModificacionDirectivaDB = helperListaAfiliadosModificacionDirectivaDB
+    )
 
     @Provides
     fun providesHomeSharedPreferencesDatesources(): HomeSharedPreferencesDatasource = HomeSharedPreferencesDatasourceImpl()

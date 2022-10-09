@@ -9,7 +9,8 @@ import androidx.room.DatabaseView
     "af.apellidos, " +
     "co.correo, " +
     "asa.rolEnLaAppId, " +
-    "asa.estadoAfiliacionId " +
+    "asa.estadoAfiliacionId, " +
+    "asa.jacId " +
     "FROM " +
     "AfiliadoEntity af, " +
     "Afiliado_Correo_Entity ac, " +
@@ -29,5 +30,6 @@ data class AfiliadoEnSesionView (
     var apellidos: String,
     var correo: String,
     var rolEnLaAppId: Int,
-    var estadoAfiliacionId: Int
+    var estadoAfiliacionId: Int,
+    var jacId: Int
 )

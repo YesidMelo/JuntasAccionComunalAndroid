@@ -1,13 +1,17 @@
 package com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio
 
 import androidx.lifecycle.MutableLiveData
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.HomeDBDatasource
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.AfiliadoModificacionDirectivaModel
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.FuncionesRolApp
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 interface HomeRepositorio {
     fun traerFuncionalidadesRol() : MutableLiveData<List<FuncionesRolApp>>
+    fun traerListaAfiliadosModificacionRolDirectiva() : MutableLiveData<List<AfiliadoModificacionDirectivaModel>>
 }
 
 class HomeRepositorioImpl constructor(
@@ -19,6 +23,7 @@ class HomeRepositorioImpl constructor(
 
     //region variables
     private val funcionesLiveData =  MutableLiveData<List<FuncionesRolApp>>()
+    private val listaAfiliadosModificacionRolDirectivaLiveData = MutableLiveData<List<AfiliadoModificacionDirectivaModel>>()
     //endregion
 
 
@@ -31,6 +36,22 @@ class HomeRepositorioImpl constructor(
                 }
         }
         return funcionesLiveData
+    }
+
+    override fun traerListaAfiliadosModificacionRolDirectiva(): MutableLiveData<List<AfiliadoModificacionDirectivaModel>> {
+        GlobalScope.launch {
+
+            homeCacheDatasource
+                .traerJacId()
+                .collect{ jacId -> if (jacId == null) { listaAfiliadosModificacionRolDirectivaLiveData.postValue(emptyList()); return@collect }
+                    homeDBDatasource
+                        .traerListaAfiliadosModificacionRolDirectiva(jacId = jacId)
+                        .collect{ listaAfiliados ->
+                            listaAfiliadosModificacionRolDirectivaLiveData.postValue(listaAfiliados)
+                        }
+                }
+        }
+        return listaAfiliadosModificacionRolDirectivaLiveData
     }
 
 }
