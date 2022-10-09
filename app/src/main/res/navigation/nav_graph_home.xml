@@ -12,6 +12,17 @@
         android:name="com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.panelControl.PanelControlFragment"
         tools:layout="@layout/fragment_panel_control"
         >
+        <action
+            android:id="@+id/action_panel_control_to_listaAfiliadosModificacionDirectiva"
+            app:destination="@id/listaAfiliadosModificacionDirectiva" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/listaAfiliadosModificacionDirectiva"
+        android:label="lista afiliados modificacion directivas"
+        android:name="com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.listaAfiliadosModificacionDirectivas.ListaAfiliadosModificacionDirectivasFragment"
+        tools:layout="@layout/fragment_lista_afiliados_modificacion_directivas"
+        >
     </fragment>
 
 </navigation>

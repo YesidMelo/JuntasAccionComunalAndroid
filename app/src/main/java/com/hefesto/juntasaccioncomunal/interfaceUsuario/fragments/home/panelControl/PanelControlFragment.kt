@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import com.hefesto.juntasaccioncomunal.databinding.FragmentPanelControlBinding
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.panelControl.helpers.HelperFuncionalidadesReciclerview
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.AccionesNavGrap
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
+import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.FuncionesRolApp
 import javax.inject.Inject
 
 class PanelControlFragment : BaseFragment<PanelControlFragmentViewModel>() {
@@ -48,11 +50,19 @@ class PanelControlFragment : BaseFragment<PanelControlFragmentViewModel>() {
                 helperFuncionalidadesReciclerview
                     .conListaFuncionalidades(listaFuncionalidades = it)
                     .conRecyclerView(binding.reciclerviewFunciones)
-                    .conItemSeleccionado {
-                        Log.e("err", "Ha seleccionado $it")
-                    }
+                    .conItemSeleccionado (itemSeleccionado = ::gestionarNavegacionFunciones)
                     .cargar()
             }
+    }
+
+    private fun gestionarNavegacionFunciones(funcionSeleccionada : FuncionesRolApp) {
+        when(funcionSeleccionada) {
+            FuncionesRolApp.ASIGNAR_ROL_DENTRO_DE_JAC -> navegacionAplicacion.navegar(
+                a = NodosNavegacionFragments.LISTA_AFILIADOS_MODIFICACION_DIRECTIVAS,
+                de = NodosNavegacionFragments.PANEL_CONTROL,
+                accion = AccionesNavGrap.PANEL_CONTROL_A_LISTA_AFILIADOS_MODIFICACION_DIRECTIVA
+            )
+        }
     }
     //endregion
 

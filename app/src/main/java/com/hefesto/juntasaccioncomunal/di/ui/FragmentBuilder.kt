@@ -2,6 +2,7 @@ package com.hefesto.juntasaccioncomunal.di.ui
 
 import com.hefesto.juntasaccioncomunal.di.ui.modules.HomeActivityModule
 import com.hefesto.juntasaccioncomunal.di.ui.modules.LoginActivityModule
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.listaAfiliadosModificacionDirectivas.ListaAfiliadosModificacionDirectivasFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.panelControl.PanelControlFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.login.iniciarSesion.IniciarSesionFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.login.registrarAfiliado.RegistrarAfiliadoFragment
@@ -15,6 +16,10 @@ abstract class FragmentBuilder {
     //region home
     @ContributesAndroidInjector(modules = [HomeActivityModule::class])
     abstract fun providesPanelControlFragment() : PanelControlFragment
+
+    @ContributesAndroidInjector(modules = [HomeActivityModule::class])
+    abstract fun providesListaAfiliadosModificacionDirectivaFragment() : ListaAfiliadosModificacionDirectivasFragment
+
     //endregion
 
 

@@ -142,5 +142,3 @@ Vapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/login/Ja
 ]app/src/main/java/com/hefesto/juntasaccioncomunal/logica/utilidades/enumeradores/RegexEnum.kt,0\0\008f7eb17038aac3cdc03d63c36cd3e17221976b
 Ü
 Vapp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/modules/LoginActivityModule.kt,d\7\d77b861b124deddbe059fcafdc2853d383668e30
-ù
-mapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/navegacion/enumeradores/AccionesNavGrap.kt,4\0\409aafd4b56a19e54d247a317237b50ef4db0fb7

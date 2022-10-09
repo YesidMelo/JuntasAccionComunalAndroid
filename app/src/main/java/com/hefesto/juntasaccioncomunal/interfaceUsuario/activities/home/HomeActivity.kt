@@ -2,6 +2,7 @@ package com.hefesto.juntasaccioncomunal.interfaceUsuario.activities.home
 
 import android.os.Bundle
 import android.view.View
+import com.hefesto.juntasaccioncomunal.R
 import com.hefesto.juntasaccioncomunal.databinding.ActivityHomeBinding
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseActivity
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionActividades
@@ -27,12 +28,23 @@ class HomeActivity : BaseActivity<HomeActivityViewModel>() {
         configurarEncabezadoPanelControl(actual = NodosNavegacionFragments.PANEL_CONTROL)
         configurarEscuchadorFragmentActual()
         configurarCerrarSesion()
+        configurarNavegacionFragments(idNavGraph = R.id.nav_graph_home)
+        super.safeOnCreate(savedInstanceState)
     }
 
     //region metodos privados
     private fun configurarEncabezadoPanelControl(actual: NodosNavegacionFragments) {
         configurarTitulo(actual = actual)
         configurarSubtitulo(actual = actual)
+        configurarBotonAtras(actual = actual)
+    }
+
+    private fun configurarBotonAtras(actual: NodosNavegacionFragments) {
+        if (actual == NodosNavegacionFragments.PANEL_CONTROL) {
+            binding.encabezadoHome.imageViewVolver.visibility = View.GONE
+            return
+        }
+        binding.encabezadoHome.imageViewVolver.visibility = View.VISIBLE
     }
 
     private fun configurarEscuchadorFragmentActual() {

@@ -16,7 +16,7 @@ class AdapterReciclerviewFuncionalidades constructor(
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.itemlayout_panel_control, null, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.itemlista_panel_control, null, false)
         view.layoutParams = RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT)
         return ViewHolder(view = view)
     }

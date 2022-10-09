@@ -72,4 +72,5 @@
     <string name="que_deseas_hacer">¿Que deseas hacer?</string>
     <string name="asignar_rol_dentro_directiva">Asignar rol dentro de la directiva</string>
     <string name="panel_control">Panel control</string>
+    <string name="lista_afiliados_modificacion_directivas">Lista afiliados disponibles modificacion directivas</string>
 </resources>
