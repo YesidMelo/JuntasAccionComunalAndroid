@@ -52,12 +52,6 @@ gapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/ui/R
 Xapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/entities/BaseEntity.kt,2\7\271461bb4c9678501ae60ccc96dfc315ef713183
 ß
 wapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/casosUso/TraerListaJACsRegistradasCasoUso.kt,f\1\f140eb3bff4563b0bf1875490b61011c55d908ef
-™
-zapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/login/registrarAfiliado/JACDisponibleParaAfiliadoModel.kt,d\a\dad667e9932e666b47143690deb813a4c21aae4d
-û
-napp/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/login/registrarAfiliado/TipoDocumentoModel.kt,6\0\60b3e43cd9588bbafdd4703bb6444ed2ffceaa73
-ù
-mapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/login/registrarAfiliado/TipoTelefonoModel.kt,5\f\5f3d46c069d536278eaf0a91ec9ee4f44ac6e339
 ú
 lapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/ui/RegistrarAfiliadoFragmentUI.kt,1\9\1920f5dbe61fbf2dc0c5cb5210ae7b88b37588ee
 °
@@ -132,8 +126,6 @@ japp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/login/Ja
 app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
 ü
 oapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/repositorios/LoginCacheDatasource.kt,d\1\d1c01caa4052b47cbf8b67f184aa0a588a90a9a4
-ò
-happ/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/login/iniciarSesion/JACEnSesionModel.kt,b\9\b9a58daec1ed329b1b7ff809ee35930d0034906c
 Ü
 Vapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/login/JacDao.kt,0\b\0b6dc2d47cc51e37be271f33284d038c162c821b
 ç

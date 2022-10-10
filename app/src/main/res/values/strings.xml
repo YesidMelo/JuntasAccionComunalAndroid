@@ -87,4 +87,5 @@
     <string name="desafiliado">Desafiliado</string>
     <string name="expulsado">Expulsado</string>
     <string name="fallecido">Fallecido</string>
+    <string name="configuracion_afiliado_en_directiva">Configurar afiliado en directiva</string>
 </resources>

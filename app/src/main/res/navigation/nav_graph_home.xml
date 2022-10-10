@@ -26,6 +26,20 @@
         <action
             android:id="@+id/action_listaAfiliadosModificacionDirectiva_to_panel_control"
             app:destination="@id/panel_control" />
+        <action
+            android:id="@+id/action_listaAfiliadosModificacionDirectiva_to_configuracionAfiliadoEnDirectiva"
+            app:destination="@id/configuracionAfiliadoEnDirectiva" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/configuracionAfiliadoEnDirectiva"
+        android:label="Configuracion afiliado en directiva"
+        android:name="com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.configuracionAfiliadoEnDirectiva.ConfiguracionAfiliadoEnDirectivaFragment"
+        tools:layout="@layout/fragment_configuracion_afiliado_modificacion_directiva"
+        >
+        <action
+            android:id="@+id/action_configuracionAfiliadoEnDirectiva_to_listaAfiliadosModificacionDirectiva"
+            app:destination="@id/listaAfiliadosModificacionDirectiva" />
     </fragment>
 
 </navigation>

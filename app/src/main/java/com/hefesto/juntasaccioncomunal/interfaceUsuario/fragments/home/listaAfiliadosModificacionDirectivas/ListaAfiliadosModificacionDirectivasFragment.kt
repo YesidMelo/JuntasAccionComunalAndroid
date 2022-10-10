@@ -9,6 +9,7 @@ import androidx.core.widget.addTextChangedListener
 import com.hefesto.juntasaccioncomunal.R
 import com.hefesto.juntasaccioncomunal.databinding.FragmentListaAfiliadosModificacionDirectivasBinding
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.configuracionAfiliadoEnDirectiva.ConfiguracionAfiliadoEnDirectivaFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.listaAfiliadosModificacionDirectivas.helpers.HelperRecyclerListaAfiliadosModificacionDirectiva
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.AccionesNavGrap
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
@@ -71,7 +72,14 @@ class ListaAfiliadosModificacionDirectivasFragment : BaseFragment<ListaAfiliados
             .conListaAfiliados(listaAfiliados = lista)
             .conRecyclerView(recyclerView = binding.recyclerviewListaAfiliadosModificacionDirectiva)
             .conEscuchadorItemSeleccionado {
-                Log.e("err", "selecciono elemento")
+                val bundle = Bundle()
+                bundle.putSerializable(ConfiguracionAfiliadoEnDirectivaFragment.DETALLE_AFILIADO_EN_DIRECTIVA, it)
+                navegacionAplicacion.navegar(
+                    a = NodosNavegacionFragments.CONFIGURACION_AFILIADO_EN_DIRECTIVA,
+                    de = NodosNavegacionFragments.LISTA_AFILIADOS_MODIFICACION_DIRECTIVAS,
+                    accion = AccionesNavGrap.LISTA_AFILIADOS_MODIFICACION_DIRECTIVA_A_CONFIGURACION_AFILIADO_EN_DIRECTIVA,
+                    bundle = bundle
+                )
             }
             .cargarGenerarAdapters()
     }

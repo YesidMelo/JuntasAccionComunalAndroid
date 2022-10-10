@@ -1,8 +1,10 @@
 package com.hefesto.juntasaccioncomunal.di.ui.modules
 
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.activities.home.HomeActivityViewModel
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.configuracionAfiliadoEnDirectiva.ConfiguracionAfiliadoEnDirectivaViewModel
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.listaAfiliadosModificacionDirectivas.ListaAfiliadosModificacionDirectivasFragmentViewModel
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.panelControl.PanelControlFragmentViewModel
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.ConfiguracionAfiliadoEnDirectivaUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.HomeActivityUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.ListaAfiliadosModificacionDirectivasFragmentUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.PanelControlFragmenUI
@@ -31,6 +33,13 @@ class HomeActivityModule {
         listaAfiliadosModificacionDirectivasFragmentUI: ListaAfiliadosModificacionDirectivasFragmentUI
     ) : ListaAfiliadosModificacionDirectivasFragmentViewModel = ListaAfiliadosModificacionDirectivasFragmentViewModel(
         listaAfiliadosModificacionDirectivasFragmentUI = listaAfiliadosModificacionDirectivasFragmentUI
+    )
+
+    @Provides
+    fun providesConfiguracionAfiliadoEnDirectivaViewModel(
+        configuracionAfiliadoEnDirectivaUI: ConfiguracionAfiliadoEnDirectivaUI
+    ) :ConfiguracionAfiliadoEnDirectivaViewModel = ConfiguracionAfiliadoEnDirectivaViewModel(
+        configuracionAfiliadoEnDirectivaUI = configuracionAfiliadoEnDirectivaUI
     )
 
 }

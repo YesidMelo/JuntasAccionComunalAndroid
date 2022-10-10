@@ -1,5 +1,7 @@
 package com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.helpers.helpersFragments
 
+import android.os.Bundle
+import androidx.constraintlayout.solver.widgets.Helper
 import androidx.navigation.findNavController
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseActivity
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.AccionesNavGrap
@@ -14,6 +16,7 @@ class HelperFragment {
     private lateinit var de: NodosNavegacionFragments
     private var idNavGraph: Int? = null
     private var escuchadorCambioNodo : ((NodosNavegacionFragments)->Unit)? = null
+    private var bundle : Bundle? = null
     //endregion
 
     fun  conA(a: NodosNavegacionFragments) : HelperFragment {
@@ -46,12 +49,17 @@ class HelperFragment {
         return this
     }
 
+    fun conBundle(bundle: Bundle?) : HelperFragment {
+        this.bundle = bundle
+        return this
+    }
+
     fun cambiarFragment() {
         val navGraphId = idNavGraph?:return
         val navController = activity.findNavController(navGraphId)
         //val appBarConfiguration = AppBarConfiguration(navController.graph)
         //activity.setupActionBarWithNavController(navController = navController, appBarConfiguration)
-        navController.navigate(accion.traerIdAccion())
+        navController.navigate(accion.traerIdAccion(), bundle)
         escuchadorCambioNodo?.invoke(a)
     }
 

@@ -1,5 +1,6 @@
 package com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion
 
+import android.os.Bundle
 import android.view.View
 import androidx.annotation.IdRes
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseActivity
@@ -31,7 +32,8 @@ interface NavegacionAplicacion {
     fun navegar(
         a: NodosNavegacionFragments,
         accion: AccionesNavGrap,
-        de: NodosNavegacionFragments
+        de: NodosNavegacionFragments,
+        bundle: Bundle? = null
     ): NavegacionAplicacion
 }
 
@@ -85,7 +87,8 @@ class NavegacionAplicacionImpl constructor(
     override fun navegar(
         a: NodosNavegacionFragments,
         accion: AccionesNavGrap,
-        de: NodosNavegacionFragments
+        de: NodosNavegacionFragments,
+        bundle: Bundle?
     ): NavegacionAplicacion {
         val navGraphId = idNavGraph?: return this
         helperFragment
@@ -94,6 +97,7 @@ class NavegacionAplicacionImpl constructor(
             .conActivity(activity = activity)
             .conDe(de = de)
             .conIdNavGraph(idNavGraph = navGraphId)
+            .conBundle(bundle = bundle)
             .cambiarFragment()
         return this
     }

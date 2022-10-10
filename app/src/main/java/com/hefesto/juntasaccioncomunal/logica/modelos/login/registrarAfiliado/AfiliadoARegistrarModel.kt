@@ -1,5 +1,6 @@
 package com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarAfiliado
 
+import com.hefesto.juntasaccioncomunal.logica.modelos.BaseModel
 import java.util.Date
 
 data class AfiliadoARegistrarModel(
@@ -16,4 +17,4 @@ data class AfiliadoARegistrarModel(
     var telefono: String? = null,
     var tipoDocumento: TipoDocumentoModel? = null,
     var tipoTelefono: TipoTelefonoModel? = null,
-)
+) : BaseModel()

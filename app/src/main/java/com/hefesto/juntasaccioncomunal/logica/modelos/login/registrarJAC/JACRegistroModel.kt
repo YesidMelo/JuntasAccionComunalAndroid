@@ -1,5 +1,7 @@
 package com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarJAC
 
+import com.hefesto.juntasaccioncomunal.logica.modelos.BaseModel
+
 data class JACRegistroModel(
     var jacId: Int?=  null,
     var NombreJAC : String? = null,
@@ -7,4 +9,4 @@ data class JACRegistroModel(
     var Correo: String? = null,
     var Contrasenia: String? = null,
     var RepetirContrasenia: String? = null,
-)
+) : BaseModel()
