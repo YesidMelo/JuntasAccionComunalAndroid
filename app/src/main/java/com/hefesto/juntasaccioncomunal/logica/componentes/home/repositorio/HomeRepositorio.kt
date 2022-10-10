@@ -12,6 +12,7 @@ import javax.inject.Inject
 interface HomeRepositorio {
     fun traerFuncionalidadesRol() : MutableLiveData<List<FuncionesRolApp>>
     fun traerListaAfiliadosModificacionRolDirectiva() : MutableLiveData<List<AfiliadoModificacionDirectivaModel>>
+
 }
 
 class HomeRepositorioImpl constructor(

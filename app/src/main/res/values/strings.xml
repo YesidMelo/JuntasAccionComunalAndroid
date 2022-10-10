@@ -88,4 +88,7 @@
     <string name="expulsado">Expulsado</string>
     <string name="fallecido">Fallecido</string>
     <string name="configuracion_afiliado_en_directiva">Configurar afiliado en directiva</string>
+    <string name="estado_actual_afiliacion">Estado actual afiliacion</string>
+    <string name="rol_actual_en_directiva">Rol Actual en directiva</string>
+    <string name="actualizar_rol_estado_app">Actualizar rol y estado afiliacion en app</string>
 </resources>
