@@ -160,14 +160,10 @@ lapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/repos
 «app/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/casosUso/listaAfiliadosModificacionDirectivas/TraerListaAfiliadosModificacionDirectivasCasoUso.kt,5\9\591c7aa9ae1de0d5ffdddd067e405428150dc0ee
 ®
 ~app/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/ui/ListaAfiliadosModificacionDirectivasFragmentUI.kt,7\e\7e31405d0f93d471582e8ac97348c35a2e4d149c
-Ž
-^app/src/main/java/com/hefesto/juntasaccioncomunal/logica/utilidades/enumeradores/RolesEnApp.kt,2\7\278ec6d138a43abcf458770eb6ab7967718a4e75
 ”
 dapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/utilidades/enumeradores/EstadoAfiliacion.kt,5\7\5772f59c82becc0b40be3c53c14d0416eb6f5a6b
 ¸
 ‡app/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/repositorio/db/mappers/AfiliadoModificacionDirectivaMapper.kt,4\0\40ab101a4317d4e169db4f5a08e0965f78a7663e
-¡
-qapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/views/home/AfiliadoModificacionDirectivaView.kt,a\d\ad47a50c971e8339552ff632d01dca45e7b8a956
 Þ
 ­app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/listaAfiliadosModificacionDirectivas/adapters/ListaAfiliadosModificacionDirectivaAdapter.kt,e\1\e1c662c3144a7c22657d2a638cfde9e15d50df1f
 ä
