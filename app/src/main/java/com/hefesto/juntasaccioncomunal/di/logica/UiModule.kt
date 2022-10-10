@@ -1,6 +1,9 @@
 package com.hefesto.juntasaccioncomunal.di.logica
 
+import com.hefesto.juntasaccioncomunal.MiAplicacion
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.casosUso.CargarEscuchadorExcepcionesCasoUso
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.configuracionAfiliadoEnDirectiva.TraerEstadosAfiliadoEnDirectivaCasoUso
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.configuracionAfiliadoEnDirectiva.TraerRolesAfiliadosEnDirectivaCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.listaAfiliadosModificacionDirectivas.TraerListaAfiliadosModificacionDirectivasCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.panelControl.TraerFuncionalidadesCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.ConfiguracionAfiliadoEnDirectivaUI
@@ -50,8 +53,12 @@ class UiModule {
     @Provides
     fun providesConfiguracionAfiliadoEnDirectivaUI(
         cargarEscuchadorExcepcionesCasoUso: CargarEscuchadorExcepcionesCasoUso,
+        traerEstadosAfiliadoEnDirectivaCasoUso: TraerEstadosAfiliadoEnDirectivaCasoUso,
+        traerRolesAfiliadosEnDirectivaCasoUso: TraerRolesAfiliadosEnDirectivaCasoUso
     ) : ConfiguracionAfiliadoEnDirectivaUI = ConfiguracionAfiliadoEnDirectivaUI(
-        escuchadorExcepciones = cargarEscuchadorExcepcionesCasoUso
+        escuchadorExcepciones = cargarEscuchadorExcepcionesCasoUso,
+        traerEstadosAfiliadoEnDirectivaCasoUso = traerEstadosAfiliadoEnDirectivaCasoUso,
+        traerRolesAfiliadosEnDirectivaCasoUso = traerRolesAfiliadosEnDirectivaCasoUso
     )
 
     //endregion

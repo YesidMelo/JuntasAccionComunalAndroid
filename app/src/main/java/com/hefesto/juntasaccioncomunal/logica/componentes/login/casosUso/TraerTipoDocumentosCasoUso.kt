@@ -2,7 +2,7 @@ package com.hefesto.juntasaccioncomunal.logica.componentes.login.casosUso
 
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
-import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarAfiliado.TipoDocumentoModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.general.TipoDocumentoModel
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.TipoDocumento
 import javax.inject.Inject
 

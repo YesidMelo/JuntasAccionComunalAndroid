@@ -1,6 +1,8 @@
 package com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarAfiliado
 
 import com.hefesto.juntasaccioncomunal.logica.modelos.BaseModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.general.TipoDocumentoModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.general.TipoTelefonoModel
 import java.util.Date
 
 data class AfiliadoARegistrarModel(

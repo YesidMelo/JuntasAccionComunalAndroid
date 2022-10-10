@@ -10,8 +10,8 @@ import com.hefesto.juntasaccioncomunal.R
 import com.hefesto.juntasaccioncomunal.databinding.FragmentRegistroAfiliadoBinding
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarAfiliado.AfiliadoARegistrarModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarAfiliado.JACDisponibleParaAfiliadoModel
-import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarAfiliado.TipoDocumentoModel
-import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarAfiliado.TipoTelefonoModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.general.TipoDocumentoModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.general.TipoTelefonoModel
 import com.hefesto.juntasaccioncomunal.logica.utilidades.constantes.ConstantesFecha.EDAD_MINIMA_INSCRIPCION_JAC
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.FormatosFecha
 import com.hefesto.juntasaccioncomunal.logica.utilidades.extenciones.convertirAFormato

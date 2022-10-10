@@ -6,8 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import com.hefesto.juntasaccioncomunal.databinding.FragmentConfiguracionAfiliadoModificacionDirectivaBinding
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.configuracionAfiliadoEnDirectiva.helpers.HelperSpinnerEstadosAfiliacionConfiguracionDirectivas
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.configuracionAfiliadoEnDirectiva.helpers.HelperSpinnerRolesAfiliacionConfiguracionDirectiva
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.AccionesNavGrap
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.AfiliadoModificacionDirectivaModel
 import javax.inject.Inject
 
 class ConfiguracionAfiliadoEnDirectivaFragment : BaseFragment<ConfiguracionAfiliadoEnDirectivaViewModel>() {
@@ -15,6 +18,11 @@ class ConfiguracionAfiliadoEnDirectivaFragment : BaseFragment<ConfiguracionAfili
     //region variables
     @Inject
     lateinit var configuracionAfiliadoEnDirectivaViewModel: ConfiguracionAfiliadoEnDirectivaViewModel
+    @Inject
+    lateinit var helperSpinnerEstadosAfiliacionConfiguracionDirectivas: HelperSpinnerEstadosAfiliacionConfiguracionDirectivas
+    @Inject
+    lateinit var helperSpinnerRolesAfiliacionConfiguracionDirectiva : HelperSpinnerRolesAfiliacionConfiguracionDirectiva
+
     lateinit var binding: FragmentConfiguracionAfiliadoModificacionDirectivaBinding
     //endregion
 
@@ -28,8 +36,9 @@ class ConfiguracionAfiliadoEnDirectivaFragment : BaseFragment<ConfiguracionAfili
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentConfiguracionAfiliadoModificacionDirectivaBinding.inflate(inflater)
-        val afiliado = arguments?.get(DETALLE_AFILIADO_EN_DIRECTIVA)
         configuracionBotonAtras()
+        configurarEscuchadorCarga()
+        precargarDetalleAfiliado();
         return binding.root
     }
 
@@ -43,6 +52,57 @@ class ConfiguracionAfiliadoEnDirectivaFragment : BaseFragment<ConfiguracionAfili
             )
         }
     }
+
+    private fun precargarDetalleAfiliado() {
+        val afiliado  = (arguments?.get(DETALLE_AFILIADO_EN_DIRECTIVA) as? AfiliadoModificacionDirectivaModel)?:return
+        precargarNombre(afiliado = afiliado)
+        precargarEstadosAfiliadoEnDirectiva(afiliado = afiliado)
+        precargarRolesApp(afiliado = afiliado)
+    }
+
+    private fun precargarNombre(afiliado: AfiliadoModificacionDirectivaModel) {
+        binding.textViewNombresAfiliadoEnDirectivas.text = "${afiliado.nombres} ${afiliado.apellidos}"
+    }
+
+    private fun precargarEstadosAfiliadoEnDirectiva(afiliado: AfiliadoModificacionDirectivaModel) {
+        configuracionAfiliadoEnDirectivaViewModel
+            .traerListaEstadosAfiliado()
+            .observe(viewLifecycleOwner) {
+                helperSpinnerEstadosAfiliacionConfiguracionDirectivas
+                    .conViewModel(viewModel = traerViewModel())
+                    .conSpinner(spinner = binding.spinnerConfiguracionAfiliadoDirectivasEstadosAfiliacion)
+                    .conListaEstadosAfiliadoEnDirectiva(listaEstadosAfiliado = it)
+                    .conAfiliadoModificacionDirectivaModel(afiliado = afiliado)
+                    .configurarSpinner()
+            }
+    }
+
+    private fun precargarRolesApp(afiliado: AfiliadoModificacionDirectivaModel) {
+        configuracionAfiliadoEnDirectivaViewModel
+            .traerListaRolesApp()
+            .observe(viewLifecycleOwner) {
+                if (it == null) return@observe
+                helperSpinnerRolesAfiliacionConfiguracionDirectiva
+                    .conViewModel(viewModel = traerViewModel())
+                    .conSpinner(spinner = binding.spinnerConfiguracionAfiliadoDirectivasRolesApp)
+                    .conListaRolAppModel(it)
+                    .conAfiliado(afiliado = afiliado)
+                    .cargarSpinner()
+            }
+    }
+
+    private fun configurarEscuchadorCarga() {
+        traerViewModel()
+            .cargo()
+            .observe(viewLifecycleOwner) {
+                if (!it) {
+                    mostrarLoading()
+                    return@observe
+                }
+                ocultarLoading()
+            }
+    }
+
     //enbregion
 
     companion object {

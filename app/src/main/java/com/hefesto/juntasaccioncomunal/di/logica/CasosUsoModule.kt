@@ -4,6 +4,10 @@ import com.hefesto.juntasaccioncomunal.MiAplicacion
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.casosUso.CargarEscuchadorExcepcionesCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.casosUso.CargarEscuchadorExcepcionesCasoUsoImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.repositorios.BaseRepositorio
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.configuracionAfiliadoEnDirectiva.TraerEstadosAfiliadoEnDirectivaCasoUso
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.configuracionAfiliadoEnDirectiva.TraerEstadosAfiliadoEnDirectivaCasoUsoImpl
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.configuracionAfiliadoEnDirectiva.TraerRolesAfiliadosEnDirectivaCasoUso
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.configuracionAfiliadoEnDirectiva.TraerRolesAfiliadosEnDirectivaCasoUsoImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.listaAfiliadosModificacionDirectivas.TraerListaAfiliadosModificacionDirectivasCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.listaAfiliadosModificacionDirectivas.TraerListaAfiliadosModificacionDirectivasCasoUsoImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.panelControl.TraerFuncionalidadesCasoUso
@@ -52,6 +56,15 @@ class CasosUsoModule {
     ) : TraerListaAfiliadosModificacionDirectivasCasoUso = TraerListaAfiliadosModificacionDirectivasCasoUsoImpl(
         homeRepositorio = homeRepositorio
     )
+
+    @Provides
+    fun providesTraerEstadosAfiliadoEnDirectivaCasoUso() : TraerEstadosAfiliadoEnDirectivaCasoUso
+    = TraerEstadosAfiliadoEnDirectivaCasoUsoImpl(context = MiAplicacion.traerInstancia()!!.applicationContext)
+
+    @Provides
+    fun providesTraerRolesAfiliadosEnDirectivaCasoUso(): TraerRolesAfiliadosEnDirectivaCasoUso
+    = TraerRolesAfiliadosEnDirectivaCasoUsoImpl(context = MiAplicacion.traerInstancia()!!.applicationContext)
+
     //endregion
 
     //region login

@@ -1,0 +1,7 @@
+
+xkotlin:S100^"\Rename function "afiliado_correo_dao" to match the regular expression ^[a-zA-Z][a-zA-Z0-9]*$(õõ§¾ÿÿÿÿÿ
+{kotlin:S100_"_Rename function "afiliado_Direccion_Dao" to match the regular expression ^[a-zA-Z][a-zA-Z0-9]*$(ÂÓˆ†ıÿÿÿÿ
+…kotlin:S100`"iRename function "afiliado_Jac_EstadoAfiliacionDao" to match the regular expression ^[a-zA-Z][a-zA-Z0-9]*$(ÙÅİÒûÿÿÿÿ
+kotlin:S100a"^Rename function "afiliado_Telefono_Dao" to match the regular expression ^[a-zA-Z][a-zA-Z0-9]*$(¢ßßÀşÿÿÿÿ8ŠÛğ»0
+kotlin:S100h"cRename function "Jac_Afiliado_Direccion_Dao" to match the regular expression ^[a-zA-Z][a-zA-Z0-9]*$(ÚÂúÀ8ŠÛğ»0
+|kotlin:S100k"^Rename function "rolApp_funcionApp_dao" to match the regular expression ^[a-zA-Z][a-zA-Z0-9]*$(•öÀ8ŠÛğ»0
