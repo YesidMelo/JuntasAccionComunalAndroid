@@ -27,6 +27,7 @@ class TraerRolesAfiliadosEnDirectivaCasoUsoImpl constructor(
 
             for (rol in RolesEnApp.values()) {
                 if (rol == RolesEnApp.ADMINISTRADOR) continue
+                if (rol == RolesEnApp.JAC) continue
                 lista.add(RolAppModel(rolesEnApp = rol, nombre = context.getString(rol.traerStringRes())))
             }
             listaRolesLiveData.postValue(lista)

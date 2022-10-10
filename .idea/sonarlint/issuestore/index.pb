@@ -124,8 +124,6 @@ Vapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/login/Ja
 ]app/src/main/java/com/hefesto/juntasaccioncomunal/logica/utilidades/enumeradores/RegexEnum.kt,0\0\008f7eb17038aac3cdc03d63c36cd3e17221976b
 Ü
 Vapp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/modules/LoginActivityModule.kt,d\7\d77b861b124deddbe059fcafdc2853d383668e30
-¶
-vapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/panelControl/PanelControlFragment.kt,0\2\025bf3b88d2a103136ca77633b85fdd92ca72cbe
 ©
 yapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/login/iniciarSesion/IniciarSesionFragment.kt,0\f\0f401913687109659de760b400ed1e4fa788de55
 î
@@ -198,5 +196,3 @@ gapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/login/registra
 zapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/login/registrarAfiliado/JACDisponibleParaAfiliadoModel.kt,d\a\dad667e9932e666b47143690deb813a4c21aae4d
 ¡
 êapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/splash/repositorios/helpers/cargarTipos/HelperCargarRelacionRolFunciones.kt,1\c\1c3b12ef94eec939104a6df96f00e0ef1838a7d0
-ì
-capp/src/main/java/com/hefesto/juntasaccioncomunal/logica/utilidades/enumeradores/FuncionesRolApp.kt,3\d\3d1c4bdb471182f49b202fa7266fb8b3b97f473b
