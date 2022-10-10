@@ -6,11 +6,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.hefesto.juntasaccioncomunal.R
-import com.hefesto.juntasaccioncomunal.logica.modelos.home.AfiliadoModificacionDirectivaModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.AfiliadoParaModificacionDirectivaModel
 
 class ListaAfiliadosModificacionDirectivaAdapter constructor(
-    var listaAfiliados: List<AfiliadoModificacionDirectivaModel>,
-    var escuchadorSeleccionado: (AfiliadoModificacionDirectivaModel) -> Unit
+    var listaAfiliados: List<AfiliadoParaModificacionDirectivaModel>,
+    var escuchadorSeleccionado: (AfiliadoParaModificacionDirectivaModel) -> Unit
 )
     : RecyclerView.Adapter<ListaAfiliadosModificacionDirectivaAdapter.DetalleItem>() {
 
@@ -31,14 +31,14 @@ class ListaAfiliadosModificacionDirectivaAdapter constructor(
 
     inner class DetalleItem(val view: View) : RecyclerView.ViewHolder(view) {
 
-        fun configurarDetalle(afiliado: AfiliadoModificacionDirectivaModel) : DetalleItem{
+        fun configurarDetalle(afiliado: AfiliadoParaModificacionDirectivaModel) : DetalleItem{
             configurarNombres(afiliado = afiliado)
             configurarEstadoAfiliacion(afiliado = afiliado)
             configurarRolApp(afiliado = afiliado)
             return this
         }
 
-        fun configurarEscuchador(afiliado: AfiliadoModificacionDirectivaModel) : DetalleItem {
+        fun configurarEscuchador(afiliado: AfiliadoParaModificacionDirectivaModel) : DetalleItem {
             view.setOnClickListener {
                 escuchadorSeleccionado.invoke(afiliado)
             }
@@ -46,17 +46,17 @@ class ListaAfiliadosModificacionDirectivaAdapter constructor(
         }
 
         //region metodos privados
-        private fun configurarNombres(afiliado: AfiliadoModificacionDirectivaModel) {
+        private fun configurarNombres(afiliado: AfiliadoParaModificacionDirectivaModel) {
             val nombres = view.findViewById<TextView>(R.id.textView_nombreCompleto_modificacion_directiva)
             nombres.text = "${afiliado.nombres} ${afiliado.apellidos}"
         }
 
-        private fun configurarRolApp(afiliado: AfiliadoModificacionDirectivaModel) {
+        private fun configurarRolApp(afiliado: AfiliadoParaModificacionDirectivaModel) {
             val rolApp = view.findViewById<TextView>(R.id.textView_afiliado_rolApp)
             rolApp.setText(afiliado.rolApp.traerStringRes())
         }
 
-        private fun configurarEstadoAfiliacion(afiliado: AfiliadoModificacionDirectivaModel) {
+        private fun configurarEstadoAfiliacion(afiliado: AfiliadoParaModificacionDirectivaModel) {
             val estado = view.findViewById<TextView>(R.id.textView_estadoAfiliacion_modificacion_directiva)
             estado.setText(afiliado.estadoAfiliacion.traerStringRes())
         }

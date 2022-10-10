@@ -3,7 +3,7 @@ package com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.listaAfi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.listaAfiliadosModificacionDirectivas.adapters.ListaAfiliadosModificacionDirectivaAdapter
-import com.hefesto.juntasaccioncomunal.logica.modelos.home.AfiliadoModificacionDirectivaModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.AfiliadoParaModificacionDirectivaModel
 
 class HelperRecyclerListaAfiliadosModificacionDirectiva {
 
@@ -14,11 +14,11 @@ class HelperRecyclerListaAfiliadosModificacionDirectiva {
 
     //region variables
     private var recyclerView: RecyclerView? =null
-    private lateinit var listaAfiliados: List<AfiliadoModificacionDirectivaModel>
-    private lateinit var escuchadorItemSeleccionado : (AfiliadoModificacionDirectivaModel)->Unit
+    private lateinit var listaAfiliados: List<AfiliadoParaModificacionDirectivaModel>
+    private lateinit var escuchadorItemSeleccionado : (AfiliadoParaModificacionDirectivaModel)->Unit
     private lateinit var adaperReciclerView :  ListaAfiliadosModificacionDirectivaAdapter
 
-    private var listaAfiliadosFiltrada = emptyList<AfiliadoModificacionDirectivaModel>().toMutableList()
+    private var listaAfiliadosFiltrada = emptyList<AfiliadoParaModificacionDirectivaModel>().toMutableList()
     private var filtrando = false
     //endregion
 
@@ -27,13 +27,13 @@ class HelperRecyclerListaAfiliadosModificacionDirectiva {
         return this
     }
 
-    fun conListaAfiliados(listaAfiliados: List<AfiliadoModificacionDirectivaModel>) : HelperRecyclerListaAfiliadosModificacionDirectiva {
+    fun conListaAfiliados(listaAfiliados: List<AfiliadoParaModificacionDirectivaModel>) : HelperRecyclerListaAfiliadosModificacionDirectiva {
         this.listaAfiliados = listaAfiliados
         restaurarListaFiltrada()
         return this
     }
 
-    fun conEscuchadorItemSeleccionado(escuchadorItemSeleccionado : (AfiliadoModificacionDirectivaModel)->Unit) : HelperRecyclerListaAfiliadosModificacionDirectiva {
+    fun conEscuchadorItemSeleccionado(escuchadorItemSeleccionado : (AfiliadoParaModificacionDirectivaModel)->Unit) : HelperRecyclerListaAfiliadosModificacionDirectiva {
         this.escuchadorItemSeleccionado = escuchadorItemSeleccionado
         return this
     }

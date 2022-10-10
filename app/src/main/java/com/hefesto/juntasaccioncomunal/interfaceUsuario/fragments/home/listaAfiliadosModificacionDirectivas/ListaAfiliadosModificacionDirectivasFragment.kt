@@ -13,7 +13,7 @@ import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.configura
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.listaAfiliadosModificacionDirectivas.helpers.HelperRecyclerListaAfiliadosModificacionDirectiva
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.AccionesNavGrap
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
-import com.hefesto.juntasaccioncomunal.logica.modelos.home.AfiliadoModificacionDirectivaModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.AfiliadoParaModificacionDirectivaModel
 import javax.inject.Inject
 
 class ListaAfiliadosModificacionDirectivasFragment : BaseFragment<ListaAfiliadosModificacionDirectivasFragmentViewModel>() {
@@ -67,7 +67,7 @@ class ListaAfiliadosModificacionDirectivasFragment : BaseFragment<ListaAfiliados
             }
     }
 
-    private fun llenarRecycler(lista: List<AfiliadoModificacionDirectivaModel>) {
+    private fun llenarRecycler(lista: List<AfiliadoParaModificacionDirectivaModel>) {
         helperRecyclerListaAfiliadosModificacionDirectiva
             .conListaAfiliados(listaAfiliados = lista)
             .conRecyclerView(recyclerView = binding.recyclerviewListaAfiliadosModificacionDirectiva)

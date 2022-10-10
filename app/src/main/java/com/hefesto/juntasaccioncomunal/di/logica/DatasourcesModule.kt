@@ -13,6 +13,7 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.HomeS
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.HomeSharedPreferencesDatasourceImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.HomeDBDatasource
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.HomeDBDatasourceImpl
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.HelperActualizarAfiliadoEnDirectivaDB
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.HelperListaAfiliadosModificacionDirectivaDB
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.LoginApiDatasource
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.LoginApiDatasourceImpl
@@ -63,8 +64,10 @@ class DatasourcesModule {
 
     @Provides
     fun providesHomeDBDatasource(
-        helperListaAfiliadosModificacionDirectivaDB: HelperListaAfiliadosModificacionDirectivaDB
+        helperListaAfiliadosModificacionDirectivaDB: HelperListaAfiliadosModificacionDirectivaDB,
+        helperActualizarAfiliadoEnDirectivaDB: HelperActualizarAfiliadoEnDirectivaDB
     ): HomeDBDatasource = HomeDBDatasourceImpl(
+        helperActualizarAfiliadoEnDirectivaDB = helperActualizarAfiliadoEnDirectivaDB,
         helperListaAfiliadosModificacionDirectivaDB = helperListaAfiliadosModificacionDirectivaDB
     )
 

@@ -1,16 +1,20 @@
 package com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.configuracionAfiliadoEnDirectiva
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.hefesto.juntasaccioncomunal.R
 import com.hefesto.juntasaccioncomunal.databinding.FragmentConfiguracionAfiliadoModificacionDirectivaBinding
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.dialogo.DialogoInformativo
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.configuracionAfiliadoEnDirectiva.helpers.HelperSpinnerEstadosAfiliacionConfiguracionDirectivas
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.configuracionAfiliadoEnDirectiva.helpers.HelperSpinnerRolesAfiliacionConfiguracionDirectiva
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.AccionesNavGrap
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
-import com.hefesto.juntasaccioncomunal.logica.modelos.home.AfiliadoModificacionDirectivaModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.AfiliadoEnDirectivaModificadoModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.AfiliadoParaModificacionDirectivaModel
 import javax.inject.Inject
 
 class ConfiguracionAfiliadoEnDirectivaFragment : BaseFragment<ConfiguracionAfiliadoEnDirectivaViewModel>() {
@@ -36,35 +40,114 @@ class ConfiguracionAfiliadoEnDirectivaFragment : BaseFragment<ConfiguracionAfili
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentConfiguracionAfiliadoModificacionDirectivaBinding.inflate(inflater)
-        configuracionBotonAtras()
+
+        configuracionBotones()
         configurarEscuchadorCarga()
         precargarDetalleAfiliado();
         return binding.root
     }
 
     //region metodos privados
+
+    //region configuracion botones
+
+    private fun configuracionBotones() {
+        configuracionBotonAtras()
+        configuracionBotonRegistrar()
+    }
+
     private fun configuracionBotonAtras() {
         conEscuchadorAccionBotonAtras {
-            navegacionAplicacion.navegar(
-                a = NodosNavegacionFragments.LISTA_AFILIADOS_MODIFICACION_DIRECTIVAS,
-                de = NodosNavegacionFragments.CONFIGURACION_AFILIADO_EN_DIRECTIVA,
-                accion = AccionesNavGrap.CONFIGURACION_AFILIADO_EN_DIRECTIVA_A_LISTA_AFILIADOS_MODIFICACION_DIRECTIVA
-            )
+            navegarAtras()
         }
     }
 
+    private fun configuracionBotonRegistrar() {
+        binding.buttonActualizarRolDirectivas.setOnClickListener {
+            mostrarDialogoConfirmacionRegistro()
+        }
+    }
+
+    private fun mostrarDialogoConfirmacionRegistro() {
+        mostrarDialogo(
+            tipoDialogo = DialogoInformativo.TipoDialogo.ADVERTENCIA,
+            titulo = R.string.actualizar_rol_en_directiva,
+            mensaje = R.string.deseas_continuar_con_la_actualizacion_del_afiliado,
+            accionAceptar =  ::registrarModificacion,
+            accionCancelar = ::habilitarVistas
+        )
+    }
+
+    private fun mostrarDialogoFinalizacionRegistro() {
+        mostrarDialogo(
+            tipoDialogo = DialogoInformativo.TipoDialogo.INFORMATIVO,
+            titulo = R.string.actualizar_rol_en_directiva,
+            mensaje = R.string.actualizacion_afiliado_exitosa,
+            accionAceptar = ::navegarAtras
+        )
+    }
+
+    private fun registrarModificacion() {
+        val afiliado  = (arguments?.get(DETALLE_AFILIADO_EN_DIRECTIVA) as? AfiliadoParaModificacionDirectivaModel)?:return
+        mostrarLoading()
+        deshabilitarVistas()
+        funcionSegura(funcion = {
+            traerViewModel()
+                .actualizarAfiliadoEnDirectiva(afiliadoEnDirectivaModificadoModel = crearAfiliadoModificado(afiliado = afiliado))
+                .observe(viewLifecycleOwner) {
+                    if (it == null) return@observe
+                    ocultarLoading()
+                    if(!it) return@observe
+                    mostrarDialogoFinalizacionRegistro()
+                }
+        })
+    }
+
+    private fun crearAfiliadoModificado(afiliado: AfiliadoParaModificacionDirectivaModel) : AfiliadoEnDirectivaModificadoModel {
+        return AfiliadoEnDirectivaModificadoModel(
+            afiliadoId = afiliado.afiliadoId,
+            rolApp = helperSpinnerRolesAfiliacionConfiguracionDirectiva.traerItemSeleccionado().rolesEnApp,
+            estadoAfiliacion = helperSpinnerEstadosAfiliacionConfiguracionDirectivas.traerEstadoAfiliacionSeleccionado().estadoAfiliacion
+        )
+    }
+
+    //endregion
+
+    //region navegacion
+    private fun navegarAtras() {
+        navegacionAplicacion.navegar(
+            a = NodosNavegacionFragments.LISTA_AFILIADOS_MODIFICACION_DIRECTIVAS,
+            de = NodosNavegacionFragments.CONFIGURACION_AFILIADO_EN_DIRECTIVA,
+            accion = AccionesNavGrap.CONFIGURACION_AFILIADO_EN_DIRECTIVA_A_LISTA_AFILIADOS_MODIFICACION_DIRECTIVA
+        )
+    }
+
+    private fun habilitarVistas() {
+        binding.buttonActualizarRolDirectivas.isEnabled = true
+        binding.spinnerConfiguracionAfiliadoDirectivasRolesApp.isEnabled = true
+        binding.spinnerConfiguracionAfiliadoDirectivasEstadosAfiliacion.isEnabled = true
+    }
+
+    private fun deshabilitarVistas() {
+        binding.buttonActualizarRolDirectivas.isEnabled = false
+        binding.spinnerConfiguracionAfiliadoDirectivasRolesApp.isEnabled = false
+        binding.spinnerConfiguracionAfiliadoDirectivasEstadosAfiliacion.isEnabled = false
+    }
+    //endregion
+
+    //region precarga
     private fun precargarDetalleAfiliado() {
-        val afiliado  = (arguments?.get(DETALLE_AFILIADO_EN_DIRECTIVA) as? AfiliadoModificacionDirectivaModel)?:return
+        val afiliado  = (arguments?.get(DETALLE_AFILIADO_EN_DIRECTIVA) as? AfiliadoParaModificacionDirectivaModel)?:return
         precargarNombre(afiliado = afiliado)
         precargarEstadosAfiliadoEnDirectiva(afiliado = afiliado)
         precargarRolesApp(afiliado = afiliado)
     }
 
-    private fun precargarNombre(afiliado: AfiliadoModificacionDirectivaModel) {
+    private fun precargarNombre(afiliado: AfiliadoParaModificacionDirectivaModel) {
         binding.textViewNombresAfiliadoEnDirectivas.text = "${afiliado.nombres} ${afiliado.apellidos}"
     }
 
-    private fun precargarEstadosAfiliadoEnDirectiva(afiliado: AfiliadoModificacionDirectivaModel) {
+    private fun precargarEstadosAfiliadoEnDirectiva(afiliado: AfiliadoParaModificacionDirectivaModel) {
         configuracionAfiliadoEnDirectivaViewModel
             .traerListaEstadosAfiliado()
             .observe(viewLifecycleOwner) {
@@ -77,7 +160,7 @@ class ConfiguracionAfiliadoEnDirectivaFragment : BaseFragment<ConfiguracionAfili
             }
     }
 
-    private fun precargarRolesApp(afiliado: AfiliadoModificacionDirectivaModel) {
+    private fun precargarRolesApp(afiliado: AfiliadoParaModificacionDirectivaModel) {
         configuracionAfiliadoEnDirectivaViewModel
             .traerListaRolesApp()
             .observe(viewLifecycleOwner) {
@@ -103,7 +186,9 @@ class ConfiguracionAfiliadoEnDirectivaFragment : BaseFragment<ConfiguracionAfili
             }
     }
 
-    //enbregion
+    //endregion
+
+    //endregion
 
     companion object {
         const val DETALLE_AFILIADO_EN_DIRECTIVA = "Detalle afiliado en directiva"

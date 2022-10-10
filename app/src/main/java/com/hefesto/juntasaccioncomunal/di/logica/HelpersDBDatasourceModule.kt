@@ -1,5 +1,6 @@
 package com.hefesto.juntasaccioncomunal.di.logica
 
+import com.hefesto.juntasaccioncomunal.fuentesDatos.cache.MemoriaCache
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.FuncionesRolAppDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.RolApp_FuncionesApp_Dao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.RolesAppDao
@@ -18,6 +19,8 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.JacDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Jac_Afiliado_Direccion_Dao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.RolAfiliacionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Telefono_Dao
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.HelperActualizarAfiliadoEnDirectivaDB
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.HelperActualizarAfiliadoEnDirectivaDBImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.HelperListaAfiliadosModificacionDirectivaDB
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperIniciarSesion
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperRegistroAfilado
@@ -52,6 +55,15 @@ class HelpersDBDatasourceModule {
         afiliadoDao: AfiliadoDao
     ) : HelperListaAfiliadosModificacionDirectivaDB = HelperListaAfiliadosModificacionDirectivaDB(
         afiladoDao = afiliadoDao
+    )
+
+    @Provides
+    fun providesHelperActualizarAfiliadoEnDirectivaDB(
+        memoriaCache: MemoriaCache,
+        afiliadoJacEstadoafiliaciondao: Afiliado_Jac_EstadoAfiliacionDao
+    ) : HelperActualizarAfiliadoEnDirectivaDB = HelperActualizarAfiliadoEnDirectivaDBImpl(
+        memoriaCache = memoriaCache,
+        afiliadoJacEstadoafiliaciondao = afiliadoJacEstadoafiliaciondao
     )
     //endregion
 
@@ -238,7 +250,6 @@ class HelpersDBDatasourceModule {
     //endregion
 
     //region segundo nivel
-
     @Provides
     fun providesHelperCargarTipos(
         helperCargarEstadoAfiliacion : HelperCargarEstadoAfiliacion,

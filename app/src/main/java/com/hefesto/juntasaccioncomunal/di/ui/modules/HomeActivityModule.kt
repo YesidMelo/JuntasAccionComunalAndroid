@@ -4,6 +4,7 @@ import com.hefesto.juntasaccioncomunal.interfaceUsuario.activities.home.HomeActi
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.configuracionAfiliadoEnDirectiva.ConfiguracionAfiliadoEnDirectivaViewModel
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.listaAfiliadosModificacionDirectivas.ListaAfiliadosModificacionDirectivasFragmentViewModel
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.panelControl.PanelControlFragmentViewModel
+import com.hefesto.juntasaccioncomunal.logica.componentes.base.casosUso.CargarEscuchadorExcepcionesCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.ConfiguracionAfiliadoEnDirectivaUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.HomeActivityUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.ListaAfiliadosModificacionDirectivasFragmentUI
@@ -37,9 +38,11 @@ class HomeActivityModule {
 
     @Provides
     fun providesConfiguracionAfiliadoEnDirectivaViewModel(
-        configuracionAfiliadoEnDirectivaUI: ConfiguracionAfiliadoEnDirectivaUI
+        configuracionAfiliadoEnDirectivaUI: ConfiguracionAfiliadoEnDirectivaUI,
+        cargarEscuchadorExcepcionesCasoUso: CargarEscuchadorExcepcionesCasoUso
     ) :ConfiguracionAfiliadoEnDirectivaViewModel = ConfiguracionAfiliadoEnDirectivaViewModel(
-        configuracionAfiliadoEnDirectivaUI = configuracionAfiliadoEnDirectivaUI
+        configuracionAfiliadoEnDirectivaUI = configuracionAfiliadoEnDirectivaUI,
+        cargarEscuchadorExcepcionesCasoUso = cargarEscuchadorExcepcionesCasoUso
     )
 
 }

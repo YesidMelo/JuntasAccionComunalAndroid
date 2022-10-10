@@ -4,14 +4,14 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.configuracionAfiliadoEnDirectiva.ConfiguracionAfiliadoEnDirectivaViewModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.general.RolAppModel
-import com.hefesto.juntasaccioncomunal.logica.modelos.home.AfiliadoModificacionDirectivaModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.AfiliadoParaModificacionDirectivaModel
 
 class HelperSpinnerRolesAfiliacionConfiguracionDirectiva {
 
     //region variables
     private lateinit var spinner: Spinner
     private lateinit var adapter: ArrayAdapter<RolAppModel>
-    private lateinit var afiliado: AfiliadoModificacionDirectivaModel
+    private lateinit var afiliado: AfiliadoParaModificacionDirectivaModel
     private lateinit var listaRolAppModel: List<RolAppModel>
     private lateinit var viewModel : ConfiguracionAfiliadoEnDirectivaViewModel
     //endregion
@@ -22,7 +22,7 @@ class HelperSpinnerRolesAfiliacionConfiguracionDirectiva {
         return this
     }
 
-    fun conAfiliado(afiliado: AfiliadoModificacionDirectivaModel) : HelperSpinnerRolesAfiliacionConfiguracionDirectiva {
+    fun conAfiliado(afiliado: AfiliadoParaModificacionDirectivaModel) : HelperSpinnerRolesAfiliacionConfiguracionDirectiva {
         this.afiliado = afiliado
         return this
     }

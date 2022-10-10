@@ -159,6 +159,7 @@ abstract class BaseActivity<T: BaseViewModel> : BaseActivityDagger<T>(), Lifecyc
                     tipoDialogo = if (it.tipoExcepcion == TiposExcepciones.GENERADO_USUARIO) DialogoInformativo.TipoDialogo.ERROR_USUARIO else DialogoInformativo.TipoDialogo.ERROR_SISTEMA,
                     titulo = it.stringResTitulo,
                     mensaje = it.stringResMensaje,
+                    accionAceptar = { ocultarProgress() }
                 )
             }
     }

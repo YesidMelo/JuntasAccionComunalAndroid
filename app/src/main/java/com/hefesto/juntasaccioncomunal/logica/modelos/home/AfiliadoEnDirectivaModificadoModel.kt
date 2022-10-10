@@ -4,11 +4,8 @@ import com.hefesto.juntasaccioncomunal.logica.modelos.BaseModel
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.EstadoAfiliacion
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.RolesEnApp
 
-data class AfiliadoModificacionDirectivaModel (
+data class AfiliadoEnDirectivaModificadoModel (
     var afiliadoId : Int,
-    var nombres: String?,
-    var apellidos : String?,
-    var documento: String?,
     var estadoAfiliacion: EstadoAfiliacion,
     var rolApp: RolesEnApp
 ) : BaseModel()

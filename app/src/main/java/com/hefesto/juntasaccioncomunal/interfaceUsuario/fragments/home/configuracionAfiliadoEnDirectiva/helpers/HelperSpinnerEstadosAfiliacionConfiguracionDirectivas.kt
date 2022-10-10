@@ -3,7 +3,7 @@ package com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.configur
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.configuracionAfiliadoEnDirectiva.ConfiguracionAfiliadoEnDirectivaViewModel
-import com.hefesto.juntasaccioncomunal.logica.modelos.home.AfiliadoModificacionDirectivaModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.AfiliadoParaModificacionDirectivaModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.general.EstadoAfiliadoModel
 
 class HelperSpinnerEstadosAfiliacionConfiguracionDirectivas {
@@ -11,7 +11,7 @@ class HelperSpinnerEstadosAfiliacionConfiguracionDirectivas {
     //region variables
     private lateinit var spinner: Spinner
     private lateinit var adapter: ArrayAdapter<EstadoAfiliadoModel>
-    private lateinit var afiliado: AfiliadoModificacionDirectivaModel
+    private lateinit var afiliado: AfiliadoParaModificacionDirectivaModel
     private lateinit var listaEstadosAfiliado: List<EstadoAfiliadoModel>
     private lateinit var viewModel : ConfiguracionAfiliadoEnDirectivaViewModel
     //endregion
@@ -33,7 +33,7 @@ class HelperSpinnerEstadosAfiliacionConfiguracionDirectivas {
         return this
     }
 
-    fun conAfiliadoModificacionDirectivaModel(afiliado: AfiliadoModificacionDirectivaModel) : HelperSpinnerEstadosAfiliacionConfiguracionDirectivas{
+    fun conAfiliadoModificacionDirectivaModel(afiliado: AfiliadoParaModificacionDirectivaModel) : HelperSpinnerEstadosAfiliacionConfiguracionDirectivas{
         this.afiliado = afiliado
         return this
     }
