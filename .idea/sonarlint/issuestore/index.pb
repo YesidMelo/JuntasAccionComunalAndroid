@@ -166,12 +166,8 @@ dapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/utilidades/enumeradore
 ≠app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/listaAfiliadosModificacionDirectivas/adapters/ListaAfiliadosModificacionDirectivaAdapter.kt,e\1\e1c662c3144a7c22657d2a638cfde9e15d50df1f
 ‰
 ≥app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/listaAfiliadosModificacionDirectivas/helpers/HelperRecyclerListaAfiliadosModificacionDirectiva.kt,0\e\0e972867e43456470bcca671413cbb8acbbd5839
-¶
-vapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/navegacion/enumeradores/NodosNavegacionFragments.kt,2\1\21d558508253f131de5c339956e648c54f2d9b72
 é
 ^app/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/ui/HomeActivityUI.kt,8\4\84bea1af5e9c553e248d1dd7e4d1a3ac058810eb
-ù
-mapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/navegacion/enumeradores/AccionesNavGrap.kt,4\0\409aafd4b56a19e54d247a317237b50ef4db0fb7
 ï
 eapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/navegacion/NavegacionAplicacion.kt,4\4\4464956d055d4e2841220eb338f611f5ba14a78b
 ®

@@ -62,9 +62,9 @@ class PanelControlFragment : BaseFragment<PanelControlFragmentViewModel>() {
                 accion = AccionesNavGrap.PANEL_CONTROL_A_LISTA_AFILIADOS_MODIFICACION_DIRECTIVA
             )
             FuncionesRolApp.REGISTRAR_AFILIADO_JAC ->  navegacionAplicacion.navegar(
-                a = NodosNavegacionFragments.LISTA_AFILIADOS_MODIFICACION_DIRECTIVAS,
+                a = NodosNavegacionFragments.REGISTRAR_AFILIADO_HOME,
                 de = NodosNavegacionFragments.PANEL_CONTROL,
-                accion = AccionesNavGrap.PANEL_CONTROL_A_LISTA_AFILIADOS_MODIFICACION_DIRECTIVA
+                accion = AccionesNavGrap.PANEL_CONTROL_A_REGISTRAR_AFILIADO_HOME
             )
         }
     }
