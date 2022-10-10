@@ -32,12 +32,8 @@ X
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 †
 Vapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/base/ui/BaseUI.kt,d\4\d429273f36e126ced40738e77ffcc02248b062ec
-¨
-xapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/base/casosUso/CargarEscuchadorExcepcionesCasoUso.kt,9\b\9bc41615f2f98dd652da054b5d8456e8265fb9c3
 ™
 iapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/base/repositorios/BaseRepositorio.kt,5\d\5d421280fc3c3458d2051b65efe840d70d94d228
-Š
-Zapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/splash/ui/SplashUI.kt,6\1\61bfd54025f628daa58aca62f720ce431f557c76
 „
 Tapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/cache/MemoriaCache.kt,1\7\1783a16ccbe4a025bdb6bb59d9a49c37aeebe0b0
 <
