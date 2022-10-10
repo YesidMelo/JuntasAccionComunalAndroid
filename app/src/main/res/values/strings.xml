@@ -1,7 +1,7 @@
 <resources>
     <!--region restircciones edittext-->
-    <string name="restriccion_solo_alfanumerico">0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZÑabcdefghijklmnopqrstuvwxyzñ</string>
-    <string name="restriccion_solo_alfabeto">ABCDEFGHIJKLMNOPQRSTUVWXYZÑabcdefghijklmnopqrstuvwxyzñ</string>
+    <string name="restriccion_solo_alfanumerico">0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZÑ abcdefghijklmnopqrstuvwxyzñ</string>
+    <string name="restriccion_solo_alfabeto">ABCDEFGHIJKLMNOPQRSTUVWXYZÑ abcdefghijklmnopqrstuvwxyzñ</string>
     <!--endregion-->
     <string name="app_name">JuntasAccionComunal</string>
     <string name="junta_accion_comunal">Juntas Accion Comunal</string>

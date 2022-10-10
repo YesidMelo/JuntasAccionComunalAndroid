@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import com.hefesto.juntasaccioncomunal.R
 import com.hefesto.juntasaccioncomunal.databinding.FragmentListaAfiliadosModificacionDirectivasBinding
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
@@ -21,8 +22,8 @@ class ListaAfiliadosModificacionDirectivasFragment : BaseFragment<ListaAfiliados
     lateinit var listaAfiliadosFragmentViewModel: ListaAfiliadosModificacionDirectivasFragmentViewModel
     @Inject
     lateinit var helperRecyclerListaAfiliadosModificacionDirectiva : HelperRecyclerListaAfiliadosModificacionDirectiva
-
     lateinit var binding: FragmentListaAfiliadosModificacionDirectivasBinding
+    private var filtro : HelperRecyclerListaAfiliadosModificacionDirectiva.Filtro = HelperRecyclerListaAfiliadosModificacionDirectiva.Filtro.NOMBRES
     //endregion
 
 
@@ -36,6 +37,8 @@ class ListaAfiliadosModificacionDirectivasFragment : BaseFragment<ListaAfiliados
     ): View {
         binding = FragmentListaAfiliadosModificacionDirectivasBinding.inflate(inflater)
         configurarBotonAtras()
+        configurarEdittext()
+        configurarRadiobuttons()
         precargarElementos()
         return binding.root
     }
@@ -70,8 +73,39 @@ class ListaAfiliadosModificacionDirectivasFragment : BaseFragment<ListaAfiliados
             .conEscuchadorItemSeleccionado {
                 Log.e("err", "selecciono elemento")
             }
-            .cargarLista()
+            .cargarGenerarAdapters()
     }
+
+    private fun configurarEdittext() {
+        binding
+            .editTextFiltroAfiliadoModificacionDirectiva
+            .addTextChangedListener {
+                Log.e("Elementos", " mira tengo $it")
+                if(it == null || it.isNullOrEmpty()) {
+                    helperRecyclerListaAfiliadosModificacionDirectiva.restaurarListaFiltrada()
+                    return@addTextChangedListener
+                }
+                helperRecyclerListaAfiliadosModificacionDirectiva.buscar(texto = it.toString(), filtro = filtro)
+            }
+    }
+
+    private fun configurarRadiobuttons() {
+        binding
+            .radioGroupSelectorFiltro
+            .setOnCheckedChangeListener { _, radiobuttonId ->
+                when(radiobuttonId) {
+                    R.id.radioButton_documentoAfiliado_rolApp -> {
+                        filtro = HelperRecyclerListaAfiliadosModificacionDirectiva.Filtro.DOCUMENTO
+                        binding.editTextFiltroAfiliadoModificacionDirectiva.setHint(R.string.numero_documento)
+                    }
+                    else -> {
+                        filtro = HelperRecyclerListaAfiliadosModificacionDirectiva.Filtro.NOMBRES
+                        binding.editTextFiltroAfiliadoModificacionDirectiva.setHint(R.string.ingresar_nombre_afiliado)
+                    }
+                }
+            }
+    }
+
     //endregion
 
 }

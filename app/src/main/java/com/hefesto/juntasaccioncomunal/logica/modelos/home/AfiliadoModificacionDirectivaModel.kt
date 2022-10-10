@@ -7,6 +7,7 @@ data class AfiliadoModificacionDirectivaModel (
     var afiliadoId : Int,
     var nombres: String?,
     var apellidos : String?,
+    var documento: String?,
     var estadoAfiliacion: EstadoAfiliacion,
     var rolApp: RolesEnApp
 )

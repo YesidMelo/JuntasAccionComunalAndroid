@@ -27,6 +27,7 @@ class ListaAfiliadosModificacionDirectivaAdapter constructor(
     }
 
     override fun getItemCount(): Int = listaAfiliados.size
+    
 
     inner class DetalleItem(val view: View) : RecyclerView.ViewHolder(view) {
 

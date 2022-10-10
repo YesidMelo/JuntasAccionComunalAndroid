@@ -11,6 +11,7 @@ fun AfiliadoModificacionDirectivaView.convertirAfiliadoModificacionDirectivaMode
         afiliadoId = this.afiliadoId,
         nombres = this.nombres,
         apellidos = this.apellidos,
+        documento = this.documento,
         estadoAfiliacion = EstadoAfiliacion.traerEstadoAfiliacionPorId(id = this.estadoAfiliacionId!!),
         rolApp = RolesEnApp.traerRolAppPorId(id = this.rolEnLaAppId!!)
     )
