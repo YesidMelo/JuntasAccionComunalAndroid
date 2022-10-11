@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.ComitesDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.FuncionesRolAppDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.RolApp_FuncionesApp_Dao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.RolesAppDao
@@ -12,6 +13,7 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.TipoTelefono
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.AfiliadoDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Correo_Dao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Direccion_Dao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Jac_Comite_Dao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Jac_EstadoAfiliacionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Telefono_Dao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.CorreoDao
@@ -22,6 +24,7 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.JacDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Jac_Afiliado_Direccion_Dao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.RolAfiliacionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Telefono_Dao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.general.ComitesEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.general.FuncionesRolAppEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.general.RolApp_FuncionesApp_Entity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.general.RolesAppEntity
@@ -30,6 +33,7 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.general.TipoTele
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.AfiliadoEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.Afiliado_Correo_Entity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.Afiliado_Direccion_Entity
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.Afiliado_Jac_Comite_Entity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.Afiliado_Jac_EstadoAfiliacionEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.Afiliado_Telefono_Entity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.CorreosEntity
@@ -50,8 +54,10 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.login.JACEnSesionVi
         AfiliadoEntity::class,
         Afiliado_Correo_Entity::class,
         Afiliado_Direccion_Entity::class,
+        Afiliado_Jac_Comite_Entity::class,
         Afiliado_Jac_EstadoAfiliacionEntity::class,
         Afiliado_Telefono_Entity::class,
+        ComitesEntity::class,
         CorreosEntity::class,
         CredencialesSesionEntity::class,
         DireccionesEntity::class,
@@ -93,8 +99,10 @@ abstract class BaseDatosApp : RoomDatabase() {
     abstract fun AfiliadoDao(): AfiliadoDao
     abstract fun afiliado_correo_dao() : Afiliado_Correo_Dao
     abstract fun afiliado_Direccion_Dao() : Afiliado_Direccion_Dao
+    abstract fun afiliado_Jac_Comite_Dao() : Afiliado_Jac_Comite_Dao
     abstract fun afiliado_Jac_EstadoAfiliacionDao() : Afiliado_Jac_EstadoAfiliacionDao
     abstract fun afiliado_Telefono_Dao() : Afiliado_Telefono_Dao
+    abstract fun comitesDao() : ComitesDao
     abstract fun correoDao() : CorreoDao
     abstract fun credencialesSesionDao(): CredencialesSesionDao
     abstract fun direccionDao() : DireccionDao

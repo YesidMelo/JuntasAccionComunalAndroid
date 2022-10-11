@@ -134,8 +134,6 @@ wapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/lo
 Wapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/base/BaseFragment.kt,7\e\7e1cb1add2b84f48364a0e4da2726cdb4f81ab01
 í
 bapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/activities/home/HomeActivity.kt,8\f\8f841eea8c8fb115d0dc9b0b7b8434c699386bc6
-Å
-Qapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/BaseDatosApp.kt,4\e\4ed82daadfcd0327b92240500298f202362dbf43
 ó
 gapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/views/login/CredencialesSesionView.kt,9\5\95a4e91078b39d79db64ef0efb7cc16b7033fce1
 ï

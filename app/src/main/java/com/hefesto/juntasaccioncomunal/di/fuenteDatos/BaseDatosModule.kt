@@ -2,6 +2,7 @@ package com.hefesto.juntasaccioncomunal.di.fuenteDatos
 
 import com.hefesto.juntasaccioncomunal.MiAplicacion
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.BaseDatosApp
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.ComitesDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.FuncionesRolAppDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.RolApp_FuncionesApp_Dao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.RolesAppDao
@@ -10,6 +11,7 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.TipoTelefono
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.AfiliadoDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Correo_Dao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Direccion_Dao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Jac_Comite_Dao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Jac_EstadoAfiliacionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Telefono_Dao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.CorreoDao
@@ -36,6 +38,9 @@ class BaseDatosModule {
     fun providesAfiliado_Correo_Dao(baseDatosApp: BaseDatosApp): Afiliado_Correo_Dao = baseDatosApp.afiliado_correo_dao()
 
     @Provides
+    fun providesAfiliado_Jac_Comite_Dao(baseDatosApp: BaseDatosApp) : Afiliado_Jac_Comite_Dao = baseDatosApp.afiliado_Jac_Comite_Dao()
+
+    @Provides
     fun providesAfiliado_Jac_EstadoAfiliacionDao(baseDatosApp: BaseDatosApp): Afiliado_Jac_EstadoAfiliacionDao = baseDatosApp.afiliado_Jac_EstadoAfiliacionDao()
 
     @Provides
@@ -43,6 +48,9 @@ class BaseDatosModule {
 
     @Provides
     fun providesAfiliadoDireccionDao(baseDatosApp: BaseDatosApp): Afiliado_Direccion_Dao = baseDatosApp.afiliado_Direccion_Dao()
+
+    @Provides
+    fun providesComiteDao(baseDatosApp: BaseDatosApp) : ComitesDao = baseDatosApp.comitesDao()
 
     @Provides
     fun providesCorreoDao(baseDatosApp: BaseDatosApp): CorreoDao = baseDatosApp.correoDao()

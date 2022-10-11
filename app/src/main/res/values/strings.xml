@@ -95,4 +95,8 @@
     <string name="deseas_continuar_con_la_actualizacion_del_afiliado">¿Deseas continuar con la actualizacion del afiliado?</string>
     <string name="actualizacion_afiliado_exitosa">Actualizacion del afiliado ha sido exitoso</string>
     <string name="actualizar">Actualizar</string>
+    <string name="comite_trabajo">Comite trabajo</string>
+    <string name="comite_salud">Comite salud</string>
+    <string name="comite_deportes">Comite deportes</string>
+    <string name="comite_ambiente">Comite ambiente</string>
 </resources>
