@@ -1,6 +1,7 @@
 package com.hefesto.juntasaccioncomunal.di.logica
 
 import com.hefesto.juntasaccioncomunal.fuentesDatos.cache.MemoriaCache
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.ComitesDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.FuncionesRolAppDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.RolApp_FuncionesApp_Dao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.RolesAppDao
@@ -34,6 +35,7 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.registroAfiliado.HelperRegistroTelefono
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.registroAfiliado.HelperValidarExisteUsuarioEnJAC
 import com.hefesto.juntasaccioncomunal.logica.componentes.splash.repositorios.helpers.HelperCargarTipos
+import com.hefesto.juntasaccioncomunal.logica.componentes.splash.repositorios.helpers.cargarTipos.HelperCargarComites
 import com.hefesto.juntasaccioncomunal.logica.componentes.splash.repositorios.helpers.cargarTipos.HelperCargarEstadoAfiliacion
 import com.hefesto.juntasaccioncomunal.logica.componentes.splash.repositorios.helpers.cargarTipos.HelperCargarFuncionesApp
 import com.hefesto.juntasaccioncomunal.logica.componentes.splash.repositorios.helpers.cargarTipos.HelperCargarRelacionRolFunciones
@@ -199,6 +201,14 @@ class HelpersDBDatasourceModule {
     //region splash
 
     //region primer nivel
+
+    @Provides
+    fun providesHelperCargarComites (
+        comitesDao: ComitesDao
+    ) : HelperCargarComites = HelperCargarComites(
+        comitesDao = comitesDao
+    )
+
     @Provides
     fun providesHelperCargarEstadoAfiliacion(
         estadoAfiliacionDao: EstadoAfiliacionDao
@@ -252,6 +262,7 @@ class HelpersDBDatasourceModule {
     //region segundo nivel
     @Provides
     fun providesHelperCargarTipos(
+        helperCargarComites: HelperCargarComites,
         helperCargarEstadoAfiliacion : HelperCargarEstadoAfiliacion,
         helperCargarFuncionesApp: HelperCargarFuncionesApp,
         helperCargarRolAfiliacion: HelperCargarRolAfiliacion,
@@ -260,6 +271,7 @@ class HelpersDBDatasourceModule {
         helperCargarTiposDocumento: HelperCargarTiposDocumento,
         helperCargarTiposTelefono: HelperCargarTiposTelefono
     ) : HelperCargarTipos = HelperCargarTipos(
+        helperCargarComites = helperCargarComites,
         helperCargarEstadoAfiliacion = helperCargarEstadoAfiliacion,
         helperCargarFuncionesApp= helperCargarFuncionesApp,
         helperCargarRolAfiliacion= helperCargarRolAfiliacion,

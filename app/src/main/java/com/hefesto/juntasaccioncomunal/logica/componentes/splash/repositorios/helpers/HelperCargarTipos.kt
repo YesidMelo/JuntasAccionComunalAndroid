@@ -1,5 +1,6 @@
 package com.hefesto.juntasaccioncomunal.logica.componentes.splash.repositorios.helpers
 
+import com.hefesto.juntasaccioncomunal.logica.componentes.splash.repositorios.helpers.cargarTipos.HelperCargarComites
 import com.hefesto.juntasaccioncomunal.logica.componentes.splash.repositorios.helpers.cargarTipos.HelperCargarTiposDocumento
 import com.hefesto.juntasaccioncomunal.logica.componentes.splash.repositorios.helpers.cargarTipos.HelperCargarTiposTelefono
 import com.hefesto.juntasaccioncomunal.logica.componentes.splash.repositorios.helpers.cargarTipos.HelperCargarEstadoAfiliacion
@@ -10,6 +11,7 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.splash.repositorios.he
 import javax.inject.Inject
 
 class HelperCargarTipos constructor(
+    @JvmField @Inject var helperCargarComites: HelperCargarComites,
     @JvmField @Inject var helperCargarEstadoAfiliacion : HelperCargarEstadoAfiliacion,
     @JvmField @Inject var helperCargarFuncionesApp: HelperCargarFuncionesApp,
     @JvmField @Inject var helperCargarRolAfiliacion: HelperCargarRolAfiliacion,
@@ -19,6 +21,7 @@ class HelperCargarTipos constructor(
     @JvmField @Inject var helperCargarTiposTelefono: HelperCargarTiposTelefono,
 ) {
 
+    suspend fun cargarComites() = helperCargarComites.cargarComites()
     suspend fun cargarEstadosAfiliacion() = helperCargarEstadoAfiliacion.cargar()
     suspend fun cargarFuncionesApp() = helperCargarFuncionesApp.cargar()
     suspend fun cargarRelacionesRolAppFuncionesApp() = helperCargarRelacionRolFunciones.cargarRelacion()
