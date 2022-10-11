@@ -2,14 +2,14 @@ package com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.listaAfi
 
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseViewModel
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.ui.BaseUI
-import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.ListaAfiliadosModificacionDirectivasFragmentUI
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.ListaAfiliadosActualizacionDirectivaUI
 import javax.inject.Inject
 
 class ListaAfiliadosModificacionDirectivasFragmentViewModel constructor(
-    @JvmField @Inject var listaAfiliadosModificacionDirectivasFragmentUI: ListaAfiliadosModificacionDirectivasFragmentUI
+    @JvmField @Inject var listaAfiliadosActualizacionDirectivaUI: ListaAfiliadosActualizacionDirectivaUI
 ) : BaseViewModel() {
 
-    override fun traerBaseUI(): BaseUI = listaAfiliadosModificacionDirectivasFragmentUI
+    override fun traerBaseUI(): BaseUI = listaAfiliadosActualizacionDirectivaUI
 
-    fun traerListaAfiliadosModificacionDirectiva() = listaAfiliadosModificacionDirectivasFragmentUI.traerListaAfiliadosModificacionDirectiva()
+    fun traerListaAfiliadosModificacionDirectiva() = listaAfiliadosActualizacionDirectivaUI.traerListaAfiliadosModificacionDirectiva()
 }

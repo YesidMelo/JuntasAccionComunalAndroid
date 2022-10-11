@@ -45,6 +45,7 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.JACEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.Jac_Afiliado_Direccion_Entity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.RolAfiliacionEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.TelefonosEntity
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.home.AfiliadoActualizacionRegistroView
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.home.AfiliadoModificacionDirectivaView
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.login.AfiliadoEnSesionView
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.login.JACEnSesionView
@@ -75,6 +76,7 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.login.JACEnSesionVi
     views = [
         AfiliadoEnSesionView::class,
         AfiliadoModificacionDirectivaView::class,
+        AfiliadoActualizacionRegistroView::class,
         CredencialesSesionView::class,
         JACEnSesionView::class
     ],

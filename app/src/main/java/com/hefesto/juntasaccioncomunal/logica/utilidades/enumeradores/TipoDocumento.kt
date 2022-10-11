@@ -14,6 +14,15 @@ enum class TipoDocumento constructor(
     ;
 
     fun traerId() = id
-
     fun traerStringRes() = stringRes
+
+    companion object {
+        fun traerTipoDocumentoPorId(id: Int) : TipoDocumento {
+            for (item in values()) {
+                if (item.id != id) continue
+                return item
+            }
+            return REGISTRO_CIVIL
+        }
+    }
 }

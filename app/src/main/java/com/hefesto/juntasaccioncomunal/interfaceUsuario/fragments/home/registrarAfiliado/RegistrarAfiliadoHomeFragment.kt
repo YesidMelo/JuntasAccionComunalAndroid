@@ -1,11 +1,13 @@
 package com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.registrarAfiliado
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.hefesto.juntasaccioncomunal.databinding.FragmentRegistrarAfiliadoHomeBinding
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.registrarAfiliado.helper.HelperRecyclerViewListaAfiliadosRegistrarActualizar
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.AccionesNavGrap
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
 import javax.inject.Inject
@@ -15,6 +17,9 @@ class RegistrarAfiliadoHomeFragment : BaseFragment<RegistrarAfiliadoHomeViewMode
     //region variables
     @Inject
     lateinit var registrarAfiliadoFragmentViewModel: RegistrarAfiliadoHomeViewModel
+
+    @Inject
+    lateinit var helperRecyclerViewListaAfiliadosRegistrarActualizar: HelperRecyclerViewListaAfiliadosRegistrarActualizar
 
     private lateinit var binding: FragmentRegistrarAfiliadoHomeBinding
     //endregion
@@ -30,6 +35,7 @@ class RegistrarAfiliadoHomeFragment : BaseFragment<RegistrarAfiliadoHomeViewMode
     ): View {
         binding = FragmentRegistrarAfiliadoHomeBinding.inflate(inflater)
         configurarBotones()
+        precargarUI()
         return binding.root
     }
 
@@ -51,6 +57,24 @@ class RegistrarAfiliadoHomeFragment : BaseFragment<RegistrarAfiliadoHomeViewMode
     //endregion
 
     //region precarga
+    private fun precargarUI() {
+        precargarListaAfiliados()
+    }
+
+    private fun precargarListaAfiliados() {
+        registrarAfiliadoFragmentViewModel
+            .traerListaAfiliadosRegistroActualizacion()
+            .observe(viewLifecycleOwner) {
+                helperRecyclerViewListaAfiliadosRegistrarActualizar
+                    .conListaAfiliados(listaAfiliados = it?: emptyList())
+                    .conRecyclerView(recyclerView = binding.recyclerviewListaAfiliadosRegistroHome)
+                    .conEscuchadorItemSeleccionado {
+                        Log.e("Erro", "")
+                    }
+                    .cargarLista()
+
+            }
+    }
     //endregion
 
     //endregion

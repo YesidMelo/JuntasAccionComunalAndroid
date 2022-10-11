@@ -1,17 +1,17 @@
 package com.hefesto.juntasaccioncomunal.di.logica
 
-import com.hefesto.juntasaccioncomunal.MiAplicacion
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.casosUso.CargarEscuchadorExcepcionesCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.configuracionAfiliadoEnDirectiva.ActualizarAfiliadoEnDirectivaCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.configuracionAfiliadoEnDirectiva.TraerEstadosAfiliadoEnDirectivaCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.configuracionAfiliadoEnDirectiva.TraerRolesAfiliadosEnDirectivaCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.listaAfiliadosModificacionDirectivas.TraerListaAfiliadosModificacionDirectivasCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.panelControl.TraerFuncionalidadesCasoUso
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.registroAfiliado.TraerListaAfiliadosRegistroActualizacionCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.ConfiguracionAfiliadoEnDirectivaUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.HomeActivityUI
-import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.ListaAfiliadosModificacionDirectivasFragmentUI
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.ListaAfiliadosActualizacionDirectivaUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.PanelControlFragmenUI
-import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.RegistrarAfiliadoUI
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.RegistroActualizacionAfiliadoUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.casosUso.IniciarSesionCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.casosUso.RegistrarAfiliadoCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.casosUso.RegistrarJACCasoUso
@@ -47,7 +47,7 @@ class UiModule {
     fun providesListaAfiliadosModificacionDirectivasFragmentUI(
         cargarEscuchadorExcepcionesCasoUso: CargarEscuchadorExcepcionesCasoUso,
         traerListaAfiliadosModificacionDirectivasCasoUso: TraerListaAfiliadosModificacionDirectivasCasoUso
-    ) : ListaAfiliadosModificacionDirectivasFragmentUI = ListaAfiliadosModificacionDirectivasFragmentUI(
+    ) : ListaAfiliadosActualizacionDirectivaUI = ListaAfiliadosActualizacionDirectivaUI(
         escuchadorExcepciones = cargarEscuchadorExcepcionesCasoUso,
         traerListaAfiliadosModificacionDirectivasCasoUso = traerListaAfiliadosModificacionDirectivasCasoUso
     )
@@ -66,10 +66,12 @@ class UiModule {
     )
 
     @Provides
-    fun providesRegistrarAfiliadoHomeUI(
-        cargarEscuchadorExcepcionesCasoUso: CargarEscuchadorExcepcionesCasoUso
-    ) : RegistrarAfiliadoUI = RegistrarAfiliadoUI(
-        escuchadorExcepciones = cargarEscuchadorExcepcionesCasoUso
+    fun providesRegistroActualizacionUI(
+        cargarEscuchadorExcepcionesCasoUso: CargarEscuchadorExcepcionesCasoUso,
+        traerListaAfiliadosRegistroActualizacionCasoUso: TraerListaAfiliadosRegistroActualizacionCasoUso
+    ) : RegistroActualizacionAfiliadoUI = RegistroActualizacionAfiliadoUI(
+        escuchadorExcepciones = cargarEscuchadorExcepcionesCasoUso,
+        traerListaAfiliadosRegistroActualizacionCasoUso = traerListaAfiliadosRegistroActualizacionCasoUso
     )
 
     //endregion

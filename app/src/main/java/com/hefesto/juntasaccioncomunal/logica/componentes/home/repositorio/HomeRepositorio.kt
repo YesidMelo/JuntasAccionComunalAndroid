@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.HomeDBDatasource
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.AfiliadoEnDirectivaModificadoModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.AfiliadoParaModificacionDirectivaModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.DatosBasicosAfiliadoActualizarRegistrarInformacionModel
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.FuncionesRolApp
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.Flow
@@ -12,9 +13,10 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 interface HomeRepositorio {
+    fun actualizarAfiliadoEnDirectiva(afiliadoEnDirectivaModificadoModel: AfiliadoEnDirectivaModificadoModel) : Flow<Boolean?>
+    fun traerListaAfiliadosRegistroActualizacion(): Flow<List<DatosBasicosAfiliadoActualizarRegistrarInformacionModel>?>
     fun traerFuncionalidadesRol() : MutableLiveData<List<FuncionesRolApp>>
     fun traerListaAfiliadosModificacionRolDirectiva() : MutableLiveData<List<AfiliadoParaModificacionDirectivaModel>>
-    fun actualizarAfiliadoEnDirectiva(afiliadoEnDirectivaModificadoModel: AfiliadoEnDirectivaModificadoModel) : Flow<Boolean?>
 }
 
 class HomeRepositorioImpl constructor(
@@ -60,6 +62,9 @@ class HomeRepositorioImpl constructor(
 
     override fun actualizarAfiliadoEnDirectiva(afiliadoEnDirectivaModificadoModel: AfiliadoEnDirectivaModificadoModel): Flow<Boolean?>
     = homeDBDatasource.actualizarAfiliadoModificacionRolDirectiva(afiliadoEnDirectivaModificadoModel = afiliadoEnDirectivaModificadoModel)
+
+    override fun traerListaAfiliadosRegistroActualizacion(): Flow<List<DatosBasicosAfiliadoActualizarRegistrarInformacionModel>?>
+    = homeDBDatasource.traerListaAfiliadosActualizacionRegistro()
 
 
 }

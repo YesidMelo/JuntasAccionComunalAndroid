@@ -8,9 +8,9 @@ import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.registrar
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.casosUso.CargarEscuchadorExcepcionesCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.ConfiguracionAfiliadoEnDirectivaUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.HomeActivityUI
-import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.ListaAfiliadosModificacionDirectivasFragmentUI
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.ListaAfiliadosActualizacionDirectivaUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.PanelControlFragmenUI
-import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.RegistrarAfiliadoUI
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.RegistroActualizacionAfiliadoUI
 import dagger.Module
 import dagger.Provides
 
@@ -33,9 +33,9 @@ class HomeActivityModule {
 
     @Provides
     fun providesListaAfiliadosModificacionDirectivasFragmentViewModel(
-        listaAfiliadosModificacionDirectivasFragmentUI: ListaAfiliadosModificacionDirectivasFragmentUI
+        listaAfiliadosActualizacionDirectivaUI: ListaAfiliadosActualizacionDirectivaUI
     ) : ListaAfiliadosModificacionDirectivasFragmentViewModel = ListaAfiliadosModificacionDirectivasFragmentViewModel(
-        listaAfiliadosModificacionDirectivasFragmentUI = listaAfiliadosModificacionDirectivasFragmentUI
+        listaAfiliadosActualizacionDirectivaUI = listaAfiliadosActualizacionDirectivaUI
     )
 
     @Provides
@@ -49,9 +49,9 @@ class HomeActivityModule {
 
     @Provides
     fun providesRegistrarAfiliadoHomeViewModel(
-        registrarAfiliadoUI: RegistrarAfiliadoUI
+        registroActualizacionAfiliadoUI: RegistroActualizacionAfiliadoUI
     ) : RegistrarAfiliadoHomeViewModel = RegistrarAfiliadoHomeViewModel(
-        registrarAfiliadoUI = registrarAfiliadoUI
+        registroActualizacionAfiliadoUI = registroActualizacionAfiliadoUI
     )
 
 }

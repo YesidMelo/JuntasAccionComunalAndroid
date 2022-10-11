@@ -14,6 +14,8 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.listaAfi
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.listaAfiliadosModificacionDirectivas.TraerListaAfiliadosModificacionDirectivasCasoUsoImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.panelControl.TraerFuncionalidadesCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.panelControl.TraerFuncionalidadesCasoUsoImpl
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.registroAfiliado.TraerListaAfiliadosRegistroActualizacionCasoUso
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.registroAfiliado.TraerListaAfiliadosRegistroActualizacionCasoUsoImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.HomeRepositorio
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.casosUso.IniciarSesionCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.casosUso.IniciarSesionCasoUsoImpl
@@ -45,6 +47,18 @@ class CasosUsoModule {
     //endregion
 
     //region home
+
+    @Provides
+    fun providesActualizarAfiliadoEnDirectivaCasoUso(
+        homeRepositorio: HomeRepositorio
+    ): ActualizarAfiliadoEnDirectivaCasoUso = ActualizarAfiliadoEnDirectivaCasoUsoImpl(
+        homeRepositorio = homeRepositorio
+    )
+
+    @Provides
+    fun providesTraerEstadosAfiliadoEnDirectivaCasoUso() : TraerEstadosAfiliadoEnDirectivaCasoUso
+    = TraerEstadosAfiliadoEnDirectivaCasoUsoImpl(context = MiAplicacion.traerInstancia()!!.applicationContext)
+
     @Provides
     fun providesTraerFuncionalidadesCasoUso(
         homeRepositorio: HomeRepositorio
@@ -60,19 +74,17 @@ class CasosUsoModule {
     )
 
     @Provides
-    fun providesTraerEstadosAfiliadoEnDirectivaCasoUso() : TraerEstadosAfiliadoEnDirectivaCasoUso
-    = TraerEstadosAfiliadoEnDirectivaCasoUsoImpl(context = MiAplicacion.traerInstancia()!!.applicationContext)
+    fun providesTraerListaAfiliadosRegistroActualizacionCasoUso(
+        homeRepositorio: HomeRepositorio
+    ) : TraerListaAfiliadosRegistroActualizacionCasoUso = TraerListaAfiliadosRegistroActualizacionCasoUsoImpl(
+        homeRepositorio = homeRepositorio
+    )
 
     @Provides
     fun providesTraerRolesAfiliadosEnDirectivaCasoUso(): TraerRolesAfiliadosEnDirectivaCasoUso
     = TraerRolesAfiliadosEnDirectivaCasoUsoImpl(context = MiAplicacion.traerInstancia()!!.applicationContext)
 
-    @Provides
-    fun providesActualizarAfiliadoEnDirectivaCasoUso(
-        homeRepositorio: HomeRepositorio
-    ): ActualizarAfiliadoEnDirectivaCasoUso = ActualizarAfiliadoEnDirectivaCasoUsoImpl(
-        homeRepositorio = homeRepositorio
-    )
+
     //endregion
 
     //region login

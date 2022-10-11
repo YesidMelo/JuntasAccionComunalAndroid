@@ -8,21 +8,14 @@ import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.TipoDocume
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.TipoTelefono
 import java.util.*
 
-data class AfiliadoActualizacionRegistroModel (
-    var afiliadoId : Int? = null,
-    var jacId: Int? = null,
+data class DatosBasicosAfiliadoActualizarRegistrarInformacionModel (
+    var afiliadoId: Int? = null,
     var nombres: String? = null,
     var apellidos: String? = null,
     var fechaNacimiento: Date? = null,
     var tipoDocumento: TipoDocumento? = null,
     var documento: String? = null,
-    var correo: String? = null,
-    var direccion: String? = null,
-    var tipoTelefono: TipoTelefono? = null,
-    var telefono: String? = null,
-    var contrasenia: String? = null,
-    var repetirContrasenia: String? = null,
     var estadoAfiliacion: EstadoAfiliacion? = null,
-    var rolAfiliacion: RolesEnApp? = null,
-    var comite: ComitesEnJAC? = null
+    var rolesEnApp: RolesEnApp? = null,
+    var jacId : Int? = null
 ) :BaseModel()

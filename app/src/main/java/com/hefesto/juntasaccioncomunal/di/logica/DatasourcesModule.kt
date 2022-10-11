@@ -15,6 +15,7 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.Ho
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.HomeDBDatasourceImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.HelperActualizarAfiliadoEnDirectivaDB
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.HelperListaAfiliadosModificacionDirectivaDB
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.HelperListaAfiliadosRegistroActualizacionDB
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.LoginApiDatasource
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.LoginApiDatasourceImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.LoginCacheDatasource
@@ -64,11 +65,13 @@ class DatasourcesModule {
 
     @Provides
     fun providesHomeDBDatasource(
+        helperActualizarAfiliadoEnDirectivaDB: HelperActualizarAfiliadoEnDirectivaDB,
         helperListaAfiliadosModificacionDirectivaDB: HelperListaAfiliadosModificacionDirectivaDB,
-        helperActualizarAfiliadoEnDirectivaDB: HelperActualizarAfiliadoEnDirectivaDB
+        helperListaAfiliadosRegistroActualizacionDB: HelperListaAfiliadosRegistroActualizacionDB,
     ): HomeDBDatasource = HomeDBDatasourceImpl(
         helperActualizarAfiliadoEnDirectivaDB = helperActualizarAfiliadoEnDirectivaDB,
-        helperListaAfiliadosModificacionDirectivaDB = helperListaAfiliadosModificacionDirectivaDB
+        helperListaAfiliadosModificacionDirectivaDB = helperListaAfiliadosModificacionDirectivaDB,
+        helperListaAfiliadosRegistroActualizacionDB = helperListaAfiliadosRegistroActualizacionDB
     )
 
     @Provides

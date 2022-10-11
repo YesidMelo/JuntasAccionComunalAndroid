@@ -23,6 +23,8 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Telefono_Dao
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.HelperActualizarAfiliadoEnDirectivaDB
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.HelperActualizarAfiliadoEnDirectivaDBImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.HelperListaAfiliadosModificacionDirectivaDB
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.HelperListaAfiliadosRegistroActualizacionDB
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.HelperListaAfiliadosRegistroActualizacionImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperIniciarSesion
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperRegistroAfilado
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperRegistroJAC
@@ -52,12 +54,6 @@ class HelpersDBDatasourceModule {
     //region home
 
     //region primer nivel
-    @Provides
-    fun providesHelperListaAfiliadosModificacionDirectivaDB(
-        afiliadoDao: AfiliadoDao
-    ) : HelperListaAfiliadosModificacionDirectivaDB = HelperListaAfiliadosModificacionDirectivaDB(
-        afiladoDao = afiliadoDao
-    )
 
     @Provides
     fun providesHelperActualizarAfiliadoEnDirectivaDB(
@@ -67,6 +63,24 @@ class HelpersDBDatasourceModule {
         memoriaCache = memoriaCache,
         afiliadoJacEstadoafiliaciondao = afiliadoJacEstadoafiliaciondao
     )
+
+    @Provides
+    fun providesHelperListaAfiliadosModificacionDirectivaDB(
+        afiliadoDao: AfiliadoDao
+    ) : HelperListaAfiliadosModificacionDirectivaDB = HelperListaAfiliadosModificacionDirectivaDB(
+        afiladoDao = afiliadoDao
+    )
+
+    @Provides
+    fun providesHelperListaAfiliadosRegistroActualizacion(
+        afiliadoDao: AfiliadoDao,
+        memoriaCache: MemoriaCache
+    ) : HelperListaAfiliadosRegistroActualizacionDB = HelperListaAfiliadosRegistroActualizacionImpl(
+        afiliadoDao = afiliadoDao,
+        memoriaCache = memoriaCache
+    )
+
+
     //endregion
 
     //region segundo nivel
@@ -159,6 +173,13 @@ class HelpersDBDatasourceModule {
     //region segundo nivel
 
     @Provides
+    fun providesHelperIniciarSesion(
+        credencialesSesionDao: CredencialesSesionDao
+    ) : HelperIniciarSesion = HelperIniciarSesion(
+        credencialesSesionDao = credencialesSesionDao
+    )
+
+    @Provides
     fun providesHelperRegistroAfiliado(
         helperRegistroAfiliadoEntity : HelperRegistroAfiliadoEntity,
         helperRegistroCorreoAfiliadoEntity : HelperRegistroCorreoAfiliadoEntity,
@@ -173,13 +194,6 @@ class HelpersDBDatasourceModule {
         helperRegistroTelefonoEntity = helperRegistroTelefono,
         helperValidarExisteUsuarioEnJAC = helperValidarExisteUsuarioEnJAC,
         helperRegistroCredencialesSesionAfiliado = helperRegistroCredencialesSesionAfiliado
-    )
-
-    @Provides
-    fun providesHelperIniciarSesion(
-        credencialesSesionDao: CredencialesSesionDao
-    ) : HelperIniciarSesion = HelperIniciarSesion(
-        credencialesSesionDao = credencialesSesionDao
     )
 
     @Provides

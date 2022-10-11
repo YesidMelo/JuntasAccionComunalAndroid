@@ -5,7 +5,7 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.base.ui.BaseUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.listaAfiliadosModificacionDirectivas.TraerListaAfiliadosModificacionDirectivasCasoUso
 import javax.inject.Inject
 
-class ListaAfiliadosModificacionDirectivasFragmentUI constructor(
+class ListaAfiliadosActualizacionDirectivaUI constructor(
     @JvmField @Inject var escuchadorExcepciones: CargarEscuchadorExcepcionesCasoUso,
     @JvmField @Inject var traerListaAfiliadosModificacionDirectivasCasoUso : TraerListaAfiliadosModificacionDirectivasCasoUso
 ): BaseUI(cargarEscuchadorExcepcionesCasoUso = escuchadorExcepciones) {
