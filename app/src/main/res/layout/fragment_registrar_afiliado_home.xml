@@ -55,13 +55,13 @@
             app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName">
 
             <RadioButton
-                android:id="@+id/radioButton_numeroDocumento"
+                android:id="@+id/radioButton_registrarAfiliadoHome_numeroDocumento"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/numero_documento" />
 
             <RadioButton
-                android:id="@+id/radioButton_nombreAfiliado_registroHome"
+                android:id="@+id/radioButton_registrarAfiliadoHome_nombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:checked="true"

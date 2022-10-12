@@ -88,7 +88,6 @@ class ListaAfiliadosModificacionDirectivasFragment : BaseFragment<ListaAfiliados
         binding
             .editTextFiltroAfiliadoModificacionDirectiva
             .addTextChangedListener {
-                Log.e("Elementos", " mira tengo $it")
                 if(it == null || it.isNullOrEmpty()) {
                     helperRecyclerListaAfiliadosModificacionDirectiva.restaurarListaFiltrada()
                     return@addTextChangedListener

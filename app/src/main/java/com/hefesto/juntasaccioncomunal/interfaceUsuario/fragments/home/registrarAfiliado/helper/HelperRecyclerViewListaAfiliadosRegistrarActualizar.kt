@@ -4,6 +4,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.registrarAfiliado.adapter.ListaAfiliadosRecyclerViewAdapter
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.DatosBasicosAfiliadoActualizarRegistrarInformacionModel
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class HelperRecyclerViewListaAfiliadosRegistrarActualizar {
 
@@ -13,6 +15,7 @@ class HelperRecyclerViewListaAfiliadosRegistrarActualizar {
     private lateinit var adapter: ListaAfiliadosRecyclerViewAdapter
     private lateinit var escuchadorItemSeleccionado: (DatosBasicosAfiliadoActualizarRegistrarInformacionModel)->Unit
     private var listaFiltrada = emptyList<DatosBasicosAfiliadoActualizarRegistrarInformacionModel>().toMutableList()
+    private var filtrando = false
     //endregion
 
     //region metodos publicois
@@ -31,26 +34,59 @@ class HelperRecyclerViewListaAfiliadosRegistrarActualizar {
         return this
     }
 
-    fun filtrar(filtro: String) {
-
+    fun filtrar(texto: String?, filtro: Filtro) {
+        GlobalScope.launch {
+            if (filtrando) return@launch
+            filtrando = true
+            if (texto.isNullOrEmpty()) {
+                reiniciarListaFiltrada()
+                filtrando = false
+                recyclerView.post { recyclerView.adapter?.notifyDataSetChanged() }
+                return@launch
+            }
+            when (filtro) {
+                Filtro.NOMBRE -> filtrarPorNombre(texto = texto)
+                Filtro.DOCUMENTO -> filtrarPorDocumento(texto = texto)
+            }
+            recyclerView.post { recyclerView.adapter?.notifyDataSetChanged() }
+            filtrando = false
+        }
     }
 
     fun cargarLista() {
-        adapter = ListaAfiliadosRecyclerViewAdapter(listaAfiliados = listaAfiliados, escuchadorItemSeleccionado = escuchadorItemSeleccionado)
+        adapter = ListaAfiliadosRecyclerViewAdapter(listaAfiliados = listaFiltrada, escuchadorItemSeleccionado = escuchadorItemSeleccionado)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(recyclerView.context)
         recyclerView.hasFixedSize()
-        reiniciarListaFiltraada()
+        reiniciarListaFiltrada()
     }
 
     //endregion
 
     //region metodos privados
-    private fun reiniciarListaFiltraada() {
+    private fun reiniciarListaFiltrada() {
         listaFiltrada.clear()
         listaAfiliados.forEach {
             listaFiltrada.add(it)
         }
     }
+
+    private fun filtrarPorNombre(texto: String) {
+        val nuevaLista = listaAfiliados.filter { return@filter "${it.nombres?:""} ${it.apellidos?:""}".contains(texto) }.toMutableList()
+        listaFiltrada.clear()
+        nuevaLista.forEach {  listaFiltrada.add(it) }
+    }
+
+    private fun filtrarPorDocumento(texto: String) {
+        val nuevaLista = listaAfiliados.filter { return@filter (it.documento?:"").contains(texto) }.toMutableList()
+        listaFiltrada.clear()
+        nuevaLista.forEach {  listaFiltrada.add(it) }
+    }
+
     //endregion
+
+    enum class Filtro {
+        DOCUMENTO,
+        NOMBRE,
+    }
 }

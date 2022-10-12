@@ -152,8 +152,6 @@ dapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/utilidades/enumeradore
 ‡app/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/repositorio/db/mappers/AfiliadoModificacionDirectivaMapper.kt,4\0\40ab101a4317d4e169db4f5a08e0965f78a7663e
 Þ
 ­app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/listaAfiliadosModificacionDirectivas/adapters/ListaAfiliadosModificacionDirectivaAdapter.kt,e\1\e1c662c3144a7c22657d2a638cfde9e15d50df1f
-ä
-³app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/listaAfiliadosModificacionDirectivas/helpers/HelperRecyclerListaAfiliadosModificacionDirectiva.kt,0\e\0e972867e43456470bcca671413cbb8acbbd5839
 Ž
 ^app/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/ui/HomeActivityUI.kt,8\4\84bea1af5e9c553e248d1dd7e4d1a3ac058810eb
 •

@@ -5,6 +5,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
+import com.hefesto.juntasaccioncomunal.R
 import com.hefesto.juntasaccioncomunal.databinding.FragmentRegistrarAfiliadoHomeBinding
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.registrarAfiliado.helper.HelperRecyclerViewListaAfiliadosRegistrarActualizar
@@ -22,6 +24,7 @@ class RegistrarAfiliadoHomeFragment : BaseFragment<RegistrarAfiliadoHomeViewMode
     lateinit var helperRecyclerViewListaAfiliadosRegistrarActualizar: HelperRecyclerViewListaAfiliadosRegistrarActualizar
 
     private lateinit var binding: FragmentRegistrarAfiliadoHomeBinding
+    private var filtro = HelperRecyclerViewListaAfiliadosRegistrarActualizar.Filtro.NOMBRE
     //endregion
 
     override fun traerViewModel(): RegistrarAfiliadoHomeViewModel = registrarAfiliadoFragmentViewModel
@@ -59,6 +62,8 @@ class RegistrarAfiliadoHomeFragment : BaseFragment<RegistrarAfiliadoHomeViewMode
     //region precarga
     private fun precargarUI() {
         precargarListaAfiliados()
+        precargarEntradaTextoFiltro()
+        precargarSelectorFiltro()
     }
 
     private fun precargarListaAfiliados() {
@@ -74,6 +79,24 @@ class RegistrarAfiliadoHomeFragment : BaseFragment<RegistrarAfiliadoHomeViewMode
                     .cargarLista()
 
             }
+    }
+
+    private fun precargarEntradaTextoFiltro() {
+        binding.editTextTextPersonName.addTextChangedListener {
+            helperRecyclerViewListaAfiliadosRegistrarActualizar
+                .filtrar(texto = it?.toString(), filtro = filtro)
+        }
+    }
+
+    private fun precargarSelectorFiltro() {
+        binding.radioGroupFiltrosAfiliadosRegistroHome.setOnCheckedChangeListener {
+            _, radioButtonId ->
+            when(radioButtonId) {
+                R.id.radioButton_registrarAfiliadoHome_nombre -> filtro = HelperRecyclerViewListaAfiliadosRegistrarActualizar.Filtro.NOMBRE
+                R.id.radioButton_registrarAfiliadoHome_numeroDocumento -> filtro = HelperRecyclerViewListaAfiliadosRegistrarActualizar.Filtro.DOCUMENTO
+                else -> filtro = HelperRecyclerViewListaAfiliadosRegistrarActualizar.Filtro.NOMBRE
+            }
+        }
     }
     //endregion
 
