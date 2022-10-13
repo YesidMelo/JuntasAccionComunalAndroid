@@ -3,6 +3,7 @@ package com.hefesto.juntasaccioncomunal.di.logica
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.configuracionAfiliadoEnDirectiva.helpers.HelperSpinnerEstadosAfiliacionConfiguracionDirectivas
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.configuracionAfiliadoEnDirectiva.helpers.HelperSpinnerRolesAfiliacionConfiguracionDirectiva
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.helpers.HelperDetalleAfiliadoViewPagerNavegacion
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.helpers.HelperSpinnerTiposDocumentoRegistroAfiliadoHome
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.listaAfiliadosModificacionDirectivas.helpers.HelperRecyclerListaAfiliadosModificacionDirectiva
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.panelControl.helpers.HelperFuncionalidadesReciclerview
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.registrarAfiliado.helper.HelperRecyclerViewListaAfiliadosRegistrarActualizar
@@ -31,5 +32,8 @@ class HelpersFragmentsModule {
 
     @Provides
     fun providesHelperSpinnerRolesAfiliacionConfiguracionDirectiva(): HelperSpinnerRolesAfiliacionConfiguracionDirectiva = HelperSpinnerRolesAfiliacionConfiguracionDirectiva()
+
+    @Provides
+    fun providesHelperSpinnerTiposDocumentoRegistroAfiliadoHome(): HelperSpinnerTiposDocumentoRegistroAfiliadoHome = HelperSpinnerTiposDocumentoRegistroAfiliadoHome()
     //endregion
 }

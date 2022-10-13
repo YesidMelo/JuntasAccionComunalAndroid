@@ -14,6 +14,8 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.listaAfi
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.listaAfiliadosModificacionDirectivas.TraerListaAfiliadosModificacionDirectivasCasoUsoImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.panelControl.TraerFuncionalidadesCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.panelControl.TraerFuncionalidadesCasoUsoImpl
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.registroAfiliado.CargarTiposDocumentoCasoUso
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.registroAfiliado.CargarTiposDocumentoCasoUsoImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.registroAfiliado.TraerListaAfiliadosRegistroActualizacionCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.registroAfiliado.TraerListaAfiliadosRegistroActualizacionCasoUsoImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.HomeRepositorio
@@ -54,6 +56,9 @@ class CasosUsoModule {
     ): ActualizarAfiliadoEnDirectivaCasoUso = ActualizarAfiliadoEnDirectivaCasoUsoImpl(
         homeRepositorio = homeRepositorio
     )
+
+    @Provides
+    fun providesCargarTiposDocumentoCasoUso() : CargarTiposDocumentoCasoUso = CargarTiposDocumentoCasoUsoImpl(context = MiAplicacion.traerInstancia()!!.applicationContext)
 
     @Provides
     fun providesTraerEstadosAfiliadoEnDirectivaCasoUso() : TraerEstadosAfiliadoEnDirectivaCasoUso

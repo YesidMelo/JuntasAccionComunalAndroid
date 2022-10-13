@@ -6,6 +6,7 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.configur
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.configuracionAfiliadoEnDirectiva.TraerRolesAfiliadosEnDirectivaCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.listaAfiliadosModificacionDirectivas.TraerListaAfiliadosModificacionDirectivasCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.panelControl.TraerFuncionalidadesCasoUso
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.registroAfiliado.CargarTiposDocumentoCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.registroAfiliado.TraerListaAfiliadosRegistroActualizacionCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.ConfiguracionAfiliadoEnDirectivaUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.HomeActivityUI
@@ -60,9 +61,11 @@ class UiModule {
 
     @Provides
     fun providesDatosBasicosAfiliadoUI(
-        escuchadorExcepcionesCasoUso: CargarEscuchadorExcepcionesCasoUso
+        escuchadorExcepcionesCasoUso: CargarEscuchadorExcepcionesCasoUso,
+        cargarTiposDocumentoCasoUso: CargarTiposDocumentoCasoUso
     ) : DatosBasicosAfiliadoUI = DatosBasicosAfiliadoUI(
-        escuchadorExcepciones = escuchadorExcepcionesCasoUso
+        escuchadorExcepciones = escuchadorExcepcionesCasoUso,
+        cargarTiposDocumentoCasoUso = cargarTiposDocumentoCasoUso
     )
 
     @Provides
