@@ -6,8 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import com.hefesto.juntasaccioncomunal.databinding.FragmentRegistroactualizacionAfiliadohomeBinding
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.helpers.HelperDetalleAfiliadoViewPagerNavegacion
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.subfragments.contactoAfiliado.ContactoAfiliadoRegistroActualizacionFragment
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.subfragments.datosBasicosAfiliado.DatosRegistroActualizacionFragment
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.subfragments.detalleEnJACAfiliado.DetalleEnJacFragment
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.subfragments.seguridadAfiliado.SeguridadAfiliadoFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.AccionesNavGrap
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.DatosBasicosAfiliadoActualizarRegistrarInformacionModel
 import javax.inject.Inject
 
 class DetalleAfiliadoRegistroActualizacionFragment : BaseFragment<DetalleAfiliadoRegistroActualizacionViewModel>() {
@@ -15,6 +21,9 @@ class DetalleAfiliadoRegistroActualizacionFragment : BaseFragment<DetalleAfiliad
     //region variables
     @Inject
     lateinit var detalleAfiliadoRegistroActualizacionViewModel : DetalleAfiliadoRegistroActualizacionViewModel
+
+    @Inject
+    lateinit var helperDetalleAfiliadoViewPagerNavegacion : HelperDetalleAfiliadoViewPagerNavegacion
 
     lateinit var binding: FragmentRegistroactualizacionAfiliadohomeBinding
     //endregion
@@ -30,6 +39,7 @@ class DetalleAfiliadoRegistroActualizacionFragment : BaseFragment<DetalleAfiliad
     ): View {
         binding = FragmentRegistroactualizacionAfiliadohomeBinding.inflate(inflater)
         configurarBotones()
+        configurarPaginas()
         return binding.root
     }
 
@@ -48,7 +58,32 @@ class DetalleAfiliadoRegistroActualizacionFragment : BaseFragment<DetalleAfiliad
             )
     }
     //endregion
+    //region configuracion fragments
+    private fun configurarPaginas() {
+        helperDetalleAfiliadoViewPagerNavegacion
+            .conTabLayout(tabLayout = binding.tabLayoutRegistroAfiliadoVistasDisponibles)
+            .conViewPager(viewPager = binding.viewPagerRegistroActualizacionAfiliadoFormularios)
+            .conDetalleAfiliadoRegistroActializacionFragment(detalleAfiliadoRegistroActualizacionFragment = this)
+            .conListaFragmentos(listaFragments = arrayListOf(
+                DatosRegistroActualizacionFragment(),
+                ContactoAfiliadoRegistroActualizacionFragment(),
+                DetalleEnJacFragment(),
+                SeguridadAfiliadoFragment()
+            ))
+            .conBundle(bundle = configurarBundle())
+            .configurarPaginas()
+    }
+
+    private fun configurarBundle() : Bundle? {
+        val objeto = (arguments?.get(DETALLE_AFILIADO_ACTUALIZACION) as? DatosBasicosAfiliadoActualizarRegistrarInformacionModel)?:return null
+        return Bundle().apply {
+            putSerializable(DETALLE_AFILIADO_ACTUALIZACION, objeto)
+        }
+    }
+    //endregion
     //endregion
 
-
+    companion object {
+        const val DETALLE_AFILIADO_ACTUALIZACION = "DetalleAfiliadoActualizacion"
+    }
 }

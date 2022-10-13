@@ -110,8 +110,6 @@ Qapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/BaseDao.
 fapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/login/Afiliado_Direccion_Dao.kt,f\9\f9dd4de5e53dd2fd8819271ecb0f999b410cc426
 ö
 japp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/login/Jac_Afiliado_Direccion_Dao.kt,8\9\89be028447ffcf4378cc8cb799a401f6d316a5bb
-@
-app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
 ü
 oapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/repositorios/LoginCacheDatasource.kt,d\1\d1c01caa4052b47cbf8b67f184aa0a588a90a9a4
 Ü
@@ -218,8 +216,6 @@ wapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/entities/logi
 kapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/home/AfiliadoEnDirectivaModificadoModel.kt,7\8\78d214d7c20bfa453ec8ec227d1350ff593da5a7
 –
 üapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/configuracionAfiliadoEnDirectiva/ConfiguracionAfiliadoEnDirectivaViewModel.kt,a\1\a1d0ebbdb2ca7f671f3dc5f5724f55eb0a7e054a
-œ
-ûapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/configuracionAfiliadoEnDirectiva/ConfiguracionAfiliadoEnDirectivaFragment.kt,2\9\29dfdfdfd4d11a3acbbd04dae531375b116d398b
 é
 ^app/src/main/java/com/hefesto/juntasaccioncomunal/logica/utilidades/enumeradores/RolesEnApp.kt,2\7\278ec6d138a43abcf458770eb6ab7967718a4e75
 Ã
@@ -296,8 +292,6 @@ Vapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/home/DatosJACM
 [app/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/login/AfiliadoDao.kt,5\d\5d13b9b34038c732a9f4e7608bd4b97a05a7c776
 Å
 Qapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/BaseDatosApp.kt,4\e\4ed82daadfcd0327b92240500298f202362dbf43
-Ö
-Uapp/src/main/java/com/hefesto/juntasaccioncomunal/di/logica/HelpersFragmentsModule.kt,5\7\577c2324966bb600ca2eb03db9f300d942875816
 ¡
 êapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/registrarAfiliado/adapter/ListaAfiliadosRecyclerViewAdapter.kt,d\8\d8e109f734f7de0fa01b0132898b3b1a8125fe86
 ¿

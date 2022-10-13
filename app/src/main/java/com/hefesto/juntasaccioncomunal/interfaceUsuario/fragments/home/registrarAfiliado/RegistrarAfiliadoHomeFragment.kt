@@ -9,6 +9,7 @@ import androidx.core.widget.addTextChangedListener
 import com.hefesto.juntasaccioncomunal.R
 import com.hefesto.juntasaccioncomunal.databinding.FragmentRegistrarAfiliadoHomeBinding
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.DetalleAfiliadoRegistroActualizacionFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.registrarAfiliado.helper.HelperRecyclerViewListaAfiliadosRegistrarActualizar
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.AccionesNavGrap
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
@@ -75,6 +76,7 @@ class RegistrarAfiliadoHomeFragment : BaseFragment<RegistrarAfiliadoHomeViewMode
                     .conRecyclerView(recyclerView = binding.recyclerviewListaAfiliadosRegistroHome)
                     .conEscuchadorItemSeleccionado {
                         val bundle = Bundle()
+                        bundle.putSerializable(DetalleAfiliadoRegistroActualizacionFragment.DETALLE_AFILIADO_ACTUALIZACION, it)
                         navegacionAplicacion
                             .navegar(
                                 de = NodosNavegacionFragments.REGISTRAR_AFILIADO_HOME,
