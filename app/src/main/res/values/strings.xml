@@ -101,4 +101,8 @@
     <string name="comite_ambiente">Comite ambiente</string>
     <string name="formulario_registro_afiliado">Formulario registro/actualizacion afiliado</string>
     <string name="contacto_afiliado">Contacto</string>
+    <string name="seguridad_afiliado">Seguridad afiliado</string>
+    <string name="informacion_basica_afiliado">Informacion basica afiliados</string>
+    <string name="detalle_en_jac">Detalle en JAC</string>
+    <string name="comite">Comite</string>
 </resources>

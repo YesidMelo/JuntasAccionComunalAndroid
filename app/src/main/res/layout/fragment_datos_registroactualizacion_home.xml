@@ -3,14 +3,117 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:padding="16dp">
 
     <TextView
         android:id="@+id/textView_datosBaseAfiliado_titulohome"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="informacion basica"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/informacion_basica_afiliado"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout_contenedorFormulario"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_datosBaseAfiliado_titulohome">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout_datosAfiliadoHome_nombre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText_datosAfiliadoHome_nombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/ingresar_nombre_afiliado" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout_datosAfiliadoHome_apellidos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout_datosAfiliadoHome_nombre">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText_datosAfiliadoHome_apellidos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/ingresar_apellido_afiliado" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/textView_datosAfiliadosHome_tituloFecha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fecha_nacimiento"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout_datosAfiliadoHome_apellidos" />
+
+        <TextView
+            android:id="@+id/textView_datosAfiliadoHome_fechaNacimiento"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:drawableRight="@android:drawable/ic_menu_my_calendar"
+            android:gravity="center"
+            android:text="@string/hint_seleccion_fecha"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_datosAfiliadosHome_tituloFecha" />
+
+        <TextView
+            android:id="@+id/textView_datosAfiliadoHome_tipoDocumento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tipo_documento"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_datosAfiliadoHome_fechaNacimiento" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_datosAfiliadoHome_tipoDocumento"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout_datosAfiliadoHome_numeroDocumento"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinner">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText_datosAfiliadosHome_numeroDocumento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/numero_documento" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/imageView_datosAfiliado_abrirFormulario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:rotation="-90"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/arrow_down_float" />
 </androidx.constraintlayout.widget.ConstraintLayout>

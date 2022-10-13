@@ -3,14 +3,101 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:padding="16dp">
 
     <TextView
         android:id="@+id/textView_contactoAfiliado_titulohome"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/contacto_afiliado"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView_contactoAfiliado_abrirFormulario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/arrow_down_float"
+        tools:ignore="ImageContrastCheck" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout_contactoAfiliado_formulario"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_contactoAfiliado_titulohome">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout_contactoAfiliadoHome_correo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText_contactoAfiliadoHome_correo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/correo_electronico"
+                tools:ignore="TextContrastCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout_contactoAfiliado_direccion"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout_contactoAfiliadoHome_correo">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText_contactoAfiliado_correo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/direccion"
+                tools:ignore="TextContrastCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/textView_contactoAfiliado_tituloTelefono"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/tipo_telefono"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout_contactoAfiliado_direccion" />
+
+        <Spinner
+            android:id="@+id/spinner_contactoAfiliado_tipoTelefono"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_contactoAfiliado_tituloTelefono"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout_contactoAfiliado_telefono"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinner_contactoAfiliado_tipoTelefono">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText_contactoAfiliado_telefono"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/telefono"
+                tools:ignore="TextContrastCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

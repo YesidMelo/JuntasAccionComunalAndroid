@@ -3,14 +3,70 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:padding="16dp">
 
     <TextView
         android:id="@+id/textView_detalleEnJac_titulo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="detalle en jac"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/detalle_en_jac"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView_detalleAfiliadoJac_abrirFormulario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/arrow_down_float"
+        tools:ignore="ImageContrastCheck" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout_detalleAfiliadoEnJac_formulario"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_detalleEnJac_titulo">
+
+        <TextView
+            android:id="@+id/textView_detalleAfiliadoEnJac_tituloComite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/comite"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/spinner_detalleAfiliadoEnJAC_comite"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_detalleAfiliadoEnJac_tituloComite"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:id="@+id/textView_detalleAfiliadoEnJac_estadoEstadoEnJunta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/estado_actual_afiliacion"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinner_detalleAfiliadoEnJAC_comite" />
+
+        <Spinner
+            android:id="@+id/spinner_detalleAfiliadoEnJAC_estadoAfiliadoEnJAc"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_detalleAfiliadoEnJac_estadoEstadoEnJunta"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
