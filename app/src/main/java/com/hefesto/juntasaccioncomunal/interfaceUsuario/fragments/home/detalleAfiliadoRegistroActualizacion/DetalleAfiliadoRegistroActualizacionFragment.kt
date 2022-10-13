@@ -61,6 +61,7 @@ class DetalleAfiliadoRegistroActualizacionFragment : BaseFragment<DetalleAfiliad
     //endregion
     //region configuracion fragments
     private fun configurarPaginas() {
+
         helperDetalleAfiliadoViewPagerNavegacion
             .conTabLayout(tabLayout = binding.tabLayoutRegistroAfiliadoVistasDisponibles)
             .conViewPager(viewPager = binding.viewPagerRegistroActualizacionAfiliadoFormularios)
@@ -73,6 +74,13 @@ class DetalleAfiliadoRegistroActualizacionFragment : BaseFragment<DetalleAfiliad
             ))
             .conBundle(bundle = configurarBundle())
             .configurarPaginas()
+            .observe(viewLifecycleOwner) {
+                if (!it) {
+                    mostrarLoading()
+                    return@observe
+                }
+                ocultarLoading()
+            }
     }
 
     private fun configurarBundle() : Bundle? {

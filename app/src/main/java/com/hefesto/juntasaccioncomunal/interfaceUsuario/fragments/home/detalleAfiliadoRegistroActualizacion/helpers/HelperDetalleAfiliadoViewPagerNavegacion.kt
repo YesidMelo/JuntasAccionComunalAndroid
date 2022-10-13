@@ -2,12 +2,16 @@ package com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleA
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.hefesto.juntasaccioncomunal.R
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.DetalleAfiliadoRegistroActualizacionFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.adapters.ViewPagerRegistroAfiliadoAdapter
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class HelperDetalleAfiliadoViewPagerNavegacion {
 
@@ -18,6 +22,7 @@ class HelperDetalleAfiliadoViewPagerNavegacion {
     private lateinit var detalleAfiliadoRegistroActualizacionFragment: DetalleAfiliadoRegistroActualizacionFragment
     private lateinit var viewPagerRegistroAfiliadoAdapter : ViewPagerRegistroAfiliadoAdapter
     private var bundle: Bundle? = null
+    private val finalizoLaCarga = MutableLiveData<Boolean>()
     //endregion
 
     fun conTabLayout(tabLayout: TabLayout) : HelperDetalleAfiliadoViewPagerNavegacion {
@@ -45,30 +50,48 @@ class HelperDetalleAfiliadoViewPagerNavegacion {
         return this
     }
 
-    fun configurarPaginas() {
-        configurarViewPager()
-        configurarTabLayout()
+    fun configurarPaginas() : MutableLiveData<Boolean> {
+        GlobalScope.launch {
+            finalizoLaCarga.postValue(false)
+            configurarViewPager()
+            configurarTabLayout()
+            cargarPaginas()
+            finalizoLaCarga.postValue(true)
+        }
+        return finalizoLaCarga
     }
 
     //region metodos privados
 
     //region tablayout
     private fun configurarTabLayout() {
-        TabLayoutMediator(tabLayout, viewPager){
-            tab, position ->
-            tab.setText(mapFragments.values.toList()[position])
-        }.attach()
+        viewPager.post {
+            TabLayoutMediator(tabLayout, viewPager){
+                    tab, position ->
+                tab.setText(mapFragments.values.toList()[position])
+            }.attach()
+        }
     }
     //endregion
 
     //region viewPager
     private fun configurarViewPager() {
-        viewPagerRegistroAfiliadoAdapter = ViewPagerRegistroAfiliadoAdapter(
-            fragment = detalleAfiliadoRegistroActualizacionFragment,
-            listaPasosRegistroFragment = mapFragments.keys.toList(),
-            bundle = bundle
-        )
-        viewPager.adapter = viewPagerRegistroAfiliadoAdapter
+        viewPager.post {
+            viewPagerRegistroAfiliadoAdapter = ViewPagerRegistroAfiliadoAdapter(
+                fragment = detalleAfiliadoRegistroActualizacionFragment,
+                listaPasosRegistroFragment = mapFragments.keys.toList(),
+                bundle = bundle
+            )
+            viewPager.adapter = viewPagerRegistroAfiliadoAdapter
+        }
+    }
+
+    private suspend fun cargarPaginas() {
+        for (contador in 0 until mapFragments.size) {
+            viewPager.post { viewPager.currentItem = contador }
+            delay(1000)
+        }
+        viewPager.post { viewPager.currentItem = 0 }
     }
     //endregion
 
