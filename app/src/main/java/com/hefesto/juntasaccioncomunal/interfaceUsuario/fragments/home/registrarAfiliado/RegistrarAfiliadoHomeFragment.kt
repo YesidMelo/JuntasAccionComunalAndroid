@@ -74,7 +74,14 @@ class RegistrarAfiliadoHomeFragment : BaseFragment<RegistrarAfiliadoHomeViewMode
                     .conListaAfiliados(listaAfiliados = it?: emptyList())
                     .conRecyclerView(recyclerView = binding.recyclerviewListaAfiliadosRegistroHome)
                     .conEscuchadorItemSeleccionado {
-                        Log.e("Erro", "")
+                        val bundle = Bundle()
+                        navegacionAplicacion
+                            .navegar(
+                                de = NodosNavegacionFragments.REGISTRAR_AFILIADO_HOME,
+                                a = NodosNavegacionFragments.DETALLE_AFILIADO_REGISTRO_HOME,
+                                accion = AccionesNavGrap.REGISTRAR_AFILIADO_HOME_A_DETALLE_AFILIADO_HOME,
+                                bundle = bundle
+                            )
                     }
                     .cargarLista()
 

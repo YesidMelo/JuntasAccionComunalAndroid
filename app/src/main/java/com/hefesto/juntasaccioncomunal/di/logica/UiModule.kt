@@ -11,7 +11,12 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.ConfiguracionA
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.HomeActivityUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.ListaAfiliadosActualizacionDirectivaUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.PanelControlFragmenUI
-import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.RegistroActualizacionAfiliadoUI
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.registroAfiliado.ContactoAfiliadoUI
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.registroAfiliado.DatosBasicosAfiliadoUI
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.registroAfiliado.DetalleAfiliadoEnJacUI
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.registroAfiliado.DetalleAfiliadoRegistroActualizacionUI
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.registroAfiliado.RegistroActualizacionAfiliadoUI
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.registroAfiliado.SeguridadAfiliadoUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.casosUso.IniciarSesionCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.casosUso.RegistrarAfiliadoCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.casosUso.RegistrarJACCasoUso
@@ -31,8 +36,56 @@ import dagger.Provides
 class UiModule {
 
     //region home
+
     @Provides
-    fun providesHomeActivityUI(escuchadorExcepcionesCasoUso: CargarEscuchadorExcepcionesCasoUso) = HomeActivityUI(escuchadorExcepciones = escuchadorExcepcionesCasoUso)
+    fun providesConfiguracionAfiliadoEnDirectivaUI(
+        cargarEscuchadorExcepcionesCasoUso: CargarEscuchadorExcepcionesCasoUso,
+        actualizarAfiliadoEnDirectivaCasoUso: ActualizarAfiliadoEnDirectivaCasoUso,
+        traerEstadosAfiliadoEnDirectivaCasoUso: TraerEstadosAfiliadoEnDirectivaCasoUso,
+        traerRolesAfiliadosEnDirectivaCasoUso: TraerRolesAfiliadosEnDirectivaCasoUso,
+    ) : ConfiguracionAfiliadoEnDirectivaUI = ConfiguracionAfiliadoEnDirectivaUI(
+        actualizarAfiliadoEnDirectivaCasoUso = actualizarAfiliadoEnDirectivaCasoUso,
+        escuchadorExcepciones = cargarEscuchadorExcepcionesCasoUso,
+        traerEstadosAfiliadoEnDirectivaCasoUso = traerEstadosAfiliadoEnDirectivaCasoUso,
+        traerRolesAfiliadosEnDirectivaCasoUso = traerRolesAfiliadosEnDirectivaCasoUso,
+    )
+
+    @Provides
+    fun providesContactoAfiliadoUI(
+        escuchadorExcepcionesCasoUso: CargarEscuchadorExcepcionesCasoUso
+    ) : ContactoAfiliadoUI = ContactoAfiliadoUI(
+        escuchadorExcepciones = escuchadorExcepcionesCasoUso
+    )
+
+
+    @Provides
+    fun providesDatosBasicosAfiliadoUI(
+        escuchadorExcepcionesCasoUso: CargarEscuchadorExcepcionesCasoUso
+    ) : DatosBasicosAfiliadoUI = DatosBasicosAfiliadoUI(
+        escuchadorExcepciones = escuchadorExcepcionesCasoUso
+    )
+
+    @Provides
+    fun providesDetalleAfiliadoEnJacUI (
+        escuchadorExcepcionesCasoUso: CargarEscuchadorExcepcionesCasoUso
+    ) : DetalleAfiliadoEnJacUI = DetalleAfiliadoEnJacUI(
+        escuchadorExcepciones = escuchadorExcepcionesCasoUso
+    )
+
+    @Provides
+    fun providesDetalleAfiliadoRegistroActualizacionUI(
+        escuchadorExcepcionesCasoUso: CargarEscuchadorExcepcionesCasoUso
+    ) : DetalleAfiliadoRegistroActualizacionUI = DetalleAfiliadoRegistroActualizacionUI(
+        escuchadorExcepciones = escuchadorExcepcionesCasoUso
+    )
+
+    @Provides
+    fun providesHomeActivityUI(
+        escuchadorExcepcionesCasoUso: CargarEscuchadorExcepcionesCasoUso
+    ) = HomeActivityUI(
+        escuchadorExcepciones = escuchadorExcepcionesCasoUso
+    )
+
 
     @Provides
     fun providesPanelControlFragmenUI(
@@ -53,25 +106,19 @@ class UiModule {
     )
 
     @Provides
-    fun providesConfiguracionAfiliadoEnDirectivaUI(
-        cargarEscuchadorExcepcionesCasoUso: CargarEscuchadorExcepcionesCasoUso,
-        actualizarAfiliadoEnDirectivaCasoUso: ActualizarAfiliadoEnDirectivaCasoUso,
-        traerEstadosAfiliadoEnDirectivaCasoUso: TraerEstadosAfiliadoEnDirectivaCasoUso,
-        traerRolesAfiliadosEnDirectivaCasoUso: TraerRolesAfiliadosEnDirectivaCasoUso,
-    ) : ConfiguracionAfiliadoEnDirectivaUI = ConfiguracionAfiliadoEnDirectivaUI(
-        actualizarAfiliadoEnDirectivaCasoUso = actualizarAfiliadoEnDirectivaCasoUso,
-        escuchadorExcepciones = cargarEscuchadorExcepcionesCasoUso,
-        traerEstadosAfiliadoEnDirectivaCasoUso = traerEstadosAfiliadoEnDirectivaCasoUso,
-        traerRolesAfiliadosEnDirectivaCasoUso = traerRolesAfiliadosEnDirectivaCasoUso,
-    )
-
-    @Provides
     fun providesRegistroActualizacionUI(
         cargarEscuchadorExcepcionesCasoUso: CargarEscuchadorExcepcionesCasoUso,
         traerListaAfiliadosRegistroActualizacionCasoUso: TraerListaAfiliadosRegistroActualizacionCasoUso
     ) : RegistroActualizacionAfiliadoUI = RegistroActualizacionAfiliadoUI(
         escuchadorExcepciones = cargarEscuchadorExcepcionesCasoUso,
         traerListaAfiliadosRegistroActualizacionCasoUso = traerListaAfiliadosRegistroActualizacionCasoUso
+    )
+
+    @Provides
+    fun providesSeguridadAfiliadoUI(
+        cargarEscuchadorExcepcionesCasoUso: CargarEscuchadorExcepcionesCasoUso
+    ) : SeguridadAfiliadoUI = SeguridadAfiliadoUI(
+        escuchadorExcepciones = cargarEscuchadorExcepcionesCasoUso
     )
 
     //endregion

@@ -3,11 +3,10 @@ package com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.registra
 import androidx.lifecycle.MutableLiveData
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseViewModel
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.ui.BaseUI
-import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.RegistroActualizacionAfiliadoUI
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.registroAfiliado.RegistroActualizacionAfiliadoUI
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.DatosBasicosAfiliadoActualizarRegistrarInformacionModel
 import com.hefesto.juntasaccioncomunal.logica.utilidades.extenciones.ManejarErrores
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

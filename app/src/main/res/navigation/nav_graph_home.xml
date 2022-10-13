@@ -55,6 +55,20 @@
         <action
             android:id="@+id/action_registrar_afiliado_home_to_panel_control"
             app:destination="@id/panel_control" />
+        <action
+            android:id="@+id/action_registrar_afiliado_home_to_detalle_afiliado_a_registrar_actualizar"
+            app:destination="@id/detalle_afiliado_a_registrar_actualizar" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detalle_afiliado_a_registrar_actualizar"
+        android:label="registrar/actualizar afiliado"
+        android:name="com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.DetalleAfiliadoRegistroActualizacionFragment"
+        tools:layout="@layout/fragment_registroactualizacion_afiliadohome"
+        >
+        <action
+            android:id="@+id/action_detalle_afiliado_a_registrar_actualizar_to_registrar_afiliado_home"
+            app:destination="@id/registrar_afiliado_home" />
     </fragment>
 
 </navigation>

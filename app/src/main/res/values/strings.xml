@@ -99,4 +99,6 @@
     <string name="comite_salud">Comite salud</string>
     <string name="comite_deportes">Comite deportes</string>
     <string name="comite_ambiente">Comite ambiente</string>
+    <string name="formulario_registro_afiliado">Formulario registro/actualizacion afiliado</string>
+    <string name="contacto_afiliado">Contacto</string>
 </resources>

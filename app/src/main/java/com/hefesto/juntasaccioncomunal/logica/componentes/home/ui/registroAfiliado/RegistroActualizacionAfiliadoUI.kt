@@ -1,4 +1,4 @@
-package com.hefesto.juntasaccioncomunal.logica.componentes.home.ui
+package com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.registroAfiliado
 
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.casosUso.CargarEscuchadorExcepcionesCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.ui.BaseUI
