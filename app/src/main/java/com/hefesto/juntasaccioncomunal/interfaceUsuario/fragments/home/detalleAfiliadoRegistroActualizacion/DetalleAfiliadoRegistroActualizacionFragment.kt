@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.hefesto.juntasaccioncomunal.R
 import com.hefesto.juntasaccioncomunal.databinding.FragmentRegistroactualizacionAfiliadohomeBinding
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.helpers.HelperDetalleAfiliadoViewPagerNavegacion
@@ -64,11 +65,11 @@ class DetalleAfiliadoRegistroActualizacionFragment : BaseFragment<DetalleAfiliad
             .conTabLayout(tabLayout = binding.tabLayoutRegistroAfiliadoVistasDisponibles)
             .conViewPager(viewPager = binding.viewPagerRegistroActualizacionAfiliadoFormularios)
             .conDetalleAfiliadoRegistroActializacionFragment(detalleAfiliadoRegistroActualizacionFragment = this)
-            .conListaFragmentos(listaFragments = arrayListOf(
-                DatosRegistroActualizacionFragment(),
-                ContactoAfiliadoRegistroActualizacionFragment(),
-                DetalleEnJacFragment(),
-                SeguridadAfiliadoFragment()
+            .conMapaFragmentos(mapFragments = mapOf(
+                Pair(first = DatosRegistroActualizacionFragment(), second = R.string.datos_afiliado),
+                Pair(first = ContactoAfiliadoRegistroActualizacionFragment(), second = R.string.contacto_afiliado),
+                Pair(first = DetalleEnJacFragment(), second = R.string.detalle_en_jac),
+                Pair(first = SeguridadAfiliadoFragment(), second = R.string.seguridad_afiliado),
             ))
             .conBundle(bundle = configurarBundle())
             .configurarPaginas()

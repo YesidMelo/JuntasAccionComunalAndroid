@@ -14,7 +14,7 @@ class HelperDetalleAfiliadoViewPagerNavegacion {
     //region
     private lateinit var tabLayout : TabLayout
     private lateinit var viewPager: ViewPager2
-    private lateinit var listaFragmentos: List<Fragment>
+    private lateinit var mapFragments: Map<Fragment, Int>
     private lateinit var detalleAfiliadoRegistroActualizacionFragment: DetalleAfiliadoRegistroActualizacionFragment
     private lateinit var viewPagerRegistroAfiliadoAdapter : ViewPagerRegistroAfiliadoAdapter
     private var bundle: Bundle? = null
@@ -30,8 +30,8 @@ class HelperDetalleAfiliadoViewPagerNavegacion {
         return this
     }
 
-    fun conListaFragmentos(listaFragments: List<Fragment>) : HelperDetalleAfiliadoViewPagerNavegacion {
-        this.listaFragmentos = listaFragments
+    fun conMapaFragmentos(mapFragments: Map<Fragment, Int>) : HelperDetalleAfiliadoViewPagerNavegacion {
+        this.mapFragments = mapFragments
         return this
     }
 
@@ -56,14 +56,7 @@ class HelperDetalleAfiliadoViewPagerNavegacion {
     private fun configurarTabLayout() {
         TabLayoutMediator(tabLayout, viewPager){
             tab, position ->
-            val stringRes = when(position) {
-                0 -> R.string.datos_afiliado
-                1 -> R.string.contacto_afiliado
-                2 -> R.string.detalle_en_jac
-                3 -> R.string.seguridad_afiliado
-                else -> R.string.datos_afiliado
-            }
-            tab.setText(stringRes)
+            tab.setText(mapFragments.values.toList()[position])
         }.attach()
     }
     //endregion
@@ -72,7 +65,7 @@ class HelperDetalleAfiliadoViewPagerNavegacion {
     private fun configurarViewPager() {
         viewPagerRegistroAfiliadoAdapter = ViewPagerRegistroAfiliadoAdapter(
             fragment = detalleAfiliadoRegistroActualizacionFragment,
-            listaPasosRegistroFragment = listaFragmentos,
+            listaPasosRegistroFragment = mapFragments.keys.toList(),
             bundle = bundle
         )
         viewPager.adapter = viewPagerRegistroAfiliadoAdapter
