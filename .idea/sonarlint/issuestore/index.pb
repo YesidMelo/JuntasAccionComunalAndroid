@@ -120,12 +120,6 @@ Vapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/login/Ja
 Vapp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/modules/LoginActivityModule.kt,d\7\d77b861b124deddbe059fcafdc2853d383668e30
 ©
 yapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/login/iniciarSesion/IniciarSesionFragment.kt,0\f\0f401913687109659de760b400ed1e4fa788de55
-î
-dapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/activities/login/LoginActivity.kt,2\1\214695337257f560f92df5bf489ced2d83480c7f
-ß
-wapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/login/registrarJAC/RegistrarJACFragment.kt,e\f\efef3594908d40f2adc56ad78e3c5b6989761bb5
-í
-bapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/activities/home/HomeActivity.kt,8\f\8f841eea8c8fb115d0dc9b0b7b8434c699386bc6
 ó
 gapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/views/login/CredencialesSesionView.kt,9\5\95a4e91078b39d79db64ef0efb7cc16b7033fce1
 ï
@@ -202,8 +196,6 @@ Mapp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/BaseFragmentDagger.kt,
 xapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/base/casosUso/CargarEscuchadorExcepcionesCasoUso.kt,9\b\9bc41615f2f98dd652da054b5d8456e8265fb9c3
 ¢
 rapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/ui/ConfiguracionAfiliadoEnDirectivaUI.kt,b\9\b949c0dc1aa128cf7f58243185f4537f757579f9
-á
-Wapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/base/BaseActivity.kt,0\3\032ca2367588f5c56d800cd70c8b1e34c3fe85b9
 ¿
 èapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/repositorio/db/helpers/HelperListaAfiliadosModificacionDirectivaDB.kt,1\1\11d683d3d92a78720d00394788a0bdcf7219f82a
 ∏
@@ -342,5 +334,3 @@ mapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/navegacion/e
 Ñapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/registrarAfiliado/RegistrarAfiliadoHomeFragment.kt,b\a\baeb8956d261b8d274e2ce61be620182319e1dd4
 „
 ≤app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/detalleAfiliadoRegistroActualizacion/subfragments/seguridadAfiliado/SeguridadAfiliadoFragment.kt,9\9\99f257f3774b2d758520e487855c0512f052a08d
-€
-™app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/detalleAfiliadoRegistroActualizacion/helpers/HelperDetalleAfiliadoViewPagerNavegacion.kt,f\5\f5dd76e83b03f49ede45e23bbff57c853b7e8355

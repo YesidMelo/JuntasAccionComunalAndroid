@@ -18,6 +18,8 @@ interface NavegacionAplicacion {
 
     fun conIdNavGraph(@IdRes @NotNull idNavGraph: Int) : NavegacionAplicacion
 
+    fun conIdNavHostFragment(@IdRes @NotNull idNavHostFragment : Int) : NavegacionAplicacion
+
     fun traerResultadoNavegacionFragments() : Boolean
 
     fun notificacionCambioNodo(escuchadorNodoActual: ((NodosNavegacionFragments) -> Unit)? = null)
@@ -45,6 +47,7 @@ class NavegacionAplicacionImpl constructor(
     //region variables
     private lateinit var activity: BaseActivity<*>
     private var idNavGraph: Int? = null
+    private var idNavHostFragment: Int? = null
     //endregion
 
     override fun conActivity(activity: BaseActivity<*>): NavegacionAplicacion {
@@ -54,6 +57,11 @@ class NavegacionAplicacionImpl constructor(
 
     override fun conIdNavGraph(idNavGraph: Int): NavegacionAplicacion {
         this.idNavGraph = idNavGraph
+        return this
+    }
+
+    override fun conIdNavHostFragment(idNavHostFragment: Int): NavegacionAplicacion {
+        this.idNavHostFragment = idNavHostFragment
         return this
     }
 
@@ -97,6 +105,7 @@ class NavegacionAplicacionImpl constructor(
             .conActivity(activity = activity)
             .conDe(de = de)
             .conIdNavGraph(idNavGraph = navGraphId)
+            .conIdNavHostFragment(idNavHostFragment = idNavHostFragment)
             .conBundle(bundle = bundle)
             .cambiarFragment()
         return this

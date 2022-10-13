@@ -36,6 +36,9 @@ abstract class BaseActivity<T: BaseViewModel> : BaseActivityDagger<T>(), Lifecyc
     //endregion
 
     //region ciclo de vida normal
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         navegacionAplicacion.conActivity(activity = this)

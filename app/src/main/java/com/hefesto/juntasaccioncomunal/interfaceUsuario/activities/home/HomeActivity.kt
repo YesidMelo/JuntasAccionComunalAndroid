@@ -29,6 +29,7 @@ class HomeActivity : BaseActivity<HomeActivityViewModel>() {
         configurarEscuchadorFragmentActual()
         configurarCerrarSesion()
         navegacionAplicacion.conIdNavGraph(idNavGraph = R.id.nav_host_fragment_content_home)
+        navegacionAplicacion.conIdNavHostFragment(idNavHostFragment = R.id.nav_host_fragment_content_home)
         super.safeOnCreate(savedInstanceState)
     }
 

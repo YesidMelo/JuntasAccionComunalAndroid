@@ -5,6 +5,8 @@ import com.hefesto.juntasaccioncomunal.R
 import com.hefesto.juntasaccioncomunal.databinding.ActivityLoginBinding
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseActivity
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionActividades
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class LoginActivity : BaseActivity<LoginActivityViewModel>() {
@@ -35,6 +37,7 @@ class LoginActivity : BaseActivity<LoginActivityViewModel>() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         navegacionAplicacion.conIdNavGraph(R.id.nav_host_fragment_content_main)
+        navegacionAplicacion.conIdNavHostFragment(idNavHostFragment = R.id.nav_host_fragment_content_main)
         super.safeOnCreate(savedInstanceState)
     }
 

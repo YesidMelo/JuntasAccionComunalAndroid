@@ -1,11 +1,16 @@
 package com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.helpers.helpersFragments
 
 import android.os.Bundle
+import androidx.annotation.IdRes
 import androidx.constraintlayout.solver.widgets.Helper
+import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseActivity
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.AccionesNavGrap
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
+import org.jetbrains.annotations.NotNull
 
 class HelperFragment {
 
@@ -15,8 +20,12 @@ class HelperFragment {
     private lateinit var activity: BaseActivity<*>
     private lateinit var de: NodosNavegacionFragments
     private var idNavGraph: Int? = null
+    private var idNavHostFragment: Int? = null
     private var escuchadorCambioNodo : ((NodosNavegacionFragments)->Unit)? = null
     private var bundle : Bundle? = null
+
+    private var navHostFragment: Fragment? = null
+    private var navController: NavController? = null
     //endregion
 
     fun  conA(a: NodosNavegacionFragments) : HelperFragment {
@@ -44,6 +53,11 @@ class HelperFragment {
         return this
     }
 
+    fun conIdNavHostFragment(@NotNull @IdRes idNavHostFragment: Int?) : HelperFragment{
+        this.idNavHostFragment = idNavHostFragment
+        return this
+    }
+
     fun conEscuchadorCambioNodo (escuchadorCambioNodo : ((NodosNavegacionFragments)->Unit)?) : HelperFragment {
         this.escuchadorCambioNodo = escuchadorCambioNodo
         return this
@@ -54,15 +68,19 @@ class HelperFragment {
         return this
     }
 
-    fun cambiarFragment() {
-        val navGraphId = idNavGraph?:return
-        val navController = activity.findNavController(navGraphId)
-        //val appBarConfiguration = AppBarConfiguration(navController.graph)
-        //activity.setupActionBarWithNavController(navController = navController, appBarConfiguration)
-        navController.navigate(accion.traerIdAccion(), bundle)
-        escuchadorCambioNodo?.invoke(a)
-    }
-
     fun reportarNavegacion() = true
 
+    fun cambiarFragment() {
+        val navHostFragmentId = idNavHostFragment?: return
+
+        if ( navHostFragment == null) {
+            navHostFragment = activity.supportFragmentManager.findFragmentById(navHostFragmentId)
+        }
+        if(navController == null) {
+            navController = navHostFragment?.findNavController()?:return
+        }
+
+        navController?.navigate(accion.traerIdAccion(), bundle)
+        escuchadorCambioNodo?.invoke(a)
+    }
 }

@@ -105,7 +105,7 @@ class HelperActivities {
             return true
         }
         activity.startActivity(intent, activityOptionsCompat!!.toBundle())
-        activity.finish()
+        //activity.finish()
         return true
     }
     //endregion

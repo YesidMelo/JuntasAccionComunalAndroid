@@ -87,9 +87,10 @@ class HelperDetalleAfiliadoViewPagerNavegacion {
     }
 
     private suspend fun cargarPaginas() {
+        delay(5000)
         for (contador in 0 until mapFragments.size) {
-            viewPager.post { viewPager.currentItem = contador }
             delay(1000)
+            viewPager.post { viewPager.currentItem = contador }
         }
         viewPager.post { viewPager.currentItem = 0 }
     }
