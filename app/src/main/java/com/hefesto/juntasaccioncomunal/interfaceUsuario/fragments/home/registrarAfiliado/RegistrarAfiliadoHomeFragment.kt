@@ -48,8 +48,14 @@ class RegistrarAfiliadoHomeFragment : BaseFragment<RegistrarAfiliadoHomeViewMode
     //region botones
     private fun configurarBotones() {
         conEscuchadorAccionBotonAtras { navegarAtras() }
+        configurarRegistroNuevoAfiliado()
     }
 
+    private fun configurarRegistroNuevoAfiliado() {
+        binding.lottieviewAdicionarAfiliado.setOnClickListener {
+            navegacionAplicacion.navegarBeginTransaction(a = NodosNavegacionFragments.DETALLE_AFILIADO_REGISTRO_HOME)
+        }
+    }
     //endregion
 
     //region precarga

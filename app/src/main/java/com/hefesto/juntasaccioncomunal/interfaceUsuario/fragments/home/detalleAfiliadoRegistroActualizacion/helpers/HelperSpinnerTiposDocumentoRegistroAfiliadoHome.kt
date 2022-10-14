@@ -30,18 +30,22 @@ class HelperSpinnerTiposDocumentoRegistroAfiliadoHome {
         return this
     }
 
-    fun seleccionarTipoDocumentoSeleccionadoPorAfiliado() {
-
-    }
-
     fun cargarSpinner() {
         adapter = ArrayAdapter(spinner.context!!, android.R.layout.simple_list_item_1, listaTiposDocumentoModel)
         spinner.adapter = adapter
+        seleccionarTipoDocumentoSeleccionadoPorAfiliado()
     }
 
     //endregion
 
     //region metodos privados
+    private fun seleccionarTipoDocumentoSeleccionadoPorAfiliado() {
+        val datos = datosBasicosAfiliadoActualizarRegistrarInformacionModel?:return
+        val seleccionado = listaTiposDocumentoModel.filter { return@filter it.tipoDocumento == datos.tipoDocumento }.toList()
+        if (seleccionado.isEmpty()) return
+        val documentoSeleccionado = seleccionado.first()
+        spinner.setSelection(listaTiposDocumentoModel.indexOf(documentoSeleccionado))
+    }
     //endregion
 
 }

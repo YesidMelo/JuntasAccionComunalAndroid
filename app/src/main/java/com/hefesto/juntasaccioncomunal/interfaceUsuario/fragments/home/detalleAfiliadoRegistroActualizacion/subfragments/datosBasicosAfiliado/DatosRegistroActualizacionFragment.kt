@@ -1,7 +1,6 @@
 package com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.subfragments.datosBasicosAfiliado
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,7 +35,6 @@ class DatosRegistroActualizacionFragment : BaseFragment<DatosRegistroActualizaci
     ): View {
         binding = FragmentDatosRegistroactualizacionHomeBinding.inflate(inflater)
         precargarElementosVista()
-        mostrarInformacionAfiliado()
         return binding.root
     }
 
@@ -44,10 +42,12 @@ class DatosRegistroActualizacionFragment : BaseFragment<DatosRegistroActualizaci
 
     //region precargar vista
     private fun precargarElementosVista() {
-        precargarSpinnerTipoDocumento()
+        val usuario = (arguments?.get(DetalleAfiliadoRegistroActualizacionFragment.DETALLE_AFILIADO_ACTUALIZACION) as? DatosBasicosAfiliadoActualizarRegistrarInformacionModel)
+        precargarSpinnerTipoDocumento(afiliado = usuario)
+        precargarInformacionAfiliado(afiliado= usuario)
     }
 
-    private fun precargarSpinnerTipoDocumento() {
+    private fun precargarSpinnerTipoDocumento(afiliado: DatosBasicosAfiliadoActualizarRegistrarInformacionModel?) {
         traerViewModel()
             .traerTiposDocumento()
             .observe(viewLifecycleOwner) {
@@ -55,32 +55,29 @@ class DatosRegistroActualizacionFragment : BaseFragment<DatosRegistroActualizaci
                 helperSpinnerTiposDocumentoRegistroAfiliadoHome
                     .conSpinner(spinner = binding.spinnerRegistroAfiliadoHomeTiposDocumento)
                     .conListaTiposDocumento(listaTiposDocumento = it)
+                    .conDatosBasicosAfiliadoActualizarRegistroInformacionModel(datosBasicosAfiliadoActualizarRegistrarInformacionModel = afiliado)
                     .cargarSpinner()
             }
     }
-    //endregion
 
-    //region precarga info afiliado
-    private fun mostrarInformacionAfiliado() {
-        val usuario = (arguments?.get(DetalleAfiliadoRegistroActualizacionFragment.DETALLE_AFILIADO_ACTUALIZACION) as? DatosBasicosAfiliadoActualizarRegistrarInformacionModel)?:return
-        ponerNombres(usuario = usuario)
-        ponerApellidos(usuario = usuario)
-        ponerFechaNacimiento(usuario = usuario)
-        ponerTipoDocumento(usuario= usuario)
-        ponerDocumento(usuario= usuario)
+    private fun precargarInformacionAfiliado(afiliado: DatosBasicosAfiliadoActualizarRegistrarInformacionModel?) {
+        val usuario = afiliado?:return
+        ponerNombres(afiliado = usuario)
+        ponerApellidos(afiliado = usuario)
+        ponerFechaNacimiento(afiliado = usuario)
+        ponerDocumento(afiliado= usuario)
     }
 
-    private fun ponerApellidos(usuario: DatosBasicosAfiliadoActualizarRegistrarInformacionModel) = binding.editTextDatosAfiliadoHomeApellidos.setText(usuario.apellidos)
+    private fun ponerApellidos(afiliado: DatosBasicosAfiliadoActualizarRegistrarInformacionModel) = binding.editTextDatosAfiliadoHomeApellidos.setText(afiliado.apellidos)
 
-    private fun ponerDocumento(usuario: DatosBasicosAfiliadoActualizarRegistrarInformacionModel) = binding.editTextDatosAfiliadosHomeNumeroDocumento.setText(usuario.documento)
+    private fun ponerDocumento(afiliado: DatosBasicosAfiliadoActualizarRegistrarInformacionModel) = binding.editTextDatosAfiliadosHomeNumeroDocumento.setText(afiliado.documento)
 
-    private fun ponerFechaNacimiento(usuario: DatosBasicosAfiliadoActualizarRegistrarInformacionModel) {
-        binding.textViewDatosAfiliadoHomeFechaNacimiento.text = usuario.fechaNacimiento?.convertirAFormato(formato = FormatosFecha.SLASH_1)
+    private fun ponerFechaNacimiento(afiliado: DatosBasicosAfiliadoActualizarRegistrarInformacionModel) {
+        binding.textViewDatosAfiliadoHomeFechaNacimiento.text = afiliado.fechaNacimiento?.convertirAFormato(formato = FormatosFecha.SLASH_1)
     }
 
-    private fun ponerNombres(usuario: DatosBasicosAfiliadoActualizarRegistrarInformacionModel) = binding.editTextDatosAfiliadoHomeNombre.setText(usuario.nombres)
+    private fun ponerNombres(afiliado: DatosBasicosAfiliadoActualizarRegistrarInformacionModel) = binding.editTextDatosAfiliadoHomeNombre.setText(afiliado.nombres)
 
-    private fun ponerTipoDocumento(usuario: DatosBasicosAfiliadoActualizarRegistrarInformacionModel) {}
     //endregion
 
     //endregion

@@ -48,7 +48,24 @@ class DetalleAfiliadoRegistroActualizacionFragment : BaseFragment<DetalleAfiliad
     //region configuracion botones
     private fun configurarBotones() {
         conEscuchadorAccionBotonAtras { navegarAtras() }
+        configuracionEscuchadorBotonSiguiente()
+        configuracionEscuchadorBotonVolver()
     }
+
+    private fun configuracionEscuchadorBotonSiguiente() {
+        binding.buttonRegistroAfiliadosSiguiente.setOnClickListener {
+            helperDetalleAfiliadoViewPagerNavegacion
+                .siguiente()
+        }
+    }
+
+    private fun configuracionEscuchadorBotonVolver() {
+        binding.buttonRegistroAfiliadoVolver.setOnClickListener {
+            helperDetalleAfiliadoViewPagerNavegacion
+                .volver()
+        }
+    }
+
     //endregion
     //region configuracion fragments
     private fun configurarPaginas() {
@@ -64,6 +81,8 @@ class DetalleAfiliadoRegistroActualizacionFragment : BaseFragment<DetalleAfiliad
                 Pair(first = SeguridadAfiliadoFragment(), second = R.string.seguridad_afiliado),
             ))
             .conBundle(bundle = configurarBundle())
+            .conBotonSiguiente(botonSiguiente = binding.buttonRegistroAfiliadosSiguiente)
+            .conBotonVolver(botonVolver = binding.buttonRegistroAfiliadoVolver)
             .configurarPaginas()
             .observe(viewLifecycleOwner) {
                 if (!it) {

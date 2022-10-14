@@ -106,4 +106,6 @@
     <string name="detalle_en_jac">Detalle en JAC</string>
     <string name="comite">Comite</string>
     <string name="datos_afiliado">Datos afiliado</string>
+    <string name="siguiente">Siguiente</string>
+    <string name="finalizar_registro_afiliado">Finalizar registro Afiliado</string>
 </resources>

@@ -1,6 +1,8 @@
 package com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.helpers
 
 import android.os.Bundle
+import android.view.View
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import androidx.viewpager2.widget.ViewPager2
@@ -21,8 +23,11 @@ class HelperDetalleAfiliadoViewPagerNavegacion {
     private lateinit var mapFragments: Map<Fragment, Int>
     private lateinit var detalleAfiliadoRegistroActualizacionFragment: DetalleAfiliadoRegistroActualizacionFragment
     private lateinit var viewPagerRegistroAfiliadoAdapter : ViewPagerRegistroAfiliadoAdapter
+    private lateinit var botonSiguiente : Button
+    private lateinit var botonVolver : Button
     private var bundle: Bundle? = null
     private val finalizoLaCarga = MutableLiveData<Boolean>()
+
     //endregion
 
     fun conTabLayout(tabLayout: TabLayout) : HelperDetalleAfiliadoViewPagerNavegacion {
@@ -50,15 +55,37 @@ class HelperDetalleAfiliadoViewPagerNavegacion {
         return this
     }
 
+    fun conBotonSiguiente(botonSiguiente: Button) : HelperDetalleAfiliadoViewPagerNavegacion{
+        this.botonSiguiente = botonSiguiente
+        return this
+    }
+
+    fun conBotonVolver(botonVolver : Button) : HelperDetalleAfiliadoViewPagerNavegacion {
+        this.botonVolver = botonVolver
+        return this
+    }
+
     fun configurarPaginas() : MutableLiveData<Boolean> {
+        configurarVisibilidaBotonVolver()
         GlobalScope.launch {
             finalizoLaCarga.postValue(false)
             configurarViewPager()
             configurarTabLayout()
-            cargarPaginas()
             finalizoLaCarga.postValue(true)
         }
         return finalizoLaCarga
+    }
+
+    fun siguiente() {
+        configurarAccionSiguiente()
+        configurarVisibilidaBotonVolver()
+        configurarTextoBotonSiguiente()
+    }
+
+    fun volver() {
+        configurarAccionVolver()
+        configurarVisibilidaBotonVolver()
+        configurarTextoBotonSiguiente()
     }
 
     //region metodos privados
@@ -69,6 +96,7 @@ class HelperDetalleAfiliadoViewPagerNavegacion {
             TabLayoutMediator(tabLayout, viewPager){
                     tab, position ->
                 tab.setText(mapFragments.values.toList()[position])
+                tab.view.isClickable = false
             }.attach()
         }
     }
@@ -86,14 +114,37 @@ class HelperDetalleAfiliadoViewPagerNavegacion {
         }
     }
 
-    private suspend fun cargarPaginas() {
-        delay(5000)
-        for (contador in 0 until mapFragments.size) {
-            delay(1000)
-            viewPager.post { viewPager.currentItem = contador }
+    //region boton siguiente
+    private fun configurarAccionSiguiente() {
+        if (viewPager.currentItem == mapFragments.size - 1) {
+            return
         }
-        viewPager.post { viewPager.currentItem = 0 }
+        viewPager.currentItem = viewPager.currentItem + 1
     }
+
+    private fun configurarTextoBotonSiguiente() {
+        if (viewPager.currentItem == mapFragments.size - 1) {
+            botonSiguiente.setText(R.string.finalizar_registro_afiliado)
+            return
+        }
+        botonSiguiente.setText(R.string.siguiente)
+    }
+    //endregion
+
+    //region boton volver
+    private fun configurarAccionVolver() {
+        if(viewPager.currentItem == 0) return
+        viewPager.currentItem = viewPager.currentItem - 1
+    }
+
+    private fun configurarVisibilidaBotonVolver() {
+        if (viewPager.currentItem == 0) {
+            botonVolver.visibility = View.GONE
+            return
+        }
+        botonVolver.visibility = View.VISIBLE
+    }
+    //endregion
     //endregion
 
     //endregion
