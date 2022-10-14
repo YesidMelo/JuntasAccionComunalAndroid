@@ -8,14 +8,15 @@ import android.view.ViewGroup
 import com.hefesto.juntasaccioncomunal.R
 import com.hefesto.juntasaccioncomunal.databinding.FragmentRegistroactualizacionAfiliadohomeBinding
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.dialogo.DialogoInformativo
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.helpers.HelperDetalleAfiliadoViewPagerNavegacion
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.subfragments.contactoAfiliado.ContactoAfiliadoRegistroActualizacionFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.subfragments.datosBasicosAfiliado.DatosRegistroActualizacionFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.subfragments.detalleEnJACAfiliado.DetalleEnJacFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.subfragments.seguridadAfiliado.SeguridadAfiliadoFragment
-import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.AccionesNavGrap
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.DatosBasicosAfiliadoActualizarRegistrarInformacionModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.registroAfiliado.CompiladoInformacionAfiliadoParaRegistroModel
 import javax.inject.Inject
 
 class DetalleAfiliadoRegistroActualizacionFragment : BaseFragment<DetalleAfiliadoRegistroActualizacionViewModel>() {
@@ -84,9 +85,7 @@ class DetalleAfiliadoRegistroActualizacionFragment : BaseFragment<DetalleAfiliad
             .conBundle(bundle = configurarBundle())
             .conBotonSiguiente(botonSiguiente = binding.buttonRegistroAfiliadosSiguiente)
             .conBotonVolver(botonVolver = binding.buttonRegistroAfiliadoVolver)
-            .conEscuchadorFinalizacionPaginas {
-                Log.e("error", "salio")
-            }
+            .conEscuchadorFinalizacionPaginas (::mostrarDialogoAdvertenciaRegistro)
             .configurarPaginas()
             .observe(viewLifecycleOwner) {
                 if (!it) {
@@ -102,6 +101,36 @@ class DetalleAfiliadoRegistroActualizacionFragment : BaseFragment<DetalleAfiliad
         return Bundle().apply {
             putSerializable(DETALLE_AFILIADO_ACTUALIZACION, objeto)
         }
+    }
+
+    private fun mostrarDialogoAdvertenciaRegistro(compilacionDatos: CompiladoInformacionAfiliadoParaRegistroModel) {
+        mostrarDialogo(
+            tipoDialogo = DialogoInformativo.TipoDialogo.ADVERTENCIA,
+            titulo = R.string.registrar_afiliado,
+            mensaje = R.string.deseas_continuar_con_el_registro,
+            accionAceptar = {
+                traerViewModel()
+                    .registrarDatos(compilacionDatos = compilacionDatos)
+                    .observe(viewLifecycleOwner) {
+                        if (it == null) {
+                            mostrarLoading()
+                            return@observe
+                        }
+                        ocultarLoading()
+                        if (!it) return@observe
+                        mostrarDialogoRegistroSatisfactorio()
+                    }
+            }
+        )
+    }
+
+    private fun mostrarDialogoRegistroSatisfactorio() {
+        mostrarDialogo(
+            tipoDialogo = DialogoInformativo.TipoDialogo.INFORMATIVO,
+            titulo = R.string.registrar_afiliado,
+            mensaje = R.string.registro_afiliado_exitoso,
+            accionAceptar =  ::navegarAtras
+        )
     }
     //endregion
     //endregion

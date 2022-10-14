@@ -100,8 +100,6 @@ eapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/login/Af
 capp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/entities/login/TelefonosEntity.kt,e\5\e5a18ae72268562b21fc2901256d8f0272d7014d
 å
 \app/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/login/Telefono_Dao.kt,e\f\efb2eacac81a3eb65329a114e96f068d22818460
-Ü
-Vapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/excepciones/LoginExcepcion.kt,f\c\fcce37103ec884c2d2d78d9b0120d73bb1ae3864
 ú
 lapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/entities/login/Afiliado_Telefono_Entity.kt,3\a\3acc46c6c56bed9899872d41cb9a04c8da712693
 Å
@@ -300,8 +298,6 @@ tapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/ui/re
 Uapp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/modules/HomeActivityModule.kt,0\4\04233868c3a8f8ed53214b06b1ab6c14b736d69f
 z
 Japp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/FragmentBuilder.kt,9\d\9dd8a9507b1cc239a8460037eecd573f5a0d74af
-∏
-áapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/ui/registroAfiliado/DetalleAfiliadoRegistroActualizacionUI.kt,8\f\8ffc225c4680d88c23efdb47f7a6953051b6ac95
 ù
 mapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/navegacion/enumeradores/AccionesNavGrap.kt,4\0\409aafd4b56a19e54d247a317237b50ef4db0fb7
 @
@@ -310,10 +306,6 @@ mapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/navegacion/e
 £app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/detalleAfiliadoRegistroActualizacion/adapters/ViewPagerRegistroAfiliadoAdapter.kt,0\c\0c36c39302797b75e061b142e177d1a0c3b18c4b
 £
 sapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/ui/registroAfiliado/ContactoAfiliadoUI.kt,3\1\314e62fb5664599a78d82a6a34fb6df14f3d622b
-w
-Gapp/src/main/java/com/hefesto/juntasaccioncomunal/di/logica/UiModule.kt,c\5\c53697990100eef933e5cfa4141c942d4043efea
-}
-Mapp/src/main/java/com/hefesto/juntasaccioncomunal/di/logica/CasosUsoModule.kt,d\6\d65605d1bf69a2c0906de2bd3c64a108fa8ecbd1
 ß
 wapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/ui/registroAfiliado/DatosBasicosAfiliadoUI.kt,0\3\03e8caf0d31ca2328bba97eb6042b9da0e84bb3c
 ≥
