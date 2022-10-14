@@ -6,10 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import com.hefesto.juntasaccioncomunal.databinding.FragmentSeguridadAfiliadoHomeBinding
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.subfragments.ConfigurarInformacionParaCrearModeloRegistro
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.registroAfiliado.SeguridadParaRegistroModel
 import javax.inject.Inject
 
-class SeguridadAfiliadoFragment : BaseFragment<SeguridadAfiliadoViewModel>() {
+class SeguridadAfiliadoFragment :
+    BaseFragment<SeguridadAfiliadoViewModel>(),
+    ConfigurarInformacionParaCrearModeloRegistro<SeguridadParaRegistroModel>
+{
 
     //region variables
     @Inject
@@ -28,5 +33,9 @@ class SeguridadAfiliadoFragment : BaseFragment<SeguridadAfiliadoViewModel>() {
     ): View {
         binding = FragmentSeguridadAfiliadoHomeBinding.inflate(inflater)
         return binding.root
+    }
+
+    override fun armarModelo(): SeguridadParaRegistroModel {
+        return SeguridadParaRegistroModel()
     }
 }

@@ -11,6 +11,12 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.hefesto.juntasaccioncomunal.R
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.DetalleAfiliadoRegistroActualizacionFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.adapters.ViewPagerRegistroAfiliadoAdapter
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.subfragments.ConfigurarInformacionParaCrearModeloRegistro
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.registroAfiliado.CompiladoInformacionAfiliadoParaRegistroModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.registroAfiliado.ContactoParaRegistrarModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.registroAfiliado.DatosBasicosParaRegistrarModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.registroAfiliado.DetalleEnJACParaRegistroModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.registroAfiliado.SeguridadParaRegistroModel
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -25,6 +31,9 @@ class HelperDetalleAfiliadoViewPagerNavegacion {
     private lateinit var viewPagerRegistroAfiliadoAdapter : ViewPagerRegistroAfiliadoAdapter
     private lateinit var botonSiguiente : Button
     private lateinit var botonVolver : Button
+    private lateinit var escuchadorFinalizarRegistro : (CompiladoInformacionAfiliadoParaRegistroModel) -> Unit
+    private var compiladoInformacionAfiliadoParaRegistroModel = CompiladoInformacionAfiliadoParaRegistroModel()
+
     private var bundle: Bundle? = null
     private val finalizoLaCarga = MutableLiveData<Boolean>()
 
@@ -62,6 +71,11 @@ class HelperDetalleAfiliadoViewPagerNavegacion {
 
     fun conBotonVolver(botonVolver : Button) : HelperDetalleAfiliadoViewPagerNavegacion {
         this.botonVolver = botonVolver
+        return this
+    }
+
+    fun conEscuchadorFinalizacionPaginas(escuchadorFinalizarRegistro : (CompiladoInformacionAfiliadoParaRegistroModel) -> Unit) : HelperDetalleAfiliadoViewPagerNavegacion {
+        this.escuchadorFinalizarRegistro = escuchadorFinalizarRegistro
         return this
     }
 
@@ -114,12 +128,19 @@ class HelperDetalleAfiliadoViewPagerNavegacion {
         }
     }
 
+    //endregion
+
+    //region botones
+
     //region boton siguiente
     private fun configurarAccionSiguiente() {
         if (viewPager.currentItem == mapFragments.size - 1) {
+            generarModelosParaCompilado()
+            escuchadorFinalizarRegistro.invoke(compiladoInformacionAfiliadoParaRegistroModel)
             return
         }
         viewPager.currentItem = viewPager.currentItem + 1
+        limpiarObjetoParaCompilado()
     }
 
     private fun configurarTextoBotonSiguiente() {
@@ -145,6 +166,23 @@ class HelperDetalleAfiliadoViewPagerNavegacion {
         botonVolver.visibility = View.VISIBLE
     }
     //endregion
+
+    //endregion
+
+    //region compilar modelo general
+    private fun generarModelosParaCompilado() {
+        compiladoInformacionAfiliadoParaRegistroModel = CompiladoInformacionAfiliadoParaRegistroModel(
+            datosBasicosParaRegistrarModel = (mapFragments.keys.toList()[0] as ConfigurarInformacionParaCrearModeloRegistro<DatosBasicosParaRegistrarModel>).armarModelo(),
+            contactoParaRegistrarModel = (mapFragments.keys.toList()[1] as ConfigurarInformacionParaCrearModeloRegistro<ContactoParaRegistrarModel>).armarModelo(),
+            detalleEnJACParaRegistroModel = (mapFragments.keys.toList()[2] as ConfigurarInformacionParaCrearModeloRegistro<DetalleEnJACParaRegistroModel>).armarModelo(),
+            seguridadParaRegistroModel = (mapFragments.keys.toList()[3] as ConfigurarInformacionParaCrearModeloRegistro<SeguridadParaRegistroModel>).armarModelo(),
+        )
+    }
+
+    private fun limpiarObjetoParaCompilado() {
+        compiladoInformacionAfiliadoParaRegistroModel = CompiladoInformacionAfiliadoParaRegistroModel()
+    }
+
     //endregion
 
     //endregion

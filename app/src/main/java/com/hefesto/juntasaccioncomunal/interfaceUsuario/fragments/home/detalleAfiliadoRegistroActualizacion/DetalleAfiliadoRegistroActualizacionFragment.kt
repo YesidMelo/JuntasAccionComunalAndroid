@@ -1,6 +1,7 @@
 package com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -83,6 +84,9 @@ class DetalleAfiliadoRegistroActualizacionFragment : BaseFragment<DetalleAfiliad
             .conBundle(bundle = configurarBundle())
             .conBotonSiguiente(botonSiguiente = binding.buttonRegistroAfiliadosSiguiente)
             .conBotonVolver(botonVolver = binding.buttonRegistroAfiliadoVolver)
+            .conEscuchadorFinalizacionPaginas {
+                Log.e("error", "salio")
+            }
             .configurarPaginas()
             .observe(viewLifecycleOwner) {
                 if (!it) {

@@ -6,10 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import com.hefesto.juntasaccioncomunal.databinding.FragmentDetalleEnJacHomeBinding
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.subfragments.ConfigurarInformacionParaCrearModeloRegistro
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.registroAfiliado.DetalleEnJACParaRegistroModel
 import javax.inject.Inject
 
-class DetalleEnJacFragment : BaseFragment<DetalleEnJacViewModel>() {
+class DetalleEnJacFragment :
+    BaseFragment<DetalleEnJacViewModel>(),
+    ConfigurarInformacionParaCrearModeloRegistro<DetalleEnJACParaRegistroModel>
+{
 
     //region variables
     @Inject
@@ -28,6 +33,10 @@ class DetalleEnJacFragment : BaseFragment<DetalleEnJacViewModel>() {
     ): View {
         binding = FragmentDetalleEnJacHomeBinding.inflate(inflater)
         return binding.root
+    }
+
+    override fun armarModelo(): DetalleEnJACParaRegistroModel {
+        return DetalleEnJACParaRegistroModel()
     }
 
 }

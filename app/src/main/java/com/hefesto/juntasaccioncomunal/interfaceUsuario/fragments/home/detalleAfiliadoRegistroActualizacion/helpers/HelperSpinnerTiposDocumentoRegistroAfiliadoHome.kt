@@ -4,6 +4,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import com.hefesto.juntasaccioncomunal.logica.modelos.general.TipoDocumentoModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.DatosBasicosAfiliadoActualizarRegistrarInformacionModel
+import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.TipoDocumento
 
 class HelperSpinnerTiposDocumentoRegistroAfiliadoHome {
 
@@ -35,6 +36,8 @@ class HelperSpinnerTiposDocumentoRegistroAfiliadoHome {
         spinner.adapter = adapter
         seleccionarTipoDocumentoSeleccionadoPorAfiliado()
     }
+
+    fun traerTipoDocumentoSeleccionado() : TipoDocumento = (spinner.selectedItem as TipoDocumentoModel).tipoDocumento
 
     //endregion
 
