@@ -12,8 +12,10 @@ import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAf
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.DatosBasicosAfiliadoActualizarRegistrarInformacionModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.registroAfiliado.DatosBasicosParaRegistrarModel
+import com.hefesto.juntasaccioncomunal.logica.utilidades.constantes.ConstantesFecha
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.FormatosFecha
 import com.hefesto.juntasaccioncomunal.logica.utilidades.extenciones.convertirAFormato
+import java.util.*
 import javax.inject.Inject
 
 class DatosRegistroActualizacionFragment : BaseFragment<DatosRegistroActualizacionViewModel>() ,
@@ -38,6 +40,7 @@ class DatosRegistroActualizacionFragment : BaseFragment<DatosRegistroActualizaci
     ): View {
         binding = FragmentDatosRegistroactualizacionHomeBinding.inflate(inflater)
         precargarElementosVista()
+        configurarBotones()
         return binding.root
     }
 
@@ -92,9 +95,21 @@ class DatosRegistroActualizacionFragment : BaseFragment<DatosRegistroActualizaci
 
     //endregion
 
-    //region actualizacionDatos
-
-    //endregion
+    private fun configurarBotones() {
+        binding
+            .textViewDatosAfiliadoHomeFechaNacimiento
+            .setOnClickListener {
+                val fechaMaximaSeleccion = Calendar.getInstance()
+                fechaMaximaSeleccion.add(Calendar.YEAR, -ConstantesFecha.EDAD_MINIMA_INSCRIPCION_JAC)
+                mostrarDialogoCalendario(
+                    accionFechaSeleccionada = {
+                        traerViewModel().conFechaNacimiento(fechaNacimiento = it)
+                        binding.textViewDatosAfiliadoHomeFechaNacimiento.text = it.convertirAFormato(formato = FormatosFecha.SLASH_1)
+                    },
+                    calendarFechaMaximaSeleccion = fechaMaximaSeleccion
+                )
+            }
+    }
 
     //endregion
 

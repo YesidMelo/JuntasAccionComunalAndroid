@@ -44,8 +44,6 @@ japp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/base/repos
 gapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/ui/RegistrarJACFragmentUI.kt,5\4\54466458155b679ecbfde3f3cefffe34602022be
 à
 Xapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/entities/BaseEntity.kt,2\7\271461bb4c9678501ae60ccc96dfc315ef713183
-ß
-wapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/casosUso/TraerListaJACsRegistradasCasoUso.kt,f\1\f140eb3bff4563b0bf1875490b61011c55d908ef
 ú
 lapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/ui/RegistrarAfiliadoFragmentUI.kt,1\9\1920f5dbe61fbf2dc0c5cb5210ae7b88b37588ee
 †
@@ -56,8 +54,6 @@ aapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/utilidades/constantes/
 _app/src/main/java/com/hefesto/juntasaccioncomunal/logica/utilidades/ValidacionStringConRegex.kt,6\c\6cfdd867546a46b53cd3c60df5da3a3fa28a95b7
 ö
 japp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/casosUso/RegistrarJACCasoUso.kt,0\9\0908c7f7055f8c8c369018259bd3ce4744f36f26
-ü
-oapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/casosUso/RegistrarAfiliadoCasoUso.kt,1\d\1df8e61c02ec59cdb350beef8cf7cd5d7fe3beab
 ê
 `app/src/main/java/com/hefesto/juntasaccioncomunal/logica/utilidades/enumeradores/TipoTelefono.kt,0\3\030fdcb43ec13220fbcee390c1ff800af03eb39d
 °
@@ -238,8 +234,6 @@ Xapp/src/main/java/com/hefesto/juntasaccioncomunal/di/logica/HelpersDBDatasource
 vapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/ui/ListaAfiliadosActualizacionDirectivaUI.kt,1\6\1645db21ec271ab77370fd2dfe826a914c8ee645
 ‡
 Øapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/listaAfiliadosModificacionDirectivas/ListaAfiliadosModificacionDirectivasFragmentViewModel.kt,8\6\8635afada06d7643dc82f2980aa0d9c66f4f434b
-ê
-`app/src/main/java/com/hefesto/juntasaccioncomunal/logica/utilidades/extenciones/DateExtension.kt,0\9\0988e794cafa57f76c49c38b32f6619320628776
 î
 dapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/utilidades/extenciones/StringExtensiones.kt,a\3\a3c6688ad37d96c34ec1a1f25a4eaed887768357
 ë
@@ -332,8 +326,6 @@ Wapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/base/BaseAct
 eapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/navegacion/NavegacionAplicacion.kt,4\4\4464956d055d4e2841220eb338f611f5ba14a78b
 á
 Wapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/base/BaseFragment.kt,7\e\7e1cb1add2b84f48364a0e4da2726cdb4f81ab01
-≤
-Åapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/login/registrarAfiliado/RegistrarAfiliadoFragment.kt,2\a\2af77d9acff579738b8c1ce7aaa7fa977a3c0295
 œ
 ûapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/configuracionAfiliadoEnDirectiva/ConfiguracionAfiliadoEnDirectivaFragment.kt,2\9\29dfdfdfd4d11a3acbbd04dae531375b116d398b
 ß

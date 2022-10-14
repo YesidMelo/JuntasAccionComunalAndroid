@@ -35,3 +35,43 @@ class ApellidoAfiliadoNoValidoHomeExcepcion : LogicaExcepcion(
     tipoExcepcion = TiposExcepciones.GENERADO_USUARIO
 )
 //endregion
+
+//region fechaNacimiento
+class FechaNacimientoAfiliadoNoIngresadoHomeExcepcion : LogicaExcepcion(
+    mensaje = "No ha ingresado una fecha de nacimiento",
+    stringResMensaje = R.string.no_ha_ingresado_una_fecha_nacimiento,
+    stringResTitulo = R.string.registro_afiliado_jac,
+    tipoExcepcion = TiposExcepciones.GENERADO_USUARIO
+)
+
+class FechaNacimientoAfiliadoNoValidoHomeExcepcion : LogicaExcepcion(
+    mensaje = "Fecha nacimiento invalido",
+    stringResMensaje = R.string.fecha_nacimiento_invalido,
+    stringResTitulo = R.string.registro_afiliado_jac,
+    tipoExcepcion = TiposExcepciones.GENERADO_USUARIO
+)
+//endregion
+
+//region documento
+class NoHaIngresadoTipoDocumentoHomeExcepcion : LogicaExcepcion(
+    mensaje = "No ha ingresado un tipo de documento",
+    stringResMensaje = R.string.no_ha_ingresado_tipo_documento,
+    stringResTitulo = R.string.registro_afiliado_jac,
+    tipoExcepcion = TiposExcepciones.GENERADO_USUARIO
+)
+
+class NoHaIngresadoNumeroDocumentoHomeExcepcion : LogicaExcepcion(
+    mensaje = "No ha ingresado numero documento",
+    stringResMensaje = R.string.no_ha_ingresado_numero_documento,
+    stringResTitulo = R.string.registro_afiliado_jac,
+    tipoExcepcion = TiposExcepciones.GENERADO_USUARIO
+)
+
+class NoHaNumeroDocumentoInvalidoHomeExcepcion : LogicaExcepcion(
+    mensaje = "No ha ingresado numero documento",
+    stringResMensaje = R.string.numero_documento_invalido,
+    stringResTitulo = R.string.registro_afiliado_jac,
+    tipoExcepcion = TiposExcepciones.GENERADO_USUARIO
+)
+
+//endregion

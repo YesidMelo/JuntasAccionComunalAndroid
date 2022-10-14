@@ -108,4 +108,6 @@
     <string name="datos_afiliado">Datos afiliado</string>
     <string name="siguiente">Siguiente</string>
     <string name="finalizar_registro_afiliado">Finalizar registro Afiliado</string>
+    <string name="fecha_nacimiento_invalido">Fecha de nacimiento invalido. Vuelvelo a intentar</string>
+    <string name="no_ha_ingresado_tipo_documento">No ha ingresado un tipo de documento</string>
 </resources>
