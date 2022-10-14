@@ -47,11 +47,7 @@ class ListaAfiliadosModificacionDirectivasFragment : BaseFragment<ListaAfiliados
     //region metodos privados
     private fun configurarBotonAtras() {
         conEscuchadorAccionBotonAtras {
-            navegacionAplicacion.navegar(
-                a = NodosNavegacionFragments.PANEL_CONTROL,
-                accion =AccionesNavGrap.LISTA_AFILIADOS_MODIFICACION_DIRECTIVA_A_PANEL_CONTROL,
-                de = NodosNavegacionFragments.LISTA_AFILIADOS_MODIFICACION_DIRECTIVAS
-            )
+            navegarAtras()
         }
     }
 
@@ -74,10 +70,8 @@ class ListaAfiliadosModificacionDirectivasFragment : BaseFragment<ListaAfiliados
             .conEscuchadorItemSeleccionado {
                 val bundle = Bundle()
                 bundle.putSerializable(ConfiguracionAfiliadoEnDirectivaFragment.DETALLE_AFILIADO_EN_DIRECTIVA, it)
-                navegacionAplicacion.navegar(
+                navegacionAplicacion.navegarBeginTransaction(
                     a = NodosNavegacionFragments.CONFIGURACION_AFILIADO_EN_DIRECTIVA,
-                    de = NodosNavegacionFragments.LISTA_AFILIADOS_MODIFICACION_DIRECTIVAS,
-                    accion = AccionesNavGrap.LISTA_AFILIADOS_MODIFICACION_DIRECTIVA_A_CONFIGURACION_AFILIADO_EN_DIRECTIVA,
                     bundle = bundle
                 )
             }

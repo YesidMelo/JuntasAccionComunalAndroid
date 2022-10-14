@@ -24,6 +24,9 @@ class HelperFragment {
     private var escuchadorCambioNodo : ((NodosNavegacionFragments)->Unit)? = null
     private var bundle : Bundle? = null
 
+    private var frameLayoutContenedorFragmentosId: Int? = null
+    private var fragmentInicial : NodosNavegacionFragments? = null
+
     private var navHostFragment: Fragment? = null
     private var navController: NavController? = null
     //endregion
@@ -48,6 +51,19 @@ class HelperFragment {
         return this
     }
 
+    //region navegacion con supportFragmentManager
+    fun conFragmentInicial(fragmentInicial : NodosNavegacionFragments?) : HelperFragment {
+        this.fragmentInicial = fragmentInicial
+        return this
+    }
+
+    fun conFrameLayoutContenedorFragmentosId(@IdRes frameLayoutContenedorFragmentosId: Int? ) : HelperFragment{
+        this.frameLayoutContenedorFragmentosId = frameLayoutContenedorFragmentosId
+        return this
+    }
+    //endregion
+
+    //region navegacion con nav_graph
     fun  conIdNavGraph(idNavGraph: Int) : HelperFragment {
         this.idNavGraph = idNavGraph
         return this
@@ -57,6 +73,7 @@ class HelperFragment {
         this.idNavHostFragment = idNavHostFragment
         return this
     }
+    //endregion
 
     fun conEscuchadorCambioNodo (escuchadorCambioNodo : ((NodosNavegacionFragments)->Unit)?) : HelperFragment {
         this.escuchadorCambioNodo = escuchadorCambioNodo
@@ -69,6 +86,10 @@ class HelperFragment {
     }
 
     fun reportarNavegacion() = true
+
+    fun cargarFragmentInicial() {
+
+    }
 
     fun cambiarFragment() {
         val navHostFragmentId = idNavHostFragment?: return
@@ -83,4 +104,6 @@ class HelperFragment {
         navController?.navigate(accion.traerIdAccion(), bundle)
         escuchadorCambioNodo?.invoke(a)
     }
+
+
 }

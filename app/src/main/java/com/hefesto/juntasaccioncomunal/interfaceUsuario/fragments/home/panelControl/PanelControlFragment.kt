@@ -56,16 +56,8 @@ class PanelControlFragment : BaseFragment<PanelControlFragmentViewModel>() {
 
     private fun gestionarNavegacionFunciones(funcionSeleccionada : FuncionesRolApp) {
         when(funcionSeleccionada) {
-            FuncionesRolApp.ASIGNAR_ROL_DENTRO_DE_JAC -> navegacionAplicacion.navegar(
-                a = NodosNavegacionFragments.LISTA_AFILIADOS_MODIFICACION_DIRECTIVAS,
-                de = NodosNavegacionFragments.PANEL_CONTROL,
-                accion = AccionesNavGrap.PANEL_CONTROL_A_LISTA_AFILIADOS_MODIFICACION_DIRECTIVA
-            )
-            FuncionesRolApp.REGISTRAR_AFILIADO_JAC ->  navegacionAplicacion.navegar(
-                a = NodosNavegacionFragments.REGISTRAR_AFILIADO_HOME,
-                de = NodosNavegacionFragments.PANEL_CONTROL,
-                accion = AccionesNavGrap.PANEL_CONTROL_A_REGISTRAR_AFILIADO_HOME
-            )
+            FuncionesRolApp.ASIGNAR_ROL_DENTRO_DE_JAC -> navegacionAplicacion.navegarBeginTransaction(a = NodosNavegacionFragments.LISTA_AFILIADOS_MODIFICACION_DIRECTIVAS)
+            FuncionesRolApp.REGISTRAR_AFILIADO_JAC ->  navegacionAplicacion.navegarBeginTransaction(a = NodosNavegacionFragments.REGISTRAR_AFILIADO_HOME)
         }
     }
     //endregion

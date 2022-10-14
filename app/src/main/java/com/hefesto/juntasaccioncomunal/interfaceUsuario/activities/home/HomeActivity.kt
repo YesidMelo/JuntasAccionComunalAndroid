@@ -28,8 +28,11 @@ class HomeActivity : BaseActivity<HomeActivityViewModel>() {
         configurarEncabezadoPanelControl(actual = NodosNavegacionFragments.PANEL_CONTROL)
         configurarEscuchadorFragmentActual()
         configurarCerrarSesion()
-        navegacionAplicacion.conIdNavGraph(idNavGraph = R.id.nav_host_fragment_content_home)
-        navegacionAplicacion.conIdNavHostFragment(idNavHostFragment = R.id.nav_host_fragment_content_home)
+
+        navegacionAplicacion
+            .conFrameLayoutContenedorFragmentosId(frameLayoutContenedorFragmentosId = R.id.frameLayout_contenedorFragmentos_home)
+            .conFragmentInicial(fragmentInicial = NodosNavegacionFragments.PANEL_CONTROL)
+            .cargarFragmentIncial()
         super.safeOnCreate(savedInstanceState)
     }
 

@@ -49,15 +49,6 @@ class DetalleAfiliadoRegistroActualizacionFragment : BaseFragment<DetalleAfiliad
     private fun configurarBotones() {
         conEscuchadorAccionBotonAtras { navegarAtras() }
     }
-
-    private fun navegarAtras() {
-        navegacionAplicacion
-            .navegar(
-                de = traerNodoNavegacion(),
-                a = NodosNavegacionFragments.REGISTRAR_AFILIADO_HOME,
-                accion = AccionesNavGrap.DETALLE_AFILIADO_HOME_A_REGISTRAR_AFILIADO_HOME
-            )
-    }
     //endregion
     //region configuracion fragments
     private fun configurarPaginas() {

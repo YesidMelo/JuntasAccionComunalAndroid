@@ -52,12 +52,7 @@ abstract class BaseActivity<T: BaseViewModel> : BaseActivityDagger<T>(), Lifecyc
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
-        navegacionAplicacion
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        return navegacionAplicacion.traerResultadoNavegacionFragments()
+        navegacionAplicacion.volverBeginTransaction(onBackPressed = { super.onBackPressed() })
     }
 
 
@@ -128,13 +123,6 @@ abstract class BaseActivity<T: BaseViewModel> : BaseActivityDagger<T>(), Lifecyc
         )
     }
 
-    //endregion
-
-    //region navegacion fragments en activity
-
-    open fun configurarNavegacionFragments(@IdRes @NotNull idNavGraph: Int) {
-        navegacionAplicacion.conIdNavGraph(idNavGraph = idNavGraph)
-    }
     //endregion
 
     //endregion

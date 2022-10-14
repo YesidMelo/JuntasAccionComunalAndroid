@@ -75,21 +75,13 @@ class IniciarSesionFragment : BaseFragment<IniciarSesionFragmentViewModel>() {
 
     private fun ponerEscuchadorBotonRegistrarJAC() {
         binding.textViewRegistrarJac.setOnClickListener{
-            navegacionAplicacion.navegar(
-                de = NodosNavegacionFragments.INICIAR_SESION,
-                a= NodosNavegacionFragments.REGISTRAR_JAC,
-                accion = AccionesNavGrap.INICIAR_SESION_A_REGISTRAR_JAC
-            )
+            navegacionAplicacion.navegarBeginTransaction(a= NodosNavegacionFragments.REGISTRAR_JAC)
         }
     }
 
     private fun ponerEscuchadorBotonRegistrarAfiliado() {
         binding.textViewRegistrarAfiliado.setOnClickListener{
-            navegacionAplicacion.navegar(
-                de = NodosNavegacionFragments.INICIAR_SESION,
-                a= NodosNavegacionFragments.REGISTRAR_AFILIADO,
-                accion = AccionesNavGrap.INICIAR_SESION_A_REGISTRAR_AFILIADO
-            )
+            navegacionAplicacion.navegarBeginTransaction(a= NodosNavegacionFragments.REGISTRAR_AFILIADO)
         }
     }
 

@@ -114,13 +114,7 @@ class ConfiguracionAfiliadoEnDirectivaFragment : BaseFragment<ConfiguracionAfili
     //endregion
 
     //region navegacion
-    private fun navegarAtras() {
-        navegacionAplicacion.navegar(
-            a = NodosNavegacionFragments.LISTA_AFILIADOS_MODIFICACION_DIRECTIVAS,
-            de = NodosNavegacionFragments.CONFIGURACION_AFILIADO_EN_DIRECTIVA,
-            accion = AccionesNavGrap.CONFIGURACION_AFILIADO_EN_DIRECTIVA_A_LISTA_AFILIADOS_MODIFICACION_DIRECTIVA
-        )
-    }
+
 
     private fun habilitarVistas() {
         binding.buttonActualizarRolDirectivas.isEnabled = true

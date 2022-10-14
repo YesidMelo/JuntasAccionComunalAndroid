@@ -50,14 +50,6 @@ class RegistrarAfiliadoHomeFragment : BaseFragment<RegistrarAfiliadoHomeViewMode
         conEscuchadorAccionBotonAtras { navegarAtras() }
     }
 
-    private fun navegarAtras() {
-        navegacionAplicacion
-            .navegar(
-                de = traerNodoNavegacion(),
-                a = NodosNavegacionFragments.PANEL_CONTROL,
-                accion = AccionesNavGrap.REGISTRAR_AFILIADO_HOME_A_PANEL_CONTROL
-            )
-    }
     //endregion
 
     //region precarga
@@ -77,13 +69,7 @@ class RegistrarAfiliadoHomeFragment : BaseFragment<RegistrarAfiliadoHomeViewMode
                     .conEscuchadorItemSeleccionado {
                         val bundle = Bundle()
                         bundle.putSerializable(DetalleAfiliadoRegistroActualizacionFragment.DETALLE_AFILIADO_ACTUALIZACION, it)
-                        navegacionAplicacion
-                            .navegar(
-                                de = NodosNavegacionFragments.REGISTRAR_AFILIADO_HOME,
-                                a = NodosNavegacionFragments.DETALLE_AFILIADO_REGISTRO_HOME,
-                                accion = AccionesNavGrap.REGISTRAR_AFILIADO_HOME_A_DETALLE_AFILIADO_HOME,
-                                bundle = bundle
-                            )
+                        navegacionAplicacion.navegarBeginTransaction(a = NodosNavegacionFragments.DETALLE_AFILIADO_REGISTRO_HOME,bundle = bundle)
                     }
                     .cargarLista()
 

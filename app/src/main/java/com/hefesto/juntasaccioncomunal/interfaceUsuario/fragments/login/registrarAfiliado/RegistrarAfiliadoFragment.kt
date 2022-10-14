@@ -59,12 +59,7 @@ class RegistrarAfiliadoFragment : BaseFragment<RegistrarAfiliadoFragmentViewMode
 
     private fun ponerEscuchadorBotonVolver() {
         binding.buttonRegistroAfiliadosVolver.setOnClickListener {
-            navegacionAplicacion
-                .navegar(
-                    de = NodosNavegacionFragments.REGISTRAR_AFILIADO,
-                    a = NodosNavegacionFragments.INICIAR_SESION,
-                    accion = AccionesNavGrap.REGISTRAR_AFILIADO_A_INICIAR_SESION
-                )
+            navegarAtras()
         }
     }
 
@@ -218,11 +213,7 @@ class RegistrarAfiliadoFragment : BaseFragment<RegistrarAfiliadoFragmentViewMode
             titulo = R.string.registro_afiliado_jac,
             mensaje = R.string.registro_afiliado_exitoso,
             accionAceptar = {
-                navegacionAplicacion.navegar(
-                    de = NodosNavegacionFragments.REGISTRAR_AFILIADO,
-                    a = NodosNavegacionFragments.INICIAR_SESION,
-                    accion = AccionesNavGrap.REGISTRAR_AFILIADO_A_INICIAR_SESION
-                )
+                navegarAtras()
             }
         )
     }

@@ -4,25 +4,19 @@ import android.os.Bundle
 import android.view.View
 import androidx.annotation.IdRes
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseActivity
-import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.AccionesNavGrap
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionActividades
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.helpers.helpersActivity.HelperActivities
-import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.helpers.helpersFragments.HelperFragment
-import org.jetbrains.annotations.NotNull
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.helpers.helpersFragments.HelperNavegacionFragmentConBeginTransaction
 import javax.inject.Inject
 
 interface NavegacionAplicacion {
 
     fun conActivity(activity: BaseActivity<*>) : NavegacionAplicacion
 
-    fun conIdNavGraph(@IdRes @NotNull idNavGraph: Int) : NavegacionAplicacion
-
-    fun conIdNavHostFragment(@IdRes @NotNull idNavHostFragment : Int) : NavegacionAplicacion
-
-    fun traerResultadoNavegacionFragments() : Boolean
-
     fun notificacionCambioNodo(escuchadorNodoActual: ((NodosNavegacionFragments) -> Unit)? = null)
+
+    fun cargarFragmentIncial()
 
     fun navegar(
         de: NodosNavegacionActividades,
@@ -31,23 +25,30 @@ interface NavegacionAplicacion {
         parVistaTrancicion: Pair<String, View>? = null
     ) : NavegacionAplicacion
 
-    fun navegar(
-        a: NodosNavegacionFragments,
-        accion: AccionesNavGrap,
-        de: NodosNavegacionFragments,
-        bundle: Bundle? = null
-    ): NavegacionAplicacion
+
+
+    //region navegacion  begin transaction
+    fun conFragmentInicial(fragmentInicial : NodosNavegacionFragments?) : NavegacionAplicacion
+
+    fun conFrameLayoutContenedorFragmentosId(@IdRes frameLayoutContenedorFragmentosId: Int? ) : NavegacionAplicacion
+
+    fun navegarBeginTransaction(a: NodosNavegacionFragments, bundle: Bundle? = null)
+
+    fun volverBeginTransaction(onBackPressed: ()->Unit)
+    //endregion
 }
 
 class NavegacionAplicacionImpl constructor(
     @JvmField @Inject var helperActivities: HelperActivities,
-    @JvmField @Inject var helperFragment: HelperFragment,
+    @JvmField @Inject var helperNavegacionFragmentConBeginTransaction: HelperNavegacionFragmentConBeginTransaction
 ) : NavegacionAplicacion {
 
     //region variables
     private lateinit var activity: BaseActivity<*>
-    private var idNavGraph: Int? = null
-    private var idNavHostFragment: Int? = null
+
+    private var fragmentInicial: NodosNavegacionFragments? = null
+    private var frameLayoutContenedorFragmentosId: Int? = null
+
     //endregion
 
     override fun conActivity(activity: BaseActivity<*>): NavegacionAplicacion {
@@ -55,21 +56,42 @@ class NavegacionAplicacionImpl constructor(
         return this
     }
 
-    override fun conIdNavGraph(idNavGraph: Int): NavegacionAplicacion {
-        this.idNavGraph = idNavGraph
-        return this
-    }
-
-    override fun conIdNavHostFragment(idNavHostFragment: Int): NavegacionAplicacion {
-        this.idNavHostFragment = idNavHostFragment
-        return this
-    }
-
-    override fun traerResultadoNavegacionFragments(): Boolean = helperFragment.reportarNavegacion()
-
     override fun notificacionCambioNodo(escuchadorNodoActual: ((NodosNavegacionFragments) -> Unit)? ) {
-        helperFragment.conEscuchadorCambioNodo(escuchadorCambioNodo = escuchadorNodoActual)
+        helperNavegacionFragmentConBeginTransaction
+            .conEscuchadorNodoActual(escuchadorNodoActual)
     }
+
+    //region navegacion beginTransaction
+    override fun conFragmentInicial(fragmentInicial: NodosNavegacionFragments?): NavegacionAplicacion {
+        this.fragmentInicial = fragmentInicial
+        return this
+    }
+
+    override fun conFrameLayoutContenedorFragmentosId(frameLayoutContenedorFragmentosId: Int? ) : NavegacionAplicacion {
+        this.frameLayoutContenedorFragmentosId = frameLayoutContenedorFragmentosId
+        return this
+    }
+
+    override fun cargarFragmentIncial() {
+        val nodoInicial = fragmentInicial?:return
+        val frameLayoutId = frameLayoutContenedorFragmentosId?:return
+        helperNavegacionFragmentConBeginTransaction
+            .conActivity(activity = activity)
+            .conContenedorFragmentos(contenedorFragmentos = frameLayoutId)
+            .conNodoInicial(nodoInicial = nodoInicial)
+            .ir(a = nodoInicial)
+    }
+
+    override fun navegarBeginTransaction(a: NodosNavegacionFragments, bundle: Bundle?) {
+        helperNavegacionFragmentConBeginTransaction
+            .ir(a = a, bundle = bundle)
+    }
+
+    override fun volverBeginTransaction(onBackPressed: () -> Unit) {
+        helperNavegacionFragmentConBeginTransaction.volver(onBackPressed = onBackPressed)
+    }
+
+    //endregion
 
 
     override fun navegar(
@@ -89,25 +111,6 @@ class NavegacionAplicacionImpl constructor(
             .crearPutExtras()
             .crearActivityOptionsCompat()
             .navegarAActivity()
-        return this
-    }
-
-    override fun navegar(
-        a: NodosNavegacionFragments,
-        accion: AccionesNavGrap,
-        de: NodosNavegacionFragments,
-        bundle: Bundle?
-    ): NavegacionAplicacion {
-        val navGraphId = idNavGraph?: return this
-        helperFragment
-            .conA(a = a)
-            .conAccion(accion = accion)
-            .conActivity(activity = activity)
-            .conDe(de = de)
-            .conIdNavGraph(idNavGraph = navGraphId)
-            .conIdNavHostFragment(idNavHostFragment = idNavHostFragment)
-            .conBundle(bundle = bundle)
-            .cambiarFragment()
         return this
     }
 

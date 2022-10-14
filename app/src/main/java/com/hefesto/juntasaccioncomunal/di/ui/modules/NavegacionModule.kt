@@ -4,6 +4,7 @@ import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.helpers.helpe
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.NavegacionAplicacion
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.NavegacionAplicacionImpl
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.helpers.helpersFragments.HelperFragment
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.helpers.helpersFragments.HelperNavegacionFragmentConBeginTransaction
 import dagger.Module
 import dagger.Provides
 
@@ -16,6 +17,9 @@ class NavegacionModule {
 
     @Provides
     fun providesHelperFragment() = HelperFragment()
+
+    @Provides
+    fun providesHelperNavegacionFragmentConBeginTransaction() = HelperNavegacionFragmentConBeginTransaction()
     //endregion
 
     //region segundo nivel
@@ -23,10 +27,10 @@ class NavegacionModule {
     @Provides
     fun providesNavegacionTodaAplicacion(
         helperActivities: HelperActivities,
-        helperFragment: HelperFragment
+        helperNavegacionFragmentConBeginTransaction: HelperNavegacionFragmentConBeginTransaction
     ) : NavegacionAplicacion = NavegacionAplicacionImpl(
         helperActivities = helperActivities,
-        helperFragment = helperFragment
+        helperNavegacionFragmentConBeginTransaction = helperNavegacionFragmentConBeginTransaction
     )
 
     //endregion

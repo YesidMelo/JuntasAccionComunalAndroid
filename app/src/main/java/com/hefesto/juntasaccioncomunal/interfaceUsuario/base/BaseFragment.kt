@@ -42,7 +42,9 @@ abstract class BaseFragment<T : BaseViewModel> : BaseFragmentDagger<T>(), Lifecy
 
     abstract fun traerNodoNavegacion(): NodosNavegacionFragments
 
-
+    open fun navegarAtras() {
+        navegacionAplicacion.volverBeginTransaction { activity?.onBackPressed() }
+    }
 
     //region interaccion activity
 

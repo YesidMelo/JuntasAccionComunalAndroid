@@ -47,15 +47,7 @@ class RegistrarJACFragment : BaseFragment<RegistrarJACFragmentViewModel>() {
     }
 
     private fun ponerEscuchadoresBotonVolver() {
-        binding.buttonVolver.setOnClickListener { navegarAIniciarSesion()        }
-    }
-
-    private fun navegarAIniciarSesion() {
-        navegacionAplicacion.navegar(
-            de = NodosNavegacionFragments.REGISTRAR_JAC,
-            a = NodosNavegacionFragments.INICIAR_SESION,
-            accion = AccionesNavGrap.REGISTRAR_JAC_A_INICIAR_SESION
-        )
+        binding.buttonVolver.setOnClickListener { navegarAtras() }
     }
 
     private fun ponerEscuchadorBotonRegistrar() {
@@ -98,7 +90,7 @@ class RegistrarJACFragment : BaseFragment<RegistrarJACFragmentViewModel>() {
             tipoDialogo = DialogoInformativo.TipoDialogo.INFORMATIVO,
             titulo = R.string.registro_jac,
             mensaje = R.string.registro_exitoso_jac,
-            accionAceptar = ::navegarAIniciarSesion
+            accionAceptar = ::navegarAtras
         )
     }
 
