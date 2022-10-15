@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.hefesto.juntasaccioncomunal.databinding.FragmentDetalleEnJacHomeBinding
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.helpers.HelperSpinnerComitesEnJacHome
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.subfragments.ConfigurarInformacionParaCrearModeloRegistro
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.registroAfiliado.DetalleEnJACParaRegistroModel
@@ -19,6 +20,9 @@ class DetalleEnJacFragment :
     //region variables
     @Inject
     lateinit var detalleEnJacViewModel: DetalleEnJacViewModel
+    @Inject
+    lateinit var helperSpinnerComitesEnJacHome : HelperSpinnerComitesEnJacHome
+
     private lateinit var binding : FragmentDetalleEnJacHomeBinding
     //endregion
 
@@ -32,11 +36,33 @@ class DetalleEnJacFragment :
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentDetalleEnJacHomeBinding.inflate(inflater)
+        precargarVista()
         return binding.root
     }
 
     override fun armarModelo(): DetalleEnJACParaRegistroModel {
         return DetalleEnJACParaRegistroModel()
     }
+
+    //region metodos privados
+    //region precarga
+    private fun precargarVista() {
+        precargarSpinnerComitesJac()
+    }
+
+    private fun precargarSpinnerComitesJac() {
+        traerViewModel()
+            .cargarComitesEnJac()
+            .observe(viewLifecycleOwner) {
+                if (it == null) return@observe
+                helperSpinnerComitesEnJacHome
+                    .conSpinner(spinner = binding.spinnerDetalleAfiliadoEnJACComite)
+                    .conListaComites(listaComites = it)
+                    .cargarSpinner()
+            }
+    }
+    //endregion
+    //endregion
+
 
 }

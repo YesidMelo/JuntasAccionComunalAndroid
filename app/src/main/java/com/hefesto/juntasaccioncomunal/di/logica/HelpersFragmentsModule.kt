@@ -3,6 +3,7 @@ package com.hefesto.juntasaccioncomunal.di.logica
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.configuracionAfiliadoEnDirectiva.helpers.HelperSpinnerEstadosAfiliacionConfiguracionDirectivas
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.configuracionAfiliadoEnDirectiva.helpers.HelperSpinnerRolesAfiliacionConfiguracionDirectiva
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.helpers.HelperDetalleAfiliadoViewPagerNavegacion
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.helpers.HelperSpinnerComitesEnJacHome
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.helpers.HelperSpinnerTiposDocumentoRegistroAfiliadoHome
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.helpers.HelperSpinnerTiposTelefonoRegistroAfiliadoHome
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.listaAfiliadosModificacionDirectivas.helpers.HelperRecyclerListaAfiliadosModificacionDirectiva
@@ -27,6 +28,9 @@ class HelpersFragmentsModule {
 
     @Provides
     fun providesHelperRecyclerViewListaAfiliadosRegistrarActualizar() = HelperRecyclerViewListaAfiliadosRegistrarActualizar()
+
+    @Provides
+    fun providesHelperSpinnerComitesEnJacHome() = HelperSpinnerComitesEnJacHome()
 
     @Provides
     fun providesHelperSpinnerEstadosAfiliacionConfiguracionDirectivas(): HelperSpinnerEstadosAfiliacionConfiguracionDirectivas = HelperSpinnerEstadosAfiliacionConfiguracionDirectivas()
