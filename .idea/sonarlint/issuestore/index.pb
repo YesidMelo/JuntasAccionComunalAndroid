@@ -282,8 +282,6 @@ qapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/views/home/Af
 wapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/ui/registroAfiliado/DetalleAfiliadoEnJacUI.kt,b\1\b1af908f67cd6ec7f7efe2cb322c5e25bacda44d
 ¤
 tapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/ui/registroAfiliado/SeguridadAfiliadoUI.kt,0\7\071bfda178695010f46c5afb13066e376ee2903d
-÷
-Æapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/detalleAfiliadoRegistroActualizacion/subfragments/contactoAfiliado/ContactoAfiliadoRegistroActualizacionViewModel.kt,5\e\5e260334643344cf19079f23d628b954c48f1358
 â
 ±app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/detalleAfiliadoRegistroActualizacion/subfragments/detalleEnJACAfiliado/DetalleEnJacViewModel.kt,3\0\30969a21f81c503c9dc0a5e145b5a48f31d49126
 ä
@@ -298,8 +296,6 @@ mapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/navegacion/e
 app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
 Ô
 £app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/detalleAfiliadoRegistroActualizacion/adapters/ViewPagerRegistroAfiliadoAdapter.kt,0\c\0c36c39302797b75e061b142e177d1a0c3b18c4b
-£
-sapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/ui/registroAfiliado/ContactoAfiliadoUI.kt,3\1\314e62fb5664599a78d82a6a34fb6df14f3d622b
 §
 wapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/ui/registroAfiliado/DatosBasicosAfiliadoUI.kt,0\3\03e8caf0d31ca2328bba97eb6042b9da0e84bb3c
 ³

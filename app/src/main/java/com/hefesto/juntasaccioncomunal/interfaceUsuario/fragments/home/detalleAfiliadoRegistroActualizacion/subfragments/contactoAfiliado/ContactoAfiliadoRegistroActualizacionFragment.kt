@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.hefesto.juntasaccioncomunal.databinding.FragmentContactoAfiliadoHomeBinding
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.helpers.HelperSpinnerTiposTelefonoRegistroAfiliadoHome
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.subfragments.ConfigurarInformacionParaCrearModeloRegistro
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.registroAfiliado.ContactoParaRegistrarModel
@@ -20,6 +21,9 @@ class ContactoAfiliadoRegistroActualizacionFragment :
     @Inject
     lateinit var contactoAfiliadoRegistroActualizacionViewModel : ContactoAfiliadoRegistroActualizacionViewModel
 
+    @Inject
+    lateinit var helperSpinnerTiposTelefonoRegistroAfiliadoHome: HelperSpinnerTiposTelefonoRegistroAfiliadoHome
+
     private lateinit var binding: FragmentContactoAfiliadoHomeBinding
     //endregion
 
@@ -33,11 +37,32 @@ class ContactoAfiliadoRegistroActualizacionFragment :
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentContactoAfiliadoHomeBinding.inflate(inflater)
+        precargaVista()
         return binding.root
     }
 
     override fun armarModelo(): ContactoParaRegistrarModel {
         return ContactoParaRegistrarModel()
     }
+
+    //region metodos privados
+    //region precarga
+    private fun precargaVista() {
+        precargarSpinnerTiposTelefono()
+    }
+
+    private fun precargarSpinnerTiposTelefono() {
+        traerViewModel()
+            .traerListaTiposTelefono()
+            .observe(viewLifecycleOwner){
+                if (it == null) return@observe
+                helperSpinnerTiposTelefonoRegistroAfiliadoHome
+                    .conSpinner(spinner = binding.spinnerContactoAfiliadoTipoTelefono)
+                    .conListaTiposTelefono(listaTiposTelefono = it)
+                    .cargarSpinner()
+            }
+    }
+    //endregion
+    //endregion
 
 }

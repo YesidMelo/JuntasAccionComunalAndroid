@@ -7,6 +7,7 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.configur
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.listaAfiliadosModificacionDirectivas.TraerListaAfiliadosModificacionDirectivasCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.panelControl.TraerFuncionalidadesCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.registroAfiliado.CargarTiposDocumentoCasoUso
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.registroAfiliado.CargarTiposTelefonoHomeCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.registroAfiliado.RegistrarAfiliadoHomeCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.registroAfiliado.TraerListaAfiliadosRegistroActualizacionCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.ConfiguracionAfiliadoEnDirectivaUI
@@ -54,9 +55,11 @@ class UiModule {
 
     @Provides
     fun providesContactoAfiliadoUI(
-        escuchadorExcepcionesCasoUso: CargarEscuchadorExcepcionesCasoUso
+        escuchadorExcepcionesCasoUso: CargarEscuchadorExcepcionesCasoUso,
+        cargarTiposTelefonoHomeCasoUso: CargarTiposTelefonoHomeCasoUso
     ) : ContactoAfiliadoUI = ContactoAfiliadoUI(
-        escuchadorExcepciones = escuchadorExcepcionesCasoUso
+        escuchadorExcepciones = escuchadorExcepcionesCasoUso,
+        cargarTiposTelefonoHomeCasoUso = cargarTiposTelefonoHomeCasoUso
     )
 
 

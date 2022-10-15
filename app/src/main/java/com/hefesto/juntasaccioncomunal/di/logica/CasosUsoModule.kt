@@ -16,6 +16,8 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.panelCon
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.panelControl.TraerFuncionalidadesCasoUsoImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.registroAfiliado.CargarTiposDocumentoCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.registroAfiliado.CargarTiposDocumentoCasoUsoImpl
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.registroAfiliado.CargarTiposTelefonoHomeCasoUso
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.registroAfiliado.CargarTiposTelefonoHomeCasoUsoImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.registroAfiliado.RegistrarAfiliadoHomeCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.registroAfiliado.RegistrarAfiliadoHomeCasoUsoImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.registroAfiliado.TraerListaAfiliadosRegistroActualizacionCasoUso
@@ -61,6 +63,9 @@ class CasosUsoModule {
 
     @Provides
     fun providesCargarTiposDocumentoCasoUso() : CargarTiposDocumentoCasoUso = CargarTiposDocumentoCasoUsoImpl(context = MiAplicacion.traerInstancia()!!.applicationContext)
+
+    @Provides
+    fun providesCargarTiposTelefonoHomeCasoUso() : CargarTiposTelefonoHomeCasoUso = CargarTiposTelefonoHomeCasoUsoImpl( context = MiAplicacion.traerInstancia()!!.applicationContext)
 
     @Provides
     fun providesRegistrarAfiliadoHomeCasoUso(): RegistrarAfiliadoHomeCasoUso = RegistrarAfiliadoHomeCasoUsoImpl()
