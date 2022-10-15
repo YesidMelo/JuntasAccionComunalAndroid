@@ -41,7 +41,10 @@ class DetalleEnJacFragment :
     }
 
     override fun armarModelo(): DetalleEnJACParaRegistroModel {
-        return DetalleEnJACParaRegistroModel()
+        return traerViewModel()
+            .conComiteSeleccionado(comitesEnJAC = helperSpinnerComitesEnJacHome.traerComiteSeleccionado())
+            .conEstadoAfiliacion(estadoAfiliacion = helperSpinnerEstadosAfiliadoHome.traerEstadoAfiliado())
+            .traerDetalleEnJACParaRegistroModel()
     }
 
     //region metodos privados

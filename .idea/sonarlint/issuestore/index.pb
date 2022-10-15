@@ -276,8 +276,6 @@ qapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/views/home/Af
 €app/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/ui/registroAfiliado/RegistroActualizacionAfiliadoUI.kt,c\7\c7f944ced90521ca69aa1bad0561e42353fe93ec
 ¤
 tapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/ui/registroAfiliado/SeguridadAfiliadoUI.kt,0\7\071bfda178695010f46c5afb13066e376ee2903d
-ä
-³app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/detalleAfiliadoRegistroActualizacion/subfragments/seguridadAfiliado/SeguridadAfiliadoViewModel.kt,7\7\77247138fd5df3e2eab8531f3423136c99d73289
 …
 Uapp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/modules/HomeActivityModule.kt,0\4\04233868c3a8f8ed53214b06b1ab6c14b736d69f
 z

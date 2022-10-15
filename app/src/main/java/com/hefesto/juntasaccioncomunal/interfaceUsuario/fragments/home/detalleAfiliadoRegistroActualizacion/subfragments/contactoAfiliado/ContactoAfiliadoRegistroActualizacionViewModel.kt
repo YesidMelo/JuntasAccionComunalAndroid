@@ -5,6 +5,7 @@ import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseViewModel
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.ui.BaseUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.registroAfiliado.ContactoAfiliadoUI
 import com.hefesto.juntasaccioncomunal.logica.modelos.general.TipoTelefonoModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.registroAfiliado.ContactoParaRegistrarModel
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.TipoTelefono
 import com.hefesto.juntasaccioncomunal.logica.utilidades.extenciones.ManejarErrores
 import kotlinx.coroutines.GlobalScope
@@ -22,6 +23,7 @@ class ContactoAfiliadoRegistroActualizacionViewModel constructor(
     private var direccionId: Int? = null
     private var direccion: String? = null
     private var tipoTelefono: TipoTelefono? = null
+    private var telefonoId: Int? = null
     private var telefono: String? = null
     private val tiposTelefonoLiveData = MutableLiveData<List<TipoTelefonoModel>?>()
     //endregion
@@ -46,6 +48,18 @@ class ContactoAfiliadoRegistroActualizacionViewModel constructor(
     fun conTelefono(telefono: String?) : ContactoAfiliadoRegistroActualizacionViewModel {
         this.telefono = telefono
         return this
+    }
+
+    fun traerObjetoArmado() : ContactoParaRegistrarModel {
+        return ContactoParaRegistrarModel(
+            correoElectronicoId = correoId,
+            correo = correo,
+            direccionId = direccionId,
+            direccion = direccion,
+            telefonoId = telefonoId,
+            telefono = telefono,
+            tipoTelefono = tipoTelefono
+        )
     }
 
     fun traerListaTiposTelefono() : MutableLiveData<List<TipoTelefonoModel>?> {

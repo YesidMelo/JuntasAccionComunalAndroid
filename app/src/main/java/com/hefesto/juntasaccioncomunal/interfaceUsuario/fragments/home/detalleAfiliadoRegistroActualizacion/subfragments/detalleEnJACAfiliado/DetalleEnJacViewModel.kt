@@ -6,6 +6,9 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.base.ui.BaseUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.registroAfiliado.DetalleAfiliadoEnJacUI
 import com.hefesto.juntasaccioncomunal.logica.modelos.general.ComiteEnJacModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.general.EstadoAfiliadoModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.registroAfiliado.DetalleEnJACParaRegistroModel
+import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.ComitesEnJAC
+import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.EstadoAfiliacion
 import com.hefesto.juntasaccioncomunal.logica.utilidades.extenciones.ManejarErrores
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.collect
@@ -17,12 +20,31 @@ class DetalleEnJacViewModel constructor(
 ) : BaseViewModel() {
 
     //region variables
-    private val listaComitesLiveData = MutableLiveData<List<ComiteEnJacModel>?>()
+    private lateinit var comitesEnJAC: ComitesEnJAC
+    private lateinit var estadoAfiliacion: EstadoAfiliacion
     private val listaEstadosAfiliacionLiveData = MutableLiveData<List<EstadoAfiliadoModel>?>()
+    private val listaComitesLiveData = MutableLiveData<List<ComiteEnJacModel>?>()
     //endregion
 
 
     override fun traerBaseUI(): BaseUI = detalleAfiliadoEnJacUI
+
+    fun conComiteSeleccionado(comitesEnJAC: ComitesEnJAC) : DetalleEnJacViewModel {
+        this.comitesEnJAC
+        return this
+    }
+
+    fun conEstadoAfiliacion(estadoAfiliacion: EstadoAfiliacion) : DetalleEnJacViewModel {
+        this.estadoAfiliacion = estadoAfiliacion
+        return this
+    }
+
+    fun traerDetalleEnJACParaRegistroModel() : DetalleEnJACParaRegistroModel {
+        return DetalleEnJACParaRegistroModel(
+            comitesEnJAC = comitesEnJAC,
+            estadoAfiliacion = estadoAfiliacion
+        )
+    }
 
     fun cargarComitesEnJac() : MutableLiveData<List<ComiteEnJacModel>?> {
         GlobalScope.launch {

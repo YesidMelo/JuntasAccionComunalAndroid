@@ -42,7 +42,12 @@ class ContactoAfiliadoRegistroActualizacionFragment :
     }
 
     override fun armarModelo(): ContactoParaRegistrarModel {
-        return ContactoParaRegistrarModel()
+        return traerViewModel()
+            .conCorreo(correo = binding.editTextContactoAfiliadoHomeCorreo.text.toString())
+            .conDireccion(direccion = binding.editTextContactoAfiliadoDireccion.text.toString())
+            .conTelefono(telefono = binding.editTextContactoAfiliadoTelefono.text.toString())
+            .conTipoTelefono(tipoTelefono = helperSpinnerTiposTelefonoRegistroAfiliadoHome.traerTipoTelefono())
+            .traerObjetoArmado()
     }
 
     //region metodos privados

@@ -36,6 +36,9 @@ class SeguridadAfiliadoFragment :
     }
 
     override fun armarModelo(): SeguridadParaRegistroModel {
-        return SeguridadParaRegistroModel()
+        return traerViewModel()
+            .conContrasenia(contrasenia = binding.editTextSeguridadAfiliadoContrasenia.text.toString())
+            .conRepetirContrasenia(repetirContrasenia = binding.editTextSeguridadAfiliadoRepetirContrasenia.text.toString())
+            .traerSeguridadParaRegistroModel()
     }
 }

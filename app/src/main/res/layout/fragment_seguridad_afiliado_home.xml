@@ -57,6 +57,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout_seguridadAfiliado_contrasenia">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText_seguridadAfiliado_repetirContrasenia"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/repetir_contrasenia"
