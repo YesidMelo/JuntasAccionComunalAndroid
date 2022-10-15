@@ -26,4 +26,6 @@ class HelperSpinnerComitesEnJacHome {
         adapter = ArrayAdapter(spinner.context!!, android.R.layout.simple_list_item_1, listaComites)
         spinner.adapter = adapter
     }
+
+    fun traerComiteSeleccionado() = (spinner.selectedItem as ComiteEnJacModel).comitesEnJAC
 }

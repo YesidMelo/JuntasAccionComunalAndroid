@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import com.hefesto.juntasaccioncomunal.databinding.FragmentDetalleEnJacHomeBinding
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.helpers.HelperSpinnerComitesEnJacHome
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.helpers.HelperSpinnerEstadosAfiliadoHome
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.subfragments.ConfigurarInformacionParaCrearModeloRegistro
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.registroAfiliado.DetalleEnJACParaRegistroModel
@@ -18,10 +19,9 @@ class DetalleEnJacFragment :
 {
 
     //region variables
-    @Inject
-    lateinit var detalleEnJacViewModel: DetalleEnJacViewModel
-    @Inject
-    lateinit var helperSpinnerComitesEnJacHome : HelperSpinnerComitesEnJacHome
+    @Inject lateinit var detalleEnJacViewModel: DetalleEnJacViewModel
+    @Inject lateinit var helperSpinnerComitesEnJacHome : HelperSpinnerComitesEnJacHome
+    @Inject lateinit var helperSpinnerEstadosAfiliadoHome: HelperSpinnerEstadosAfiliadoHome
 
     private lateinit var binding : FragmentDetalleEnJacHomeBinding
     //endregion
@@ -48,6 +48,7 @@ class DetalleEnJacFragment :
     //region precarga
     private fun precargarVista() {
         precargarSpinnerComitesJac()
+        precargarSpinnerEstadosAfiliado()
     }
 
     private fun precargarSpinnerComitesJac() {
@@ -58,6 +59,18 @@ class DetalleEnJacFragment :
                 helperSpinnerComitesEnJacHome
                     .conSpinner(spinner = binding.spinnerDetalleAfiliadoEnJACComite)
                     .conListaComites(listaComites = it)
+                    .cargarSpinner()
+            }
+    }
+
+    private fun precargarSpinnerEstadosAfiliado() {
+        traerViewModel()
+            .cargarEstadosAfiliacion()
+            .observe(viewLifecycleOwner) {
+                if(it == null) return@observe
+                helperSpinnerEstadosAfiliadoHome
+                    .conSpinner(spinner = binding.spinnerDetalleAfiliadoEnJACEstadoAfiliadoEnJAc)
+                    .conListaEstados(listaEstados = it)
                     .cargarSpinner()
             }
     }

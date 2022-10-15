@@ -7,6 +7,7 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.configur
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.listaAfiliadosModificacionDirectivas.TraerListaAfiliadosModificacionDirectivasCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.panelControl.TraerFuncionalidadesCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.registroAfiliado.CargarComitesJacHomeCasoUso
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.registroAfiliado.CargarEstadosAfiliacionJACHomeCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.registroAfiliado.CargarTiposDocumentoCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.registroAfiliado.CargarTiposTelefonoHomeCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.registroAfiliado.RegistrarAfiliadoHomeCasoUso
@@ -76,10 +77,12 @@ class UiModule {
     @Provides
     fun providesDetalleAfiliadoEnJacUI (
         escuchadorExcepcionesCasoUso: CargarEscuchadorExcepcionesCasoUso,
-        cargarComitesJacHomeCasoUso: CargarComitesJacHomeCasoUso
+        cargarComitesJacHomeCasoUso: CargarComitesJacHomeCasoUso,
+        cargarEstadosAfiliacionJACHomeCasoUso: CargarEstadosAfiliacionJACHomeCasoUso
     ) : DetalleAfiliadoEnJacUI = DetalleAfiliadoEnJacUI(
         escuchadorExcepciones = escuchadorExcepcionesCasoUso,
-        cargarComitesJacHomeCasoUso = cargarComitesJacHomeCasoUso
+        cargarComitesJacHomeCasoUso = cargarComitesJacHomeCasoUso,
+        cargarEstadosAfiliacionJACHomeCasoUso = cargarEstadosAfiliacionJACHomeCasoUso
     )
 
     @Provides

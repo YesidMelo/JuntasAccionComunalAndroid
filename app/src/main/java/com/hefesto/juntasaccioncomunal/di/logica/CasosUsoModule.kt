@@ -16,6 +16,8 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.panelCon
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.panelControl.TraerFuncionalidadesCasoUsoImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.registroAfiliado.CargarComitesJacHomeCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.registroAfiliado.CargarComitesJacHomeCasoUsoImpl
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.registroAfiliado.CargarEstadosAfiliacionJACHomeCasoUso
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.registroAfiliado.CargarEstadosAfiliacionJACHomeCasoUsoImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.registroAfiliado.CargarTiposDocumentoCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.registroAfiliado.CargarTiposDocumentoCasoUsoImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.registroAfiliado.CargarTiposTelefonoHomeCasoUso
@@ -65,6 +67,9 @@ class CasosUsoModule {
 
     @Provides
     fun providesCargarComitesJacCasoUso() : CargarComitesJacHomeCasoUso = CargarComitesJacHomeCasoUsoImpl(context = MiAplicacion.traerInstancia()!!.applicationContext)
+
+    @Provides
+    fun providesCargarEstadosAfiliacionJACHomeCasoUso() : CargarEstadosAfiliacionJACHomeCasoUso = CargarEstadosAfiliacionJACHomeCasoUsoImpl(context = MiAplicacion.traerInstancia()!!.applicationContext)
 
     @Provides
     fun providesCargarTiposDocumentoCasoUso() : CargarTiposDocumentoCasoUso = CargarTiposDocumentoCasoUsoImpl(context = MiAplicacion.traerInstancia()!!.applicationContext)

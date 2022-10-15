@@ -5,6 +5,7 @@ import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseViewModel
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.ui.BaseUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.registroAfiliado.DetalleAfiliadoEnJacUI
 import com.hefesto.juntasaccioncomunal.logica.modelos.general.ComiteEnJacModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.general.EstadoAfiliadoModel
 import com.hefesto.juntasaccioncomunal.logica.utilidades.extenciones.ManejarErrores
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.collect
@@ -17,6 +18,7 @@ class DetalleEnJacViewModel constructor(
 
     //region variables
     private val listaComitesLiveData = MutableLiveData<List<ComiteEnJacModel>?>()
+    private val listaEstadosAfiliacionLiveData = MutableLiveData<List<EstadoAfiliadoModel>?>()
     //endregion
 
 
@@ -30,5 +32,15 @@ class DetalleEnJacViewModel constructor(
                 .collect{ listaComitesLiveData.postValue(it) }
         }
         return listaComitesLiveData
+    }
+
+    fun cargarEstadosAfiliacion(): MutableLiveData<List<EstadoAfiliadoModel>?> {
+        GlobalScope.launch {
+            detalleAfiliadoEnJacUI
+                .traerListaEstadosAfiliado()
+                .ManejarErrores(escuchadorErrores = detalleAfiliadoEnJacUI.traerEscuchadorExcepciones())
+                .collect {listaEstadosAfiliacionLiveData.postValue(it)}
+        }
+        return listaEstadosAfiliacionLiveData
     }
 }
