@@ -25,6 +25,16 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.he
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.HelperListaAfiliadosModificacionDirectivaDB
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.HelperListaAfiliadosRegistroActualizacionDB
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.HelperListaAfiliadosRegistroActualizacionImpl
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.HelperRegistrarActualizarAfiliadoDB
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.HelperRegistrarActualizarAfiliadoDBImpl
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.registroAfiliado.HelperRegistroActualizacionAfiliadoDetalleEnJacHome
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.registroAfiliado.HelperRegistroActualizacionAfiliadoDetalleEnJacHomeImpl
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.registroAfiliado.HelperRegistroActualizacionContactoAfiliadoHome
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.registroAfiliado.HelperRegistroActualizacionContactoAfiliadoHomeImpl
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.registroAfiliado.HelperRegistroActualizacionDatosBasicosAfiliadoHome
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.registroAfiliado.HelperRegistroActualizacionDatosBasicosAfiliadoHomeImpl
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.registroAfiliado.HelperRegistroActualizacionSeguridadAfiliadoHome
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.registroAfiliado.HelperRegistroActualizacionSeguridadAfiliadoHomeImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperIniciarSesion
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperRegistroAfilado
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperRegistroJAC
@@ -80,10 +90,50 @@ class HelpersDBDatasourceModule {
         memoriaCache = memoriaCache
     )
 
+    @Provides
+    fun providesHelperRegistroActualizacionAfiliadoDetalleEnJacHome(
+
+    ): HelperRegistroActualizacionAfiliadoDetalleEnJacHome = HelperRegistroActualizacionAfiliadoDetalleEnJacHomeImpl(
+
+    )
+
+    @Provides
+    fun providesHelperRegistroActualizacionContactoAfiliadoHome(
+
+    ) : HelperRegistroActualizacionContactoAfiliadoHome = HelperRegistroActualizacionContactoAfiliadoHomeImpl(
+
+    )
+
+    @Provides
+    fun providesHelperRegistroActualizacionDatosBasicosAfiliado(
+
+    ) : HelperRegistroActualizacionDatosBasicosAfiliadoHome = HelperRegistroActualizacionDatosBasicosAfiliadoHomeImpl (
+
+    )
+
+    @Provides
+    fun provideHelperRegistroActualizacionSeguridadAfiliadoHome(
+
+    ) : HelperRegistroActualizacionSeguridadAfiliadoHome = HelperRegistroActualizacionSeguridadAfiliadoHomeImpl (
+
+    )
 
     //endregion
 
     //region segundo nivel
+
+    @Provides
+    fun providesHelperRegistrarActualizarAfiliado(
+        helperRegistroActualizacionAfiliadoDetalleEnJacHome: HelperRegistroActualizacionAfiliadoDetalleEnJacHome,
+        helperRegistroActualizacionContactoAfiliadoHome: HelperRegistroActualizacionContactoAfiliadoHome,
+        helperRegistroActualizacionDatosBasicosAfiliadoHome: HelperRegistroActualizacionDatosBasicosAfiliadoHome,
+        helperRegistroActualizacionSeguridadAfiliadoHome: HelperRegistroActualizacionSeguridadAfiliadoHome
+    ) : HelperRegistrarActualizarAfiliadoDB = HelperRegistrarActualizarAfiliadoDBImpl(
+        helperRegistroActualizacionAfiliadoDetalleEnJacHome = helperRegistroActualizacionAfiliadoDetalleEnJacHome,
+        helperRegistroActualizacionContactoAfiliadoHome = helperRegistroActualizacionContactoAfiliadoHome,
+        helperRegistroActualizacionDatosBasicosAfiliadoHome = helperRegistroActualizacionDatosBasicosAfiliadoHome,
+        helperRegistroActualizacionSeguridadAfiliadoHome = helperRegistroActualizacionSeguridadAfiliadoHome
+    )
     //endregion
 
     //endregion
@@ -297,4 +347,5 @@ class HelpersDBDatasourceModule {
     //endregion
 
     //endregion
+
 }

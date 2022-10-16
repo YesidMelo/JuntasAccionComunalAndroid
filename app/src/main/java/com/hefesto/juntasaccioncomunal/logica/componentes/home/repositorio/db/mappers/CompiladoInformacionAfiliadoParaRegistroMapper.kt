@@ -1,0 +1,4 @@
+package com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.mappers
+
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.registroAfiliado.CompiladoInformacionAfiliadoParaRegistroModel
+

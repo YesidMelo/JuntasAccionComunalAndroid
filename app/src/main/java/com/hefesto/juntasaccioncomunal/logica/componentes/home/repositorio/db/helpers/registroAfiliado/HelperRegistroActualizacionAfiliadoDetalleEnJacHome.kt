@@ -1,0 +1,15 @@
+package com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.registroAfiliado
+
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.registroAfiliado.CompiladoInformacionAfiliadoParaRegistroModel
+
+interface HelperRegistroActualizacionAfiliadoDetalleEnJacHome {
+    suspend fun registrarDetalleAfiliadoEnJac(compiladoInformacionAfiliadoParaRegistroModel: CompiladoInformacionAfiliadoParaRegistroModel)
+}
+
+class HelperRegistroActualizacionAfiliadoDetalleEnJacHomeImpl : HelperRegistroActualizacionAfiliadoDetalleEnJacHome {
+
+    override suspend fun registrarDetalleAfiliadoEnJac(compiladoInformacionAfiliadoParaRegistroModel: CompiladoInformacionAfiliadoParaRegistroModel) {
+
+    }
+
+}

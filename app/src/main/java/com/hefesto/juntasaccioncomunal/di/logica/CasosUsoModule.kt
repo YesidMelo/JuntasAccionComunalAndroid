@@ -78,7 +78,11 @@ class CasosUsoModule {
     fun providesCargarTiposTelefonoHomeCasoUso() : CargarTiposTelefonoHomeCasoUso = CargarTiposTelefonoHomeCasoUsoImpl( context = MiAplicacion.traerInstancia()!!.applicationContext)
 
     @Provides
-    fun providesRegistrarAfiliadoHomeCasoUso(): RegistrarAfiliadoHomeCasoUso = RegistrarAfiliadoHomeCasoUsoImpl()
+    fun providesRegistrarAfiliadoHomeCasoUso(
+        homeRepositorio: HomeRepositorio
+    ): RegistrarAfiliadoHomeCasoUso = RegistrarAfiliadoHomeCasoUsoImpl(
+        homeRepositorio = homeRepositorio
+    )
 
     @Provides
     fun providesTraerEstadosAfiliadoEnDirectivaCasoUso() : TraerEstadosAfiliadoEnDirectivaCasoUso
