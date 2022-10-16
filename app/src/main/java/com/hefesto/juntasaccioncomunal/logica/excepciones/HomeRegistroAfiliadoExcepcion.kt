@@ -4,6 +4,9 @@ import com.hefesto.juntasaccioncomunal.R
 
 class NoHaCreadoModeloDeDatosBasicosParaRegistroExcepcion : LogicaExcepcion(stringResTitulo = R.string.registro_afiliado_jac, stringResMensaje = R.string.no_ha_ingresado_nombre, mensaje = "No se ha creado el modelo")
 class NoHaCreadoModeloDeContactoAfiliadoParaRegistroExcepcion: LogicaExcepcion(stringResTitulo = R.string.registro_afiliado_jac, stringResMensaje = R.string.el_campo_del_correo_vacio, mensaje = "No se ha creado el modelo")
+class NoHaCreadoModeloDeDetalleEnJACAfiliadoParaRegistroExcepcion: LogicaExcepcion(stringResTitulo = R.string.registro_afiliado_jac, stringResMensaje = R.string.el_campo_del_comite_no_seleccionado, mensaje = "No se ha creado el modelo")
+class NoHaCreadoModeloSeguridadAfiliadoParaRegistroExcepcion: LogicaExcepcion(stringResTitulo = R.string.registro_afiliado_jac, stringResMensaje = R.string.el_campo_contrasenia_vacio, mensaje = "No se ha creado el modelo")
+
 //region datos basicos
 //region nombres
 class NoHaIngresadoNombreRegistroHomeExcepcion : LogicaExcepcion(
@@ -128,5 +131,62 @@ class ElTelefonoNoEsValidoRegistroAfiliadoHomeExcepcion : LogicaExcepcion(
 )
 
 //endregion
+
+//endregion
+
+//region detalle en jac
+class NoHaSeleccionadoComiteDeLaJACExcepcion : LogicaExcepcion (
+    mensaje = "No ha seleccionado un comite",
+    stringResMensaje = R.string.no_ha_seleccionado_un_comite,
+    stringResTitulo = R.string.registro_afiliado_jac,
+    tipoExcepcion = TiposExcepciones.GENERADO_USUARIO
+)
+
+class NoHaSeleccionadoEstadoAfiliadoHomeExcepcion: LogicaExcepcion (
+    mensaje = "No ha seleccionado estado afiliacion",
+    stringResMensaje = R.string.no_ha_seleccionado_un_estado_afiliacion,
+    stringResTitulo = R.string.registro_afiliado_jac,
+    tipoExcepcion = TiposExcepciones.GENERADO_USUARIO
+)
+//endregion
+
+//region seguridad
+
+class ContraseniaInvalidaRegistrarAfiliadoHomeExcepcion : LogicaExcepcion(
+    mensaje = "No es una contraseña valida",
+    stringResMensaje = R.string.la_contrasenia_es_invalida,
+    stringResTitulo = R.string.registro_afiliado_jac,
+    tipoExcepcion = TiposExcepciones.GENERADO_USUARIO
+)
+
+class ContraseniaVaciaRegistroHomeAfiliadoExcepcion : LogicaExcepcion(
+    mensaje = "No ha ingresado una contrasenia",
+    stringResMensaje = R.string.el_campo_contrasenia_vacio,
+    stringResTitulo = R.string.registro_afiliado_jac,
+    tipoExcepcion = TiposExcepciones.GENERADO_USUARIO
+)
+
+class RepetirContraseniaRegistroAfiliadoHomeVacioExcepcion: LogicaExcepcion(
+    mensaje = "El campo repetir contrasenia esta vacio",
+    stringResMensaje = R.string.el_campo_repetir_contrasenia_esta_vacio,
+    stringResTitulo = R.string.registro_afiliado_jac,
+    tipoExcepcion = TiposExcepciones.GENERADO_USUARIO
+)
+
+class RepetirContraseniaRegistrarAfiliadoHomeNoEsValidoException: LogicaExcepcion(
+    mensaje = "El campo repetir contrasenia es valido",
+    stringResMensaje = R.string.repetir_contrasenia_no_es_valido,
+    stringResTitulo = R.string.registro_afiliado_jac,
+    tipoExcepcion = TiposExcepciones.GENERADO_USUARIO
+)
+
+
+class ElCampoContraseniaYRepetirContraseniaNoCoincidenRegistrarAfiliadoHomeException : LogicaExcepcion(
+    mensaje = "El campo repetir contrasenia es valido",
+    stringResMensaje = R.string.los_campos_contrasenia_repetir_contrasenia_no_coinciden,
+    stringResTitulo = R.string.registro_afiliado_jac,
+    tipoExcepcion = TiposExcepciones.GENERADO_USUARIO
+)
+
 
 //endregion

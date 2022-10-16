@@ -110,4 +110,7 @@
     <string name="finalizar_registro_afiliado">Finalizar registro Afiliado</string>
     <string name="fecha_nacimiento_invalido">Fecha de nacimiento invalido. Vuelvelo a intentar</string>
     <string name="no_ha_ingresado_tipo_documento">No ha ingresado un tipo de documento</string>
+    <string name="el_campo_del_comite_no_seleccionado">No ha seleccionado un comite para la junta</string>
+    <string name="no_ha_seleccionado_un_comite">No ha seleccionado un comite de participacion de la junta.</string>
+    <string name="no_ha_seleccionado_un_estado_afiliacion">No ha seleccionado un estado de afiliacion.</string>
 </resources>
