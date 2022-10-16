@@ -50,8 +50,6 @@ lapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/ui/R
 papp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/casosUso/TraerTiposTelefonoCasoUso.kt,e\d\edd25d7ce056fe6b37e80b38cfe851fc893cb94a
 ë
 aapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/utilidades/constantes/ConstantesFecha.kt,f\c\fcbe6924bc44d514dd50d63616d26fa324086895
-è
-_app/src/main/java/com/hefesto/juntasaccioncomunal/logica/utilidades/ValidacionStringConRegex.kt,6\c\6cfdd867546a46b53cd3c60df5da3a3fa28a95b7
 ö
 japp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/casosUso/RegistrarJACCasoUso.kt,0\9\0908c7f7055f8c8c369018259bd3ce4744f36f26
 ê

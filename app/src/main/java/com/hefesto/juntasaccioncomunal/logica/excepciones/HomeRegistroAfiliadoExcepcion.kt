@@ -3,7 +3,8 @@ package com.hefesto.juntasaccioncomunal.logica.excepciones
 import com.hefesto.juntasaccioncomunal.R
 
 class NoHaCreadoModeloDeDatosBasicosParaRegistroExcepcion : LogicaExcepcion(stringResTitulo = R.string.registro_afiliado_jac, stringResMensaje = R.string.no_ha_ingresado_nombre, mensaje = "No se ha creado el modelo")
-
+class NoHaCreadoModeloDeContactoAfiliadoParaRegistroExcepcion: LogicaExcepcion(stringResTitulo = R.string.registro_afiliado_jac, stringResMensaje = R.string.el_campo_del_correo_vacio, mensaje = "No se ha creado el modelo")
+//region datos basicos
 //region nombres
 class NoHaIngresadoNombreRegistroHomeExcepcion : LogicaExcepcion(
     mensaje = "No ha ingresado nombre",
@@ -73,5 +74,59 @@ class NoHaNumeroDocumentoInvalidoHomeExcepcion : LogicaExcepcion(
     stringResTitulo = R.string.registro_afiliado_jac,
     tipoExcepcion = TiposExcepciones.GENERADO_USUARIO
 )
+
+//endregion
+//endregion
+
+//region contacto
+//region correo
+class SinCorreoRegistrarAfiliadHomeoExcepcion : LogicaExcepcion (
+    mensaje = "No ha ingresado un correo electronico valido",
+    stringResMensaje = R.string.el_campo_del_correo_vacio,
+    stringResTitulo = R.string.registro_afiliado_jac,
+    tipoExcepcion = TiposExcepciones.GENERADO_USUARIO
+)
+
+class CorreoInvalidoLoginHomeExcepcion :  LogicaExcepcion(
+    mensaje = "No es un correo valido",
+    stringResMensaje = R.string.no_ha_ingresado_un_correo_electronico_valido,
+    stringResTitulo = R.string.iniciar_sesion,
+    tipoExcepcion = TiposExcepciones.GENERADO_USUARIO
+)
+//endregion
+
+//region direccion
+
+class NoHaIngresadoUnaDireccionAfiliadoHomeExcepcion : LogicaExcepcion(
+    mensaje = "no ha ingresado una direccoin",
+    stringResMensaje = R.string.no_ha_ingresado_una_direccion,
+    stringResTitulo = R.string.registro_afiliado_jac,
+    tipoExcepcion = TiposExcepciones.GENERADO_USUARIO
+)
+
+class DireccinoInvalidoRegistroAfiliadoHomeExcepcion :  LogicaExcepcion(
+    mensaje = "No es un correo valido",
+    stringResMensaje = R.string.no_ingreso_una_direccion_correcta,
+    stringResTitulo = R.string.registro_afiliado_jac,
+    tipoExcepcion = TiposExcepciones.GENERADO_USUARIO
+)
+//endregion
+
+//region telefono
+class CampoTelefonoVacioRegistroAfiliadosHomeExcepcion : LogicaExcepcion(
+    mensaje = "No ha llenado el campo de nombres",
+    stringResMensaje = R.string.campo_telefono_vacio,
+    stringResTitulo = R.string.registro_afiliado_jac,
+    tipoExcepcion = TiposExcepciones.GENERADO_USUARIO
+)
+
+class ElTelefonoNoEsValidoRegistroAfiliadoHomeExcepcion : LogicaExcepcion(
+    mensaje = "El telefono no es valido",
+    stringResMensaje = R.string.el_telefono_no_es_valido,
+    stringResTitulo = R.string.registro_afiliado_jac,
+    tipoExcepcion = TiposExcepciones.GENERADO_USUARIO
+)
+
+//endregion
 
 //endregion

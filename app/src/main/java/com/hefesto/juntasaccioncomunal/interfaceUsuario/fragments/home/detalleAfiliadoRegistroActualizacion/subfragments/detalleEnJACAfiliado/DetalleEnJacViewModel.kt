@@ -30,7 +30,7 @@ class DetalleEnJacViewModel constructor(
     override fun traerBaseUI(): BaseUI = detalleAfiliadoEnJacUI
 
     fun conComiteSeleccionado(comitesEnJAC: ComitesEnJAC) : DetalleEnJacViewModel {
-        this.comitesEnJAC
+        this.comitesEnJAC = comitesEnJAC
         return this
     }
 
