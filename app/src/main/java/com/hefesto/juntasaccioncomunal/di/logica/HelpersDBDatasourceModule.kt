@@ -32,6 +32,8 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.he
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.listaAfiliadosRegistroActualizacion.HelperListaAfiliadosCargarDatosBasicosImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.listaAfiliadosRegistroActualizacion.HelperListaAfiliadosCargarDatosContacto
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.listaAfiliadosRegistroActualizacion.HelperListaAfiliadosCargarDatosContactoImpl
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.listaAfiliadosRegistroActualizacion.HelperListaAfiliadosCargarDatosSeguridad
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.listaAfiliadosRegistroActualizacion.HelperListaAfiliadosCargarDatosSeguridadImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.registroAfiliado.HelperRegistroActualizacionAfiliadoDetalleEnJacHome
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.registroAfiliado.HelperRegistroActualizacionAfiliadoDetalleEnJacHomeImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.registroAfiliado.HelperRegistroActualizacionContactoAfiliadoHome
@@ -103,6 +105,13 @@ class HelpersDBDatasourceModule {
     )
 
     @Provides
+    fun providesHelperListaAfiliadosCargarDatosSeguridad(
+        credencialesSesionDao: CredencialesSesionDao
+    ) : HelperListaAfiliadosCargarDatosSeguridad =  HelperListaAfiliadosCargarDatosSeguridadImpl(
+        credencialesSesionDao = credencialesSesionDao
+    )
+
+    @Provides
     fun providesHelperRegistroActualizacionAfiliadoDetalleEnJacHome(
         afiliadoJacComiteDao: Afiliado_Jac_Comite_Dao,
         afiliadoJacEstadoafiliaciondao: Afiliado_Jac_EstadoAfiliacionDao,
@@ -151,10 +160,12 @@ class HelpersDBDatasourceModule {
     @Provides
     fun providesHelperListaAfiliadosRegistroActualizacion(
         helperListaAfiliadosCargarDatosBasicos: HelperListaAfiliadosCargarDatosBasicos,
-        helperListaAfiliadosCargarDatosContacto: HelperListaAfiliadosCargarDatosContacto
+        helperListaAfiliadosCargarDatosContacto: HelperListaAfiliadosCargarDatosContacto,
+        helperListaAfiliadosCargarDatosSeguridad: HelperListaAfiliadosCargarDatosSeguridad
     ) : HelperListaAfiliadosRegistroActualizacionDB = HelperListaAfiliadosRegistroActualizacionImpl(
         helperListaAfiliadosCargarDatosBasicos = helperListaAfiliadosCargarDatosBasicos,
-        helperListaAfiliadosCargarDatosContacto = helperListaAfiliadosCargarDatosContacto
+        helperListaAfiliadosCargarDatosContacto = helperListaAfiliadosCargarDatosContacto,
+        helperListaAfiliadosCargarDatosSeguridad = helperListaAfiliadosCargarDatosSeguridad
     )
 
     @Provides

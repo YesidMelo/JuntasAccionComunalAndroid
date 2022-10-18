@@ -30,6 +30,7 @@ data class AfiliadoActualizacionRegistroView(
     var documento: String? = null,
     var jacId : Int? = null,
     var rolEnLaAppId : Int? = null,
+    var credencialesSesion: Int? = null,
     var estadoAfiliacionId : Int? = null,
     var fechaActualizacion : String? = null
 )

@@ -24,7 +24,8 @@ fun AfiliadoActualizacionRegistroView.convertirADatosBasicosAfiliadoActualizarRe
         documento = this.documento,
         estadoAfiliacion = EstadoAfiliacion.traerEstadoAfiliacionPorId(id = this.estadoAfiliacionId!!),
         rolesEnApp = RolesEnApp.traerRolAppPorId(id = this.rolEnLaAppId!!),
-        jacId = this.jacId
+        jacId = this.jacId,
+        credencialesSesion = this.credencialesSesion
     )
 }
 

@@ -15,4 +15,7 @@ interface CredencialesSesionDao : BaseDao<CredencialesSesionEntity> {
     @Query("SELECT * FROM CredencialesSesionView cre WHERE cre.correo = :correo AND cre.contrasenia = :contrasenia")
     fun traerCredencialesSesionView(correo: String, contrasenia: String) : CredencialesSesionView?
 
+    @Query("SELECT * FROM CredencialesSesionEntity t WHERE t.registro = :credencialesId")
+    fun traerCredencialesPorCredencialesId(credencialesId: Int): CredencialesSesionEntity
+
 }

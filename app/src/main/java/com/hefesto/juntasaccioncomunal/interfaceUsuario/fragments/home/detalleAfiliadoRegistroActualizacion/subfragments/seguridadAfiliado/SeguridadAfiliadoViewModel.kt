@@ -30,7 +30,7 @@ class SeguridadAfiliadoViewModel constructor(
 
     fun traerSeguridadParaRegistroModel() : SeguridadParaRegistroModel {
         return SeguridadParaRegistroModel(
-            contraseniaId = this.contraseniaId,
+            credencialesSesionId = this.contraseniaId,
             contrasenia = this.contrasenia,
             repetirContrasenia = this.repetirContrasenia
         )
