@@ -4,6 +4,7 @@ import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import com.hefesto.juntasaccioncomunal.logica.modelos.general.EstadoAfiliadoModel
+import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.EstadoAfiliacion
 
 class HelperSpinnerEstadosAfiliadoHome {
 
@@ -11,6 +12,7 @@ class HelperSpinnerEstadosAfiliadoHome {
     private lateinit var spinner: Spinner
     private lateinit var listaEstados: List<EstadoAfiliadoModel>
     private lateinit var adapter: ArrayAdapter<EstadoAfiliadoModel>
+    private var estadoSeleccionado : EstadoAfiliacion? = null
     //endregion
 
     fun conSpinner(spinner: Spinner) : HelperSpinnerEstadosAfiliadoHome {
@@ -20,6 +22,12 @@ class HelperSpinnerEstadosAfiliadoHome {
 
     fun conListaEstados(listaEstados: List<EstadoAfiliadoModel>) : HelperSpinnerEstadosAfiliadoHome {
         this.listaEstados = listaEstados
+        return this
+    }
+
+    fun conEstadoSeleccionado(estadoSeleccionado : EstadoAfiliacion?) : HelperSpinnerEstadosAfiliadoHome {
+        this.estadoSeleccionado = estadoSeleccionado
+        ponerEstadoSeleccionado()
         return this
     }
 
@@ -33,4 +41,14 @@ class HelperSpinnerEstadosAfiliadoHome {
     }
 
     fun traerEstadoAfiliado() = (spinner.selectedItem as EstadoAfiliadoModel).estadoAfiliacion
+
+    //region metodos privados
+    private fun ponerEstadoSeleccionado() {
+        val estado = estadoSeleccionado?:return
+        val lista = listaEstados.filter { return@filter it.estadoAfiliacion == estado }
+        if (lista.isEmpty()) return
+        val modelo = lista.first()
+        spinner.setSelection(listaEstados.indexOf(modelo))
+    }
+    //endregion
 }

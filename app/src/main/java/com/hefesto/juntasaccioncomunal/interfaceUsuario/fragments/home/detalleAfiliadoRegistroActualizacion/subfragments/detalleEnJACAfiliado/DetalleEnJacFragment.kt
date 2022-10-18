@@ -7,10 +7,12 @@ import android.view.ViewGroup
 import androidx.lifecycle.MutableLiveData
 import com.hefesto.juntasaccioncomunal.databinding.FragmentDetalleEnJacHomeBinding
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.DetalleAfiliadoRegistroActualizacionFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.helpers.HelperSpinnerComitesEnJacHome
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.helpers.HelperSpinnerEstadosAfiliadoHome
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.subfragments.ConfigurarInformacionParaCrearModeloRegistro
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.DatosBasicosAfiliadoActualizarRegistrarInformacionModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.registroAfiliado.DetalleEnJACParaRegistroModel
 import javax.inject.Inject
 
@@ -55,6 +57,7 @@ class DetalleEnJacFragment :
         funcionSegura(funcion = {
             precargarSpinnerComitesJac()
             precargarSpinnerEstadosAfiliado()
+            precargarAfiliadoLiveData()
         })
     }
 
@@ -67,6 +70,8 @@ class DetalleEnJacFragment :
                     .conSpinner(spinner = binding.spinnerDetalleAfiliadoEnJACComite)
                     .conListaComites(listaComites = it)
                     .cargarSpinner()
+
+                ingresarDetalleUsuario()
             }
     }
 
@@ -79,9 +84,27 @@ class DetalleEnJacFragment :
                     .conSpinner(spinner = binding.spinnerDetalleAfiliadoEnJACEstadoAfiliadoEnJAc)
                     .conListaEstados(listaEstados = it)
                     .cargarSpinner()
+
+                ingresarDetalleUsuario()
             }
     }
 
+    private fun precargarAfiliadoLiveData() {
+        traerViewModel()
+            .cargarDetalleUsuarioEnJAC()
+            .observe(viewLifecycleOwner){
+                if (it == null) return@observe
+                helperSpinnerEstadosAfiliadoHome.conEstadoSeleccionado(estadoSeleccionado = it.estadoAfiliacion)
+            }
+    }
+
+    //endregion
+
+    //region detalle usuario
+    private fun ingresarDetalleUsuario() {
+        val usuario = (arguments?.get(DetalleAfiliadoRegistroActualizacionFragment.DETALLE_AFILIADO_ACTUALIZACION) as? DatosBasicosAfiliadoActualizarRegistrarInformacionModel)?:return
+        traerViewModel().conDatosBasicosAfiliadoActualizarRegistrarInformacionModel(datosBasicosAfiliadoActualizarRegistrarInformacionModel = usuario)
+    }
     //endregion
     //endregion
 

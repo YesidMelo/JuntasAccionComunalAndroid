@@ -6,6 +6,7 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.base.ui.BaseUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.registroAfiliado.DetalleAfiliadoEnJacUI
 import com.hefesto.juntasaccioncomunal.logica.modelos.general.ComiteEnJacModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.general.EstadoAfiliadoModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.DatosBasicosAfiliadoActualizarRegistrarInformacionModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.registroAfiliado.DetalleEnJACParaRegistroModel
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.ComitesEnJAC
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.EstadoAfiliacion
@@ -24,6 +25,7 @@ class DetalleEnJacViewModel constructor(
     private lateinit var estadoAfiliacion: EstadoAfiliacion
     private val listaEstadosAfiliacionLiveData = MutableLiveData<List<EstadoAfiliadoModel>?>()
     private val listaComitesLiveData = MutableLiveData<List<ComiteEnJacModel>?>()
+    private val datosBasicosAfiliadoActualizarRegistrarInformacionModelLiveData = MutableLiveData<DatosBasicosAfiliadoActualizarRegistrarInformacionModel?>()
     //endregion
 
 
@@ -46,6 +48,13 @@ class DetalleEnJacViewModel constructor(
         )
     }
 
+    fun conDatosBasicosAfiliadoActualizarRegistrarInformacionModel(datosBasicosAfiliadoActualizarRegistrarInformacionModel : DatosBasicosAfiliadoActualizarRegistrarInformacionModel?) : DetalleEnJacViewModel {
+        datosBasicosAfiliadoActualizarRegistrarInformacionModelLiveData.postValue(datosBasicosAfiliadoActualizarRegistrarInformacionModel)
+        return this
+    }
+
+    fun cargarDetalleUsuarioEnJAC() = datosBasicosAfiliadoActualizarRegistrarInformacionModelLiveData
+
     fun cargarComitesEnJac() : MutableLiveData<List<ComiteEnJacModel>?> {
         GlobalScope.launch {
             detalleAfiliadoEnJacUI
@@ -65,4 +74,5 @@ class DetalleEnJacViewModel constructor(
         }
         return listaEstadosAfiliacionLiveData
     }
+
 }
