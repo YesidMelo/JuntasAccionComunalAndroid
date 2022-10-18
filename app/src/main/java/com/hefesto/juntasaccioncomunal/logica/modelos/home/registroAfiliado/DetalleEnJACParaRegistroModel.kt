@@ -6,5 +6,6 @@ import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.EstadoAfil
 
 data class DetalleEnJACParaRegistroModel (
     var estadoAfiliacion: EstadoAfiliacion? = null,
-    var comitesEnJAC: ComitesEnJAC? = null
+    var comitesEnJAC: ComitesEnJAC? = null,
+    var observacionEstadoAfiliacion: String? = null
 ) : BaseModel()

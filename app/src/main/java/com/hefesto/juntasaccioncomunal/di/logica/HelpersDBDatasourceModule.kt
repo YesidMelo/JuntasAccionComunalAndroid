@@ -10,6 +10,7 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.TipoTelefono
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.AfiliadoDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Correo_Dao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Direccion_Dao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Jac_Comite_Dao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Jac_EstadoAfiliacionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Telefono_Dao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.CorreoDao
@@ -92,30 +93,44 @@ class HelpersDBDatasourceModule {
 
     @Provides
     fun providesHelperRegistroActualizacionAfiliadoDetalleEnJacHome(
-
+        afiliadoJacComiteDao: Afiliado_Jac_Comite_Dao,
+        afiliadoJacEstadoafiliaciondao: Afiliado_Jac_EstadoAfiliacionDao,
+        memoriaCache: MemoriaCache
     ): HelperRegistroActualizacionAfiliadoDetalleEnJacHome = HelperRegistroActualizacionAfiliadoDetalleEnJacHomeImpl(
-
+        afiliadoJacComiteDao = afiliadoJacComiteDao,
+        afiliadoJacEstadoafiliaciondao = afiliadoJacEstadoafiliaciondao,
+        memoriaCache = memoriaCache
     )
 
     @Provides
     fun providesHelperRegistroActualizacionContactoAfiliadoHome(
-
+        afiliadoCorreoDao: Afiliado_Correo_Dao,
+        direccionDao: DireccionDao,
+        afiliadoDireccionDao: Afiliado_Direccion_Dao,
+        telefonoDao: Telefono_Dao,
+        afiliadoTelefonoDao: Afiliado_Telefono_Dao,
     ) : HelperRegistroActualizacionContactoAfiliadoHome = HelperRegistroActualizacionContactoAfiliadoHomeImpl(
-
+        afiliadoCorreoDao = afiliadoCorreoDao,
+        direccionDao = direccionDao,
+        afiliadoDireccionDao = afiliadoDireccionDao,
+        telefonoDao = telefonoDao,
+        afiliadoTelefonoDao = afiliadoTelefonoDao,
     )
 
     @Provides
     fun providesHelperRegistroActualizacionDatosBasicosAfiliado(
-
+        afiliadoDao: AfiliadoDao
     ) : HelperRegistroActualizacionDatosBasicosAfiliadoHome = HelperRegistroActualizacionDatosBasicosAfiliadoHomeImpl (
-
+        afiliadoDao = afiliadoDao
     )
 
     @Provides
     fun provideHelperRegistroActualizacionSeguridadAfiliadoHome(
-
+        correoDao: CorreoDao,
+        credencialesSesionDao: CredencialesSesionDao,
     ) : HelperRegistroActualizacionSeguridadAfiliadoHome = HelperRegistroActualizacionSeguridadAfiliadoHomeImpl (
-
+        correoDao = correoDao,
+        credencialesSesionDao = credencialesSesionDao,
     )
 
     //endregion

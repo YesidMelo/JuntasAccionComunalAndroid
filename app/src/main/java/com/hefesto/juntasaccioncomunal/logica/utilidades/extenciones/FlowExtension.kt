@@ -12,9 +12,11 @@ fun <T> Flow<T?>.ManejarErrores(escuchadorErrores: MutableLiveData<LogicaExcepci
     }
     catch (e: LogicaExcepcion) {
         escuchadorErrores.postValue(e)
+        escuchadorErrores.postValue(null)
     }
     catch (e: Exception) {
         Log.e("Error", "Ha surgido un error", e)
         escuchadorErrores.postValue(LogicaExcepcion())
+        escuchadorErrores.postValue(null)
     }
 }

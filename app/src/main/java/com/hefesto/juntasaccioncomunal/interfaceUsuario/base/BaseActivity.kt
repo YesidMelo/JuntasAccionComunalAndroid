@@ -81,6 +81,7 @@ abstract class BaseActivity<T: BaseViewModel> : BaseActivityDagger<T>(), Lifecyc
                 mensaje = e.stringResMensaje,
                 accionAceptar = aceptarFallo
             )
+
         }
     }
 

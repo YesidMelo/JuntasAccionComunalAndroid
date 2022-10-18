@@ -50,8 +50,10 @@ class DetalleEnJacFragment :
     //region metodos privados
     //region precarga
     private fun precargarVista() {
-        precargarSpinnerComitesJac()
-        precargarSpinnerEstadosAfiliado()
+        funcionSegura(funcion = {
+            precargarSpinnerComitesJac()
+            precargarSpinnerEstadosAfiliado()
+        })
     }
 
     private fun precargarSpinnerComitesJac() {
