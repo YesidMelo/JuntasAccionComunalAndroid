@@ -89,9 +89,13 @@ class DetalleAfiliadoRegistroActualizacionFragment : BaseFragment<DetalleAfiliad
             .configurarPaginas()
             .observe(viewLifecycleOwner) {
                 if (!it) {
+                    binding.buttonRegistroAfiliadoVolver.isEnabled = false
+                    binding.buttonRegistroAfiliadosSiguiente.isEnabled = false
                     mostrarLoading()
                     return@observe
                 }
+                binding.buttonRegistroAfiliadoVolver.isEnabled = true
+                binding.buttonRegistroAfiliadosSiguiente.isEnabled = true
                 ocultarLoading()
             }
     }

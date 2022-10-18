@@ -21,7 +21,7 @@ fun CompiladoInformacionAfiliadoParaRegistroModel.traerCorreoEntity() : CorreosE
     return CorreosEntity(
         registro = this.contactoParaRegistrarModel?.correoElectronicoId,
         correo = this.contactoParaRegistrarModel?.correo,
-        fechaRegistro = this.contactoParaRegistrarModel?.fechaRegistroCorreo?.convertirAFormato(formato = FormatosFecha.ISO_8610)
+        fechaRegistro = Date().convertirAFormato(formato = FormatosFecha.ISO_8610)
     )
 }
 

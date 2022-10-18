@@ -13,4 +13,15 @@ enum class TipoTelefono constructor(
 
     fun traerId() = id
     fun traerStringRes() = stringRes
+
+    companion object {
+        fun buscarTipoTelefonoPorId(id: Int?) : TipoTelefono {
+            val idFinal = id?:return FIJO
+            for (tipo in values()) {
+                if (idFinal != tipo.id) continue
+                return tipo
+            }
+            return FIJO
+        }
+    }
 }

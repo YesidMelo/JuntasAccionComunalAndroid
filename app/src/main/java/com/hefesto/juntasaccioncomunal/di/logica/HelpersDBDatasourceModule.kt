@@ -28,6 +28,10 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.he
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.HelperListaAfiliadosRegistroActualizacionImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.HelperRegistrarActualizarAfiliadoDB
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.HelperRegistrarActualizarAfiliadoDBImpl
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.listaAfiliadosRegistroActualizacion.HelperListaAfiliadosCargarDatosBasicos
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.listaAfiliadosRegistroActualizacion.HelperListaAfiliadosCargarDatosBasicosImpl
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.listaAfiliadosRegistroActualizacion.HelperListaAfiliadosCargarDatosContacto
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.listaAfiliadosRegistroActualizacion.HelperListaAfiliadosCargarDatosContactoImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.registroAfiliado.HelperRegistroActualizacionAfiliadoDetalleEnJacHome
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.registroAfiliado.HelperRegistroActualizacionAfiliadoDetalleEnJacHomeImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.registroAfiliado.HelperRegistroActualizacionContactoAfiliadoHome
@@ -83,12 +87,19 @@ class HelpersDBDatasourceModule {
     )
 
     @Provides
-    fun providesHelperListaAfiliadosRegistroActualizacion(
+    fun providesHelperListaAfiliadosCargarDatosBasicos(
         afiliadoDao: AfiliadoDao,
         memoriaCache: MemoriaCache
-    ) : HelperListaAfiliadosRegistroActualizacionDB = HelperListaAfiliadosRegistroActualizacionImpl(
+    ) : HelperListaAfiliadosCargarDatosBasicos = HelperListaAfiliadosCargarDatosBasicosImpl(
         afiliadoDao = afiliadoDao,
         memoriaCache = memoriaCache
+    )
+
+    @Provides
+    fun providesHelperListaAfiliadosCargarDatosContacto(
+        afiliadoDao: AfiliadoDao
+    ) : HelperListaAfiliadosCargarDatosContacto = HelperListaAfiliadosCargarDatosContactoImpl(
+        afiliadoDao = afiliadoDao
     )
 
     @Provides
@@ -136,6 +147,15 @@ class HelpersDBDatasourceModule {
     //endregion
 
     //region segundo nivel
+
+    @Provides
+    fun providesHelperListaAfiliadosRegistroActualizacion(
+        helperListaAfiliadosCargarDatosBasicos: HelperListaAfiliadosCargarDatosBasicos,
+        helperListaAfiliadosCargarDatosContacto: HelperListaAfiliadosCargarDatosContacto
+    ) : HelperListaAfiliadosRegistroActualizacionDB = HelperListaAfiliadosRegistroActualizacionImpl(
+        helperListaAfiliadosCargarDatosBasicos = helperListaAfiliadosCargarDatosBasicos,
+        helperListaAfiliadosCargarDatosContacto = helperListaAfiliadosCargarDatosContacto
+    )
 
     @Provides
     fun providesHelperRegistrarActualizarAfiliado(
