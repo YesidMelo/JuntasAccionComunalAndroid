@@ -1,5 +1,6 @@
 package com.hefesto.juntasaccioncomunal.interfaceUsuario.base
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.annotation.StringRes
@@ -21,6 +22,26 @@ abstract class BaseFragment<T : BaseViewModel> : BaseFragmentDagger<T>(), Lifecy
     //endregion
 
     private var lifecycleRegistry: LifecycleRegistry? = null
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        try {
+            lifecycle
+            lifecycleRegistry?.markState(Lifecycle.State.INITIALIZED)
+        }catch (e: Exception) {
+            Log.e("Error", "surgio un problema")
+        }
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        try {
+            lifecycle
+            lifecycleRegistry?.markState(Lifecycle.State.DESTROYED)
+        }catch (e: Exception) {
+            Log.e("Error", "surgio un problema")
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.MutableLiveData
 import com.hefesto.juntasaccioncomunal.databinding.FragmentDatosRegistroactualizacionHomeBinding
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.DetalleAfiliadoRegistroActualizacionFragment
@@ -15,6 +16,9 @@ import com.hefesto.juntasaccioncomunal.logica.modelos.home.registroAfiliado.Dato
 import com.hefesto.juntasaccioncomunal.logica.utilidades.constantes.ConstantesFecha
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.FormatosFecha
 import com.hefesto.juntasaccioncomunal.logica.utilidades.extenciones.convertirAFormato
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.util.*
 import javax.inject.Inject
 
@@ -27,6 +31,7 @@ class DatosRegistroActualizacionFragment : BaseFragment<DatosRegistroActualizaci
     @Inject
     lateinit var helperSpinnerTiposDocumentoRegistroAfiliadoHome: HelperSpinnerTiposDocumentoRegistroAfiliadoHome
     private lateinit var binding: FragmentDatosRegistroactualizacionHomeBinding
+
     //endregion
 
     override fun traerViewModel(): DatosRegistroActualizacionViewModel = datosRegistroActualizacionViewModel
@@ -110,7 +115,6 @@ class DatosRegistroActualizacionFragment : BaseFragment<DatosRegistroActualizaci
                 )
             }
     }
-
     //endregion
 
 }

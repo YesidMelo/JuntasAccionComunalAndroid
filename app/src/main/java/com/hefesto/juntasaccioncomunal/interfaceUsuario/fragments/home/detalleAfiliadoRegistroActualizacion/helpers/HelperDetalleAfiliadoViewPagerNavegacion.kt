@@ -85,7 +85,9 @@ class HelperDetalleAfiliadoViewPagerNavegacion {
             finalizoLaCarga.postValue(false)
             configurarViewPager()
             configurarTabLayout()
+            precargarPaginas()
             finalizoLaCarga.postValue(true)
+
         }
         return finalizoLaCarga
     }
@@ -183,6 +185,15 @@ class HelperDetalleAfiliadoViewPagerNavegacion {
         compiladoInformacionAfiliadoParaRegistroModel = CompiladoInformacionAfiliadoParaRegistroModel()
     }
 
+    private suspend fun precargarPaginas() {
+        delay(1000)
+        for (contador in 0 until mapFragments.size) {
+            viewPager.post { viewPager.currentItem = contador }
+            delay(1000)
+        }
+        viewPager.post { viewPager.currentItem = 0 }
+        delay(1000)
+    }
     //endregion
 
     //endregion

@@ -27,7 +27,7 @@ class HelperRegistroActualizacionSeguridadAfiliadoHomeImpl constructor(
     private fun registrarCorreo(compiladoInformacionAfiliadoParaRegistroModel: CompiladoInformacionAfiliadoParaRegistroModel) {
         val correoEntity = compiladoInformacionAfiliadoParaRegistroModel.traerCorreoEntity()
         if (correoEntity.registro == null ){
-            correoDao.actualizarElemento(elemento = correoEntity)
+            correoDao.insertarElemento(elemento = correoEntity)
             val id = correoDao.traerId(correo = correoEntity.correo!!)
             compiladoInformacionAfiliadoParaRegistroModel.contactoParaRegistrarModel?.correoElectronicoId = id
             return

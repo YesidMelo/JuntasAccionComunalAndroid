@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.MutableLiveData
 import com.hefesto.juntasaccioncomunal.databinding.FragmentSeguridadAfiliadoHomeBinding
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.subfragments.ConfigurarInformacionParaCrearModeloRegistro
@@ -41,4 +42,5 @@ class SeguridadAfiliadoFragment :
             .conRepetirContrasenia(repetirContrasenia = binding.editTextSeguridadAfiliadoRepetirContrasenia.text.toString())
             .traerSeguridadParaRegistroModel()
     }
+
 }

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.MutableLiveData
 import com.hefesto.juntasaccioncomunal.databinding.FragmentDetalleEnJacHomeBinding
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.helpers.HelperSpinnerComitesEnJacHome
@@ -24,6 +25,7 @@ class DetalleEnJacFragment :
     @Inject lateinit var helperSpinnerEstadosAfiliadoHome: HelperSpinnerEstadosAfiliadoHome
 
     private lateinit var binding : FragmentDetalleEnJacHomeBinding
+
     //endregion
 
     override fun traerViewModel(): DetalleEnJacViewModel = detalleEnJacViewModel
@@ -79,6 +81,7 @@ class DetalleEnJacFragment :
                     .cargarSpinner()
             }
     }
+
     //endregion
     //endregion
 
