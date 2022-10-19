@@ -187,8 +187,6 @@ kapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/home/AfiliadoE
 Í
 œapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/casosUso/configuracionAfiliadoEnDirectiva/TraerRolesAfiliadosEnDirectivaCasoUso.kt,8\b\8ba18d651cc84280d0c0ea412e9db5da265c93a3
 “
-capp/src/main/java/com/hefesto/juntasaccioncomunal/logica/utilidades/enumeradores/FuncionesRolApp.kt,3\d\3d1c4bdb471182f49b202fa7266fb8b3b97f473b
-“
 capp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/entities/general/ComitesEntity.kt,7\c\7c6d508bb0e202aaa9d8194de04fd6c19b3931f7
 Œ
 \app/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/general/ComitesDao.kt,1\4\149ce10b40eed6fcc7ebe3bc0726fb5ab9093c19
@@ -252,8 +250,6 @@ Sapp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/modules/NavegacionModul
 xapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/navegacion/helpers/helpersFragments/HelperFragment.kt,2\8\28dea7e928013b7aa8f9c8401b925582f8d32dc4
 –
 fapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/activities/splash/SplashActivity.kt,f\a\fa85378c00a25a3fd699a80d1df93af588040c28
-¦
-vapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/panelControl/PanelControlFragment.kt,0\2\025bf3b88d2a103136ca77633b85fdd92ca72cbe
 ©
 yapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/login/iniciarSesion/IniciarSesionFragment.kt,0\f\0f401913687109659de760b400ed1e4fa788de55
 •
