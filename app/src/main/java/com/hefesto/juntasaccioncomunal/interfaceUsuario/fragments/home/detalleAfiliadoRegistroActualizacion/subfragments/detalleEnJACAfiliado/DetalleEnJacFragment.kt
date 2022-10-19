@@ -94,7 +94,8 @@ class DetalleEnJacFragment :
             .cargarDetalleUsuarioEnJAC()
             .observe(viewLifecycleOwner){
                 if (it == null) return@observe
-                helperSpinnerEstadosAfiliadoHome.conEstadoSeleccionado(estadoSeleccionado = it.estadoAfiliacion)
+                helperSpinnerEstadosAfiliadoHome.conEstadoSeleccionado(estadoSeleccionado = it.datosJACModel!!.estadoAfiliacion)
+                helperSpinnerComitesEnJacHome.conComiteSeleccionado(comiteSeleccionado = it.datosJACModel?.comite)
             }
     }
 

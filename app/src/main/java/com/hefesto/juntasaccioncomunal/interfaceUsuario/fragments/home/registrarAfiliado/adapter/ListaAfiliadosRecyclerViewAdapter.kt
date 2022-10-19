@@ -38,8 +38,8 @@ class ListaAfiliadosRecyclerViewAdapter constructor(
         }
 
         private fun ponerEstadoAfiliacion(afiliado : DatosBasicosAfiliadoActualizarRegistrarInformacionModel) {
-            if (afiliado.estadoAfiliacion == null) return
-            (view.findViewById<TextView>(R.id.textView_estado_afiliacion_home)).setText(afiliado.estadoAfiliacion!!.traerStringRes())
+            if (afiliado.datosJACModel?.estadoAfiliacion == null) return
+            (view.findViewById<TextView>(R.id.textView_estado_afiliacion_home)).setText(afiliado.datosJACModel?.estadoAfiliacion!!.traerStringRes())
         }
 
         private fun ponerDocumentos(afiliado : DatosBasicosAfiliadoActualizarRegistrarInformacionModel) {

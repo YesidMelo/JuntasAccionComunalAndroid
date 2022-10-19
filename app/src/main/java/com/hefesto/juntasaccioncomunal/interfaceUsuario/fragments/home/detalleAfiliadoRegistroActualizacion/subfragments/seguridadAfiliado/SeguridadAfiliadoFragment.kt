@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import androidx.lifecycle.MutableLiveData
 import com.hefesto.juntasaccioncomunal.databinding.FragmentSeguridadAfiliadoHomeBinding
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.DetalleAfiliadoRegistroActualizacionFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.subfragments.ConfigurarInformacionParaCrearModeloRegistro
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.DatosBasicosAfiliadoActualizarRegistrarInformacionModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.registroAfiliado.SeguridadParaRegistroModel
 import javax.inject.Inject
 
@@ -33,6 +35,7 @@ class SeguridadAfiliadoFragment :
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentSeguridadAfiliadoHomeBinding.inflate(inflater)
+        cargarCredencialesId()
         return binding.root
     }
 
@@ -42,5 +45,13 @@ class SeguridadAfiliadoFragment :
             .conRepetirContrasenia(repetirContrasenia = binding.editTextSeguridadAfiliadoRepetirContrasenia.text.toString())
             .traerSeguridadParaRegistroModel()
     }
+
+    //region metodos privados
+    private fun cargarCredencialesId() {
+        val usuario = (arguments?.get(DetalleAfiliadoRegistroActualizacionFragment.DETALLE_AFILIADO_ACTUALIZACION) as? DatosBasicosAfiliadoActualizarRegistrarInformacionModel)?: return
+        traerViewModel()
+            .conCredencialesSesionId(credencialesSesionId = usuario.credencialesSesion)
+    }
+    //endregion
 
 }

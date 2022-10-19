@@ -22,8 +22,6 @@ fun AfiliadoActualizacionRegistroView.convertirADatosBasicosAfiliadoActualizarRe
         fechaNacimiento = this.fechaNacimiento?.convertirADate(formatoEntrada = FormatosFecha.ISO_8610),
         tipoDocumento = TipoDocumento.traerTipoDocumentoPorId(id = this.tipoDocumento!!),
         documento = this.documento,
-        estadoAfiliacion = EstadoAfiliacion.traerEstadoAfiliacionPorId(id = this.estadoAfiliacionId!!),
-        rolesEnApp = RolesEnApp.traerRolAppPorId(id = this.rolEnLaAppId!!),
         jacId = this.jacId,
         credencialesSesion = this.credencialesSesion
     )

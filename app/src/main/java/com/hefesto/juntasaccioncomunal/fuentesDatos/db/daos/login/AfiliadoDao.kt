@@ -6,6 +6,7 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.BaseDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.AfiliadoEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.home.AfiliadoActualizacionRegistroView
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.home.AfiliadoContactoRegistroActualizacionView
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.home.AfiliadoDetalleEnJacView
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.home.AfiliadoModificacionDirectivaView
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.login.AfiliadoEnSesionView
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.iniciarSesion.AfiliadoEnSesionModel
@@ -31,4 +32,6 @@ interface AfiliadoDao : BaseDao<AfiliadoEntity> {
     @Query("SELECT t.* FROM AfiliadoContactoRegistroActualizacionView t WHERE t.afiliadoid = :afiliadoId")
     fun traerContactoDelAfiliadoPorAfiliadoId(afiliadoId: Int) : AfiliadoContactoRegistroActualizacionView?
 
+    @Query("SELECT t.* FROM AfiliadoDetalleEnJacView t WHERE t.afiliadoId = :afiliadoId and t.jacId = :jacId")
+    fun traerAfiliadoDetalleJAC(afiliadoId: Int, jacId: Int) : AfiliadoDetalleEnJacView?
 }

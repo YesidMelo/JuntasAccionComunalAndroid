@@ -10,5 +10,6 @@ data class DatosBasicosParaRegistrarModel(
     var apellidos: String? = null,
     var fechaNacimiento: Date? = null,
     var tipoDocumento: TipoDocumento? = null,
-    var numeroDocumento: String? = null
+    var numeroDocumento: String? = null,
+    var credencialesSesion: Int? = null
 ) : BaseModel()

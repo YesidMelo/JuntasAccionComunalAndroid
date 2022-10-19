@@ -15,10 +15,9 @@ data class DatosBasicosAfiliadoActualizarRegistrarInformacionModel (
     var fechaNacimiento: Date? = null,
     var tipoDocumento: TipoDocumento? = null,
     var documento: String? = null,
-    var estadoAfiliacion: EstadoAfiliacion? = null,
-    var rolesEnApp: RolesEnApp? = null,
     var jacId : Int? = null,
     var credencialesSesion: Int? = null,
+    var datosJACModel : DatosJACModel? = null,
     var datosContactoAfiliadoModel: DatosContactoAfiliadoModel? = null,
     var datosSeguridadAfiliadoModel: DatosSeguridadAfiliadoModel? = null
 ) :BaseModel()

@@ -44,6 +44,7 @@ class HelperRegistroActualizacionSeguridadAfiliadoHomeImpl constructor(
             compiladoInformacionAfiliadoParaRegistroModel.seguridadParaRegistroModel?.credencialesSesionId = id
             return
         }
+        if (credencialesSesionEntity.contrasenia.isNullOrEmpty()) return
         credencialesSesionDao.actualizarElemento(elemento = credencialesSesionEntity)
     }
 

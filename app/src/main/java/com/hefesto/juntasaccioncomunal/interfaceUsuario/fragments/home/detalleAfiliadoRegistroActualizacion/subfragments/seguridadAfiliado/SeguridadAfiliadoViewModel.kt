@@ -11,12 +11,17 @@ class SeguridadAfiliadoViewModel constructor(
 ) : BaseViewModel() {
 
     //region variables
-    private var contraseniaId: Int? = null
     private var contrasenia: String? = null
     private var repetirContrasenia: String? = null
+    private var credencialesSesionId: Int? = null
     //endregion
 
     override fun traerBaseUI(): BaseUI = seguridadAfiliadoUI
+
+    fun conCredencialesSesionId(credencialesSesionId: Int?) : SeguridadAfiliadoViewModel {
+        this.credencialesSesionId = credencialesSesionId
+        return this
+    }
 
     fun conContrasenia(contrasenia: String) : SeguridadAfiliadoViewModel {
         this.contrasenia = contrasenia
@@ -30,7 +35,7 @@ class SeguridadAfiliadoViewModel constructor(
 
     fun traerSeguridadParaRegistroModel() : SeguridadParaRegistroModel {
         return SeguridadParaRegistroModel(
-            credencialesSesionId = this.contraseniaId,
+            credencialesSesionId = this.credencialesSesionId,
             contrasenia = this.contrasenia,
             repetirContrasenia = this.repetirContrasenia
         )

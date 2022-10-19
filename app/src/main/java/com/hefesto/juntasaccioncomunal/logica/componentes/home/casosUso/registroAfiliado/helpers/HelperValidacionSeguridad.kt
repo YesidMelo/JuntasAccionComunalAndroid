@@ -14,7 +14,11 @@ class HelperValidacionSeguridad {
 
     fun validar(seguridadParaRegistroModel: SeguridadParaRegistroModel?) {
         val seguridad = seguridadParaRegistroModel?: throw NoHaCreadoModeloSeguridadAfiliadoParaRegistroExcepcion()
-        nuevoRegistro(seguridad = seguridad)
+        if (seguridad.credencialesSesionId == null) {
+            nuevoRegistro(seguridad = seguridad)
+            return
+        }
+        actualizarRegistro(seguridad = seguridad)
     }
 
     //region metodos privados
@@ -41,6 +45,26 @@ class HelperValidacionSeguridad {
     //endregion
 
     //region actualizacion
+    private fun actualizarRegistro(seguridad: SeguridadParaRegistroModel) {
+        if(seguridad.contrasenia.isNullOrEmpty() && seguridad.repetirContrasenia.isNullOrEmpty()) return
+        actualizarContraseniaNuevoRegistro(seguridadParaRegistroModel = seguridad)
+        actualizarRepetirContraseniaNuevoRegistro(seguridadParaRegistroModel = seguridad)
+        actualizarCoincidirContraseniaNuevoRegistro(seguridadParaRegistroModel = seguridad)
+    }
+
+    private fun actualizarContraseniaNuevoRegistro(seguridadParaRegistroModel: SeguridadParaRegistroModel) {
+        if (seguridadParaRegistroModel.contrasenia.isNullOrEmpty()) throw ContraseniaVaciaRegistroHomeAfiliadoExcepcion()
+        if(!validarConRegex(string = seguridadParaRegistroModel.contrasenia!!, regex = RegexEnum.CONSTRASENIA)) throw ContraseniaInvalidaRegistrarAfiliadoHomeExcepcion()
+    }
+
+    private fun actualizarRepetirContraseniaNuevoRegistro(seguridadParaRegistroModel: SeguridadParaRegistroModel) {
+        if (seguridadParaRegistroModel.repetirContrasenia.isNullOrEmpty()) throw RepetirContraseniaRegistroAfiliadoHomeVacioExcepcion()
+        if(!validarConRegex(string = seguridadParaRegistroModel.repetirContrasenia!!, regex = RegexEnum.CONSTRASENIA)) throw RepetirContraseniaRegistrarAfiliadoHomeNoEsValidoException()
+    }
+
+    private fun actualizarCoincidirContraseniaNuevoRegistro(seguridadParaRegistroModel: SeguridadParaRegistroModel) {
+        if(seguridadParaRegistroModel.contrasenia != seguridadParaRegistroModel.repetirContrasenia) throw ElCampoContraseniaYRepetirContraseniaNoCoincidenRegistrarAfiliadoHomeException()
+    }
     //endregion
     //endregion
 }

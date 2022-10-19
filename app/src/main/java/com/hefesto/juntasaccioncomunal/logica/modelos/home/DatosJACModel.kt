@@ -5,10 +5,13 @@ import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.ComitesEnJ
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.EstadoAfiliacion
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.RolDeAfiliacion
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.RolesEnApp
+import java.util.*
 
 data class DatosJACModel(
     var comite: ComitesEnJAC? = null,
+    var fechaActualizacionComite: Date? = null,
     var estadoAfiliacion: EstadoAfiliacion? = null,
+    var fechaActualizacionEstadoAfiliacion: Date? = null,
     var rolesEnApp: RolesEnApp? = null,
     var rolDeAfiliacion: RolDeAfiliacion? = null,
 ): BaseModel()

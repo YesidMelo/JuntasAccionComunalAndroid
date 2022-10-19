@@ -86,6 +86,8 @@ class DatosRegistroActualizacionFragment : BaseFragment<DatosRegistroActualizaci
         ponerApellidos(afiliado = usuario)
         ponerFechaNacimiento(afiliado = usuario)
         ponerDocumento(afiliado= usuario)
+        traerViewModel().conAfiliadoId(afiliadoId = usuario.afiliadoId)
+        traerViewModel().conCredencialesSesionId(credencialesSesionId = usuario.credencialesSesion)
     }
 
     private fun ponerApellidos(afiliado: DatosBasicosAfiliadoActualizarRegistrarInformacionModel) = binding.editTextDatosAfiliadoHomeApellidos.setText(afiliado.apellidos)
@@ -94,6 +96,7 @@ class DatosRegistroActualizacionFragment : BaseFragment<DatosRegistroActualizaci
 
     private fun ponerFechaNacimiento(afiliado: DatosBasicosAfiliadoActualizarRegistrarInformacionModel) {
         binding.textViewDatosAfiliadoHomeFechaNacimiento.text = afiliado.fechaNacimiento?.convertirAFormato(formato = FormatosFecha.SLASH_1)
+        traerViewModel().conFechaNacimiento(fechaNacimiento = afiliado.fechaNacimiento)
     }
 
     private fun ponerNombres(afiliado: DatosBasicosAfiliadoActualizarRegistrarInformacionModel) = binding.editTextDatosAfiliadoHomeNombre.setText(afiliado.nombres)

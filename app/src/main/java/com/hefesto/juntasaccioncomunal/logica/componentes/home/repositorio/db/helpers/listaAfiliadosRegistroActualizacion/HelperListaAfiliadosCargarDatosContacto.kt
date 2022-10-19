@@ -1,6 +1,5 @@
 package com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.listaAfiliadosRegistroActualizacion
 
-import android.util.Log
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.AfiliadoDao
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.mappers.convertirADatosContactoAfiliadoModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.DatosBasicosAfiliadoActualizarRegistrarInformacionModel

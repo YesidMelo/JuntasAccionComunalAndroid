@@ -34,5 +34,6 @@ class HelperListaAfiliadosCargarDatosBasicosImpl constructor(
         val jacId = memoriaCache.traerObjeto<UsuarioEnSesionModel>(llave = IdentificadorElementosCacheEnum.USUARIO_EN_SESION)
         return jacId?.jacId
     }
+
     //endregion
 }

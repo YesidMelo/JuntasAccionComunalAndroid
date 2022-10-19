@@ -16,4 +16,15 @@ enum class ComitesEnJAC (
     fun traerId() = id
     fun traerNombre() = nombre
     fun traerStringRes() = stringRes
+
+    companion object {
+        fun buscarPorId(id: Int?) : ComitesEnJAC{
+            val idFinal = id?:return TRABAJO
+            for (item in values()){
+                if (item.id != idFinal) continue
+                return item
+            }
+            return TRABAJO
+        }
+    }
 }

@@ -25,6 +25,7 @@ class DatosRegistroActualizacionViewModel constructor(
     private var fechaNacimiento: Date? = null
     private var tipoDocumento: TipoDocumento? = null
     private var numeroDocumento : String? = null
+    private var credencialesSesionId: Int? = null
     //endregion
 
     override fun traerBaseUI(): BaseUI = datosBasicosAfiliadoUI
@@ -56,6 +57,11 @@ class DatosRegistroActualizacionViewModel constructor(
 
     fun conNumeroDocumento(numeroDocumento: String) : DatosRegistroActualizacionViewModel {
         this.numeroDocumento = numeroDocumento
+        return this
+    }
+
+    fun conCredencialesSesionId(credencialesSesionId: Int?) : DatosRegistroActualizacionViewModel {
+        this.credencialesSesionId = credencialesSesionId
         return this
     }
 
