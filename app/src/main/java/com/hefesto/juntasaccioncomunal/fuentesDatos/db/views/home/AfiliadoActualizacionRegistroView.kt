@@ -5,21 +5,23 @@ import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.TipoDocume
 import java.util.*
 
 @DatabaseView(
-    "SELECT  " +
-    "    a.*, " +
-    "    ajea.jacId, " +
-    "    ajea.rolEnLaAppId, " +
-    "    ajea.estadoAfiliacionId, " +
-    "    ajea.fechaActualizacion " +
-    "FROM  " +
-    "   AfiliadoEntity a,  " +
-    "   Afiliado_Jac_EstadoAfiliacionEntity ajea " +
-    "WHERE " +
-    "   a.afiliadoId = ajea.afiliadoId " +
-    "ORDER BY " +
-    "   ajea.fechaActualizacion " +
-    "DESC " +
-    "LIMIT 1"
+    "SELECT detalle.* from  " +
+        "(SELECT   " +
+        "    a.*,  " +
+        "    ajea.jacId,  " +
+        "    ajea.rolEnLaAppId,  " +
+        "    ajea.estadoAfiliacionId,  " +
+        "    ajea.fechaActualizacion  " +
+        "FROM   " +
+        "   AfiliadoEntity a,   " +
+        "   Afiliado_Jac_EstadoAfiliacionEntity ajea  " +
+        "WHERE  " +
+        "   a.afiliadoId = ajea.afiliadoId  " +
+        "ORDER BY  " +
+        "   ajea.fechaActualizacion  " +
+        "DESC) detalle  " +
+    "GROUP by " +
+    "detalle.afiliadoid"
 )
 data class AfiliadoActualizacionRegistroView(
     var afiliadoId: Int? = null,

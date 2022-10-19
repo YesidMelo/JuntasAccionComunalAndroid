@@ -4,22 +4,21 @@ import androidx.room.DatabaseView
 
 @DatabaseView(
     "SELECT  " +
-    " ajeae.afiliadoId, " +
-    " ajeae.jacid, " +
-    " ajeae.rolenlaappid, " +
-    " ajeae.estadoafiliacionid, " +
-    " ajeae.fechaactualizacion as fechaActualizacionEstadoAfiliado, " +
-    " ajeae.observaciones, " +
-    " ajeae.secretarioid, " +
-    " ajce.comiteid, " +
-    " ajce.fechaactualizacion as fechaActualizacionComite " +
-    "from " +
-    " (SELECT ajce.* from Afiliado_Jac_Comite_Entity ajce order by fechaactualizacion DESC LIMIT 1) ajce, " +
-    " (SELECT * from Afiliado_Jac_EstadoAfiliacionEntity ajeae order by ajeae.fechaactualizacion DESC LIMIT 1) ajeae " +
+    "ajce.afiliadoid, " +
+    "ajce.jacid, " +
+    "ajce.comiteid, " +
+    "ajce.fechaactualizacion as fechaActualizacionComite, " +
+    "ajeae.rolenlaappid, " +
+    "ajeae.estadoafiliacionid, " +
+    "ajeae.fechaactualizacion aS fechaActualizacionEstadoAfiliado, " +
+    "ajeae.observaciones, " +
+    "ajeae.secretarioid " +
+    "from  " +
+    "(SELECT * from Afiliado_Jac_Comite_Entity order by fechaactualizacion DESC) ajce, " +
+    "(SELECT * from (SELECT  *  from Afiliado_Jac_EstadoAfiliacionEntity order by fechaactualizacion DESC) ajeae group BY ajeae.afiliadoid, ajeae.jacid) ajeae " +
     "where " +
-    " ajce.jacId = ajeae.jacId AND " +
-    " ajce.afiliadoId = ajeae.afiliadoid " +
-    "limit 1"
+    "ajce.afiliadoid = ajeae.afiliadoid and " +
+    "ajce.jacid = ajeae.jacid"
 )
 data class AfiliadoDetalleEnJacView(
     var afiliadoId : Int? = null,

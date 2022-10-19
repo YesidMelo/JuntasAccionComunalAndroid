@@ -3,32 +3,20 @@ package com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.home
 import androidx.room.DatabaseView
 
 @DatabaseView(
-    "SELECT  " +
-            "    ace.correoid as correoElectronicoId, " +
-            "    c.correo, " +
-            "    c.fechaRegistro as fechaRegistroCorreo, " +
-            "    ace.afiliadoid, " +
-            "    d.direccionId, " +
-            "    d.direccion, " +
-            "    ade.registro as afiliadoDireccionId, " +
-            "    t.telefonoId, " +
-            "    t.telefono, " +
-            "    t.tipoTelefonoId, " +
-            "    ate.registroID  as afiliadoTelefonoId " +
-            "from  " +
-            "   CorreosEntity c, " +
-            "   Afiliado_Correo_Entity ace, " +
-            "   DireccionesEntity d, " +
-            "   Afiliado_Direccion_Entity ade, " +
-            "   TelefonosEntity t, " +
-            "   Afiliado_Telefono_Entity ate " +
-            "where " +
-            " c.registro = ace.correoId and  " +
-            " ade.afiliadoId = ace.afiliadoId and " +
-            " ade.direccionId = d.direccionId and " +
-            " ate.afiliadoId = ace.afiliadoid and " +
-            " ate.telefonoId = t.telefonoId " +
-            "LIMIT 1"
+    "select  " +
+    "correo.*,  " +
+    "direccion.direccionid, direccion.direccion, direccion.afiliadoDireccionId, " +
+    "telefono.telefonoid, telefono.telefono, telefono.tipotelefonoid, telefono.afiliadoTelefonoId " +
+    "from  " +
+    "(SELECT c.registro as correoElectronicoId, c.correo, c.fecharegistro as fechaRegistroCorreo, ace.afiliadoId from CorreosEntity c, Afiliado_Correo_Entity ace where c.registro = ace.correoId) " +
+    "correo, " +
+    "(SELECT d.direccionid, d.direccion, ade.registro as afiliadoDireccionId, ade.afiliadoId from DireccionesEntity d, Afiliado_Direccion_Entity ade WHERE ade.direccionId = d.direccionId) " +
+    "direccion, " +
+    "(SELECT t.telefonoid, t.telefono, t.tipoTelefonoId, ate.registroID as afiliadoTelefonoId, ate.afiliadoId  from TelefonosEntity t, Afiliado_Telefono_Entity ate WHERE ate.telefonoId = t.telefonoId) " +
+    "telefono " +
+    "WHERE " +
+    "direccion.afiliadoid = correo.afiliadoid and " +
+    "correo.afiliadoid = telefono.afiliadoid"
 )
 data class AfiliadoContactoRegistroActualizacionView(
     var correoElectronicoId : Int? = null,
