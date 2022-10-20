@@ -6,6 +6,7 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.FuncionesRol
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.RolApp_FuncionesApp_Dao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.RolesAppDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.TipoDocumentoDao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.TipoReunionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.TipoTelefonoDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.AfiliadoDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Correo_Dao
@@ -63,6 +64,8 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.splash.repositorios.he
 import com.hefesto.juntasaccioncomunal.logica.componentes.splash.repositorios.helpers.cargarTipos.HelperCargarRolAfiliacion
 import com.hefesto.juntasaccioncomunal.logica.componentes.splash.repositorios.helpers.cargarTipos.HelperCargarRolesApp
 import com.hefesto.juntasaccioncomunal.logica.componentes.splash.repositorios.helpers.cargarTipos.HelperCargarTiposDocumento
+import com.hefesto.juntasaccioncomunal.logica.componentes.splash.repositorios.helpers.cargarTipos.HelperCargarTiposReunion
+import com.hefesto.juntasaccioncomunal.logica.componentes.splash.repositorios.helpers.cargarTipos.HelperCargarTiposReunionImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.splash.repositorios.helpers.cargarTipos.HelperCargarTiposTelefono
 import dagger.Module
 import dagger.Provides
@@ -373,6 +376,13 @@ class HelpersDBDatasourceModule {
     )
 
     @Provides
+    fun providesHelperCargarTiposReunion(
+        tipoReunionDao: TipoReunionDao
+    ) : HelperCargarTiposReunion = HelperCargarTiposReunionImpl(
+        tipoReunionDao = tipoReunionDao
+    )
+
+    @Provides
     fun providesHelperCargarTiposTelefono(
         tipoTelefonoDao: TipoTelefonoDao
     ) : HelperCargarTiposTelefono = HelperCargarTiposTelefono(
@@ -390,6 +400,7 @@ class HelpersDBDatasourceModule {
         helperCargarRelacionRolFunciones: HelperCargarRelacionRolFunciones,
         helperCargarRolesApp: HelperCargarRolesApp,
         helperCargarTiposDocumento: HelperCargarTiposDocumento,
+        helperCargarTiposReunion : HelperCargarTiposReunion,
         helperCargarTiposTelefono: HelperCargarTiposTelefono
     ) : HelperCargarTipos = HelperCargarTipos(
         helperCargarComites = helperCargarComites,
@@ -399,6 +410,7 @@ class HelpersDBDatasourceModule {
         helperCargarRelacionRolFunciones = helperCargarRelacionRolFunciones,
         helperCargarRolesApp= helperCargarRolesApp,
         helperCargarTiposDocumento= helperCargarTiposDocumento,
+        helperCargarTiposReunion = helperCargarTiposReunion,
         helperCargarTiposTelefono= helperCargarTiposTelefono
     )
     //endregion

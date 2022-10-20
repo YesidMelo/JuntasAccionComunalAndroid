@@ -7,6 +7,7 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.FuncionesRol
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.RolApp_FuncionesApp_Dao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.RolesAppDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.TipoDocumentoDao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.TipoReunionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.TipoTelefonoDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.AfiliadoDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Correo_Dao
@@ -22,6 +23,9 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.JacDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Jac_Afiliado_Direccion_Dao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.RolAfiliacionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Telefono_Dao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.ListaAsistenciaDao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.PuntosReunionDao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.ReunionAsambleaDao
 import dagger.Module
 import dagger.Provides
 
@@ -74,6 +78,15 @@ class BaseDatosModule {
     fun providesJacAfiliadoDireccionDao(baseDatosApp: BaseDatosApp): Jac_Afiliado_Direccion_Dao = baseDatosApp.Jac_Afiliado_Direccion_Dao()
 
     @Provides
+    fun providesListaAsistenciaDao(baseDatosApp: BaseDatosApp): ListaAsistenciaDao = baseDatosApp.listaAsistenciaDao()
+
+    @Provides
+    fun providesPuntosReunionDao(baseDatosApp: BaseDatosApp) : PuntosReunionDao = baseDatosApp.puntosReunionDao()
+
+    @Provides
+    fun providesReunionAsambleaDao(baseDatosApp: BaseDatosApp): ReunionAsambleaDao = baseDatosApp.reunionAsambleaDao()
+
+    @Provides
     fun providesRolAfiliacionDao(baseDatosApp: BaseDatosApp): RolAfiliacionDao = baseDatosApp.rolAfiliacionDao()
 
     @Provides
@@ -91,5 +104,6 @@ class BaseDatosModule {
     @Provides
     fun providesTipoTelefonoDao(baseDatosApp: BaseDatosApp): TipoTelefonoDao = baseDatosApp.TipoTelefonoDao()
 
-
+    @Provides
+    fun providesTipoReunionDao(baseDatosApp: BaseDatosApp) : TipoReunionDao = baseDatosApp.TipoReunionDao()
 }

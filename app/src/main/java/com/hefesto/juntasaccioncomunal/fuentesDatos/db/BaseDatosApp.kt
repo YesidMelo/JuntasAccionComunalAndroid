@@ -9,6 +9,7 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.FuncionesRol
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.RolApp_FuncionesApp_Dao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.RolesAppDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.TipoDocumentoDao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.TipoReunionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.TipoTelefonoDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.AfiliadoDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Correo_Dao
@@ -24,11 +25,15 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.JacDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Jac_Afiliado_Direccion_Dao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.RolAfiliacionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Telefono_Dao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.ListaAsistenciaDao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.PuntosReunionDao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.ReunionAsambleaDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.general.ComitesEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.general.FuncionesRolAppEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.general.RolApp_FuncionesApp_Entity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.general.RolesAppEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.general.TipoDocumentoEntity
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.general.TipoReunionEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.general.TipoTelefonoEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.AfiliadoEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.Afiliado_Correo_Entity
@@ -45,6 +50,9 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.JACEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.Jac_Afiliado_Direccion_Entity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.RolAfiliacionEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.TelefonosEntity
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.reunionAsamblea.ListaAsistenciaEntity
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.reunionAsamblea.PuntosReunionEntity
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.reunionAsamblea.ReunionAsambleaEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.home.AfiliadoActualizacionRegistroView
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.home.AfiliadoContactoRegistroActualizacionView
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.home.AfiliadoDetalleEnJacView
@@ -68,11 +76,15 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.login.JACEnSesionVi
         FuncionesRolAppEntity::class,
         JACEntity::class,
         Jac_Afiliado_Direccion_Entity::class,
+        ListaAsistenciaEntity::class,
+        PuntosReunionEntity::class,
         RolAfiliacionEntity::class,
         RolesAppEntity::class,
         RolApp_FuncionesApp_Entity::class,
+        ReunionAsambleaEntity::class,
         TelefonosEntity::class,
         TipoDocumentoEntity::class,
+        TipoReunionEntity::class,
         TipoTelefonoEntity::class
    ],
     views = [
@@ -116,10 +128,14 @@ abstract class BaseDatosApp : RoomDatabase() {
     abstract fun funcionesRolAppDao() : FuncionesRolAppDao
     abstract fun JacDao() : JacDao
     abstract fun Jac_Afiliado_Direccion_Dao(): Jac_Afiliado_Direccion_Dao
+    abstract fun listaAsistenciaDao(): ListaAsistenciaDao
+    abstract fun puntosReunionDao(): PuntosReunionDao
+    abstract fun reunionAsambleaDao(): ReunionAsambleaDao
     abstract fun rolAfiliacionDao(): RolAfiliacionDao
     abstract fun rolesAppDao() : RolesAppDao
     abstract fun rolApp_funcionApp_dao() : RolApp_FuncionesApp_Dao
     abstract fun telefonoDao() : Telefono_Dao
     abstract fun TipoDocumentoDao() : TipoDocumentoDao
     abstract fun TipoTelefonoDao() : TipoTelefonoDao
+    abstract fun TipoReunionDao() : TipoReunionDao
 }

@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import com.hefesto.juntasaccioncomunal.databinding.FragmentPanelControlBinding
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.panelControl.helpers.HelperFuncionalidadesReciclerview
-import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.AccionesNavGrap
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.FuncionesRolApp
 import javax.inject.Inject
@@ -58,7 +57,7 @@ class PanelControlFragment : BaseFragment<PanelControlFragmentViewModel>() {
         when(funcionSeleccionada) {
             FuncionesRolApp.ASIGNAR_ROL_DENTRO_DE_JAC -> navegacionAplicacion.navegarBeginTransaction(a = NodosNavegacionFragments.LISTA_AFILIADOS_MODIFICACION_DIRECTIVAS)
             FuncionesRolApp.REGISTRAR_AFILIADO_JAC ->  navegacionAplicacion.navegarBeginTransaction(a = NodosNavegacionFragments.REGISTRAR_AFILIADO_HOME)
-            FuncionesRolApp.CREAR_LISTA_REUNION_JAC ->  navegacionAplicacion.navegarBeginTransaction(a = NodosNavegacionFragments.REGISTRAR_AFILIADO_HOME)
+            FuncionesRolApp.AGENDAR_REUNION ->  navegacionAplicacion.navegarBeginTransaction(a = NodosNavegacionFragments.REGISTRAR_AFILIADO_HOME)
         }
     }
     //endregion

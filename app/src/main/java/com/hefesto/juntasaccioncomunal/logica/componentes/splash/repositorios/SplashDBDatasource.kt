@@ -20,6 +20,7 @@ class SplashDBDatasourceImpl constructor(
         helperCargarTipos.cargarRolAfiliacion()
         helperCargarTipos.cargarRolesApp()
         helperCargarTipos.cargarTiposDocumento()
+        helperCargarTipos.cargarTiposReunion()
         helperCargarTipos.cargarTiposTelefono()
     }
 }
