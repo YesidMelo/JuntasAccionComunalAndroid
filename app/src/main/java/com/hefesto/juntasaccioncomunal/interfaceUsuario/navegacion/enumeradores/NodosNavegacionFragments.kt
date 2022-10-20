@@ -8,6 +8,7 @@ import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAf
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.listaAfiliadosModificacionDirectivas.ListaAfiliadosModificacionDirectivasFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.panelControl.PanelControlFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.registrarAfiliado.RegistrarAfiliadoHomeFragment
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.agendarReunion.AgendarReunionFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.login.iniciarSesion.IniciarSesionFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.login.registrarAfiliado.RegistrarAfiliadoFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.login.registrarJAC.RegistrarJACFragment
@@ -25,6 +26,8 @@ enum class NodosNavegacionFragments constructor(
     //endregion
     //region home
     PANEL_CONTROL(titulo = R.string.panel_control, fragment = PanelControlFragment::class.java),
+
+    //region afiliados
     LISTA_AFILIADOS_MODIFICACION_DIRECTIVAS(titulo = R.string.lista_afiliados_modificacion_directivas, fragment = ListaAfiliadosModificacionDirectivasFragment::class.java, identificador = "ListaAfiliadoDirectivas"),
     CONFIGURACION_AFILIADO_EN_DIRECTIVA(titulo = R.string.configuracion_afiliado_en_directiva, fragment = ConfiguracionAfiliadoEnDirectivaFragment::class.java, identificador = "ConfiguracionAfiliadoEnDirectiva"),
     REGISTRAR_AFILIADO_HOME(titulo = R.string.registrar_afiliado, fragment = RegistrarAfiliadoHomeFragment::class.java, identificador = "RegistrarAfiliadoHome"),
@@ -32,7 +35,13 @@ enum class NodosNavegacionFragments constructor(
     DATOS_AFILIADO_HOME,
     DETALLE_JAC_AFILIADO_HOME,
     SEGURIDAD_AFILIADO_HOME,
-    DETALLE_AFILIADO_REGISTRO_HOME(titulo = R.string.formulario_registro_afiliado, fragment = DetalleAfiliadoRegistroActualizacionFragment::class.java, identificador = "DetalleAfiliadoRegistroHome")
+    DETALLE_AFILIADO_REGISTRO_HOME(titulo = R.string.formulario_registro_afiliado, fragment = DetalleAfiliadoRegistroActualizacionFragment::class.java, identificador = "DetalleAfiliadoRegistroHome"),
+    //endregion
+
+    //region reuniones asambleas
+    AGENDAR_REUNION_ASAMBLEA(titulo = R.string.agendar_reunion_asamblea, fragment = AgendarReunionFragment::class.java, identificador = "agendar reunion asamblea")
+    //endregion
+
     //endregion
     ;
 }

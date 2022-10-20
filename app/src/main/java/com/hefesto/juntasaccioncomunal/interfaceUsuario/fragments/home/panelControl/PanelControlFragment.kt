@@ -57,7 +57,7 @@ class PanelControlFragment : BaseFragment<PanelControlFragmentViewModel>() {
         when(funcionSeleccionada) {
             FuncionesRolApp.ASIGNAR_ROL_DENTRO_DE_JAC -> navegacionAplicacion.navegarBeginTransaction(a = NodosNavegacionFragments.LISTA_AFILIADOS_MODIFICACION_DIRECTIVAS)
             FuncionesRolApp.REGISTRAR_AFILIADO_JAC ->  navegacionAplicacion.navegarBeginTransaction(a = NodosNavegacionFragments.REGISTRAR_AFILIADO_HOME)
-            FuncionesRolApp.AGENDAR_REUNION ->  navegacionAplicacion.navegarBeginTransaction(a = NodosNavegacionFragments.REGISTRAR_AFILIADO_HOME)
+            FuncionesRolApp.AGENDAR_REUNION ->  navegacionAplicacion.navegarBeginTransaction(a = NodosNavegacionFragments.AGENDAR_REUNION_ASAMBLEA)
         }
     }
     //endregion

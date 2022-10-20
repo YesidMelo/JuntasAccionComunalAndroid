@@ -210,10 +210,6 @@ Qapp/src/main/java/com/hefesto/juntasaccioncomunal/di/logica/RepositoriosModule.
 ≥app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/listaAfiliadosModificacionDirectivas/helpers/HelperRecyclerListaAfiliadosModificacionDirectiva.kt,0\e\0e972867e43456470bcca671413cbb8acbbd5839
 §
 tapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/ui/registroAfiliado/SeguridadAfiliadoUI.kt,0\7\071bfda178695010f46c5afb13066e376ee2903d
-Ö
-Uapp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/modules/HomeActivityModule.kt,0\4\04233868c3a8f8ed53214b06b1ab6c14b736d69f
-z
-Japp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/FragmentBuilder.kt,9\d\9dd8a9507b1cc239a8460037eecd573f5a0d74af
 ù
 mapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/navegacion/enumeradores/AccionesNavGrap.kt,4\0\409aafd4b56a19e54d247a317237b50ef4db0fb7
 @
@@ -246,8 +242,6 @@ eapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/navegacion/N
 wapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/login/registrarJAC/RegistrarJACFragment.kt,e\f\efef3594908d40f2adc56ad78e3c5b6989761bb5
 ◊
 ¶app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/listaAfiliadosModificacionDirectivas/ListaAfiliadosModificacionDirectivasFragment.kt,f\1\f13cbd7bd049e886efa34a8e63b5334369dd2872
-¶
-vapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/navegacion/enumeradores/NodosNavegacionFragments.kt,2\1\21d558508253f131de5c339956e648c54f2d9b72
 í
 bapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/activities/home/HomeActivity.kt,8\f\8f841eea8c8fb115d0dc9b0b7b8434c699386bc6
 î
@@ -278,8 +272,6 @@ wapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/ui/re
 ±app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/detalleAfiliadoRegistroActualizacion/helpers/HelperSpinnerTiposDocumentoRegistroAfiliadoHome.kt,9\0\9018b6d8b9c49615bfe6877c3231c414b196f7d5
 Ö
 Uapp/src/main/java/com/hefesto/juntasaccioncomunal/di/logica/HelpersFragmentsModule.kt,5\7\577c2324966bb600ca2eb03db9f300d942875816
-w
-Gapp/src/main/java/com/hefesto/juntasaccioncomunal/di/logica/UiModule.kt,c\5\c53697990100eef933e5cfa4141c942d4043efea
 º
 ãapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/casosUso/registroAfiliado/helpers/HelperValidacionDatosBasicos.kt,b\6\b69ee4d5b00b50618a6668199bd30f741fbc79d6
 è
@@ -340,8 +332,6 @@ tapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/home/registroA
 ≥app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/detalleAfiliadoRegistroActualizacion/subfragments/ConfigurarInformacionParaCrearModeloRegistro.kt,b\0\b0792489ba79bde0961536cece71d06dcc2ce2f1
 ◊
 ¶app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/detalleAfiliadoRegistroActualizacion/DetalleAfiliadoRegistroActualizacionFragment.kt,e\e\eeec5f0e2f547d7d9f777a9c3933d9c3467fab50
-ˆ
-≈app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/detalleAfiliadoRegistroActualizacion/subfragments/contactoAfiliado/ContactoAfiliadoRegistroActualizacionFragment.kt,4\0\409c41e818836e1a6d8d5db2aed6266e7e1cd1ec
 ‚
 ±app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/detalleAfiliadoRegistroActualizacion/subfragments/detalleEnJACAfiliado/DetalleEnJacViewModel.kt,3\0\30969a21f81c503c9dc0a5e145b5a48f31d49126
 ”
@@ -382,8 +372,6 @@ xapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/home/registroA
 æapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/detalleAfiliadoRegistroActualizacion/subfragments/datosBasicosAfiliado/DatosRegistroActualizacionFragment.kt,e\8\e8a7f3c818a5f179e6001004bf7a396fe0979914
 ì
 capp/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/home/DatosContactoAfiliadoModel.kt,e\d\edede2bc022cb62f64f6ec082c5506c014c130ea
-µ
-Ñapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/registrarAfiliado/RegistrarAfiliadoHomeFragment.kt,b\a\baeb8956d261b8d274e2ce61be620182319e1dd4
 ¡
 êapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/registrarAfiliado/adapter/ListaAfiliadosRecyclerViewAdapter.kt,d\8\d8e109f734f7de0fa01b0132898b3b1a8125fe86
 Ü

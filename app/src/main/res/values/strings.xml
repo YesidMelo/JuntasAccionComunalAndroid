@@ -118,4 +118,5 @@
     <string name="asamblea_decisoria">Asamblea decisoria</string>
     <string name="reunion_directiva_informativa">Reunion directiva informativa</string>
     <string name="reunion_directiva_decisoria">Reunion directiva decisoria</string>
+    <string name="agendar_reunion_asamblea">Agendar reunion/asamblea</string>
 </resources>

@@ -10,11 +10,13 @@ import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAf
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.listaAfiliadosModificacionDirectivas.ListaAfiliadosModificacionDirectivasFragmentViewModel
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.panelControl.PanelControlFragmentViewModel
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.registrarAfiliado.RegistrarAfiliadoHomeViewModel
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.agendarReunion.AgendarReunionViewModel
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.casosUso.CargarEscuchadorExcepcionesCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.ConfiguracionAfiliadoEnDirectivaUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.HomeActivityUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.ListaAfiliadosActualizacionDirectivaUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.PanelControlFragmenUI
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.asambleaReunion.AgendarReunionUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.registroAfiliado.ContactoAfiliadoUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.registroAfiliado.DatosBasicosAfiliadoUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.registroAfiliado.DetalleAfiliadoEnJacUI
@@ -27,6 +29,7 @@ import dagger.Provides
 @Module
 class HomeActivityModule {
 
+    //region afiliados
     @Provides
     fun providesConfiguracionAfiliadoEnDirectivaViewModel(
         configuracionAfiliadoEnDirectivaUI: ConfiguracionAfiliadoEnDirectivaUI,
@@ -65,24 +68,10 @@ class HomeActivityModule {
     )
 
     @Provides
-    fun providesHomeActivityView(
-        homeActivityUI : HomeActivityUI
-    ): HomeActivityViewModel = HomeActivityViewModel(
-        homeActivityUI = homeActivityUI
-    )
-
-    @Provides
     fun providesListaAfiliadosModificacionDirectivasFragmentViewModel(
         listaAfiliadosActualizacionDirectivaUI: ListaAfiliadosActualizacionDirectivaUI
     ) : ListaAfiliadosModificacionDirectivasFragmentViewModel = ListaAfiliadosModificacionDirectivasFragmentViewModel(
         listaAfiliadosActualizacionDirectivaUI = listaAfiliadosActualizacionDirectivaUI
-    )
-
-    @Provides
-    fun providesPanelControlFragmentViewModel(
-        panelControlFragmenUI: PanelControlFragmenUI
-    ) : PanelControlFragmentViewModel = PanelControlFragmentViewModel(
-        panelControlFragmenUI = panelControlFragmenUI
     )
 
     @Provides
@@ -97,6 +86,31 @@ class HomeActivityModule {
         seguridadAfiliadoUI: SeguridadAfiliadoUI
     ) : SeguridadAfiliadoViewModel = SeguridadAfiliadoViewModel(
         seguridadAfiliadoUI = seguridadAfiliadoUI
+    )
+    //endregion
+
+    //region asambleas/reuniones
+    @Provides
+    fun providesAgendarReunionAsambleaViewModel(
+        agendarReunionUI: AgendarReunionUI
+    ) : AgendarReunionViewModel = AgendarReunionViewModel(
+        agendarReunionUI = agendarReunionUI
+    )
+
+    //endregion
+
+    @Provides
+    fun providesPanelControlFragmentViewModel(
+        panelControlFragmenUI: PanelControlFragmenUI
+    ) : PanelControlFragmentViewModel = PanelControlFragmentViewModel(
+        panelControlFragmenUI = panelControlFragmenUI
+    )
+
+    @Provides
+    fun providesHomeActivityView(
+        homeActivityUI : HomeActivityUI
+    ): HomeActivityViewModel = HomeActivityViewModel(
+        homeActivityUI = homeActivityUI
     )
 
 }

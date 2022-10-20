@@ -11,6 +11,7 @@ import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAf
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.listaAfiliadosModificacionDirectivas.ListaAfiliadosModificacionDirectivasFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.panelControl.PanelControlFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.registrarAfiliado.RegistrarAfiliadoHomeFragment
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.agendarReunion.AgendarReunionFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.login.iniciarSesion.IniciarSesionFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.login.registrarAfiliado.RegistrarAfiliadoFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.login.registrarJAC.RegistrarJACFragment
@@ -22,6 +23,7 @@ abstract class FragmentBuilder {
 
     //region home
 
+    //region afiliados
     @ContributesAndroidInjector(modules = [HomeActivityModule::class])
     abstract fun providesConfiguracionAfiliadoEnDirectivaFragment() : ConfiguracionAfiliadoEnDirectivaFragment
 
@@ -41,9 +43,6 @@ abstract class FragmentBuilder {
     abstract fun providesListaAfiliadosModificacionDirectivaFragment() : ListaAfiliadosModificacionDirectivasFragment
 
     @ContributesAndroidInjector(modules = [HomeActivityModule::class])
-    abstract fun providesPanelControlFragment() : PanelControlFragment
-
-    @ContributesAndroidInjector(modules = [HomeActivityModule::class])
     abstract fun providesRegistrarAfiliadoHomeFragment() : RegistrarAfiliadoHomeFragment
 
     @ContributesAndroidInjector(modules = [HomeActivityModule::class])
@@ -51,6 +50,16 @@ abstract class FragmentBuilder {
 
     //endregion
 
+    //region reuniones/asambleas
+    @ContributesAndroidInjector(modules = [HomeActivityModule::class])
+    abstract fun providesAgendarReunionFragment() : AgendarReunionFragment
+
+    //endregion
+
+    @ContributesAndroidInjector(modules = [HomeActivityModule::class])
+    abstract fun providesPanelControlFragment() : PanelControlFragment
+
+    //endregion
 
     //region login
     @ContributesAndroidInjector(modules = [LoginActivityModule::class])

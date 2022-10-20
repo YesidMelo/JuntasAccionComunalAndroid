@@ -16,6 +16,7 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.ConfiguracionA
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.HomeActivityUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.ListaAfiliadosActualizacionDirectivaUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.PanelControlFragmenUI
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.asambleaReunion.AgendarReunionUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.registroAfiliado.ContactoAfiliadoUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.registroAfiliado.DatosBasicosAfiliadoUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.registroAfiliado.DetalleAfiliadoEnJacUI
@@ -42,6 +43,7 @@ class UiModule {
 
     //region home
 
+    //region afiliados
     @Provides
     fun providesConfiguracionAfiliadoEnDirectivaUI(
         cargarEscuchadorExcepcionesCasoUso: CargarEscuchadorExcepcionesCasoUso,
@@ -63,7 +65,6 @@ class UiModule {
         escuchadorExcepciones = escuchadorExcepcionesCasoUso,
         cargarTiposTelefonoHomeCasoUso = cargarTiposTelefonoHomeCasoUso
     )
-
 
     @Provides
     fun providesDatosBasicosAfiliadoUI(
@@ -93,6 +94,20 @@ class UiModule {
         escuchadorExcepciones = escuchadorExcepcionesCasoUso,
         registrarAfiliadoHomeCasoUso = registrarAfiliadoHomeCasoUso
     )
+    //endregion
+
+    //region reunion/asamblea
+
+    @Provides
+    fun providesAgendarReunionAsambleaUI(
+        cargarEscuchadorExcepcionesCasoUso: CargarEscuchadorExcepcionesCasoUso
+    ) : AgendarReunionUI = AgendarReunionUI(
+        cargarEscuchadorExcepciones = cargarEscuchadorExcepcionesCasoUso
+    )
+
+    //endregion
+
+    //endregion
 
     @Provides
     fun providesHomeActivityUI(
