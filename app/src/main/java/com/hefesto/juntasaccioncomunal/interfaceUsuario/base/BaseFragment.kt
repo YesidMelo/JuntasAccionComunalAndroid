@@ -88,6 +88,7 @@ abstract class BaseFragment<T : BaseViewModel> : BaseFragmentDagger<T>(), Lifecy
 
     fun mostrarLoading() = (activity as BaseActivity<*>).mostrarProgress()
     fun ocultarLoading() = (activity as BaseActivity<*>).ocultarProgress()
+    fun mostrarDialogoHora(accionAceptar: (Date)->Unit) = (activity as BaseActivity<*>).mostrarDialogoHora(accionAceptar= accionAceptar)
 
     fun mostrarDialogoCalendario(
         accionFechaSeleccionada: ((Date) -> Unit)?,

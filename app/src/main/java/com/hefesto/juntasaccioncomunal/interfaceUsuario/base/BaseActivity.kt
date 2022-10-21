@@ -11,6 +11,7 @@ import com.hefesto.juntasaccioncomunal.di.ui.BaseActivityDagger
 import com.hefesto.juntasaccioncomunal.logica.excepciones.LogicaExcepcion
 import com.hefesto.juntasaccioncomunal.logica.excepciones.TiposExcepciones
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.dialogo.DialogoCalendario
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.dialogo.DialogoHora
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.dialogo.DialogoInformativo
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.dialogo.DialogoLoading
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.NavegacionAplicacion
@@ -121,6 +122,13 @@ abstract class BaseActivity<T: BaseViewModel> : BaseActivityDagger<T>(), Lifecyc
             calendar = calendarFinalFechaSeleccionada,
             calendarFechaMaximaSeleccion = calendarFechaMaximaSeleccion,
             calendarFechaMinimaSeleccion = calendarFechaMinimaSeleccion
+        )
+    }
+
+    fun mostrarDialogoHora(accionAceptar: (Date)->Unit) {
+        DialogoHora.mostrarDialogo(
+            activity = this,
+            accionAceptar = accionAceptar
         )
     }
 

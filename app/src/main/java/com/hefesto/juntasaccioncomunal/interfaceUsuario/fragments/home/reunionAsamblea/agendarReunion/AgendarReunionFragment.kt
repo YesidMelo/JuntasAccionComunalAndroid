@@ -44,6 +44,7 @@ class AgendarReunionFragment : BaseFragment<AgendarReunionViewModel> (){
     private fun configurarBotones() {
         configurarBotonAtras()
         configurarSeleccionFecha()
+        configurarSeleccionHora()
         configurarAdicionarPunto()
         configurarBotonGuardar()
         configurarBotonCancelar()
@@ -61,6 +62,15 @@ class AgendarReunionFragment : BaseFragment<AgendarReunionViewModel> (){
                 accionFechaSeleccionada = traerViewModel()::adicionarFechaSeleccionada,
                 calendarFechaMinimaSeleccion = fechaMinima
             )
+        }
+    }
+
+    private fun configurarSeleccionHora() {
+        binding.textViewAgendarReunionAsambleaHoraReunion.setOnClickListener {
+            mostrarDialogoHora {
+                traerViewModel()
+                    .adicionarHoraSeleccionada(hora = it)
+            }
         }
     }
 
@@ -116,7 +126,7 @@ class AgendarReunionFragment : BaseFragment<AgendarReunionViewModel> (){
             .traerHoraReunionLiveData()
             .observe(viewLifecycleOwner){
                 if(it == null) return@observe
-                binding.textViewAgendarReunionAsambleaHoraReunion.text = it.convertirAFormato(formato = FormatosFecha.HORA_MINUTO)
+                binding.textViewAgendarReunionAsambleaHoraReunion.text = it.convertirAFormato(formato = FormatosFecha.HORA_MINUTO_12H)
             }
     }
 

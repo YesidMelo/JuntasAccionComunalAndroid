@@ -298,10 +298,6 @@ wapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/home/registroA
 napp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/entities/login/Afiliado_Jac_Comite_Entity.kt,b\0\b0ea04729e049de118a5b8acf9f0bec8e035f8c8
 §
 wapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/entities/login/Afiliado_Jac_EstadoAfiliacionEntity.kt,3\3\335a0388fa2c9e25b2f7f3ffa28de48ee1858e98
-‡
-Wapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/base/BaseActivity.kt,0\3\032ca2367588f5c56d800cd70c8b1e34c3fe85b9
-‡
-Wapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/base/BaseFragment.kt,7\e\7e1cb1add2b84f48364a0e4da2726cdb4f81ab01
 Ù
 ¨app/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/repositorio/db/helpers/registroAfiliado/HelperRegistroActualizacionAfiliadoDetalleEnJacHome.kt,b\0\b0a5604815861130eb59d4f17ff91667233794e9
 Õ
