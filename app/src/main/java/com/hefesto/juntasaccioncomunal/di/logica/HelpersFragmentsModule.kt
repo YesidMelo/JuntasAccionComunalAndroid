@@ -10,6 +10,7 @@ import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAf
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.listaAfiliadosModificacionDirectivas.helpers.HelperRecyclerListaAfiliadosModificacionDirectiva
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.panelControl.helpers.HelperFuncionalidadesReciclerview
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.registrarAfiliado.helper.HelperRecyclerViewListaAfiliadosRegistrarActualizar
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.agendarReunion.helpers.HelperRecyclerViewAgendarReunionListaPuntos
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.agendarReunion.helpers.HelperSpinnerTiposReunion
 import dagger.Module
 import dagger.Provides
@@ -19,6 +20,7 @@ class HelpersFragmentsModule {
 
     //region home
 
+    //region afiliado
     @Provides
     fun providesHelperDetalleAfiliadoViewPagerNavegacion(): HelperDetalleAfiliadoViewPagerNavegacion = HelperDetalleAfiliadoViewPagerNavegacion()
 
@@ -47,10 +49,17 @@ class HelpersFragmentsModule {
     fun providesHelperSpinnerTiposDocumentoRegistroAfiliadoHome(): HelperSpinnerTiposDocumentoRegistroAfiliadoHome = HelperSpinnerTiposDocumentoRegistroAfiliadoHome()
 
     @Provides
-    fun providesHelperSpinnerTiposReunion(): HelperSpinnerTiposReunion = HelperSpinnerTiposReunion()
+    fun providesHelperSpinnerTiposTelefonoRegistroAfiliadoHome(): HelperSpinnerTiposTelefonoRegistroAfiliadoHome = HelperSpinnerTiposTelefonoRegistroAfiliadoHome()
+    //endregion
+
+    //region reunion/asamblea
 
     @Provides
-    fun providesHelperSpinnerTiposTelefonoRegistroAfiliadoHome(): HelperSpinnerTiposTelefonoRegistroAfiliadoHome = HelperSpinnerTiposTelefonoRegistroAfiliadoHome()
+    fun providesHelperRecyclerViewAgendarReunionListaPuntos() : HelperRecyclerViewAgendarReunionListaPuntos = HelperRecyclerViewAgendarReunionListaPuntos()
+
+    @Provides
+    fun providesHelperSpinnerTiposReunion(): HelperSpinnerTiposReunion = HelperSpinnerTiposReunion()
+    //endregion
 
     //endregion
 }

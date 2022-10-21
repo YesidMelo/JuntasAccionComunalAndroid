@@ -25,18 +25,17 @@ class DialogoCalendario: DatePickerDialog.OnDateSetListener {
             calendar.get(Calendar.MONTH),
             calendar.get(Calendar.DAY_OF_MONTH)
         )
+        datePickerDialog.setCancelable(false)
+        configurarBotonCancelar()
         configurarFechaMaxima()
         configurarFechaMinima()
         datePickerDialog.show()
     }
 
-    override fun onDateSet(p0: DatePicker?, p1: Int, p2: Int, p3: Int) {
-        instancia = null
-        val calendarRespuesta = Calendar.getInstance()
-        calendarRespuesta.set(Calendar.YEAR, p1)
-        calendarRespuesta.set(Calendar.MONTH, p2)
-        calendarRespuesta.set(Calendar.DAY_OF_MONTH, p3)
-        accionAceptar?.invoke(calendarRespuesta.time)
+    private fun configurarBotonCancelar() {
+        datePickerDialog.setOnCancelListener {
+            instancia = null
+        }
     }
 
     private fun configurarFechaMaxima() {
@@ -47,6 +46,15 @@ class DialogoCalendario: DatePickerDialog.OnDateSetListener {
     private fun configurarFechaMinima() {
         if(calendarFechaMinimaSeleccion == null) return
         datePickerDialog.datePicker.minDate = calendarFechaMinimaSeleccion!!.time.time
+    }
+
+    override fun onDateSet(p0: DatePicker?, p1: Int, p2: Int, p3: Int) {
+        instancia = null
+        val calendarRespuesta = Calendar.getInstance()
+        calendarRespuesta.set(Calendar.YEAR, p1)
+        calendarRespuesta.set(Calendar.MONTH, p2)
+        calendarRespuesta.set(Calendar.DAY_OF_MONTH, p3)
+        accionAceptar?.invoke(calendarRespuesta.time)
     }
 
     companion object {

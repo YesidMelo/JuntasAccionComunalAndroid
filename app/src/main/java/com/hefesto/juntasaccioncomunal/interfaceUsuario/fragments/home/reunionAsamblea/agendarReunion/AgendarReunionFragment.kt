@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.hefesto.juntasaccioncomunal.databinding.FragmentAgendarReunionAsambleaBinding
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.agendarReunion.helpers.HelperRecyclerViewAgendarReunionListaPuntos
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.agendarReunion.helpers.HelperSpinnerTiposReunion
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.PuntoReunionAgendarReunionAsambleaModel
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.FormatosFecha
 import com.hefesto.juntasaccioncomunal.logica.utilidades.extenciones.convertirAFormato
 import java.util.*
@@ -20,6 +22,9 @@ class AgendarReunionFragment : BaseFragment<AgendarReunionViewModel> (){
     lateinit var agendarReunionViewModel: AgendarReunionViewModel
     @Inject
     lateinit var helperSpinnerTiposReunion : HelperSpinnerTiposReunion
+
+    @Inject
+    lateinit var helperRecyclerViewAgendarReunionListaPuntos: HelperRecyclerViewAgendarReunionListaPuntos
 
     private lateinit var binding: FragmentAgendarReunionAsambleaBinding
     //endregion
@@ -40,6 +45,7 @@ class AgendarReunionFragment : BaseFragment<AgendarReunionViewModel> (){
     }
 
     //region metodos privados
+
     //region botones
     private fun configurarBotones() {
         configurarBotonAtras()
@@ -57,7 +63,7 @@ class AgendarReunionFragment : BaseFragment<AgendarReunionViewModel> (){
     private fun configurarSeleccionFecha() {
         binding.textViewAgendarReunionAsambleaFechaReunion.setOnClickListener {
             val fechaMinima = Calendar.getInstance()
-            fechaMinima.add(Calendar.DAY_OF_MONTH, 1)
+            fechaMinima.add(Calendar.DAY_OF_MONTH, helperSpinnerTiposReunion.traerSeleccionado().tipoReunion.traerMinimoDiasAgendarReunion())
             mostrarDialogoCalendario(
                 accionFechaSeleccionada = traerViewModel()::adicionarFechaSeleccionada,
                 calendarFechaMinimaSeleccion = fechaMinima
@@ -82,6 +88,8 @@ class AgendarReunionFragment : BaseFragment<AgendarReunionViewModel> (){
 
     private fun configurarBotonGuardar() {
         binding.buttonAgendarReunionAsambleaGuardar.setOnClickListener {
+            helperRecyclerViewAgendarReunionListaPuntos
+                .adicionarPunto(punto = PuntoReunionAgendarReunionAsambleaModel(tituloPunto = binding.edittextAgendarReunionAsambleaTituloPunto.text.toString()))
             traerViewModel().adicionarPuntoAReunion(adicionar = false)
         }
     }
@@ -99,6 +107,7 @@ class AgendarReunionFragment : BaseFragment<AgendarReunionViewModel> (){
         precargarFechaReunionAsamblea()
         precargarHoraReunionAsamblea()
         precargarMostrarFormularioNuevoPunto()
+        precargarReciclerView()
     }
 
     private fun precargarSpinnerTipoReunion() {
@@ -138,6 +147,12 @@ class AgendarReunionFragment : BaseFragment<AgendarReunionViewModel> (){
                 binding.imageViewAgendarReunionAsambleaAdicionarPunto.visibility = if(!it) View.VISIBLE else View.GONE
                 binding.edittextAgendarReunionAsambleaTituloPunto.setText("")
             }
+    }
+
+    private fun precargarReciclerView() {
+        helperRecyclerViewAgendarReunionListaPuntos
+            .conRecyclerView(recyclerView = binding.reciclerViewListaPuntosReunion)
+            .cargarRecycler()
     }
     //endregion
 

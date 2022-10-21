@@ -45,6 +45,7 @@ class DialogoInformativo : DaggerDialogFragment() {
 
     //region metodos privados
     private fun configurarDialogo() {
+        isCancelable = false
         configurarBotones()
         configurarLottie()
         configurarTitulo()

@@ -46,8 +46,6 @@ Xapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/entities/Base
 lapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/ui/RegistrarAfiliadoFragmentUI.kt,1\9\1920f5dbe61fbf2dc0c5cb5210ae7b88b37588ee
  
 papp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/casosUso/TraerTiposTelefonoCasoUso.kt,e\d\edd25d7ce056fe6b37e80b38cfe851fc893cb94a
-‘
-aapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/utilidades/constantes/ConstantesFecha.kt,f\c\fcbe6924bc44d514dd50d63616d26fa324086895
 š
 japp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/casosUso/RegistrarJACCasoUso.kt,0\9\0908c7f7055f8c8c369018259bd3ce4744f36f26
 ¡
@@ -244,8 +242,6 @@ wapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/lo
 bapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/activities/home/HomeActivity.kt,8\f\8f841eea8c8fb115d0dc9b0b7b8434c699386bc6
 ”
 dapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/activities/login/LoginActivity.kt,2\1\214695337257f560f92df5bf489ced2d83480c7f
-Æ
-•app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/navegacion/helpers/helpersFragments/HelperNavegacionFragmentConBeginTransaction.kt,d\3\d331c72ecd8735c0dbef9dfab5c4df5bbd8cea4e
 Ø
 §app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/detalleAfiliadoRegistroActualizacion/DetalleAfiliadoRegistroActualizacionViewModel.kt,5\5\55a9f6203e50503c8c4adcb1b56f5ed122136af3
 ¸

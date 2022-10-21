@@ -20,6 +20,7 @@ class DialogoLoading : DaggerDialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        isCancelable = false
         binding = DialogfragmentLoadingBinding.inflate(inflater)
         return binding.root
     }

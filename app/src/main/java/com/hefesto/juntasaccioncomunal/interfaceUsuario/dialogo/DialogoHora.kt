@@ -1,7 +1,6 @@
 package com.hefesto.juntasaccioncomunal.interfaceUsuario.dialogo
 
 import android.app.TimePickerDialog
-import android.util.Log
 import android.widget.TimePicker
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseActivity
 import java.util.*
@@ -18,7 +17,15 @@ class DialogoHora : TimePickerDialog.OnTimeSetListener {
 
     fun inicializar() {
         timePickerDialog = TimePickerDialog(activity, this, hora, minuto, false)
+        timePickerDialog.setCancelable(false)
+        congigurarBotonCancelar()
         timePickerDialog.show()
+    }
+
+    private fun congigurarBotonCancelar() {
+        timePickerDialog.setOnCancelListener {
+            instancia = null
+        }
     }
 
     override fun onTimeSet(p0: TimePicker?, hourOfDay: Int, minute: Int) {
