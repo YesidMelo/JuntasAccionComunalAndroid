@@ -6,12 +6,177 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textView_agendarReunionAsamblea_titulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="@string/agendar_reunion_asamblea"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout_agendarReunionAsamblea_asunto"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_agendarReunionAsamblea_titulo">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editText_agendarReunionAsamblea_asunto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/asunto"
+            tools:ignore="TextContrastCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Spinner
+        android:id="@+id/spinner_agendarReunionAsamblea_tipoReunion"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayout_agendarReunionAsamblea_asunto"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayout_agendarReunionAsamblea_asunto"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout_agendarReunionAsamblea_asunto"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/textView_agendarReunionAsemblea_tituloFechaReunion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/fecha_reunion_asamblea"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_agendarReunionAsamblea_tipoReunion" />
+
+    <TextView
+        android:id="@+id/textView_agendarReunionAsamblea_fechaReunion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:drawableRight="@android:drawable/ic_menu_my_calendar"
+        android:gravity="center"
+        android:text="@string/hint_seleccion_fecha"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_agendarReunionAsemblea_tituloFechaReunion" />
+
+    <TextView
+        android:id="@+id/textView_agendarReunionAsamblea_tituloHora"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/hora_reunion"
+        app:layout_constraintEnd_toEndOf="@+id/textView_agendarReunionAsamblea_fechaReunion"
+        app:layout_constraintStart_toStartOf="@+id/textView_agendarReunionAsamblea_fechaReunion"
+        app:layout_constraintTop_toBottomOf="@+id/textView_agendarReunionAsamblea_fechaReunion" />
+
+    <TextView
+        android:id="@+id/textView_agendarReunionAsamblea_horaReunion"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="8dp"
+        android:drawableRight="@android:drawable/ic_lock_idle_alarm"
+        android:gravity="center"
+        android:text="@string/hora_reunion"
+        app:layout_constraintEnd_toEndOf="@+id/textView_agendarReunionAsamblea_fechaReunion"
+        app:layout_constraintStart_toStartOf="@+id/textView_agendarReunionAsamblea_fechaReunion"
+        app:layout_constraintTop_toBottomOf="@+id/textView_agendarReunionAsamblea_tituloHora" />
+
+    <TextView
+        android:id="@+id/textView_agendarReunionAsamblea_tituloAdicionarPunto"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="@string/adicionar_punto_reunion_asamblea"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_agendarReunionAsamblea_adicionarPunto"
+        app:layout_constraintEnd_toStartOf="@+id/imageView_agendarReunionAsamblea_adicionarPunto"
+        app:layout_constraintStart_toStartOf="@+id/textView_agendarReunionAsamblea_horaReunion"
+        app:layout_constraintTop_toTopOf="@+id/imageView_agendarReunionAsamblea_adicionarPunto" />
+
+    <ImageView
+        android:id="@+id/imageView_agendarReunionAsamblea_adicionarPunto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView_agendarReunionAsamblea_horaReunion"
+        app:layout_constraintTop_toBottomOf="@+id/textView_agendarReunionAsamblea_horaReunion"
+        app:srcCompat="@android:drawable/stat_notify_more" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintlayout_agendarReunionAsamblea_formularioPunto"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_agendarReunionAsamblea_tituloAdicionarPunto">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textinputLayout_agendarReunionAsamblea_tituloPunto"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edittext_agendarReunionAsamblea_tituloPunto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/ingresar_punto_reunion" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/button_agendarReunionAsamblea_cancelar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@string/cancelar"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="@+id/button_agendarReunionAsamblea_guardar"
+            app:layout_constraintEnd_toStartOf="@+id/button_agendarReunionAsamblea_guardar"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/button_agendarReunionAsamblea_guardar" />
+
+        <Button
+            android:id="@+id/button_agendarReunionAsamblea_guardar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/guardar"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/button_agendarReunionAsamblea_cancelar"
+            app:layout_constraintTop_toBottomOf="@+id/textinputLayout_agendarReunionAsamblea_tituloPunto" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/reciclerView_listaPuntosReunion"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintlayout_agendarReunionAsamblea_formularioPunto" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

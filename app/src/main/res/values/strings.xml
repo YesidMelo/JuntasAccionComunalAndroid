@@ -119,4 +119,10 @@
     <string name="reunion_directiva_informativa">Reunion directiva informativa</string>
     <string name="reunion_directiva_decisoria">Reunion directiva decisoria</string>
     <string name="agendar_reunion_asamblea">Agendar reunion/asamblea</string>
+    <string name="asunto">Asunto</string>
+    <string name="fecha_reunion_asamblea">Fecha reunion asamblea</string>
+    <string name="hora_reunion">Hora de reunion</string>
+    <string name="adicionar_punto_reunion_asamblea">Adicionar punto de la reunion/asamblea:</string>
+    <string name="ingresar_punto_reunion">Ingresar punto reunion</string>
+    <string name="guardar">Guardar</string>
 </resources>
