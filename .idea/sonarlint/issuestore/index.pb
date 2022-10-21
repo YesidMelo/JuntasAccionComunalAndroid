@@ -1,8 +1,6 @@
 
 î
 dapp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/personalizado/DaggerActivityPersonalizado.kt,a\2\a2c637934733605f6fb3fb9c0e964568a9160932
-q
-Aapp/src/main/java/com/hefesto/juntasaccioncomunal/MiAplicacion.kt,6\c\6cfe98e06167927d4eda13383dda2550a9bdd152
 î
 dapp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/personalizado/DaggerFragmentPersonalizado.kt,7\2\727fbc892520c7e9c535491d0eb606ca31a95762
 }
@@ -270,8 +268,6 @@ _app/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/general/Estado
 wapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/ui/registroAfiliado/DetalleAfiliadoEnJacUI.kt,b\1\b1af908f67cd6ec7f7efe2cb322c5e25bacda44d
 ‚
 ±app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/detalleAfiliadoRegistroActualizacion/helpers/HelperSpinnerTiposDocumentoRegistroAfiliadoHome.kt,9\0\9018b6d8b9c49615bfe6877c3231c414b196f7d5
-Ö
-Uapp/src/main/java/com/hefesto/juntasaccioncomunal/di/logica/HelpersFragmentsModule.kt,5\7\577c2324966bb600ca2eb03db9f300d942875816
 º
 ãapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/casosUso/registroAfiliado/helpers/HelperValidacionDatosBasicos.kt,b\6\b69ee4d5b00b50618a6668199bd30f741fbc79d6
 è
@@ -288,8 +284,6 @@ Vapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/excepciones/LoginExcep
 âapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/repositorio/db/helpers/HelperActualizarAfiliadoEnDirectivaDB.kt,7\1\7185b79412ea397cd07fe6afaef632ef64482719
 Ä
 Papp/src/main/java/com/hefesto/juntasaccioncomunal/di/logica/DatasourcesModule.kt,2\e\2e9ffb4ee47fd6e7f76ef3c23b96e9bf198afd52
-}
-Mapp/src/main/java/com/hefesto/juntasaccioncomunal/di/logica/CasosUsoModule.kt,d\6\d65605d1bf69a2c0906de2bd3c64a108fa8ecbd1
 ö
 japp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/entities/login/Afiliado_Correo_Entity.kt,2\2\22f3f8e399e75359b376fd09fe3f3eabc259e3f7
 ì
@@ -334,8 +328,6 @@ tapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/home/registroA
 ¶app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/detalleAfiliadoRegistroActualizacion/DetalleAfiliadoRegistroActualizacionFragment.kt,e\e\eeec5f0e2f547d7d9f777a9c3933d9c3467fab50
 ‚
 ±app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/detalleAfiliadoRegistroActualizacion/subfragments/detalleEnJACAfiliado/DetalleEnJacViewModel.kt,3\0\30969a21f81c503c9dc0a5e145b5a48f31d49126
-”
-¢app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/detalleAfiliadoRegistroActualizacion/helpers/HelperSpinnerEstadosAfiliadoHome.kt,7\c\7ca51914b6f731b337f70cfcc14b05cd980a6876
 í
 bapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/entities/login/AfiliadoEntity.kt,0\5\05342e67a77dcf72c581061081237c43014c9843
 √

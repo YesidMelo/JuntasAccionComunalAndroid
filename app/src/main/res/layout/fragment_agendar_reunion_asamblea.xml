@@ -93,7 +93,7 @@
     <TextView
         android:id="@+id/textView_agendarReunionAsamblea_tituloAdicionarPunto"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/adicionar_punto_reunion_asamblea"
         app:layout_constraintBottom_toBottomOf="@+id/imageView_agendarReunionAsamblea_adicionarPunto"

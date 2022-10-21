@@ -4,6 +4,8 @@ import com.hefesto.juntasaccioncomunal.MiAplicacion
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.casosUso.CargarEscuchadorExcepcionesCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.casosUso.CargarEscuchadorExcepcionesCasoUsoImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.repositorios.BaseRepositorio
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.TraerTiposReunionCasoUso
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.TraerTiposReunionCasoUsoImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.configuracionAfiliadoEnDirectiva.ActualizarAfiliadoEnDirectivaCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.configuracionAfiliadoEnDirectiva.ActualizarAfiliadoEnDirectivaCasoUsoImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.configuracionAfiliadoEnDirectiva.TraerEstadosAfiliadoEnDirectivaCasoUso
@@ -59,6 +61,14 @@ class CasosUsoModule {
     //region home
 
     @Provides
+    fun providesCargarTiposDocumentoCasoUso() : CargarTiposDocumentoCasoUso = CargarTiposDocumentoCasoUsoImpl(context = MiAplicacion.traerInstancia()!!.applicationContext)
+
+    @Provides
+    fun providesCargarTiposTelefonoHomeCasoUso() : CargarTiposTelefonoHomeCasoUso = CargarTiposTelefonoHomeCasoUsoImpl( context = MiAplicacion.traerInstancia()!!.applicationContext)
+
+    //region afiliados
+
+    @Provides
     fun providesActualizarAfiliadoEnDirectivaCasoUso(
         homeRepositorio: HomeRepositorio
     ): ActualizarAfiliadoEnDirectivaCasoUso = ActualizarAfiliadoEnDirectivaCasoUsoImpl(
@@ -72,17 +82,7 @@ class CasosUsoModule {
     fun providesCargarEstadosAfiliacionJACHomeCasoUso() : CargarEstadosAfiliacionJACHomeCasoUso = CargarEstadosAfiliacionJACHomeCasoUsoImpl(context = MiAplicacion.traerInstancia()!!.applicationContext)
 
     @Provides
-    fun providesCargarTiposDocumentoCasoUso() : CargarTiposDocumentoCasoUso = CargarTiposDocumentoCasoUsoImpl(context = MiAplicacion.traerInstancia()!!.applicationContext)
-
-    @Provides
-    fun providesCargarTiposTelefonoHomeCasoUso() : CargarTiposTelefonoHomeCasoUso = CargarTiposTelefonoHomeCasoUsoImpl( context = MiAplicacion.traerInstancia()!!.applicationContext)
-
-    @Provides
-    fun providesRegistrarAfiliadoHomeCasoUso(
-        homeRepositorio: HomeRepositorio
-    ): RegistrarAfiliadoHomeCasoUso = RegistrarAfiliadoHomeCasoUsoImpl(
-        homeRepositorio = homeRepositorio
-    )
+    fun providesRegistrarAfiliadoHomeCasoUso( homeRepositorio: HomeRepositorio): RegistrarAfiliadoHomeCasoUso = RegistrarAfiliadoHomeCasoUsoImpl(homeRepositorio = homeRepositorio)
 
     @Provides
     fun providesTraerEstadosAfiliadoEnDirectivaCasoUso() : TraerEstadosAfiliadoEnDirectivaCasoUso
@@ -112,6 +112,13 @@ class CasosUsoModule {
     @Provides
     fun providesTraerRolesAfiliadosEnDirectivaCasoUso(): TraerRolesAfiliadosEnDirectivaCasoUso
     = TraerRolesAfiliadosEnDirectivaCasoUsoImpl(context = MiAplicacion.traerInstancia()!!.applicationContext)
+
+    //endregion
+
+    //region reuniones/asambleas
+    @Provides
+    fun providesTraerTiposReunionCasoUso(): TraerTiposReunionCasoUso = TraerTiposReunionCasoUsoImpl(context = MiAplicacion.traerInstancia()!!.applicationContext)
+    //endregion
 
 
     //endregion
