@@ -26,6 +26,7 @@ class AgendarReunionViewModel constructor(
     private val fechaReunionLiveData = MutableLiveData<Date?>()
     private val horaReunionLiveData = MutableLiveData<Date?>()
     private val adicionarPuntoLiveData = MutableLiveData<Boolean>()
+    private val reunionAgendadaLiveData = MutableLiveData<Boolean>()
     //endregion
 
     override fun traerBaseUI(): BaseUI = agendarReunionUI
@@ -59,7 +60,10 @@ class AgendarReunionViewModel constructor(
                     )
                 )
                 .ManejarErrores(escuchadorErrores = agendarReunionUI.traerEscuchadorExcepciones())
-                .collect{ terminoCargaLiveData.postValue(it) }
+                .collect{
+                    terminoCargaLiveData.postValue(it)
+                    reunionAgendadaLiveData.postValue(it?:false)
+                }
         }
     }
 
@@ -80,5 +84,7 @@ class AgendarReunionViewModel constructor(
     fun traerAdicionarPuntoLiveData() : MutableLiveData<Boolean> = adicionarPuntoLiveData
 
     fun traerTerminoCargaLiveData() : MutableLiveData<Boolean> = terminoCargaLiveData
+
+    fun traerReunionAgendadaLiveData() : MutableLiveData<Boolean> = reunionAgendadaLiveData
 
 }

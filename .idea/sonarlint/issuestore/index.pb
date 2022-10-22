@@ -462,8 +462,6 @@ Yapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/dialogo/Dial
 ùapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/reunionAsamblea/agendarReunion/adapters/ListaPuntosReunionAgendarAdapter.kt,d\1\d1e935483f602b829fc654c728a4f4cfd625d036
 •
 uapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/home/reunionAsambleas/DetalleReunionAAgendarModel.kt,9\e\9e7eea08a0367057e20fec641465ac4f0b253ce2
-ª
-äapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/reunionAsamblea/agendarReunion/AgendarReunionFragment.kt,5\b\5bbced0ceb25b591d746d72b5d8168592f9b82cf
 Æ
 ~app/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/casosUso/asambleaReunion/TraerTiposReunionCasoUso.kt,6\9\6904e7d5031845d6403dfe9e146fb42854332205
 ≥

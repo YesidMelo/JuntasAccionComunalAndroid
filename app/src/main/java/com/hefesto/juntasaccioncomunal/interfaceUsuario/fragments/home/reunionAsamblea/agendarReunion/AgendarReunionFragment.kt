@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.hefesto.juntasaccioncomunal.R
 import com.hefesto.juntasaccioncomunal.databinding.FragmentAgendarReunionAsambleaBinding
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.dialogo.DialogoInformativo
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.agendarReunion.helpers.HelperRecyclerViewAgendarReunionListaPuntos
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.agendarReunion.helpers.HelperSpinnerTiposReunion
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
@@ -103,11 +105,12 @@ class AgendarReunionFragment : BaseFragment<AgendarReunionViewModel> (){
 
     private fun configurarBotonAgendarReunion() {
         binding.buttonAgendarReunion.setOnClickListener {
-            traerViewModel().agendarReunion(
-                listaPuntosReunion = helperRecyclerViewAgendarReunionListaPuntos.traerListaPuntos(),
-                tituloReunion = binding.editTextAgendarReunionAsambleaAsunto.text.toString(),
-                tipoReunion = helperSpinnerTiposReunion.traerSeleccionado().tipoReunion
-            )
+            traerViewModel()
+                .agendarReunion(
+                    listaPuntosReunion = helperRecyclerViewAgendarReunionListaPuntos.traerListaPuntos(),
+                    tituloReunion = binding.editTextAgendarReunionAsambleaAsunto.text.toString(),
+                    tipoReunion = helperSpinnerTiposReunion.traerSeleccionado().tipoReunion
+                )
         }
     }
     //endregion
@@ -120,6 +123,7 @@ class AgendarReunionFragment : BaseFragment<AgendarReunionViewModel> (){
         precargarMostrarFormularioNuevoPunto()
         precargarReciclerView()
         precargarCargaFragment()
+        precargarReunionAgendada()
     }
 
     private fun precargarSpinnerTipoReunion() {
@@ -172,12 +176,49 @@ class AgendarReunionFragment : BaseFragment<AgendarReunionViewModel> (){
             .traerTerminoCargaLiveData()
             .observe(viewLifecycleOwner) {
                 if (!it) {
+                    deshabilitarBotones()
                     mostrarLoading()
                     return@observe
                 }
+                habilitarBotones()
                 ocultarLoading()
             }
     }
+
+    private fun habilitarBotones() {
+        binding.buttonAgendarReunion.isEnabled = true
+        binding.buttonAgendarReunionAsambleaCancelar.isEnabled = true
+        binding.buttonAgendarReunionAsambleaGuardar.isEnabled = true
+    }
+
+    private fun deshabilitarBotones() {
+        binding.buttonAgendarReunion.isEnabled = false
+        binding.buttonAgendarReunionAsambleaCancelar.isEnabled = false
+        binding.buttonAgendarReunionAsambleaGuardar.isEnabled = false
+    }
+
+    //region reunion agendada
+
+    private fun precargarReunionAgendada() {
+        traerViewModel()
+            .traerReunionAgendadaLiveData()
+            .observe(viewLifecycleOwner) {
+                if (!it) return@observe
+                deshabilitarBotones()
+                mostrarNotificacionAgendamientoExitoso()
+            }
+    }
+
+    private fun mostrarNotificacionAgendamientoExitoso() {
+        mostrarDialogo(
+            tipoDialogo = DialogoInformativo.TipoDialogo.INFORMATIVO,
+            titulo = R.string.agendar_reunion,
+            mensaje = R.string.se_agendo_exitosamente_la_reunion,
+            accionAceptar = ::navegarAtras
+        )
+    }
+
+    //endregion
     //endregion
 
     //endregion
