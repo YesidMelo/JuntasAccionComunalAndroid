@@ -125,4 +125,11 @@
     <string name="adicionar_punto_reunion_asamblea">Adicionar punto de la reunion/asamblea:</string>
     <string name="ingresar_punto_reunion">Ingresar punto reunion</string>
     <string name="guardar">Guardar</string>
+    <string name="surgio_un_problema_al_momento_de_agendar_reunion">Surgio un problema al momento de agendar la reunion. Intentalo denuevo</string>
+    <string name="asunto_reunionasamblea_vacio">No ha ingresado el asunto de la reunion/asamblea. Intentelo mas tarde.</string>
+    <string name="asunto_reunionasamblea_invalido">Asunto reunion es invalido. Intentelo de nuevo.</string>
+    <string name="no_ha_seleccionado_tipo_reunion">No ha seleccionado un tipo de reunion. Intentelo de nuevo.</string>
+    <string name="no_ha_seleccionado_fecha_reunion">No ha seleccionado la fecha de la reunion.</string>
+    <string name="no_ha_seleccionado_hora_reunion">No ha seleccionado la hora de la reunion. Intentelo de nuevo.</string>
+    <string name="no_ha_ingresado_numero_minimo_de_puntos">No ha ingresado el numero minimo de puntos de la reunion. Intentelo de nuevo.</string>
 </resources>

@@ -54,6 +54,7 @@ class AgendarReunionFragment : BaseFragment<AgendarReunionViewModel> (){
         configurarAdicionarPunto()
         configurarBotonGuardar()
         configurarBotonCancelar()
+        configurarBotonAgendarReunion()
     }
 
     private fun configurarBotonAtras() {
@@ -99,6 +100,16 @@ class AgendarReunionFragment : BaseFragment<AgendarReunionViewModel> (){
             traerViewModel().adicionarPuntoAReunion(adicionar = false)
         }
     }
+
+    private fun configurarBotonAgendarReunion() {
+        binding.buttonAgendarReunion.setOnClickListener {
+            traerViewModel().agendarReunion(
+                listaPuntosReunion = helperRecyclerViewAgendarReunionListaPuntos.traerListaPuntos(),
+                tituloReunion = binding.editTextAgendarReunionAsambleaAsunto.text.toString(),
+                tipoReunion = helperSpinnerTiposReunion.traerSeleccionado().tipoReunion
+            )
+        }
+    }
     //endregion
 
     //region precarga
@@ -108,6 +119,7 @@ class AgendarReunionFragment : BaseFragment<AgendarReunionViewModel> (){
         precargarHoraReunionAsamblea()
         precargarMostrarFormularioNuevoPunto()
         precargarReciclerView()
+        precargarCargaFragment()
     }
 
     private fun precargarSpinnerTipoReunion() {
@@ -153,6 +165,18 @@ class AgendarReunionFragment : BaseFragment<AgendarReunionViewModel> (){
         helperRecyclerViewAgendarReunionListaPuntos
             .conRecyclerView(recyclerView = binding.reciclerViewListaPuntosReunion)
             .cargarRecycler()
+    }
+
+    private fun precargarCargaFragment() {
+        traerViewModel()
+            .traerTerminoCargaLiveData()
+            .observe(viewLifecycleOwner) {
+                if (!it) {
+                    mostrarLoading()
+                    return@observe
+                }
+                ocultarLoading()
+            }
     }
     //endregion
 

@@ -6,6 +6,8 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.base.casosUso.CargarEs
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.repositorios.BaseRepositorio
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.TraerTiposReunionCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.TraerTiposReunionCasoUsoImpl
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.agendarReunion.AgendarReunionAsambleaCasoUso
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.agendarReunion.AgendarReunionAsambleaCasoUsoImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.configuracionAfiliadoEnDirectiva.ActualizarAfiliadoEnDirectivaCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.configuracionAfiliadoEnDirectiva.ActualizarAfiliadoEnDirectivaCasoUsoImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.configuracionAfiliadoEnDirectiva.TraerEstadosAfiliadoEnDirectivaCasoUso
@@ -118,8 +120,14 @@ class CasosUsoModule {
     //region reuniones/asambleas
     @Provides
     fun providesTraerTiposReunionCasoUso(): TraerTiposReunionCasoUso = TraerTiposReunionCasoUsoImpl(context = MiAplicacion.traerInstancia()!!.applicationContext)
-    //endregion
 
+    @Provides
+    fun providesAgendarReunionAsambleaCasoUso(
+        homeRepositorio: HomeRepositorio
+    ) : AgendarReunionAsambleaCasoUso = AgendarReunionAsambleaCasoUsoImpl(
+        homeRepositorio = homeRepositorio
+    )
+    //endregion
 
     //endregion
 

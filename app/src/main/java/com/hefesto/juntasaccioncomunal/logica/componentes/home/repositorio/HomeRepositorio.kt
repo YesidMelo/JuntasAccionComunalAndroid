@@ -6,18 +6,27 @@ import com.hefesto.juntasaccioncomunal.logica.modelos.home.AfiliadoEnDirectivaMo
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.AfiliadoParaModificacionDirectivaModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.DatosBasicosAfiliadoActualizarRegistrarInformacionModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.registroAfiliado.CompiladoInformacionAfiliadoParaRegistroModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.DetalleReunionAAgendarModel
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.FuncionesRolApp
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 interface HomeRepositorio {
+
+    //region afiliado
     fun actualizarAfiliadoEnDirectiva(afiliadoEnDirectivaModificadoModel: AfiliadoEnDirectivaModificadoModel) : Flow<Boolean?>
     fun registrarActualizarAfiliado(compiladoInformacionAfiliadoParaRegistroModel: CompiladoInformacionAfiliadoParaRegistroModel) :  Flow<Boolean?>
     fun traerListaAfiliadosRegistroActualizacion(): Flow<List<DatosBasicosAfiliadoActualizarRegistrarInformacionModel>?>
     fun traerFuncionalidadesRol() : MutableLiveData<List<FuncionesRolApp>>
     fun traerListaAfiliadosModificacionRolDirectiva() : MutableLiveData<List<AfiliadoParaModificacionDirectivaModel>>
+    //endregion
+
+    //region reunion asamblea
+    fun agendarReunionAsamblea(detalleReunionAAgendarModel: DetalleReunionAAgendarModel) : Flow<Boolean>
+    //endregion
 }
 
 class HomeRepositorioImpl constructor(
@@ -32,8 +41,7 @@ class HomeRepositorioImpl constructor(
     private val listaAfiliadosModificacionRolDirectivaLiveData = MutableLiveData<List<AfiliadoParaModificacionDirectivaModel>>()
     //endregion
 
-
-
+    //region afiliado
     override fun traerFuncionalidadesRol(): MutableLiveData<List<FuncionesRolApp>> {
         GlobalScope.launch {
             homeCacheDatasource
@@ -70,5 +78,12 @@ class HomeRepositorioImpl constructor(
     override fun traerListaAfiliadosRegistroActualizacion(): Flow<List<DatosBasicosAfiliadoActualizarRegistrarInformacionModel>?>
     = homeDBDatasource.traerListaAfiliadosActualizacionRegistro()
 
+    //endregion
 
+    //region reunion asamblea
+
+    override fun agendarReunionAsamblea(detalleReunionAAgendarModel: DetalleReunionAAgendarModel): Flow<Boolean>
+    = homeDBDatasource.agendarReunion(detalleReunionAAgendarModel = detalleReunionAAgendarModel)
+
+    //endregion
 }

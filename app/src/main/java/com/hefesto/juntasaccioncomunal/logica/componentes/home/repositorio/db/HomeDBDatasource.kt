@@ -4,27 +4,44 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.he
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.HelperListaAfiliadosModificacionDirectivaDB
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.HelperListaAfiliadosRegistroActualizacionDB
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.HelperRegistrarActualizarAfiliadoDB
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.HelperReunionAsambleaDB
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.AfiliadoEnDirectivaModificadoModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.AfiliadoParaModificacionDirectivaModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.DatosBasicosAfiliadoActualizarRegistrarInformacionModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.registroAfiliado.CompiladoInformacionAfiliadoParaRegistroModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.DetalleReunionAAgendarModel
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 interface HomeDBDatasource {
+    //region afiliado
     fun actualizarAfiliadoModificacionRolDirectiva(afiliadoEnDirectivaModificadoModel: AfiliadoEnDirectivaModificadoModel) : Flow<Boolean?>
     fun registrarActualizarAfiliado(compiladoInformacionAfiliadoParaRegistroModel: CompiladoInformacionAfiliadoParaRegistroModel) : Flow<Boolean?>
     fun traerListaAfiliadosActualizacionRegistro(): Flow<List<DatosBasicosAfiliadoActualizarRegistrarInformacionModel>?>
     fun traerListaAfiliadosModificacionRolDirectiva(jacId : Int) : Flow<List<AfiliadoParaModificacionDirectivaModel>>
+    //endregion
+
+    //region reuniones/asambleas
+    fun agendarReunion(detalleReunionAAgendarModel: DetalleReunionAAgendarModel) : Flow<Boolean>
+    //endregion
 }
 
 class HomeDBDatasourceImpl constructor(
+
+    //region afiliado
     @JvmField @Inject var helperActualizarAfiliadoEnDirectivaDB : HelperActualizarAfiliadoEnDirectivaDB,
     @JvmField @Inject var helperListaAfiliadosModificacionDirectivaDB : HelperListaAfiliadosModificacionDirectivaDB,
     @JvmField @Inject var helperListaAfiliadosRegistroActualizacionDB: HelperListaAfiliadosRegistroActualizacionDB,
-    @JvmField @Inject var helperRegistrarActualizarAfiliadoDB: HelperRegistrarActualizarAfiliadoDB
+    @JvmField @Inject var helperRegistrarActualizarAfiliadoDB: HelperRegistrarActualizarAfiliadoDB,
+    //endregion
+
+    //region reunion/asamblea
+    @JvmField @Inject var helperReunionAsambleaDB: HelperReunionAsambleaDB
+    //endregion
+
 ) : HomeDBDatasource {
 
+    //region afiliado
     override fun traerListaAfiliadosModificacionRolDirectiva(jacId : Int): Flow<List<AfiliadoParaModificacionDirectivaModel>>
     = helperListaAfiliadosModificacionDirectivaDB.traerListaAfiliadosModificacionRolDirectiva(jacId = jacId)
 
@@ -36,7 +53,11 @@ class HomeDBDatasourceImpl constructor(
 
     override fun traerListaAfiliadosActualizacionRegistro(): Flow<List<DatosBasicosAfiliadoActualizarRegistrarInformacionModel>?>
     = helperListaAfiliadosRegistroActualizacionDB.traerListaAfiliados()
+    //endregion
 
-
+    //region reunion / asamblea
+    override fun agendarReunion(detalleReunionAAgendarModel: DetalleReunionAAgendarModel): Flow<Boolean>
+    = helperReunionAsambleaDB.agendarReunion(detalleReunionAAgendarModel = detalleReunionAAgendarModel)
+    //endregion
 
 }

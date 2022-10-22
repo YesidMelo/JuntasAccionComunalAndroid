@@ -22,6 +22,8 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.JacDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Jac_Afiliado_Direccion_Dao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.RolAfiliacionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Telefono_Dao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.PuntosReunionDao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.ReunionAsambleaDao
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.HelperActualizarAfiliadoEnDirectivaDB
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.HelperActualizarAfiliadoEnDirectivaDBImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.HelperListaAfiliadosModificacionDirectivaDB
@@ -29,6 +31,8 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.he
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.HelperListaAfiliadosRegistroActualizacionImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.HelperRegistrarActualizarAfiliadoDB
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.HelperRegistrarActualizarAfiliadoDBImpl
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.HelperReunionAsambleaDB
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.HelperReunionAsambleaDBImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.listaAfiliadosRegistroActualizacion.HelperListaAfiliadosCargarDatosBasicos
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.listaAfiliadosRegistroActualizacion.HelperListaAfiliadosCargarDatosBasicosImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.listaAfiliadosRegistroActualizacion.HelperListaAfiliadosCargarDatosContacto
@@ -45,6 +49,8 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.he
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.registroAfiliado.HelperRegistroActualizacionDatosBasicosAfiliadoHomeImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.registroAfiliado.HelperRegistroActualizacionSeguridadAfiliadoHome
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.registroAfiliado.HelperRegistroActualizacionSeguridadAfiliadoHomeImpl
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.reunionAsamblea.HelperAgendarReunionDB
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.reunionAsamblea.HelperAgendarReunionDBImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperIniciarSesion
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperRegistroAfilado
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperRegistroJAC
@@ -77,6 +83,7 @@ class HelpersDBDatasourceModule {
 
     //region primer nivel
 
+    //region afiliado
     @Provides
     fun providesHelperActualizarAfiliadoEnDirectivaDB(
         memoriaCache: MemoriaCache,
@@ -164,11 +171,24 @@ class HelpersDBDatasourceModule {
         correoDao = correoDao,
         credencialesSesionDao = credencialesSesionDao,
     )
+    //endregion
+
+    //region reunion asamblea
+    @Provides
+    fun providesHelperAgendarReunionDB(
+        reunionAsambleaDao: ReunionAsambleaDao,
+        puntosReunionDao: PuntosReunionDao
+    ) : HelperAgendarReunionDB = HelperAgendarReunionDBImpl(
+        reunionAsambleaDao = reunionAsambleaDao,
+        puntosReunionDao = puntosReunionDao
+    )
+    //endregion
 
     //endregion
 
     //region segundo nivel
 
+    //region afiliado
     @Provides
     fun providesHelperListaAfiliadosRegistroActualizacion(
         helperListaAfiliadosCargarDatosBasicos: HelperListaAfiliadosCargarDatosBasicos,
@@ -194,6 +214,16 @@ class HelpersDBDatasourceModule {
         helperRegistroActualizacionDatosBasicosAfiliadoHome = helperRegistroActualizacionDatosBasicosAfiliadoHome,
         helperRegistroActualizacionSeguridadAfiliadoHome = helperRegistroActualizacionSeguridadAfiliadoHome
     )
+    //endregion
+
+    //region reunion / asamblea
+    @Provides
+    fun providesHelperReunionAsambleaDB(
+        helperAgendarReunionDB: HelperAgendarReunionDB
+    ) : HelperReunionAsambleaDB = HelperReunionAsambleaDBImpl(
+        helperAgendarReunionDB = helperAgendarReunionDB
+    )
+    //endregion
     //endregion
 
     //endregion
