@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.hefesto.juntasaccioncomunal.databinding.FragmentListareunionesCreacionactaBinding
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.CrearActaFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.listaReunionesCreacionActa.helpers.HelperRecyclerViewListaReunionesCrearActa
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.crearActa.ReunionAsambleaCreacionActaModel
 import javax.inject.Inject
 
 class ListaReunionesCreacionActaFragment :  BaseFragment<ListaReunionesCreacionActaViewModel>() {
@@ -80,10 +82,16 @@ class ListaReunionesCreacionActaFragment :  BaseFragment<ListaReunionesCreacionA
             .observe(viewLifecycleOwner) {
                 helperRecyclerViewListaReunionesCrearActa
                     .conRecycler(recyclerView = binding.recyclerviewListaReunionesAgendadas)
-                    .conEscuchadorReunionSeleccionada {  }
+                    .conEscuchadorReunionSeleccionada(::navegarACreacionActa)
                     .conListaReuniones(listaReuniones = it)
                     .llenarRecycler()
             }
+    }
+
+    private fun navegarACreacionActa(reunion: ReunionAsambleaCreacionActaModel) {
+        val bundle = Bundle()
+        bundle.putSerializable(CrearActaFragment.REUNION_PENDIENTE_ACTA, reunion)
+        navegacionAplicacion.navegarBeginTransaction(a = NodosNavegacionFragments.CREAR_ACTA_REUNION_ASAMBLEA, bundle = bundle)
     }
 
     //endregion

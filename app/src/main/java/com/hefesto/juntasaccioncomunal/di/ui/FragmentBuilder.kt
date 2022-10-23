@@ -12,6 +12,7 @@ import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.listaAfil
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.panelControl.PanelControlFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.registrarAfiliado.RegistrarAfiliadoHomeFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.agendarReunion.AgendarReunionFragment
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.CrearActaFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.listaReunionesCreacionActa.ListaReunionesCreacionActaFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.login.iniciarSesion.IniciarSesionFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.login.registrarAfiliado.RegistrarAfiliadoFragment
@@ -56,7 +57,10 @@ abstract class FragmentBuilder {
     abstract fun providesAgendarReunionFragment() : AgendarReunionFragment
 
     @ContributesAndroidInjector(modules = [HomeActivityModule::class])
-    abstract fun providesCrearActaReunionFragment() : ListaReunionesCreacionActaFragment
+    abstract fun providesListaReunionesCreacionActaFragment() : ListaReunionesCreacionActaFragment
+
+    @ContributesAndroidInjector(modules = [HomeActivityModule::class])
+    abstract fun providesCrearActaFragment() : CrearActaFragment
 
     //endregion
 

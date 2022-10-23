@@ -137,4 +137,10 @@
     <string name="hint_hora">HH:mm</string>
     <string name="tipo_reunion">Tipo reunion</string>
     <string name="reuniones_sin_actas">La siguiente lista de reuniones no ha generado las actas asociadas a estas. Da click en una para empezar el proceso de creacion de actas</string>
+    <string name="lista_reunion_creacion_acta">Lista reuniones que no tienen actas</string>
+    <string name="hora_inicio">Hora inicio</string>
+    <string name="hora_finalizacion">Hora finalizacion</string>
+    <string name="complementar_informacion_acta">Completar informacion acta</string>
+    <string name="puntos_reunion">Puntos reunion</string>
+    <string name="asistencia_reunion">Asistencia reunion</string>
 </resources>

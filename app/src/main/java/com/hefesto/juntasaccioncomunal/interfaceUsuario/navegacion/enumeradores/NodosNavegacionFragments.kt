@@ -8,6 +8,7 @@ import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.listaAfil
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.panelControl.PanelControlFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.registrarAfiliado.RegistrarAfiliadoHomeFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.agendarReunion.AgendarReunionFragment
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.CrearActaFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.listaReunionesCreacionActa.ListaReunionesCreacionActaFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.login.iniciarSesion.IniciarSesionFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.login.registrarAfiliado.RegistrarAfiliadoFragment
@@ -40,7 +41,8 @@ enum class NodosNavegacionFragments constructor(
 
     //region reuniones asambleas
     AGENDAR_REUNION_ASAMBLEA(titulo = R.string.agendar_reunion_asamblea, fragment = AgendarReunionFragment::class.java, identificador = "agendar reunion asamblea"),
-    CREAR_ACTA_REUNION_ASAMBLEA(titulo = R.string.crear_acta_reunion, fragment = ListaReunionesCreacionActaFragment::class.java, identificador = "crear acta reunion asamblea"),
+    CREAR_ACTA_REUNION_ASAMBLEA(titulo = R.string.crear_acta_reunion, fragment = CrearActaFragment::class.java, identificador = "crear acta reunion asamblea"),
+    LISTA_REUNIONES_SIN_ACTAS(titulo = R.string.lista_reunion_creacion_acta, fragment = ListaReunionesCreacionActaFragment::class.java, identificador = "lista crear acta reunion")
     //endregion
 
     //endregion

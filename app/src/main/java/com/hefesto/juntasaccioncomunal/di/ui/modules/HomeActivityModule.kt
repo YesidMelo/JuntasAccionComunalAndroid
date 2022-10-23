@@ -11,6 +11,7 @@ import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.listaAfil
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.panelControl.PanelControlFragmentViewModel
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.registrarAfiliado.RegistrarAfiliadoHomeViewModel
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.agendarReunion.AgendarReunionViewModel
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.CrearActaViewModel
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.listaReunionesCreacionActa.ListaReunionesCreacionActaViewModel
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.casosUso.CargarEscuchadorExcepcionesCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.ConfiguracionAfiliadoEnDirectivaUI
@@ -18,6 +19,7 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.HomeActivityUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.ListaAfiliadosActualizacionDirectivaUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.PanelControlFragmenUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.asambleaReunion.AgendarReunionUI
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.asambleaReunion.CrearActaUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.asambleaReunion.ListaReunionesCreacionActaUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.registroAfiliado.ContactoAfiliadoUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.registroAfiliado.DatosBasicosAfiliadoUI
@@ -104,6 +106,13 @@ class HomeActivityModule {
         listaReunionesCreacionActaUI: ListaReunionesCreacionActaUI
     ) : ListaReunionesCreacionActaViewModel = ListaReunionesCreacionActaViewModel(
         listaReunionesCreacionActaUI = listaReunionesCreacionActaUI
+    )
+
+    @Provides
+    fun providesCrearActaViewModel(
+        crearActaUI : CrearActaUI
+    ) : CrearActaViewModel = CrearActaViewModel(
+        crearActaUI = crearActaUI
     )
 
     //endregion

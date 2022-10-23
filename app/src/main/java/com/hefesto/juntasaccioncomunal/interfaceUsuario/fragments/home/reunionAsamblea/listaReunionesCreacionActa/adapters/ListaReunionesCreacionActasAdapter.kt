@@ -68,7 +68,6 @@ class ListaReunionesCreacionActasAdapter constructor(
             tipoReunion.setText(detalle.tipoReunion!!.traerStringRes())
         }
 
-
         //endregion
     }
 }

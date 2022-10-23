@@ -12,5 +12,7 @@ data class ReunionAsambleaEntity(
     var tipoReunionId: Int?= null,
     var fechaRegistro: String?= null,
     var fechaYHoraProgramacionReunion: String?= null,
-    var creoActa : Boolean = false
+    var creoActa : Boolean = false,
+    var horaInicio: String? = null,
+    var horaFin:String? = null
 ) : BaseEntity()
