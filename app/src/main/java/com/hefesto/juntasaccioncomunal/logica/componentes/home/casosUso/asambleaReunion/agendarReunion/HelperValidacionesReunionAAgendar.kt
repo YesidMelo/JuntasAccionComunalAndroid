@@ -7,7 +7,7 @@ import com.hefesto.juntasaccioncomunal.logica.excepciones.NoHaSeleccionadoLaFech
 import com.hefesto.juntasaccioncomunal.logica.excepciones.NoHaSeleccionadoLaHoraDeLaReunionExcepcion
 import com.hefesto.juntasaccioncomunal.logica.excepciones.NoHaSeleccionadoTipoReunionExcepcion
 import com.hefesto.juntasaccioncomunal.logica.excepciones.NoTieneElMinimoDePuntosDeUnaAsambleaExcepcion
-import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.DetalleReunionAAgendarModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.agendarReunion.DetalleReunionAAgendarModel
 
 class HelperValidacionesReunionAAgendar constructor(
     private var detalleReunionAAgendarModel: DetalleReunionAAgendarModel?

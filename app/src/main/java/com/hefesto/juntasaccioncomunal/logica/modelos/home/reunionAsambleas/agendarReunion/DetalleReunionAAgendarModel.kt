@@ -1,4 +1,4 @@
-package com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas
+package com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.agendarReunion
 
 import com.hefesto.juntasaccioncomunal.logica.modelos.BaseModel
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.TipoReunion

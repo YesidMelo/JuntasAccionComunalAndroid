@@ -304,8 +304,6 @@ tapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/home/registroA
 °app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/detalleAfiliadoRegistroActualizacion/helpers/HelperSpinnerTiposTelefonoRegistroAfiliadoHome.kt,9\6\96d6003d1a77a53e3095478973a9069b5ec69e56
 ä
 ³app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/detalleAfiliadoRegistroActualizacion/subfragments/ConfigurarInformacionParaCrearModeloRegistro.kt,b\0\b0792489ba79bde0961536cece71d06dcc2ce2f1
-×
-¦app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/detalleAfiliadoRegistroActualizacion/DetalleAfiliadoRegistroActualizacionFragment.kt,e\e\eeec5f0e2f547d7d9f777a9c3933d9c3467fab50
 â
 ±app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/detalleAfiliadoRegistroActualizacion/subfragments/detalleEnJACAfiliado/DetalleEnJacViewModel.kt,3\0\30969a21f81c503c9dc0a5e145b5a48f31d49126
 ’

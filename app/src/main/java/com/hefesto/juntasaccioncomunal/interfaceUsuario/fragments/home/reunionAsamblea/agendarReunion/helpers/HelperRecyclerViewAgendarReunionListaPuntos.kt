@@ -3,7 +3,7 @@ package com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionA
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.agendarReunion.adapters.ListaPuntosReunionAgendarAdapter
-import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.PuntoReunionAgendarReunionAsambleaModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.agendarReunion.PuntoReunionAgendarReunionAsambleaModel
 
 class HelperRecyclerViewAgendarReunionListaPuntos {
     //region variables

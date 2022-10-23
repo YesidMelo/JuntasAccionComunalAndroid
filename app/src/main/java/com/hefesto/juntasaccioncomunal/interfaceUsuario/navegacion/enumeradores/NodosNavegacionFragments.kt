@@ -2,14 +2,13 @@ package com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores
 
 import androidx.annotation.StringRes
 import com.hefesto.juntasaccioncomunal.R
-import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.configuracionAfiliadoEnDirectiva.ConfiguracionAfiliadoEnDirectivaFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.DetalleAfiliadoRegistroActualizacionFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.listaAfiliadosModificacionDirectivas.ListaAfiliadosModificacionDirectivasFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.panelControl.PanelControlFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.registrarAfiliado.RegistrarAfiliadoHomeFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.agendarReunion.AgendarReunionFragment
-import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarActa.CrearActaReunionFragment
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.listaReunionesCreacionActa.ListaReunionesCreacionActaFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.login.iniciarSesion.IniciarSesionFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.login.registrarAfiliado.RegistrarAfiliadoFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.login.registrarJAC.RegistrarJACFragment
@@ -41,7 +40,7 @@ enum class NodosNavegacionFragments constructor(
 
     //region reuniones asambleas
     AGENDAR_REUNION_ASAMBLEA(titulo = R.string.agendar_reunion_asamblea, fragment = AgendarReunionFragment::class.java, identificador = "agendar reunion asamblea"),
-    CREAR_ACTA_REUNION_ASAMBLEA(titulo = R.string.crear_acta_reunion, fragment = CrearActaReunionFragment::class.java, identificador = "crear acta reunion asamblea"),
+    CREAR_ACTA_REUNION_ASAMBLEA(titulo = R.string.crear_acta_reunion, fragment = ListaReunionesCreacionActaFragment::class.java, identificador = "crear acta reunion asamblea"),
     //endregion
 
     //endregion

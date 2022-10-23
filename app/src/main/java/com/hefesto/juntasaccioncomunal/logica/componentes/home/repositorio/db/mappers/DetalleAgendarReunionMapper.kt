@@ -2,8 +2,8 @@ package com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.m
 
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.reunionAsamblea.PuntosReunionEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.reunionAsamblea.ReunionAsambleaEntity
-import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.DetalleReunionAAgendarModel
-import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.PuntoReunionAgendarReunionAsambleaModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.agendarReunion.DetalleReunionAAgendarModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.agendarReunion.PuntoReunionAgendarReunionAsambleaModel
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.FormatosFecha
 import com.hefesto.juntasaccioncomunal.logica.utilidades.extenciones.convertirADate
 import com.hefesto.juntasaccioncomunal.logica.utilidades.extenciones.convertirAFormato

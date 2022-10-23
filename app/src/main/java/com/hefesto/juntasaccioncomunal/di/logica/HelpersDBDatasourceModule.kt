@@ -51,6 +51,8 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.he
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.registroAfiliado.HelperRegistroActualizacionSeguridadAfiliadoHomeImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.reunionAsamblea.HelperAgendarReunionDB
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.reunionAsamblea.HelperAgendarReunionDBImpl
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.reunionAsamblea.HelperListaReunionesParaCrearActasDB
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.reunionAsamblea.HelperListaReunionesParaCrearActasDBImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperIniciarSesion
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperRegistroAfilado
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperRegistroJAC
@@ -182,6 +184,14 @@ class HelpersDBDatasourceModule {
         reunionAsambleaDao = reunionAsambleaDao,
         puntosReunionDao = puntosReunionDao
     )
+
+    @Provides
+    fun providesHelperListaReunionesParaCrearActasDB(
+
+    ) : HelperListaReunionesParaCrearActasDB = HelperListaReunionesParaCrearActasDBImpl(
+
+    )
+
     //endregion
 
     //endregion
@@ -219,9 +229,11 @@ class HelpersDBDatasourceModule {
     //region reunion / asamblea
     @Provides
     fun providesHelperReunionAsambleaDB(
-        helperAgendarReunionDB: HelperAgendarReunionDB
+        helperAgendarReunionDB: HelperAgendarReunionDB,
+        helperListaReunionesParaCrearActasDB: HelperListaReunionesParaCrearActasDB
     ) : HelperReunionAsambleaDB = HelperReunionAsambleaDBImpl(
-        helperAgendarReunionDB = helperAgendarReunionDB
+        helperAgendarReunionDB = helperAgendarReunionDB,
+        helperListaReunionesParaCrearActasDB = helperListaReunionesParaCrearActasDB
     )
     //endregion
     //endregion

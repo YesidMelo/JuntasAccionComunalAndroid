@@ -6,11 +6,11 @@ import com.hefesto.juntasaccioncomunal.logica.modelos.home.AfiliadoEnDirectivaMo
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.AfiliadoParaModificacionDirectivaModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.DatosBasicosAfiliadoActualizarRegistrarInformacionModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.registroAfiliado.CompiladoInformacionAfiliadoParaRegistroModel
-import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.DetalleReunionAAgendarModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.agendarReunion.DetalleReunionAAgendarModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.crearActa.ReunionAsambleaCreacionActaModel
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.FuncionesRolApp
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -26,6 +26,7 @@ interface HomeRepositorio {
 
     //region reunion asamblea
     fun agendarReunionAsamblea(detalleReunionAAgendarModel: DetalleReunionAAgendarModel) : Flow<Boolean>
+    fun traerListaReunionesParaCrearActa() : Flow<List<ReunionAsambleaCreacionActaModel>>
     //endregion
 }
 
@@ -84,6 +85,9 @@ class HomeRepositorioImpl constructor(
 
     override fun agendarReunionAsamblea(detalleReunionAAgendarModel: DetalleReunionAAgendarModel): Flow<Boolean>
     = homeDBDatasource.agendarReunion(detalleReunionAAgendarModel = detalleReunionAAgendarModel)
+
+    override fun traerListaReunionesParaCrearActa(): Flow<List<ReunionAsambleaCreacionActaModel>>
+    = homeDBDatasource.traerListaReunionesParaCrearActa()
 
     //endregion
 }

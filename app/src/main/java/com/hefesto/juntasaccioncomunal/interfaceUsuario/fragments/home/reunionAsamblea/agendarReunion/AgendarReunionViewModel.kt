@@ -4,14 +4,12 @@ import androidx.lifecycle.MutableLiveData
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseViewModel
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.ui.BaseUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.asambleaReunion.AgendarReunionUI
-import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.DetalleReunionAAgendarModel
-import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.PuntoReunionAgendarReunionAsambleaModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.agendarReunion.DetalleReunionAAgendarModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.agendarReunion.PuntoReunionAgendarReunionAsambleaModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.TipoReunionModel
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.TipoReunion
 import com.hefesto.juntasaccioncomunal.logica.utilidades.extenciones.ManejarErrores
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.util.*
 import javax.inject.Inject

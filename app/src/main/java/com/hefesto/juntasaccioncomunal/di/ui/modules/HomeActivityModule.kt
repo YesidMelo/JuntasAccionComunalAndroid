@@ -11,14 +11,14 @@ import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.listaAfil
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.panelControl.PanelControlFragmentViewModel
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.registrarAfiliado.RegistrarAfiliadoHomeViewModel
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.agendarReunion.AgendarReunionViewModel
-import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarActa.CrearActaReunionViewModel
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.listaReunionesCreacionActa.ListaReunionesCreacionActaViewModel
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.casosUso.CargarEscuchadorExcepcionesCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.ConfiguracionAfiliadoEnDirectivaUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.HomeActivityUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.ListaAfiliadosActualizacionDirectivaUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.PanelControlFragmenUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.asambleaReunion.AgendarReunionUI
-import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.asambleaReunion.CrearActaReunionUI
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.asambleaReunion.ListaReunionesCreacionActaUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.registroAfiliado.ContactoAfiliadoUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.registroAfiliado.DatosBasicosAfiliadoUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.registroAfiliado.DetalleAfiliadoEnJacUI
@@ -101,9 +101,9 @@ class HomeActivityModule {
 
     @Provides
     fun providesCrearActaReunionViewModel(
-        crearActaReunionUI: CrearActaReunionUI
-    ) : CrearActaReunionViewModel = CrearActaReunionViewModel(
-        crearActaReunionUI = crearActaReunionUI
+        listaReunionesCreacionActaUI: ListaReunionesCreacionActaUI
+    ) : ListaReunionesCreacionActaViewModel = ListaReunionesCreacionActaViewModel(
+        listaReunionesCreacionActaUI = listaReunionesCreacionActaUI
     )
 
     //endregion

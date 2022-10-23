@@ -3,6 +3,7 @@ package com.hefesto.juntasaccioncomunal.di.logica
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.casosUso.CargarEscuchadorExcepcionesCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.TraerTiposReunionCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.agendarReunion.AgendarReunionAsambleaCasoUso
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.crearActa.TraerListaReunionesParaCreacionActaCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.configuracionAfiliadoEnDirectiva.ActualizarAfiliadoEnDirectivaCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.configuracionAfiliadoEnDirectiva.TraerEstadosAfiliadoEnDirectivaCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.configuracionAfiliadoEnDirectiva.TraerRolesAfiliadosEnDirectivaCasoUso
@@ -19,7 +20,7 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.HomeActivityUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.ListaAfiliadosActualizacionDirectivaUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.PanelControlFragmenUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.asambleaReunion.AgendarReunionUI
-import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.asambleaReunion.CrearActaReunionUI
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.asambleaReunion.ListaReunionesCreacionActaUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.registroAfiliado.ContactoAfiliadoUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.registroAfiliado.DatosBasicosAfiliadoUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.registroAfiliado.DetalleAfiliadoEnJacUI
@@ -114,9 +115,11 @@ class UiModule {
 
     @Provides
     fun providesCrearActaReunionUI(
-        cargarEscuchadorExcepcionesCasoUso: CargarEscuchadorExcepcionesCasoUso
-    ) : CrearActaReunionUI = CrearActaReunionUI(
-        escuchadorExcepcionesCasoUso = cargarEscuchadorExcepcionesCasoUso
+        cargarEscuchadorExcepcionesCasoUso: CargarEscuchadorExcepcionesCasoUso,
+        traerListaReunionesParaCreacionActaCasoUso : TraerListaReunionesParaCreacionActaCasoUso
+    ) : ListaReunionesCreacionActaUI = ListaReunionesCreacionActaUI(
+        escuchadorExcepcionesCasoUso = cargarEscuchadorExcepcionesCasoUso,
+        traerListaReunionesParaCreacionActaCasoUso = traerListaReunionesParaCreacionActaCasoUso
     )
 
     //endregion

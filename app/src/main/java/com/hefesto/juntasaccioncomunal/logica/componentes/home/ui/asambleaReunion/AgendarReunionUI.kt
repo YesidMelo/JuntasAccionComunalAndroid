@@ -4,8 +4,7 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.base.casosUso.CargarEs
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.ui.BaseUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.TraerTiposReunionCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.agendarReunion.AgendarReunionAsambleaCasoUso
-import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.DetalleReunionAAgendarModel
-import kotlinx.coroutines.flow.Flow
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.agendarReunion.DetalleReunionAAgendarModel
 import javax.inject.Inject
 
 class AgendarReunionUI constructor(

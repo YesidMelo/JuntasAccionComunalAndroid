@@ -11,5 +11,6 @@ data class ReunionAsambleaEntity(
     var asuntoReunion: String?= null,
     var tipoReunionId: Int?= null,
     var fechaRegistro: String?= null,
-    var fechaYHoraProgramacionReunion: String?= null
+    var fechaYHoraProgramacionReunion: String?= null,
+    var creoActa : Boolean = false
 ) : BaseEntity()

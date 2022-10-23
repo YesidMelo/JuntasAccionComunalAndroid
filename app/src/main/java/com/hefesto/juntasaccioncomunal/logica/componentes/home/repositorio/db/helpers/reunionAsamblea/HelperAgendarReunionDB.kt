@@ -4,7 +4,7 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.Punt
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.ReunionAsambleaDao
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.mappers.convertirAReunionAsambleaEntity
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.mappers.traerListaPuntosReunion
-import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.DetalleReunionAAgendarModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.agendarReunion.DetalleReunionAAgendarModel
 import javax.inject.Inject
 
 interface HelperAgendarReunionDB {
