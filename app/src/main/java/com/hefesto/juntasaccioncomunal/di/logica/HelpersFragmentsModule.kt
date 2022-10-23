@@ -12,6 +12,7 @@ import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.panelCont
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.registrarAfiliado.helper.HelperRecyclerViewListaAfiliadosRegistrarActualizar
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.agendarReunion.helpers.HelperRecyclerViewAgendarReunionListaPuntos
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.agendarReunion.helpers.HelperSpinnerTiposReunion
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.listaReunionesCreacionActa.helpers.HelperRecyclerViewListaReunionesCrearActa
 import dagger.Module
 import dagger.Provides
 
@@ -59,6 +60,9 @@ class HelpersFragmentsModule {
 
     @Provides
     fun providesHelperSpinnerTiposReunion(): HelperSpinnerTiposReunion = HelperSpinnerTiposReunion()
+
+    @Provides
+    fun providesHelperRecyclerViewListaReunionesCrearActa() : HelperRecyclerViewListaReunionesCrearActa = HelperRecyclerViewListaReunionesCrearActa()
     //endregion
 
     //endregion

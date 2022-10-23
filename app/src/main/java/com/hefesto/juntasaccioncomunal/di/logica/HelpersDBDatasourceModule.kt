@@ -187,9 +187,11 @@ class HelpersDBDatasourceModule {
 
     @Provides
     fun providesHelperListaReunionesParaCrearActasDB(
-
+        reunionAsambleaDao: ReunionAsambleaDao,
+        puntosReunionDao: PuntosReunionDao
     ) : HelperListaReunionesParaCrearActasDB = HelperListaReunionesParaCrearActasDBImpl(
-
+        reunionAsambleaDao = reunionAsambleaDao,
+        puntosReunionDao = puntosReunionDao
     )
 
     //endregion

@@ -134,4 +134,7 @@
     <string name="no_ha_ingresado_numero_minimo_de_puntos">No ha ingresado el numero minimo de puntos de la reunion. Intentelo de nuevo.</string>
     <string name="se_agendo_exitosamente_la_reunion">Se agendo exitosamente la reunion/asamblea.</string>
     <string name="crear_acta_reunion">Crear acta de la reunion</string>
+    <string name="hint_hora">HH:mm</string>
+    <string name="tipo_reunion">Tipo reunion</string>
+    <string name="reuniones_sin_actas">La siguiente lista de reuniones no ha generado las actas asociadas a estas. Da click en una para empezar el proceso de creacion de actas</string>
 </resources>

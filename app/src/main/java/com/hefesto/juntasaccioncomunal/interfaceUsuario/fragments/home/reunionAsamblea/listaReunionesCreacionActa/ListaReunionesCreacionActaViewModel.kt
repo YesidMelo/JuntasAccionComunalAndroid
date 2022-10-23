@@ -7,7 +7,6 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.asambleaReunio
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.crearActa.ReunionAsambleaCreacionActaModel
 import com.hefesto.juntasaccioncomunal.logica.utilidades.extenciones.ManejarErrores
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.hefesto.juntasaccioncomunal.databinding.FragmentListareunionesCreacionactaBinding
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.listaReunionesCreacionActa.helpers.HelperRecyclerViewListaReunionesCrearActa
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
 import javax.inject.Inject
 
@@ -14,6 +15,9 @@ class ListaReunionesCreacionActaFragment :  BaseFragment<ListaReunionesCreacionA
     //region variables
     @Inject
     lateinit var listaReunionesCreacionActaViewModel : ListaReunionesCreacionActaViewModel
+    @Inject
+    lateinit var helperRecyclerViewListaReunionesCrearActa: HelperRecyclerViewListaReunionesCrearActa
+
     private lateinit var binding : FragmentListareunionesCreacionactaBinding
     //endregion
 
@@ -74,7 +78,11 @@ class ListaReunionesCreacionActaFragment :  BaseFragment<ListaReunionesCreacionA
         traerViewModel()
             .traerListaReunionesCrearActaLiveData()
             .observe(viewLifecycleOwner) {
-
+                helperRecyclerViewListaReunionesCrearActa
+                    .conRecycler(recyclerView = binding.recyclerviewListaReunionesAgendadas)
+                    .conEscuchadorReunionSeleccionada {  }
+                    .conListaReuniones(listaReuniones = it)
+                    .llenarRecycler()
             }
     }
 
