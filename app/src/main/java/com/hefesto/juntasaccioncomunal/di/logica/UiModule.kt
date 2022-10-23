@@ -19,6 +19,7 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.HomeActivityUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.ListaAfiliadosActualizacionDirectivaUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.PanelControlFragmenUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.asambleaReunion.AgendarReunionUI
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.asambleaReunion.CrearActaReunionUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.registroAfiliado.ContactoAfiliadoUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.registroAfiliado.DatosBasicosAfiliadoUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.registroAfiliado.DetalleAfiliadoEnJacUI
@@ -109,6 +110,13 @@ class UiModule {
         cargarEscuchadorExcepciones = cargarEscuchadorExcepcionesCasoUso,
         traerTiposReunionCasoUso = traerTiposReunionCasoUso,
         agendarReunionAsambleaCasoUso = agendarReunionAsambleaCasoUso
+    )
+
+    @Provides
+    fun providesCrearActaReunionUI(
+        cargarEscuchadorExcepcionesCasoUso: CargarEscuchadorExcepcionesCasoUso
+    ) : CrearActaReunionUI = CrearActaReunionUI(
+        escuchadorExcepcionesCasoUso = cargarEscuchadorExcepcionesCasoUso
     )
 
     //endregion

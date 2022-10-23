@@ -380,8 +380,6 @@ yapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/views/home/Af
 ñapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/casosUso/registroAfiliado/TraerListaAfiliadosRegistroActualizacionCasoUso.kt,2\9\2941a5a729570cfee9cc88b11558311063c379e7
 ¿
 èapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/repositorio/db/helpers/HelperListaAfiliadosRegistroActualizacionDB.kt,1\2\124b07387811e4ad833ffe39ed288c0b7ad32ced
-ì
-capp/src/main/java/com/hefesto/juntasaccioncomunal/logica/utilidades/enumeradores/FuncionesRolApp.kt,3\d\3d1c4bdb471182f49b202fa7266fb8b3b97f473b
 ó
 gapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/entities/general/TipoReunionEntity.kt,6\7\679f12e34550438c264ad0397592e276035b17b7
 £
@@ -404,18 +402,10 @@ japp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/reunionA
 àapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/splash/repositorios/helpers/cargarTipos/HelperCargarTiposReunion.kt,e\1\e1c19d50b230120e4b53abc00466b7a7f7009df4
 ˆ
 ≈app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/detalleAfiliadoRegistroActualizacion/subfragments/contactoAfiliado/ContactoAfiliadoRegistroActualizacionFragment.kt,4\0\409c41e818836e1a6d8d5db2aed6266e7e1cd1ec
-¶
-vapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/navegacion/enumeradores/NodosNavegacionFragments.kt,2\1\21d558508253f131de5c339956e648c54f2d9b72
-z
-Japp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/FragmentBuilder.kt,9\d\9dd8a9507b1cc239a8460037eecd573f5a0d74af
-¶
-vapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/panelControl/PanelControlFragment.kt,0\2\025bf3b88d2a103136ca77633b85fdd92ca72cbe
 µ
 Ñapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/registrarAfiliado/RegistrarAfiliadoHomeFragment.kt,b\a\baeb8956d261b8d274e2ce61be620182319e1dd4
 ”
 ¢app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/detalleAfiliadoRegistroActualizacion/helpers/HelperSpinnerEstadosAfiliadoHome.kt,7\c\7ca51914b6f731b337f70cfcc14b05cd980a6876
-Ö
-Uapp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/modules/HomeActivityModule.kt,0\4\04233868c3a8f8ed53214b06b1ab6c14b736d69f
 q
 Aapp/src/main/java/com/hefesto/juntasaccioncomunal/MiAplicacion.kt,6\c\6cfe98e06167927d4eda13383dda2550a9bdd152
 Ö
