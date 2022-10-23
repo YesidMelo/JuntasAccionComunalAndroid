@@ -6,4 +6,5 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.reunionAsamblea.
 
 @Dao
 interface ReunionAsambleaDao : BaseDao<ReunionAsambleaEntity> {
+
 }

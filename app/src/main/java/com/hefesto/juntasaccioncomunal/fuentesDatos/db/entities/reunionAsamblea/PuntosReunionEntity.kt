@@ -9,8 +9,8 @@ data class PuntosReunionEntity(
     @PrimaryKey(autoGenerate = true)
     var puntoReunionId: Int? = null,
     var reunionId: Int? = null,
-    var tituloPunto: Int? = null,
-    var detallePunto: Int? = null,
+    var tituloPunto: String? = null,
+    var detallePunto: String? = null,
     var votosAFavor: Int? = null,
     var votosEnContra: Int? = null
 ) : BaseEntity()

@@ -7,7 +7,7 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.BaseEntity
 interface BaseDao<T : BaseEntity> {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertarElemento(elemento: T)
+    fun insertarElemento(elemento: T) : Long
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertarElementos(elementos: List<T>)

@@ -34,6 +34,7 @@ abstract class BaseActivity<T: BaseViewModel> : BaseActivityDagger<T>(), Lifecyc
     private var lifecycleRegistry: LifecycleRegistry? = null
 
     var escuchadorAccionBotonAtras : (()->Unit)? = null
+    private var escuchadorAccionAceptarFallo : (()->Unit)? = null
     //endregion
 
     //region ciclo de vida normal
@@ -74,6 +75,7 @@ abstract class BaseActivity<T: BaseViewModel> : BaseActivityDagger<T>(), Lifecyc
 
     fun funcionSegura(funcion : (()->Unit), aceptarFallo: (()->Unit)? = null) {
         try {
+            escuchadorAccionAceptarFallo = aceptarFallo
             funcion.invoke()
         } catch (e: LogicaExcepcion) {
             mostrarDialogo(
@@ -159,7 +161,11 @@ abstract class BaseActivity<T: BaseViewModel> : BaseActivityDagger<T>(), Lifecyc
                     tipoDialogo = if (it.tipoExcepcion == TiposExcepciones.GENERADO_USUARIO) DialogoInformativo.TipoDialogo.ERROR_USUARIO else DialogoInformativo.TipoDialogo.ERROR_SISTEMA,
                     titulo = it.stringResTitulo,
                     mensaje = it.stringResMensaje,
-                    accionAceptar = { ocultarProgress() }
+                    accionAceptar = {
+                        escuchadorAccionAceptarFallo?.invoke()
+                        escuchadorAccionAceptarFallo = null
+                        ocultarProgress()
+                    }
                 )
             }
     }

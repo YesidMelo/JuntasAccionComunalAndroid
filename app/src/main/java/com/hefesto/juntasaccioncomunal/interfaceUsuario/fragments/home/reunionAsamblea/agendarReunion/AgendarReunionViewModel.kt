@@ -49,15 +49,17 @@ class AgendarReunionViewModel constructor(
         listaPuntosReunion : List<PuntoReunionAgendarReunionAsambleaModel>
     ) {
         GlobalScope.launch {
+            val detalleReunion = DetalleReunionAAgendarModel(
+                tituloReunion = tituloReunion,
+                tipoReunion = tipoReunion,
+                fechaReunion = fechaReunionLiveData.value,
+                horaReunion = horaReunionLiveData.value,
+                puntosReunion = listaPuntosReunion
+            )
+
             agendarReunionUI
                 .agendarReunion(
-                    detalleReunionAAgendarModel = DetalleReunionAAgendarModel(
-                        tituloReunion = tituloReunion,
-                        tipoReunion = tipoReunion,
-                        fechaReunion = fechaReunionLiveData.value,
-                        horaReunion = horaReunionLiveData.value,
-                        puntosReunion = listaPuntosReunion
-                    )
+                    detalleReunionAAgendarModel = detalleReunion
                 )
                 .ManejarErrores(escuchadorErrores = agendarReunionUI.traerEscuchadorExcepciones())
                 .collect{

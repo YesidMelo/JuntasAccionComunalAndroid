@@ -5,6 +5,7 @@ import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.TipoReunio
 import java.util.*
 
 data class DetalleReunionAAgendarModel (
+    var reunionAsambleaId: Int? = null,
     var tituloReunion: String?= null,
     var tipoReunion: TipoReunion?= null,
     var fechaReunion: Date? = null,

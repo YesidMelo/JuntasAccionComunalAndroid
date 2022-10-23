@@ -91,8 +91,9 @@ class AgendarReunionFragment : BaseFragment<AgendarReunionViewModel> (){
 
     private fun configurarBotonGuardar() {
         binding.buttonAgendarReunionAsambleaGuardar.setOnClickListener {
+            val punto = PuntoReunionAgendarReunionAsambleaModel(tituloPunto = binding.edittextAgendarReunionAsambleaTituloPunto.text.toString())
             helperRecyclerViewAgendarReunionListaPuntos
-                .adicionarPunto(punto = PuntoReunionAgendarReunionAsambleaModel(tituloPunto = binding.edittextAgendarReunionAsambleaTituloPunto.text.toString()))
+                .adicionarPunto(punto = punto)
             traerViewModel().adicionarPuntoAReunion(adicionar = false)
         }
     }
@@ -105,12 +106,19 @@ class AgendarReunionFragment : BaseFragment<AgendarReunionViewModel> (){
 
     private fun configurarBotonAgendarReunion() {
         binding.buttonAgendarReunion.setOnClickListener {
-            traerViewModel()
-                .agendarReunion(
-                    listaPuntosReunion = helperRecyclerViewAgendarReunionListaPuntos.traerListaPuntos(),
-                    tituloReunion = binding.editTextAgendarReunionAsambleaAsunto.text.toString(),
-                    tipoReunion = helperSpinnerTiposReunion.traerSeleccionado().tipoReunion
-                )
+            funcionSegura(
+                aceptarFallo = {
+                    habilitarBotones()
+               },
+                funcion = {
+                    traerViewModel()
+                        .agendarReunion(
+                            listaPuntosReunion = helperRecyclerViewAgendarReunionListaPuntos.traerListaPuntos(),
+                            tituloReunion = binding.editTextAgendarReunionAsambleaAsunto.text.toString(),
+                            tipoReunion = helperSpinnerTiposReunion.traerSeleccionado().tipoReunion
+                        )
+                }
+            )
         }
     }
     //endregion

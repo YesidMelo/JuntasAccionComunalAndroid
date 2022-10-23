@@ -2,6 +2,8 @@ package com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.h
 
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.PuntosReunionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.ReunionAsambleaDao
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.mappers.convertirAReunionAsambleaEntity
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.mappers.traerListaPuntosReunion
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.DetalleReunionAAgendarModel
 import javax.inject.Inject
 
@@ -21,11 +23,15 @@ class HelperAgendarReunionDBImpl constructor(
 
     //region metodos privados
     private fun registrarReunion(detalleReunionAAgendarModel: DetalleReunionAAgendarModel) {
+        val asambleaEntity = detalleReunionAAgendarModel.convertirAReunionAsambleaEntity()
+        val id = reunionAsambleaDao.insertarElemento(elemento = asambleaEntity).toInt()
+        detalleReunionAAgendarModel.reunionAsambleaId = id
 
     }
 
     private fun registrarPunto(detalleReunionAAgendarModel: DetalleReunionAAgendarModel) {
-
+        val listaPuntosEntity = detalleReunionAAgendarModel.traerListaPuntosReunion()
+        puntosReunionDao.insertarElementos(elementos = listaPuntosEntity)
     }
     //endregion
 
