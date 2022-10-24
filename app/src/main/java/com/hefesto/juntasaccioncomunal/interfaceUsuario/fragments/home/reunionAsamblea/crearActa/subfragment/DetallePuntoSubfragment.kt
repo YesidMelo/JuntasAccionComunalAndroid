@@ -1,5 +1,6 @@
 package com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.subfragment
 
+import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,12 +10,16 @@ import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.CrearActaViewModel
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.helper.HelperViewPagerPuntosCrearActa
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.crearActa.PuntoReunionParaCreacionActaModel
+import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.TipoReunion
 import javax.inject.Inject
 
 class DetallePuntoSubfragment : BaseFragment<CrearActaViewModel>() {
 
     //region variables
     lateinit var crearActaViewModel: CrearActaViewModel
+    lateinit var puntoReunionParaCreacionActaModel: PuntoReunionParaCreacionActaModel
+    var tipoReunion: TipoReunion? = null
     var puntoNo :Int = 0
     private lateinit var binding: SubfragmentDetallepuntoreunionBinding
     //endregion
@@ -29,6 +34,35 @@ class DetallePuntoSubfragment : BaseFragment<CrearActaViewModel>() {
         savedInstanceState: Bundle?
     ): View {
         binding = SubfragmentDetallepuntoreunionBinding.inflate(inflater)
+        precargarVista()
         return binding.root
     }
+
+    //region metodos privados
+
+    //region precarga
+    private fun precargarVista() {
+        ocultarFormularioVotos()
+        cargarInformacionPunto()
+    }
+
+    private fun ocultarFormularioVotos() {
+        val tipo = tipoReunion?:return
+        if (tipo == TipoReunion.REUNION_DIRECTIVA_INFORMATIVA) return
+        if (tipo == TipoReunion.ASAMBLEA_INFORMATIVA) return
+        binding.constraintLayoutCrearActaContadorVotos.visibility = View.VISIBLE
+    }
+
+    //region ingresarInformacion
+    private fun cargarInformacionPunto() {
+        binding.textViewCrearActaTituloPunto.text = puntoReunionParaCreacionActaModel.tituloPunto
+        binding.edittextCrearActaVotosAFavor.setText("${puntoReunionParaCreacionActaModel.votosAFavor?:0}")
+        binding.edittextCrearActaVotosEnContra.setText("${puntoReunionParaCreacionActaModel.votosEnContra?:0}")
+        binding.edittextCrearActaDetallePunto.setText(puntoReunionParaCreacionActaModel.detallePunto?:"")
+    }
+    //endregion
+
+    //endregion
+
+    //endregion
 }

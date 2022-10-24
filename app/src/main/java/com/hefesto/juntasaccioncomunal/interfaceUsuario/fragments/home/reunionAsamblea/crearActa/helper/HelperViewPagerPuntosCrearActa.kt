@@ -48,7 +48,8 @@ class HelperViewPagerPuntosCrearActa {
             adapter = ViewPagerPuntosReunionAdapter(
                 fragment = puntosSubfragment,
                 listaPuntos = crearActaViewModel.traerDetalleReunionLiveData().value?.listaPuntos?: emptyList(),
-                crearActaViewModel = crearActaViewModel
+                crearActaViewModel = crearActaViewModel,
+                tipoReunion = crearActaViewModel.traerDetalleReunionLiveData().value?.tipoReunion
             )
             viewPager.adapter = adapter
             configurarTablayout()

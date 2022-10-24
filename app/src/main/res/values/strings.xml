@@ -144,4 +144,7 @@
     <string name="puntos_reunion">Puntos reunion</string>
     <string name="asistencia_reunion">Asistencia reunion</string>
     <string name="lista_asistencia">Lista asistencia</string>
+    <string name="votos_a_favor">Votos A Favor</string>
+    <string name="votos_en_contra">Votos en contra</string>
+    <string name="detalle_punto">Detalle del punto</string>
 </resources>

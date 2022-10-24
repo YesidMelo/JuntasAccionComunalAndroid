@@ -5,11 +5,13 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.CrearActaViewModel
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.subfragment.DetallePuntoSubfragment
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.crearActa.PuntoReunionParaCreacionActaModel
+import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.TipoReunion
 
 class ViewPagerPuntosReunionAdapter constructor(
     fragment: Fragment,
     private val listaPuntos : List<PuntoReunionParaCreacionActaModel>,
-    private val crearActaViewModel: CrearActaViewModel
+    private val crearActaViewModel: CrearActaViewModel,
+    private val tipoReunion: TipoReunion?
 ) : FragmentStateAdapter(fragment) {
 
     //region variables
@@ -26,6 +28,8 @@ class ViewPagerPuntosReunionAdapter constructor(
             val fragment = DetallePuntoSubfragment()
             fragment.crearActaViewModel = crearActaViewModel
             fragment.puntoNo = contador + 1
+            fragment.tipoReunion = tipoReunion
+            fragment.puntoReunionParaCreacionActaModel = listaPuntos[contador]
             listaFragments.add(fragment)
         }
     }
@@ -33,7 +37,6 @@ class ViewPagerPuntosReunionAdapter constructor(
     override fun getItemCount(): Int = listaFragments.size
 
     override fun createFragment(position: Int): Fragment {
-        val itemSeleccionado = listaFragments[position]
-        return itemSeleccionado
+        return listaFragments[position]
     }
 }

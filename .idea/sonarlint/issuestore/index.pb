@@ -460,10 +460,6 @@ Qapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/BaseDao.
 papp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/ui/asambleaReunion/AgendarReunionUI.kt,a\4\a4fd05dc9f6967e7b8d739ad6678ffd3677c1dc3
 ◊
 ¶app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/detalleAfiliadoRegistroActualizacion/DetalleAfiliadoRegistroActualizacionFragment.kt,e\e\eeec5f0e2f547d7d9f777a9c3933d9c3467fab50
-¡
-êapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/home/reunionAsambleas/agendarReunion/PuntoReunionAgendarReunionAsambleaModel.kt,d\4\d4b25b6c1d10e1ca4995ac5e2dd51f57d90531c9
-µ
-Ñapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/home/reunionAsambleas/agendarReunion/DetalleReunionAAgendarModel.kt,f\d\fd3f653cb59951bcdc5700c358fd3527852a3039
 °
 qapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/entities/reunionAsamblea/PuntosReunionEntity.kt,1\b\1b5ecb9536560bfe621a7a8fc493c726a663d5e3
 }
