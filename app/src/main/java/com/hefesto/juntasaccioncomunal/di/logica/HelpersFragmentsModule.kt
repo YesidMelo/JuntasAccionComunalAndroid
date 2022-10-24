@@ -12,6 +12,8 @@ import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.panelCont
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.registrarAfiliado.helper.HelperRecyclerViewListaAfiliadosRegistrarActualizar
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.agendarReunion.helpers.HelperRecyclerViewAgendarReunionListaPuntos
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.agendarReunion.helpers.HelperSpinnerTiposReunion
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.helper.HelperViewPagerFormulariosCompletarActas
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.helper.HelperViewPagerPuntosCrearActa
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.listaReunionesCreacionActa.helpers.HelperRecyclerViewListaReunionesCrearActa
 import dagger.Module
 import dagger.Provides
@@ -63,6 +65,12 @@ class HelpersFragmentsModule {
 
     @Provides
     fun providesHelperRecyclerViewListaReunionesCrearActa() : HelperRecyclerViewListaReunionesCrearActa = HelperRecyclerViewListaReunionesCrearActa()
+
+    @Provides
+    fun providesHelperViewPagerFormulariosCompletarActas(): HelperViewPagerFormulariosCompletarActas = HelperViewPagerFormulariosCompletarActas()
+
+    @Provides
+    fun providesHelperViewPagerPuntosCrearActa() :  HelperViewPagerPuntosCrearActa = HelperViewPagerPuntosCrearActa()
     //endregion
 
     //endregion

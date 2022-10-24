@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.hefesto.juntasaccioncomunal.databinding.FragmentCrearactaBinding
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.helper.HelperViewPagerFormulariosCompletarActas
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.crearActa.ReunionAsambleaCreacionActaModel
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.FormatosFecha
@@ -17,6 +18,9 @@ class CrearActaFragment  : BaseFragment<CrearActaViewModel>(){
     //region variables
     @Inject
     lateinit var crearActaViewModel: CrearActaViewModel
+
+    @Inject
+    lateinit var helperViewPagerFormulariosCompletarActas: HelperViewPagerFormulariosCompletarActas
 
     private lateinit var binding: FragmentCrearactaBinding
     //endregion
@@ -51,8 +55,18 @@ class CrearActaFragment  : BaseFragment<CrearActaViewModel>(){
     //region precarga
 
     private fun precargarVista() {
+        precargarViewPager()
         precargarLiveData()
         detalleInfoAViewModel()
+    }
+
+    private fun precargarViewPager() {
+        helperViewPagerFormulariosCompletarActas
+            .conCrearActaFragment(crearActaFragment = this)
+            .conCrearActaViewModel(crearActaViewModel = traerViewModel())
+            .conViewPager(viewPager = binding.viewPager2FormulariosActa)
+            .conTabLayout(tabLayout = binding.tablayoutFormulariosFinalizacion)
+            .configurarPaginas()
     }
 
     //region livedata
@@ -93,7 +107,6 @@ class CrearActaFragment  : BaseFragment<CrearActaViewModel>(){
     //endregion
 
     private fun detalleInfoAViewModel() {
-
         val detalle = arguments?.get(REUNION_PENDIENTE_ACTA) as? ReunionAsambleaCreacionActaModel
         traerViewModel().cargo(cargo = false)
         traerViewModel().conReunionAModificar(detalle = detalle)

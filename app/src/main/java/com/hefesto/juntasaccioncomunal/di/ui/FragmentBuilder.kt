@@ -13,6 +13,8 @@ import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.panelCont
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.registrarAfiliado.RegistrarAfiliadoHomeFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.agendarReunion.AgendarReunionFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.CrearActaFragment
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.subfragment.DetallePuntoSubfragment
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.subfragment.PuntosSubfragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.listaReunionesCreacionActa.ListaReunionesCreacionActaFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.login.iniciarSesion.IniciarSesionFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.login.registrarAfiliado.RegistrarAfiliadoFragment
@@ -61,6 +63,12 @@ abstract class FragmentBuilder {
 
     @ContributesAndroidInjector(modules = [HomeActivityModule::class])
     abstract fun providesCrearActaFragment() : CrearActaFragment
+
+    @ContributesAndroidInjector(modules = [HomeActivityModule::class])
+    abstract fun providesPuntoSubfragment() : PuntosSubfragment
+
+    @ContributesAndroidInjector(modules = [HomeActivityModule::class])
+    abstract fun providesDetallePuntoSubfragment() : DetallePuntoSubfragment
 
     //endregion
 
