@@ -2,6 +2,8 @@ package com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionA
 
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
+import com.hefesto.juntasaccioncomunal.R
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.CrearActaFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.CrearActaViewModel
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.adapters.ViewPagerFormulariosActaReunionAdapter
@@ -47,8 +49,24 @@ class HelperViewPagerFormulariosCompletarActas {
                 fragment = crearActaFragment,
                 crearActaViewModel = crearActaViewModel
             )
-
             viewPager.adapter = viewPagerFormulariosActaReunionAdapter
+            configurarTabLayout()
+        }
+    }
+
+    private fun configurarTabLayout() {
+        tabLayout.post {
+            TabLayoutMediator(tabLayout, viewPager){
+                tab,position ->
+                val stringRes = when(position) {
+                    1 -> R.string.lista_asistencia
+                    else-> R.string.puntos_reunion
+                }
+                tab.setText(stringRes)
+                viewPager.currentItem = position
+            }.attach()
+
+            viewPager.currentItem = 0
         }
     }
     //endregion

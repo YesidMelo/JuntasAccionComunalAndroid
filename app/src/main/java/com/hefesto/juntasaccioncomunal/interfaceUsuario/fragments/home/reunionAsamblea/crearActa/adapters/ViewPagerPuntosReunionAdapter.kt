@@ -13,7 +13,7 @@ class ViewPagerPuntosReunionAdapter constructor(
 ) : FragmentStateAdapter(fragment) {
 
     //region variables
-    private var listaFragments = emptyList<Fragment>().toMutableList()
+    var listaFragments = emptyList<DetallePuntoSubfragment>().toMutableList()
     //endregion
 
     init {
@@ -22,9 +22,10 @@ class ViewPagerPuntosReunionAdapter constructor(
 
     fun inicializarFragments() {
         listaFragments.clear()
-        listaPuntos.forEach {
+        for(contador in listaPuntos.indices) {
             val fragment = DetallePuntoSubfragment()
             fragment.crearActaViewModel = crearActaViewModel
+            fragment.puntoNo = contador + 1
             listaFragments.add(fragment)
         }
     }

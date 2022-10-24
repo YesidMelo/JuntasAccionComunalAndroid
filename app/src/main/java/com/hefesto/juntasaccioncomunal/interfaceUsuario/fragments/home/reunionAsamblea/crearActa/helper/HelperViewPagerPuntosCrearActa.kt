@@ -2,6 +2,7 @@ package com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionA
 
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.CrearActaViewModel
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.adapters.ViewPagerPuntosReunionAdapter
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.subfragment.PuntosSubfragment
@@ -50,6 +51,21 @@ class HelperViewPagerPuntosCrearActa {
                 crearActaViewModel = crearActaViewModel
             )
             viewPager.adapter = adapter
+            configurarTablayout()
+        }
+    }
+
+    private fun configurarTablayout() {
+        tabLayout.post {
+            adapter.listaFragments.forEach {
+                tabLayout.addTab(tabLayout.newTab())
+            }
+            TabLayoutMediator(tabLayout, viewPager){
+                tab, position ->
+                tab.setText("Punto ${adapter.listaFragments[position].puntoNo}")
+                viewPager.currentItem = position
+            }.attach()
+            viewPager.currentItem = 0
         }
     }
     //endregion

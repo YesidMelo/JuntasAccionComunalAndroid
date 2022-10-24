@@ -45,6 +45,7 @@ enum class NodosNavegacionFragments constructor(
     LISTA_REUNIONES_SIN_ACTAS(titulo = R.string.lista_reunion_creacion_acta, fragment = ListaReunionesCreacionActaFragment::class.java, identificador = "lista crear acta reunion"),
     PUNTO_REUNION,
     DETALLE_PUNTO_REUNION,
+    LISTA_ASISTENCIA_REUNION,
     //endregion
 
     //endregion
