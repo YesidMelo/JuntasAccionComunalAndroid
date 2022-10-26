@@ -2,7 +2,10 @@ package com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.h
 
 import com.hefesto.juntasaccioncomunal.fuentesDatos.cache.MemoriaCache
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.AfiliadoDao
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.mappers.convertirAListaAfiliadoAsistenciaModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.crearActa.AfiliadoActaAsistenciaModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.login.iniciarSesion.UsuarioEnSesionModel
+import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.IdentificadorElementosCacheEnum
 import javax.inject.Inject
 
 interface HelperListaAfiliadosAsistenciaDB {
@@ -15,21 +18,10 @@ class HelperListaAfiliadosAsistenciaDBImpl constructor(
 ) : HelperListaAfiliadosAsistenciaDB {
 
     override suspend fun traerListaAfiliadosAsistencia(): List<AfiliadoActaAsistenciaModel> {
-        val lista = emptyList<AfiliadoActaAsistenciaModel>().toMutableList()
-        for (contador in 1 until 5) {
-            var documento = ""
-            for (contadorDocumento in 0 until 5) {
-                documento += contador.toString()
-            }
-            lista.add(
-                AfiliadoActaAsistenciaModel(
-                    afiliadoId = contador,
-                    nombres = "nombre $contador",
-                    apellidos = "apellido $contador",
-                    numeroDocumento = documento,
-                )
-            )
-        }
+        val usuarioEnSesionModel = memoriaCache.traerObjeto<UsuarioEnSesionModel>(llave = IdentificadorElementosCacheEnum.USUARIO_EN_SESION)?: return emptyList()
+        val jacId = usuarioEnSesionModel.jacId?: return emptyList()
+        val listasView = afiliadoDao.traerAfiliadosParaAsistencia(jacId = jacId)
+        val lista = listasView.convertirAListaAfiliadoAsistenciaModel()
         return lista
     }
 

@@ -7,6 +7,7 @@ import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.crea
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.FormatosFecha
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.TipoReunion
 import com.hefesto.juntasaccioncomunal.logica.utilidades.extenciones.convertirADate
+import com.hefesto.juntasaccioncomunal.logica.utilidades.extenciones.convertirAFormato
 
 //region unico elemento
 
@@ -32,6 +33,29 @@ fun PuntosReunionEntity.convertirAPuntoReunionParaCreacionActaModel() : PuntoReu
     )
 }
 
+fun PuntoReunionParaCreacionActaModel.convertirAPuntosReunionEntity() : PuntosReunionEntity {
+    return PuntosReunionEntity(
+        puntoReunionId = this.puntoReunionId,
+        reunionId = this.reunionId,
+        tituloPunto = this.tituloPunto,
+        detallePunto = this.detallePunto,
+        votosAFavor = this.votosAFavor,
+        votosEnContra = this.votosEnContra
+    )
+}
+
+fun ReunionAsambleaCreacionActaModel.convertirAReunionAsambleaEntity(): ReunionAsambleaEntity {
+    return ReunionAsambleaEntity(
+        reunionAsambleaId = this.reunionAsambleaId,
+        asuntoReunion = this.asuntoReunion,
+        tipoReunionId = this.tipoReunion?.traerId(),
+        fechaYHoraProgramacionReunion = this.fechaYHoraProgramacionReunion?.convertirAFormato(formato = FormatosFecha.ISO_8610),
+        fechaRegistro = this.fechaRegistro?.convertirAFormato(formato = FormatosFecha.ISO_8610),
+        horaFin = this.horaFin?.convertirAFormato(formato = FormatosFecha.ISO_8610),
+        horaInicio = this.horaInicio?.convertirAFormato(formato = FormatosFecha.ISO_8610)
+    )
+}
+
 //endregion
 
 //region lista elementos
@@ -45,6 +69,12 @@ fun List<ReunionAsambleaEntity>.convertirAListaReunionAsambleaCreacionActaModel(
 fun List<PuntosReunionEntity>.convertirAPuntoReunionParaCreacionActaModel() : List<PuntoReunionParaCreacionActaModel> {
     val lista = emptyList<PuntoReunionParaCreacionActaModel>().toMutableList()
     forEach { lista.add(it.convertirAPuntoReunionParaCreacionActaModel()) }
+    return lista
+}
+
+fun List<PuntoReunionParaCreacionActaModel>.convertirAListaPuntosReunionEntity() : List<PuntosReunionEntity> {
+    val lista = emptyList<PuntosReunionEntity>().toMutableList()
+    forEach { lista.add(it.convertirAPuntosReunionEntity()) }
     return lista
 }
 

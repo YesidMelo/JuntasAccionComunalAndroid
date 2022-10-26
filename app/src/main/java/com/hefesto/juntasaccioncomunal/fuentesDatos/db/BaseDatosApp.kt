@@ -54,6 +54,7 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.reunionAsamblea.
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.reunionAsamblea.PuntosReunionEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.reunionAsamblea.ReunionAsambleaEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.home.AfiliadoActualizacionRegistroView
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.home.AfiliadoAsistenciaView
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.home.AfiliadoContactoRegistroActualizacionView
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.home.AfiliadoDetalleEnJacView
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.home.AfiliadoModificacionDirectivaView
@@ -89,12 +90,13 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.login.JACEnSesionVi
    ],
     views = [
         AfiliadoActualizacionRegistroView::class,
+        AfiliadoAsistenciaView::class,
         AfiliadoContactoRegistroActualizacionView::class,
         AfiliadoDetalleEnJacView::class,
         AfiliadoEnSesionView::class,
         AfiliadoModificacionDirectivaView::class,
         CredencialesSesionView::class,
-        JACEnSesionView::class
+        JACEnSesionView::class,
     ],
     version = 1
 )

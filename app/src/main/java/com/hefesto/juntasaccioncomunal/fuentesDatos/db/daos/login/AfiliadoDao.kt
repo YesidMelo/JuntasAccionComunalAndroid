@@ -5,6 +5,7 @@ import androidx.room.Query
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.BaseDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.AfiliadoEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.home.AfiliadoActualizacionRegistroView
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.home.AfiliadoAsistenciaView
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.home.AfiliadoContactoRegistroActualizacionView
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.home.AfiliadoDetalleEnJacView
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.home.AfiliadoModificacionDirectivaView
@@ -19,6 +20,9 @@ interface AfiliadoDao : BaseDao<AfiliadoEntity> {
 
     @Query("SELECT * FROM AfiliadoEntity t WHERE t.tipoDocumento = :tipoDocumento AND t.documento = :documento")
     fun traerAfiliadoEntityPorTipoDocumentoYDocumento(tipoDocumento: Int, documento: String) : AfiliadoEntity?
+
+    @Query("SELECT * FROM AfiliadoAsistenciaView t WHERE t.jacId = :jacId")
+    fun traerAfiliadosParaAsistencia(jacId: Int) : List<AfiliadoAsistenciaView>
 
     @Query("SELECT * FROM AfiliadoEnSesionView a WHERE a.correo = :correo")
     fun traerDetalleUsuarioEnSesionPorCorreo(correo: String) : AfiliadoEnSesionView?

@@ -22,6 +22,7 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.JacDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Jac_Afiliado_Direccion_Dao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.RolAfiliacionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Telefono_Dao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.ListaAsistenciaDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.PuntosReunionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.ReunionAsambleaDao
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.HelperActualizarAfiliadoEnDirectivaDB
@@ -208,7 +209,15 @@ class HelpersDBDatasourceModule {
     )
 
     @Provides
-    fun providesHelperCrearActaDB() : HelperCrearActaDB = HelperCrearActaDBImpl()
+    fun providesHelperCrearActaDB(
+        reunionDao: ReunionAsambleaDao,
+        puntosReunionDao: PuntosReunionDao,
+        listaAsambleaDao: ListaAsistenciaDao
+    ) : HelperCrearActaDB = HelperCrearActaDBImpl(
+        reunionDao = reunionDao,
+        puntosReunionDao = puntosReunionDao,
+        listaAsambleaDao = listaAsambleaDao
+    )
 
     //endregion
 
