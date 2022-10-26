@@ -149,4 +149,13 @@
     <string name="detalle_punto">Detalle del punto</string>
     <string name="deseas_continuar_con_la_creacion_del_acta">¿Deseas continuar con la creacion del acta?</string>
     <string name="se_ha_creado_el_acta_exitosamente">Se ha creado el acta exitosamente.</string>
+    <string name="no_ha_seleccionado_hora_inicio_reunion">No ha seleccionado la hora de inicio de la reunion.</string>
+    <string name="no_ha_seleccionado_hora_fin_reunion">No ha seleccionado la hora de finalizacion de la asamblea.</string>
+    <string name="no_ha_ingresado_detalle_a_punto_reunion">No ha ingresado detalle un punto de reunion.</string>
+    <string name="esta_reunion_no_tiene_puntos_ha_discutir">Esta reunion no tiene puntos a discutir</string>
+    <string name="no_ha_ingresado_votos_a_favor">No ha ingresado votos ha favor en un punto.</string>
+    <string name="no_ha_ingresado_votos_en_contra">No ha ingresado votos en contra.</string>
+    <string name="no_ha_ingresado_una_cantidad_de_votos_valida">No ha ingresado una cantidad de votos valida</string>
+    <string name="no_ha_seleccionado_los_asistentes_a_la_reunion">No Ingresado los asistentes a la reunion</string>
+    <string name="no_ha_seleccionado_hora_fin_reunion_valida">No ha seleccionado la hora de finalizacion valida intentalo de nuevo</string>
 </resources>

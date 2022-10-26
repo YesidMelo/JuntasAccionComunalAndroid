@@ -16,7 +16,7 @@ class HelperCrearActaDBImpl : HelperCrearActaDB {
         asistencia: MutableList<AfiliadoActaAsistenciaModel>,
         detalleReunion: ReunionAsambleaCreacionActaModel
     ) {
-        TODO("Not yet implemented")
+
     }
 
 }

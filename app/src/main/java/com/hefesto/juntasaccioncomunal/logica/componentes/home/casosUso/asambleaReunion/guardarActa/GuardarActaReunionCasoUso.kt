@@ -4,6 +4,7 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.HomeR
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.crearActa.AfiliadoActaAsistenciaModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.crearActa.ReunionAsambleaCreacionActaModel
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
@@ -19,7 +20,20 @@ class GuardarActaReunionCasoUsoImpl constructor(
         asistencia: MutableList<AfiliadoActaAsistenciaModel>,
         detalleReunion: ReunionAsambleaCreacionActaModel
     ): Flow<Boolean> = flow {
-        homeRepositorio.guardarActa(asistencia = asistencia, detalleReunion = detalleReunion)
+        HelperValidacionesActaAGuardar(
+            asistencia = asistencia,
+            detalleReunion = detalleReunion
+        )
+            .horaInicioSeleccionada()
+            .horaFinSeleccionada()
+            .completoElDetalleTodosLosPuntos()
+            .ingresoVotosAFavorYEncontra()
+            .asistencia()
+
+        homeRepositorio
+            .guardarActa(asistencia = asistencia, detalleReunion = detalleReunion)
+            .collect{ emit(it) }
+
     }
 
 }

@@ -16,7 +16,7 @@ class CrearActaViewModel constructor(
 ) : BaseViewModel() {
 
     //region variables
-    lateinit var listaAfiliadosAsistieron : MutableList<AfiliadoActaAsistenciaModel>
+    var listaAfiliadosAsistieron = emptyList<AfiliadoActaAsistenciaModel>().toMutableList()
     private val haCargadoLiveData = MutableLiveData<Boolean>()
     private val detalleReunionLiveData = MutableLiveData<ReunionAsambleaCreacionActaModel?>()
     private val listaAfiliadosJAC = MutableLiveData<List<AfiliadoActaAsistenciaModel>>()

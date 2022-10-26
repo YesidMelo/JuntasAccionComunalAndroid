@@ -424,8 +424,6 @@ Yapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/dialogo/Dial
 Éapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/casosUso/registroAfiliado/RegistrarAfiliadoHomeCasoUso.kt,1\2\1201dbad536698ab9bd3e5f3b11a200820f3fde0
 ï
 eapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/excepciones/HomeRegistroAfiliadoExcepcion.kt,5\c\5c33e710235acb2d18d01d904c65718a4fe1d83a
-ó
-gapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/excepciones/HomeReunionesAsambleasExcepcion.kt,1\e\1ea6680729aff4f8e2eaf577bb0be809eb29df1b
 «
 ñapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/casosUso/asambleaReunion/agendarReunion/HelperValidacionesReunionAAgendar.kt,3\7\3710cb4cfb08e9e6783e0141e5aaf10b0e7ce3c6
 ∏
@@ -438,8 +436,6 @@ Qapp/src/main/java/com/hefesto/juntasaccioncomunal/di/logica/RepositoriosModule.
 íapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/casosUso/asambleaReunion/agendarReunion/AgendarReunionAsambleaCasoUso.kt,c\d\cde14c44e9722b97f7b71bc8029443d1f6696ccf
 º
 ãapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/reunionAsamblea/agendarReunion/AgendarReunionViewModel.kt,4\7\47d48fb0a5ec1f8c2bd02658738273f12db7e8e6
-ê
-`app/src/main/java/com/hefesto/juntasaccioncomunal/logica/utilidades/extenciones/DateExtension.kt,0\9\0988e794cafa57f76c49c38b32f6619320628776
 á
 Wapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/base/BaseActivity.kt,0\3\032ca2367588f5c56d800cd70c8b1e34c3fe85b9
 ë
