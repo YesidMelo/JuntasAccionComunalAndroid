@@ -1,11 +1,14 @@
 package com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.hefesto.juntasaccioncomunal.R
 import com.hefesto.juntasaccioncomunal.databinding.FragmentCrearactaBinding
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.dialogo.DialogoInformativo
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.helper.HelperViewPagerFormulariosCompletarActas
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.crearActa.ReunionAsambleaCreacionActaModel
@@ -45,16 +48,77 @@ class CrearActaFragment  : BaseFragment<CrearActaViewModel>(){
     //region botones
     private fun configurarBotones() {
         configurarBotonAtras()
+        configurarHoraInicioReunion()
+        configurarHoraFinReunion()
+        configurarGuardarActa()
     }
 
     private fun configurarBotonAtras(){
         conEscuchadorAccionBotonAtras { navegarAtras() }
     }
+
+    private fun configurarHoraInicioReunion() {
+        binding.textViewCrearActaDetalleHoraInicio.setOnClickListener {
+            mostrarDialogoHora {
+                binding.textViewCrearActaDetalleHoraInicio.text = it.convertirAFormato(formato = FormatosFecha.HORA_MINUTO_12H)
+                traerViewModel().traerDetalleReunionLiveData().value?.horaInicio = it
+            }
+        }
+    }
+
+    private fun configurarHoraFinReunion() {
+        binding.textViewCrearActaDetalleHoraFin.setOnClickListener {
+            mostrarDialogoHora {
+                binding.textViewCrearActaDetalleHoraFin.text = it.convertirAFormato(formato = FormatosFecha.HORA_MINUTO_12H)
+                traerViewModel().traerDetalleReunionLiveData().value?.horaFin = it
+            }
+        }
+    }
+
+    //region guardar acta
+    private fun configurarGuardarActa() {
+        binding.buttonCrearActaEjecutarCreacionActa.setOnClickListener {
+            funcionSegura(
+                funcion = {
+                    deshabilitarBotones()
+                    mostrarMensajeAdvertenciaGuardarActa()
+                },
+                aceptarFallo = ::habiliarBotones
+            )
+
+        }
+    }
+
+    private fun mostrarMensajeAdvertenciaGuardarActa() {
+        mostrarDialogo(
+            tipoDialogo = DialogoInformativo.TipoDialogo.ADVERTENCIA,
+            titulo = R.string.crear_acta_reunion,
+            mensaje = R.string.deseas_continuar_con_la_creacion_del_acta,
+            accionAceptar = traerViewModel()::guardarActa,
+            accionCancelar = ::habiliarBotones
+        )
+    }
+
+    private fun habiliarBotones() {
+        binding.buttonCrearActaEjecutarCreacionActa.isEnabled = true
+        binding.textViewCrearActaDetalleHoraInicio.isEnabled = true
+        binding.textViewCrearActaDetalleHoraFin.isEnabled = true
+    }
+
+    private fun deshabilitarBotones() {
+        binding.buttonCrearActaEjecutarCreacionActa.isEnabled = false
+        binding.textViewCrearActaDetalleHoraInicio.isEnabled = false
+        binding.textViewCrearActaDetalleHoraFin.isEnabled = false
+    }
+
+    //endregion
+
     //endregion
 
     //region precarga
 
     private fun precargarVista() {
+        traerViewModel().cargo(value = false)
         precargarViewPager()
         precargarLiveData()
         detalleInfoAViewModel()
@@ -73,13 +137,13 @@ class CrearActaFragment  : BaseFragment<CrearActaViewModel>(){
     private fun precargarLiveData() {
         precargarReunionAsambleaLiveData()
         precargarCargaVistaLiveData()
+        precargarGuardadoExitoso()
     }
 
     private fun precargarReunionAsambleaLiveData() {
         traerViewModel()
             .traerDetalleReunionLiveData()
             .observe(viewLifecycleOwner) {
-                traerViewModel().cargo(cargo = true)
                 val detalle = it?:return@observe
                 cargarReunion(detalle = detalle)
             }
@@ -104,11 +168,24 @@ class CrearActaFragment  : BaseFragment<CrearActaViewModel>(){
             }
     }
 
+    private fun precargarGuardadoExitoso() {
+        traerViewModel()
+            .traerActaCreadaLiveData()
+            .observe(viewLifecycleOwner) {
+                if (!it) return@observe
+                mostrarDialogo(
+                    tipoDialogo = DialogoInformativo.TipoDialogo.INFORMATIVO,
+                    titulo = R.string.crear_acta_reunion,
+                    mensaje = R.string.se_ha_creado_el_acta_exitosamente,
+                    accionAceptar = ::configurarBotonAtras
+                )
+            }
+    }
+
     //endregion
 
     private fun detalleInfoAViewModel() {
         val detalle = arguments?.get(REUNION_PENDIENTE_ACTA) as? ReunionAsambleaCreacionActaModel
-        traerViewModel().cargo(cargo = false)
         traerViewModel().conReunionAModificar(detalle = detalle)
     }
 

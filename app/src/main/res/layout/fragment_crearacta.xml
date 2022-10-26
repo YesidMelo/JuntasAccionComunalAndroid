@@ -122,20 +122,23 @@
             android:id="@+id/textView_crearActa_horaFin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:text="@string/hora_finalizacion"
-            app:layout_constraintStart_toEndOf="@+id/textView_crearActa_detalleHoraInicio"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_crearActa_horaInicio" />
 
         <TextView
             android:id="@+id/textView_crearActa_detalleHoraFin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
             android:drawableRight="@android:drawable/ic_lock_idle_alarm"
             android:text="@string/hint_hora"
             app:layout_constraintStart_toEndOf="@+id/textView_crearActa_horaFin"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/textView_crearActa_detalleHoraInicio" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
@@ -168,15 +171,48 @@
 
     </com.google.android.material.tabs.TabLayout>
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewPager2_formularios_acta"
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollview_crearActa_paginas"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tablayout_formularios_finalizacion"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/tablayout_formularios_finalizacion">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="500dp"
+            >
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPager2_formularios_acta"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/button_crearActa_ejecutarCreacionActa"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </androidx.viewpager2.widget.ViewPager2>
+
+            <Button
+                android:id="@+id/button_crearActa_ejecutarCreacionActa"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/crear_acta_reunion"
+                android:textAllCaps="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

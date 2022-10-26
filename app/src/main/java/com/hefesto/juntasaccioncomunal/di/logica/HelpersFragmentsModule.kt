@@ -12,6 +12,7 @@ import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.panelCont
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.registrarAfiliado.helper.HelperRecyclerViewListaAfiliadosRegistrarActualizar
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.agendarReunion.helpers.HelperRecyclerViewAgendarReunionListaPuntos
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.agendarReunion.helpers.HelperSpinnerTiposReunion
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.helper.HelperFiltroBusquedaAfiliadoActaAsistencia
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.helper.HelperViewPagerFormulariosCompletarActas
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.helper.HelperViewPagerPuntosCrearActa
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.listaReunionesCreacionActa.helpers.HelperRecyclerViewListaReunionesCrearActa
@@ -71,6 +72,9 @@ class HelpersFragmentsModule {
 
     @Provides
     fun providesHelperViewPagerPuntosCrearActa() :  HelperViewPagerPuntosCrearActa = HelperViewPagerPuntosCrearActa()
+
+    @Provides
+    fun providesHelperFiltroBusquedaAfiliadoActaAsistencia(): HelperFiltroBusquedaAfiliadoActaAsistencia = HelperFiltroBusquedaAfiliadoActaAsistencia()
     //endregion
 
     //endregion

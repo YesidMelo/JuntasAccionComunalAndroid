@@ -51,6 +51,10 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.he
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.registroAfiliado.HelperRegistroActualizacionSeguridadAfiliadoHomeImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.reunionAsamblea.HelperAgendarReunionDB
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.reunionAsamblea.HelperAgendarReunionDBImpl
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.reunionAsamblea.HelperCrearActaDB
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.reunionAsamblea.HelperCrearActaDBImpl
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.reunionAsamblea.HelperListaAfiliadosAsistenciaDB
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.reunionAsamblea.HelperListaAfiliadosAsistenciaDBImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.reunionAsamblea.HelperListaReunionesParaCrearActasDB
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.reunionAsamblea.HelperListaReunionesParaCrearActasDBImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperIniciarSesion
@@ -194,6 +198,18 @@ class HelpersDBDatasourceModule {
         puntosReunionDao = puntosReunionDao
     )
 
+    @Provides
+    fun providesHelperListaAfiliadosAsistenciaDB(
+        afiliadoDao: AfiliadoDao,
+        memoriaCache: MemoriaCache
+    ) : HelperListaAfiliadosAsistenciaDB = HelperListaAfiliadosAsistenciaDBImpl(
+        afiliadoDao = afiliadoDao,
+        memoriaCache = memoriaCache
+    )
+
+    @Provides
+    fun providesHelperCrearActaDB() : HelperCrearActaDB = HelperCrearActaDBImpl()
+
     //endregion
 
     //endregion
@@ -232,10 +248,14 @@ class HelpersDBDatasourceModule {
     @Provides
     fun providesHelperReunionAsambleaDB(
         helperAgendarReunionDB: HelperAgendarReunionDB,
-        helperListaReunionesParaCrearActasDB: HelperListaReunionesParaCrearActasDB
+        helperListaReunionesParaCrearActasDB: HelperListaReunionesParaCrearActasDB,
+        helperListaAfiliadosAsistenciaDB: HelperListaAfiliadosAsistenciaDB,
+        helperCrearActaDB: HelperCrearActaDB
     ) : HelperReunionAsambleaDB = HelperReunionAsambleaDBImpl(
         helperAgendarReunionDB = helperAgendarReunionDB,
-        helperListaReunionesParaCrearActasDB = helperListaReunionesParaCrearActasDB
+        helperListaReunionesParaCrearActasDB = helperListaReunionesParaCrearActasDB,
+        helperListaAfiliadosAsistenciaDB = helperListaAfiliadosAsistenciaDB,
+        helperCrearActaDB = helperCrearActaDB
     )
     //endregion
     //endregion

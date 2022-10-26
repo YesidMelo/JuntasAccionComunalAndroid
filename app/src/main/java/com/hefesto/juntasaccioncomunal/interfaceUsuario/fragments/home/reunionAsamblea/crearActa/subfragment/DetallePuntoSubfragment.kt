@@ -2,9 +2,11 @@ package com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionA
 
 import android.opengl.Visibility
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import com.hefesto.juntasaccioncomunal.databinding.SubfragmentDetallepuntoreunionBinding
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.CrearActaViewModel
@@ -35,6 +37,7 @@ class DetallePuntoSubfragment : BaseFragment<CrearActaViewModel>() {
     ): View {
         binding = SubfragmentDetallepuntoreunionBinding.inflate(inflater)
         precargarVista()
+        escuchadorEditTexts()
         return binding.root
     }
 
@@ -62,6 +65,20 @@ class DetallePuntoSubfragment : BaseFragment<CrearActaViewModel>() {
     }
     //endregion
 
+    //endregion
+
+    //region escuchadores
+    private fun escuchadorEditTexts() {
+        escuchadorDetallePunto()
+    }
+
+    private fun escuchadorDetallePunto() {
+        binding.edittextCrearActaDetallePunto.addTextChangedListener {
+            edittext ->
+            puntoReunionParaCreacionActaModel.detallePunto = edittext?.toString()
+            Log.e("Err","")
+        }
+    }
     //endregion
 
     //endregion

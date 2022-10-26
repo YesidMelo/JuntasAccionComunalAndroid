@@ -147,4 +147,6 @@
     <string name="votos_a_favor">Votos A Favor</string>
     <string name="votos_en_contra">Votos en contra</string>
     <string name="detalle_punto">Detalle del punto</string>
+    <string name="deseas_continuar_con_la_creacion_del_acta">¿Deseas continuar con la creacion del acta?</string>
+    <string name="se_ha_creado_el_acta_exitosamente">Se ha creado el acta exitosamente.</string>
 </resources>

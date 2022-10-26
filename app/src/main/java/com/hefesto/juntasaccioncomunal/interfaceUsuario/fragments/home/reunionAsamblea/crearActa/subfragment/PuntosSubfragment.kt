@@ -44,15 +44,25 @@ class PuntosSubfragment : BaseFragment<CrearActaViewModel>() {
 
     private fun precargarVista() {
         precargarPuntos()
+        precargarLiveData()
     }
 
     private fun precargarPuntos() {
+        traerViewModel().cargo()
         helperViewPagerPuntosCrearActa
             .conDetallePuntoSubfragment(puntoSubfragment = this)
             .conCrearActaViewModel(crearActaViewModel = traerViewModel())
             .conViewPager(viewPager = binding.viewPager2DetallePunto)
             .conTabLayout(tabLayout = binding.tablayoutPuntosReunion)
             .cargarPaginas()
+    }
+
+    private fun precargarLiveData() {
+        helperViewPagerPuntosCrearActa
+            .traerCargaPaginasFinalizo()
+            .observe(viewLifecycleOwner) {
+                traerViewModel().cargo(value = true)
+            }
     }
     //endregion
     //endregion

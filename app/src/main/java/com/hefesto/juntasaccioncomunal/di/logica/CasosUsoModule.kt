@@ -8,8 +8,12 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asamblea
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.TraerTiposReunionCasoUsoImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.agendarReunion.AgendarReunionAsambleaCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.agendarReunion.AgendarReunionAsambleaCasoUsoImpl
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.crearActa.TraerListaAfiliadosParaAsistenciaCasoUso
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.crearActa.TraerListaAfiliadosParaAsistenciaCasoUsoImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.crearActa.TraerListaReunionesParaCreacionActaCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.crearActa.TraerListaReunionesParaCreacionActaCasoUsoImpl
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.guardarActa.GuardarActaReunionCasoUso
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.guardarActa.GuardarActaReunionCasoUsoImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.configuracionAfiliadoEnDirectiva.ActualizarAfiliadoEnDirectivaCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.configuracionAfiliadoEnDirectiva.ActualizarAfiliadoEnDirectivaCasoUsoImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.configuracionAfiliadoEnDirectiva.TraerEstadosAfiliadoEnDirectivaCasoUso
@@ -136,6 +140,19 @@ class CasosUsoModule {
     ) : TraerListaReunionesParaCreacionActaCasoUso = TraerListaReunionesParaCreacionActaCasoUsoImpl(
         homeRepositorio = homeRepositorio
     )
+
+    @Provides
+    fun providesTraerListaAfiliadosParaAsistenciaCasoUso(
+        homeRepositorio: HomeRepositorio
+    ): TraerListaAfiliadosParaAsistenciaCasoUso = TraerListaAfiliadosParaAsistenciaCasoUsoImpl(
+        homeRepositorio = homeRepositorio
+    )
+
+    @Provides
+    fun providesGuardarActaReunionCasoUso(
+        homeRepositorio: HomeRepositorio
+    ) : GuardarActaReunionCasoUso = GuardarActaReunionCasoUsoImpl(homeRepositorio = homeRepositorio)
+
     //endregion
 
     //endregion

@@ -1,11 +1,15 @@
 package com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.helper
 
+import androidx.lifecycle.MutableLiveData
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.CrearActaViewModel
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.adapters.ViewPagerPuntosReunionAdapter
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.subfragment.PuntosSubfragment
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class HelperViewPagerPuntosCrearActa {
 
@@ -15,6 +19,7 @@ class HelperViewPagerPuntosCrearActa {
     private lateinit var adapter : ViewPagerPuntosReunionAdapter
     private lateinit var puntosSubfragment: PuntosSubfragment
     private lateinit var crearActaViewModel: CrearActaViewModel
+    private val cargaPaginasFinalizo = MutableLiveData<Boolean>()
     //endregion
 
     fun conDetallePuntoSubfragment(puntoSubfragment: PuntosSubfragment): HelperViewPagerPuntosCrearActa {
@@ -40,7 +45,10 @@ class HelperViewPagerPuntosCrearActa {
 
     fun cargarPaginas() {
         configurarViewPager()
+        inicializarPaginas()
     }
+
+    fun traerCargaPaginasFinalizo() = cargaPaginasFinalizo
 
     //region metodos privados
     private fun configurarViewPager() {
@@ -67,6 +75,19 @@ class HelperViewPagerPuntosCrearActa {
                 viewPager.currentItem = position
             }.attach()
             viewPager.currentItem = 0
+        }
+    }
+
+
+    private fun inicializarPaginas() {
+        GlobalScope.launch {
+            delay(1000)
+            for (pagina in 0 until adapter.listaFragments.size) {
+                viewPager.post { viewPager.currentItem = pagina }
+                delay(500)
+            }
+            viewPager.post { viewPager.currentItem = 0 }
+            cargaPaginasFinalizo.postValue(true)
         }
     }
     //endregion

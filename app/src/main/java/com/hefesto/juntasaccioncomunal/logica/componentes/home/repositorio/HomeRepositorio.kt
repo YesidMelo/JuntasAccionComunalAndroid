@@ -7,6 +7,7 @@ import com.hefesto.juntasaccioncomunal.logica.modelos.home.AfiliadoParaModificac
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.DatosBasicosAfiliadoActualizarRegistrarInformacionModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.registroAfiliado.CompiladoInformacionAfiliadoParaRegistroModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.agendarReunion.DetalleReunionAAgendarModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.crearActa.AfiliadoActaAsistenciaModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.crearActa.ReunionAsambleaCreacionActaModel
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.FuncionesRolApp
 import kotlinx.coroutines.GlobalScope
@@ -27,6 +28,8 @@ interface HomeRepositorio {
     //region reunion asamblea
     fun agendarReunionAsamblea(detalleReunionAAgendarModel: DetalleReunionAAgendarModel) : Flow<Boolean>
     fun traerListaReunionesParaCrearActa() : Flow<List<ReunionAsambleaCreacionActaModel>>
+    fun traerListaAfiliadosAsistencia(): Flow<List<AfiliadoActaAsistenciaModel>>
+    fun guardarActa( asistencia: MutableList<AfiliadoActaAsistenciaModel>, detalleReunion: ReunionAsambleaCreacionActaModel ) :  Flow<Boolean>
     //endregion
 }
 
@@ -88,6 +91,17 @@ class HomeRepositorioImpl constructor(
 
     override fun traerListaReunionesParaCrearActa(): Flow<List<ReunionAsambleaCreacionActaModel>>
     = homeDBDatasource.traerListaReunionesParaCrearActa()
+
+    override fun traerListaAfiliadosAsistencia(): Flow<List<AfiliadoActaAsistenciaModel>>
+    = homeDBDatasource.traerListaAfiliadosAsistencia()
+
+    override fun guardarActa(
+        asistencia: MutableList<AfiliadoActaAsistenciaModel>,
+        detalleReunion: ReunionAsambleaCreacionActaModel
+    ): Flow<Boolean> = homeDBDatasource.guardarActa(
+        asistencia = asistencia,
+        detalleReunion = detalleReunion
+    )
 
     //endregion
 }

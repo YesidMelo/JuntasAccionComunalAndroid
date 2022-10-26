@@ -3,7 +3,9 @@ package com.hefesto.juntasaccioncomunal.di.logica
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.casosUso.CargarEscuchadorExcepcionesCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.TraerTiposReunionCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.agendarReunion.AgendarReunionAsambleaCasoUso
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.crearActa.TraerListaAfiliadosParaAsistenciaCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.crearActa.TraerListaReunionesParaCreacionActaCasoUso
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.guardarActa.GuardarActaReunionCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.configuracionAfiliadoEnDirectiva.ActualizarAfiliadoEnDirectivaCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.configuracionAfiliadoEnDirectiva.TraerEstadosAfiliadoEnDirectivaCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.configuracionAfiliadoEnDirectiva.TraerRolesAfiliadosEnDirectivaCasoUso
@@ -125,9 +127,13 @@ class UiModule {
 
     @Provides
     fun providesCrearActaUI(
-        cargarEscuchadorExcepcionesCasoUso: CargarEscuchadorExcepcionesCasoUso
+        cargarEscuchadorExcepcionesCasoUso: CargarEscuchadorExcepcionesCasoUso,
+        traerListaAfiliadosParaAsistenciaCasoUso: TraerListaAfiliadosParaAsistenciaCasoUso,
+        guardarActaReunionCasoUso: GuardarActaReunionCasoUso
     ) : CrearActaUI = CrearActaUI(
-        escuchadorExcepcionesCasoUso = cargarEscuchadorExcepcionesCasoUso
+        escuchadorExcepcionesCasoUso = cargarEscuchadorExcepcionesCasoUso,
+        traerListaAfiliadosParaAsistenciaCasoUso = traerListaAfiliadosParaAsistenciaCasoUso,
+        guardarActaReunionCasoUso = guardarActaReunionCasoUso
     )
 
 
