@@ -35,7 +35,8 @@
                 android:id="@+id/editText_datosAfiliadoHome_nombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/ingresar_nombre_afiliado" />
+                android:hint="@string/ingresar_nombre_afiliado"
+                android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -50,7 +51,8 @@
                 android:id="@+id/editText_datosAfiliadoHome_apellidos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/ingresar_apellido_afiliado" />
+                android:hint="@string/ingresar_apellido_afiliado"
+                android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
