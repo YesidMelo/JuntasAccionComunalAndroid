@@ -4,6 +4,8 @@ import com.hefesto.juntasaccioncomunal.MiAplicacion
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.casosUso.CargarEscuchadorExcepcionesCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.casosUso.CargarEscuchadorExcepcionesCasoUsoImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.repositorios.BaseRepositorio
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.TraerListaActasParaGenerarPDFCasoUso
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.TraerListaActasParaGenerarPDFCasoUsoImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.TraerTiposReunionCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.TraerTiposReunionCasoUsoImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.agendarReunion.AgendarReunionAsambleaCasoUso
@@ -124,8 +126,6 @@ class CasosUsoModule {
     //endregion
 
     //region reuniones/asambleas
-    @Provides
-    fun providesTraerTiposReunionCasoUso(): TraerTiposReunionCasoUso = TraerTiposReunionCasoUsoImpl(context = MiAplicacion.traerInstancia()!!.applicationContext)
 
     @Provides
     fun providesAgendarReunionAsambleaCasoUso(
@@ -135,9 +135,14 @@ class CasosUsoModule {
     )
 
     @Provides
-    fun providesTraerListaReunionesParaCreacionActaCasoUso(
+    fun providesGuardarActaReunionCasoUso(
         homeRepositorio: HomeRepositorio
-    ) : TraerListaReunionesParaCreacionActaCasoUso = TraerListaReunionesParaCreacionActaCasoUsoImpl(
+    ) : GuardarActaReunionCasoUso = GuardarActaReunionCasoUsoImpl(homeRepositorio = homeRepositorio)
+
+    @Provides
+    fun providesTraerListaActasParaGenerarPDFCasoUso(
+        homeRepositorio: HomeRepositorio
+    ) : TraerListaActasParaGenerarPDFCasoUso = TraerListaActasParaGenerarPDFCasoUsoImpl(
         homeRepositorio = homeRepositorio
     )
 
@@ -149,9 +154,14 @@ class CasosUsoModule {
     )
 
     @Provides
-    fun providesGuardarActaReunionCasoUso(
+    fun providesTraerListaReunionesParaCreacionActaCasoUso(
         homeRepositorio: HomeRepositorio
-    ) : GuardarActaReunionCasoUso = GuardarActaReunionCasoUsoImpl(homeRepositorio = homeRepositorio)
+    ) : TraerListaReunionesParaCreacionActaCasoUso = TraerListaReunionesParaCreacionActaCasoUsoImpl(
+        homeRepositorio = homeRepositorio
+    )
+
+    @Provides
+    fun providesTraerTiposReunionCasoUso(): TraerTiposReunionCasoUso = TraerTiposReunionCasoUsoImpl(context = MiAplicacion.traerInstancia()!!.applicationContext)
 
     //endregion
 

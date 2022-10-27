@@ -1,6 +1,7 @@
 package com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarActaPdf
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,6 +36,8 @@ class GenerarActaPdfFragment : BaseFragment<GenerarActaPdfViewModel>() {
     //region metodos privados
     private fun precargarVista() {
         configuracionBotones()
+        configurarLiveData()
+        cargarInformacion()
     }
 
     //region botones
@@ -49,9 +52,36 @@ class GenerarActaPdfFragment : BaseFragment<GenerarActaPdfViewModel>() {
     //endregion
 
     //region livedata
+    private fun configurarLiveData() {
+        precargarHaCargadoLiveData()
+        precargarListaReunionesLiveData()
+    }
+
+    private fun precargarHaCargadoLiveData() {
+        traerViewModel()
+            .traerHaCargadoLiveData()
+            .observe(viewLifecycleOwner) {
+                if (!it) {
+                    mostrarLoading()
+                    return@observe
+                }
+                ocultarLoading()
+            }
+    }
+
+    private fun precargarListaReunionesLiveData() {
+        traerViewModel()
+            .traerListaREunionesLiveData()
+            .observe(viewLifecycleOwner) {
+                Log.e("ERr", "Ha cargado")
+            }
+    }
     //endregion
 
     //region carga
+    private fun cargarInformacion() {
+        traerViewModel().cargarListaReuniones()
+    }
     //endregion
 
     //endregion

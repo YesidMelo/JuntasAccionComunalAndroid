@@ -58,6 +58,8 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.he
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.reunionAsamblea.HelperListaAfiliadosAsistenciaDBImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.reunionAsamblea.HelperListaReunionesParaCrearActasDB
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.reunionAsamblea.HelperListaReunionesParaCrearActasDBImpl
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.reunionAsamblea.HelperListaReunionesParaCrearPDFDB
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.reunionAsamblea.HelperListaReunionesParaCrearPDFDBImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperIniciarSesion
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperRegistroAfilado
 import com.hefesto.juntasaccioncomunal.logica.componentes.login.repositorios.db.helpers.HelperRegistroJAC
@@ -184,27 +186,11 @@ class HelpersDBDatasourceModule {
     @Provides
     fun providesHelperAgendarReunionDB(
         reunionAsambleaDao: ReunionAsambleaDao,
-        puntosReunionDao: PuntosReunionDao
+        puntosReunionDao: PuntosReunionDao,
+        memoriaCache: MemoriaCache
     ) : HelperAgendarReunionDB = HelperAgendarReunionDBImpl(
         reunionAsambleaDao = reunionAsambleaDao,
-        puntosReunionDao = puntosReunionDao
-    )
-
-    @Provides
-    fun providesHelperListaReunionesParaCrearActasDB(
-        reunionAsambleaDao: ReunionAsambleaDao,
-        puntosReunionDao: PuntosReunionDao
-    ) : HelperListaReunionesParaCrearActasDB = HelperListaReunionesParaCrearActasDBImpl(
-        reunionAsambleaDao = reunionAsambleaDao,
-        puntosReunionDao = puntosReunionDao
-    )
-
-    @Provides
-    fun providesHelperListaAfiliadosAsistenciaDB(
-        afiliadoDao: AfiliadoDao,
-        memoriaCache: MemoriaCache
-    ) : HelperListaAfiliadosAsistenciaDB = HelperListaAfiliadosAsistenciaDBImpl(
-        afiliadoDao = afiliadoDao,
+        puntosReunionDao = puntosReunionDao,
         memoriaCache = memoriaCache
     )
 
@@ -217,6 +203,37 @@ class HelpersDBDatasourceModule {
         reunionDao = reunionDao,
         puntosReunionDao = puntosReunionDao,
         listaAsambleaDao = listaAsambleaDao
+    )
+
+    @Provides
+    fun providesHelperListaAfiliadosAsistenciaDB(
+        afiliadoDao: AfiliadoDao,
+        memoriaCache: MemoriaCache
+    ) : HelperListaAfiliadosAsistenciaDB = HelperListaAfiliadosAsistenciaDBImpl(
+        afiliadoDao = afiliadoDao,
+        memoriaCache = memoriaCache
+    )
+
+    @Provides
+    fun providesHelperListaReunionesParaCrearActasDB(
+        reunionAsambleaDao: ReunionAsambleaDao,
+        puntosReunionDao: PuntosReunionDao,
+        memoriaCache: MemoriaCache
+    ) : HelperListaReunionesParaCrearActasDB = HelperListaReunionesParaCrearActasDBImpl(
+        reunionAsambleaDao = reunionAsambleaDao,
+        puntosReunionDao = puntosReunionDao,
+        memoriaCache = memoriaCache
+    )
+
+    @Provides
+    fun providesHelperListaReunionesParaCrearPDFDB(
+        reunionDao: ReunionAsambleaDao,
+        puntosReunionDao: PuntosReunionDao,
+        memoriaCache: MemoriaCache
+    ) : HelperListaReunionesParaCrearPDFDB = HelperListaReunionesParaCrearPDFDBImpl(
+        reunionAsambleaDao = reunionDao,
+        puntosReunionDao = puntosReunionDao,
+        memoriaCache = memoriaCache
     )
 
     //endregion
@@ -259,12 +276,14 @@ class HelpersDBDatasourceModule {
         helperAgendarReunionDB: HelperAgendarReunionDB,
         helperListaReunionesParaCrearActasDB: HelperListaReunionesParaCrearActasDB,
         helperListaAfiliadosAsistenciaDB: HelperListaAfiliadosAsistenciaDB,
-        helperCrearActaDB: HelperCrearActaDB
+        helperCrearActaDB: HelperCrearActaDB,
+        helperListaReunionesParaCrearPDFDB: HelperListaReunionesParaCrearPDFDB
     ) : HelperReunionAsambleaDB = HelperReunionAsambleaDBImpl(
         helperAgendarReunionDB = helperAgendarReunionDB,
         helperListaReunionesParaCrearActasDB = helperListaReunionesParaCrearActasDB,
         helperListaAfiliadosAsistenciaDB = helperListaAfiliadosAsistenciaDB,
-        helperCrearActaDB = helperCrearActaDB
+        helperCrearActaDB = helperCrearActaDB,
+        helperListaReunionesParaCrearPDFDB = helperListaReunionesParaCrearPDFDB
     )
     //endregion
     //endregion

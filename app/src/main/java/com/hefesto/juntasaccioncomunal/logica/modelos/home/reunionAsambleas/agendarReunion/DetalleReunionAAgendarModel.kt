@@ -10,5 +10,6 @@ data class DetalleReunionAAgendarModel (
     var tipoReunion: TipoReunion?= null,
     var fechaReunion: Date? = null,
     var horaReunion: Date?= null,
-    var puntosReunion: List<PuntoReunionAgendarReunionAsambleaModel>
+    var puntosReunion: List<PuntoReunionAgendarReunionAsambleaModel>,
+    var jacId: Int?= null
 ): BaseModel()

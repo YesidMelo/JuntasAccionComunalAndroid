@@ -1,10 +1,10 @@
-package com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.crearActa
+package com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.actasParaPDF
 
 import com.hefesto.juntasaccioncomunal.logica.modelos.BaseModel
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.TipoReunion
 import java.util.*
 
-data class ReunionAsambleaCreacionActaModel constructor(
+data class ReunionParaGenerarPDFModel constructor(
     var reunionAsambleaId: Int? = null,
     var asuntoReunion: String?= null,
     var tipoReunion: TipoReunion?= null,
@@ -13,6 +13,5 @@ data class ReunionAsambleaCreacionActaModel constructor(
     var creoActa : Boolean = false,
     var horaInicio: Date?= null,
     var horaFin: Date?= null,
-    var listaPuntos: List<PuntoReunionParaCreacionActaModel>? = null,
-    var jacId: Int? = null
+    var listaPuntos: List<PuntoReunionParaGenerarPDFModel>? = null
 ): BaseModel()

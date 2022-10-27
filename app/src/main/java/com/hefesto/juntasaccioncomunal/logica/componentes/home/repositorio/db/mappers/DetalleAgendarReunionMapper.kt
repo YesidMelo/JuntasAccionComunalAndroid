@@ -18,7 +18,8 @@ fun DetalleReunionAAgendarModel.convertirAReunionAsambleaEntity(): ReunionAsambl
         asuntoReunion = this.tituloReunion,
         tipoReunionId = this.tipoReunion?.traerId(),
         fechaRegistro = Date().convertirAFormato(formato = FormatosFecha.ISO_8610),
-        fechaYHoraProgramacionReunion = fechaARegistra.convertirADate(formatoEntrada = FormatosFecha.ISO_8610)?.convertirAFormato(FormatosFecha.ISO_8610)
+        fechaYHoraProgramacionReunion = fechaARegistra.convertirADate(formatoEntrada = FormatosFecha.ISO_8610)?.convertirAFormato(FormatosFecha.ISO_8610),
+        jacId = this.jacId
     )
 }
 

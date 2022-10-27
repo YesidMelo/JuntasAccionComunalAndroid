@@ -1,6 +1,7 @@
 package com.hefesto.juntasaccioncomunal.di.logica
 
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.casosUso.CargarEscuchadorExcepcionesCasoUso
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.TraerListaActasParaGenerarPDFCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.TraerTiposReunionCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.agendarReunion.AgendarReunionAsambleaCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.crearActa.TraerListaAfiliadosParaAsistenciaCasoUso
@@ -139,9 +140,11 @@ class UiModule {
 
     @Provides
     fun providesGenerarActaPdfUI(
-        cargarEscuchadorExcepcionesCasoUso: CargarEscuchadorExcepcionesCasoUso
+        cargarEscuchadorExcepcionesCasoUso: CargarEscuchadorExcepcionesCasoUso,
+        traerListaActasParaGenerarPDFCasoUso: TraerListaActasParaGenerarPDFCasoUso
     ): GenerarActaPDFUI = GenerarActaPDFUI(
-        escuchadorExcepcionesCasoUso = cargarEscuchadorExcepcionesCasoUso
+        escuchadorExcepcionesCasoUso = cargarEscuchadorExcepcionesCasoUso,
+        traerListaActasParaGenerarPDFCasoUso = traerListaActasParaGenerarPDFCasoUso
     )
 
 

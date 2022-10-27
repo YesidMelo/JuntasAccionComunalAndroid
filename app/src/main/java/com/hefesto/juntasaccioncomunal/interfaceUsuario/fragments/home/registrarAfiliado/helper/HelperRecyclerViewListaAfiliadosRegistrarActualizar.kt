@@ -11,7 +11,7 @@ class HelperRecyclerViewListaAfiliadosRegistrarActualizar {
 
     //region variables
     private lateinit var recyclerView: RecyclerView
-    private lateinit var listaAfiliados: List<DatosBasicosAfiliadoActualizarRegistrarInformacionModel>
+    private var listaAfiliados = emptyList<DatosBasicosAfiliadoActualizarRegistrarInformacionModel>().toMutableList()
     private lateinit var adapter: ListaAfiliadosRecyclerViewAdapter
     private lateinit var escuchadorItemSeleccionado: (DatosBasicosAfiliadoActualizarRegistrarInformacionModel)->Unit
     private var listaFiltrada = emptyList<DatosBasicosAfiliadoActualizarRegistrarInformacionModel>().toMutableList()
@@ -25,7 +25,7 @@ class HelperRecyclerViewListaAfiliadosRegistrarActualizar {
     }
 
     fun conListaAfiliados(listaAfiliados: List<DatosBasicosAfiliadoActualizarRegistrarInformacionModel>) : HelperRecyclerViewListaAfiliadosRegistrarActualizar {
-        this.listaAfiliados = listaAfiliados
+        this.listaAfiliados = listaAfiliados.toMutableList()
         return this
     }
 
