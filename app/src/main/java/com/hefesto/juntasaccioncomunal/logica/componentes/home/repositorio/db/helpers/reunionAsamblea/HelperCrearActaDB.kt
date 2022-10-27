@@ -34,8 +34,8 @@ class HelperCrearActaDBImpl constructor(
         val reunionEntity = detalleReunion.convertirAReunionAsambleaEntity()
         reunionEntity.creoActa = true
 
-        reunionDao.insertarElemento(elemento = reunionEntity)
-        puntosReunionDao.insertarElementos(elementos =  listaPuntos)
+        reunionDao.actualizarElemento(elemento = reunionEntity)
+        puntosReunionDao.actualizarElementos(elementos =  listaPuntos)
         listaAsambleaDao.insertarElementos(elementos = listaAsistenciaEntity)
     }
 

@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.converters.BooleanConverter
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.ComitesDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.FuncionesRolAppDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.general.RolApp_FuncionesApp_Dao
@@ -100,6 +102,7 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.login.JACEnSesionVi
     ],
     version = 1
 )
+@TypeConverters(BooleanConverter::class)
 abstract class BaseDatosApp : RoomDatabase() {
 
     companion object{

@@ -464,8 +464,6 @@ Uapp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/modules/HomeActivityMod
 ¢app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/reunionAsamblea/listaReunionesCreacionActa/ListaReunionesCreacionActaFragment.kt,3\2\32cd622118ae61f839cdbe467798c26266152cc6
 ê
 `app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/dialogo/DialogoInformativo.kt,b\a\ba2eb5ef92192bd8fc2b65b3ced3af271923e5dc
-£
-sapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/entities/reunionAsamblea/ReunionAsambleaEntity.kt,d\3\d3e712fb04848569eb6f1b3a9e2451862b26da08
 }
 Mapp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/BaseFragmentDagger.kt,2\c\2cd0642cdaae6544922ad1d225c7a1533080c755
 ‘

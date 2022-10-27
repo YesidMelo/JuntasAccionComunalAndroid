@@ -177,7 +177,7 @@ class CrearActaFragment  : BaseFragment<CrearActaViewModel>(){
                     tipoDialogo = DialogoInformativo.TipoDialogo.INFORMATIVO,
                     titulo = R.string.crear_acta_reunion,
                     mensaje = R.string.se_ha_creado_el_acta_exitosamente,
-                    accionAceptar = ::configurarBotonAtras
+                    accionAceptar = ::navegarAtras
                 )
             }
     }
