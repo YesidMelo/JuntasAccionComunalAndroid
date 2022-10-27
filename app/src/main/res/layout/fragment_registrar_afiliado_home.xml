@@ -76,11 +76,24 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout_encabezadoRegistroAfiliado"
         tools:itemCount="5"
-        tools:listitem="@layout/itemlista_afiliados_jac" />
+        tools:listitem="@layout/itemlista_afiliados_jac" >
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/textView_listaAfiliados_noTienesAfiliadosEnEsteMomento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no_tienes_afiliados_en_este_momento"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout_encabezadoRegistroAfiliado" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -158,4 +158,6 @@
     <string name="no_ha_ingresado_una_cantidad_de_votos_valida">No ha ingresado una cantidad de votos valida</string>
     <string name="no_ha_seleccionado_los_asistentes_a_la_reunion">No Ingresado los asistentes a la reunion</string>
     <string name="no_ha_seleccionado_hora_fin_reunion_valida">No ha seleccionado la hora de finalizacion valida intentalo de nuevo</string>
+    <string name="no_tiene_reuniones_pendientes_por_acta">No tiene reuniones pendietes para generar acta.</string>
+    <string name="no_tienes_afiliados_en_este_momento">No tienes afiliados en este momento</string>
 </resources>

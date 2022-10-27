@@ -336,8 +336,6 @@ rapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/repos
 üapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/detalleAfiliadoRegistroActualizacion/helpers/HelperSpinnerComitesEnJacHome.kt,0\0\005e60c99d371e7494faef5b0a8bd398262254dd
 ‹
 ´app/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/casosUso/listaAfiliadosModificacionDirectivas/TraerListaAfiliadosModificacionDirectivasCasoUso.kt,5\9\591c7aa9ae1de0d5ffdddd067e405428150dc0ee
-“
-°app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/registrarAfiliado/helper/HelperRecyclerViewListaAfiliadosRegistrarActualizar.kt,9\4\94a82d4850ba9f4d50dd04c0ad1c99007c9a79b9
 °
 qapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/views/home/AfiliadoActualizacionRegistroView.kt,9\9\99a709a363a438c25cd43a8a82de5085bae6f50f
 ¬
@@ -376,8 +374,6 @@ lapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/reunionA
 àapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/splash/repositorios/helpers/cargarTipos/HelperCargarTiposReunion.kt,e\1\e1c19d50b230120e4b53abc00466b7a7f7009df4
 ˆ
 ≈app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/detalleAfiliadoRegistroActualizacion/subfragments/contactoAfiliado/ContactoAfiliadoRegistroActualizacionFragment.kt,4\0\409c41e818836e1a6d8d5db2aed6266e7e1cd1ec
-µ
-Ñapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/registrarAfiliado/RegistrarAfiliadoHomeFragment.kt,b\a\baeb8956d261b8d274e2ce61be620182319e1dd4
 ”
 ¢app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/detalleAfiliadoRegistroActualizacion/helpers/HelperSpinnerEstadosAfiliadoHome.kt,7\c\7ca51914b6f731b337f70cfcc14b05cd980a6876
 q
@@ -460,8 +456,6 @@ capp/src/main/java/com/hefesto/juntasaccioncomunal/logica/utilidades/enumeradore
 vapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/panelControl/PanelControlFragment.kt,0\2\025bf3b88d2a103136ca77633b85fdd92ca72cbe
 Ö
 Uapp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/modules/HomeActivityModule.kt,0\4\04233868c3a8f8ed53214b06b1ab6c14b736d69f
-”
-¢app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/reunionAsamblea/listaReunionesCreacionActa/ListaReunionesCreacionActaFragment.kt,3\2\32cd622118ae61f839cdbe467798c26266152cc6
 ê
 `app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/dialogo/DialogoInformativo.kt,b\a\ba2eb5ef92192bd8fc2b65b3ced3af271923e5dc
 }

@@ -80,6 +80,15 @@ class ListaReunionesCreacionActaFragment :  BaseFragment<ListaReunionesCreacionA
         traerViewModel()
             .traerListaReunionesCrearActaLiveData()
             .observe(viewLifecycleOwner) {
+                if(it.isEmpty()) {
+                    binding.textViewListaActasPendientesNoTieneActasPendientes.visibility = View.VISIBLE
+                    binding.recyclerviewListaReunionesAgendadas.visibility = View.GONE
+                    return@observe
+                }
+
+                binding.textViewListaActasPendientesNoTieneActasPendientes.visibility = View.GONE
+                binding.recyclerviewListaReunionesAgendadas.visibility = View.VISIBLE
+
                 helperRecyclerViewListaReunionesCrearActa
                     .conRecycler(recyclerView = binding.recyclerviewListaReunionesAgendadas)
                     .conEscuchadorReunionSeleccionada(::navegarACreacionActa)

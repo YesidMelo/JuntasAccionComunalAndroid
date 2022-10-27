@@ -69,6 +69,16 @@ class RegistrarAfiliadoHomeFragment : BaseFragment<RegistrarAfiliadoHomeViewMode
         registrarAfiliadoFragmentViewModel
             .traerListaAfiliadosRegistroActualizacion()
             .observe(viewLifecycleOwner) {
+
+                if (it.isNullOrEmpty()) {
+                    binding.textViewListaAfiliadosNoTienesAfiliadosEnEsteMomento.visibility = View.VISIBLE
+                    binding.recyclerviewListaAfiliadosRegistroHome.visibility = View.GONE
+                    return@observe
+                }
+
+                binding.textViewListaAfiliadosNoTienesAfiliadosEnEsteMomento.visibility = View.GONE
+                binding.recyclerviewListaAfiliadosRegistroHome.visibility = View.VISIBLE
+
                 helperRecyclerViewListaAfiliadosRegistrarActualizar
                     .conListaAfiliados(listaAfiliados = it?: emptyList())
                     .conRecyclerView(recyclerView = binding.recyclerviewListaAfiliadosRegistroHome)
