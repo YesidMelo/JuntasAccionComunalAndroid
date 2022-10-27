@@ -23,6 +23,7 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.ListaAfiliados
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.PanelControlFragmenUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.asambleaReunion.AgendarReunionUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.asambleaReunion.CrearActaUI
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.asambleaReunion.GenerarActaPDFUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.asambleaReunion.ListaReunionesCreacionActaUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.registroAfiliado.ContactoAfiliadoUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.registroAfiliado.DatosBasicosAfiliadoUI
@@ -134,6 +135,13 @@ class UiModule {
         escuchadorExcepcionesCasoUso = cargarEscuchadorExcepcionesCasoUso,
         traerListaAfiliadosParaAsistenciaCasoUso = traerListaAfiliadosParaAsistenciaCasoUso,
         guardarActaReunionCasoUso = guardarActaReunionCasoUso
+    )
+
+    @Provides
+    fun providesGenerarActaPdfUI(
+        cargarEscuchadorExcepcionesCasoUso: CargarEscuchadorExcepcionesCasoUso
+    ): GenerarActaPDFUI = GenerarActaPDFUI(
+        escuchadorExcepcionesCasoUso = cargarEscuchadorExcepcionesCasoUso
     )
 
 
