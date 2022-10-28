@@ -9,6 +9,7 @@
 <androidx.core.widget.NestedScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -181,16 +182,79 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/button_agendarReunion"
+            app:layout_constraintDimensionRatio="3:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintlayout_agendarReunionAsamblea_formularioPunto"
-            app:layout_constraintVertical_bias="1.0"
-            app:layout_constraintDimensionRatio="2:1"
             tools:itemCount="5"
-            tools:listitem="@layout/item_agendarreunion_puntoreunion" />
+            tools:listitem="@layout/item_agendarreunion_puntoreunion">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintlayout_listaConvocantes"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/button_agendarReunion"
+            app:layout_constraintEnd_toEndOf="@+id/reciclerView_listaPuntosReunion"
+            app:layout_constraintStart_toStartOf="@+id/reciclerView_listaPuntosReunion"
+            app:layout_constraintTop_toBottomOf="@+id/reciclerView_listaPuntosReunion">
+
+            <AutoCompleteTextView
+                android:id="@+id/autocomplete_agendarReunionAsamblea_filtroConvocante"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="16dp"
+                android:hint="@string/numero_documento"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView_agendarReunionAsamblea_convocantes" />
+
+            <TextView
+                android:id="@+id/textView_agendarReunionAsamblea_convocantes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/convoca"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview_agendarReunionAsamblea_convocantes"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="3:1.8"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/radioButtonGroup_selectorFiltro" />
+
+            <RadioGroup
+                android:id="@+id/radioButtonGroup_selectorFiltro"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/autocomplete_agendarReunionAsamblea_filtroConvocante">
+
+                <RadioButton
+                    android:id="@+id/radioButton_agendarReunionAsamblea_numerodocumento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/numero_documento" />
+
+                <RadioButton
+                    android:id="@+id/radioButton_agendarReunionAsamblea_nombres"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/nombres" />
+            </RadioGroup>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <Button
             android:id="@+id/button_agendarReunion"

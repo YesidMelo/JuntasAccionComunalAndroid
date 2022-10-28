@@ -10,6 +10,8 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asamblea
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.TraerTiposReunionCasoUsoImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.agendarReunion.AgendarReunionAsambleaCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.agendarReunion.AgendarReunionAsambleaCasoUsoImpl
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.agendarReunion.TraerListaAfiliadosDisponiblesParaConvocarCasoUso
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.agendarReunion.TraerListaAfiliadosDisponiblesParaConvocarCasoUsoImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.crearActa.TraerListaAfiliadosParaAsistenciaCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.crearActa.TraerListaAfiliadosParaAsistenciaCasoUsoImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.crearActa.TraerListaReunionesParaCreacionActaCasoUso
@@ -143,6 +145,13 @@ class CasosUsoModule {
     fun providesTraerListaActasParaGenerarPDFCasoUso(
         homeRepositorio: HomeRepositorio
     ) : TraerListaActasParaGenerarPDFCasoUso = TraerListaActasParaGenerarPDFCasoUsoImpl(
+        homeRepositorio = homeRepositorio
+    )
+
+    @Provides
+    fun providesTraerListaAfiliadosDisponiblesParaConvocarCasoUso(
+        homeRepositorio: HomeRepositorio
+    ): TraerListaAfiliadosDisponiblesParaConvocarCasoUso = TraerListaAfiliadosDisponiblesParaConvocarCasoUsoImpl(
         homeRepositorio = homeRepositorio
     )
 

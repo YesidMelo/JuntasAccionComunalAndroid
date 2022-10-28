@@ -1,6 +1,7 @@
 package com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.agendarReunion
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import com.hefesto.juntasaccioncomunal.R
 import com.hefesto.juntasaccioncomunal.databinding.FragmentAgendarReunionAsambleaBinding
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.dialogo.DialogoInformativo
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.agendarReunion.helpers.HelperAutocompleteConvocantesAgendarReunion
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.agendarReunion.helpers.HelperRecyclerViewAgendarReunionListaPuntos
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.agendarReunion.helpers.HelperSpinnerTiposReunion
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
@@ -24,9 +26,10 @@ class AgendarReunionFragment : BaseFragment<AgendarReunionViewModel> (){
     lateinit var agendarReunionViewModel: AgendarReunionViewModel
     @Inject
     lateinit var helperSpinnerTiposReunion : HelperSpinnerTiposReunion
-
     @Inject
     lateinit var helperRecyclerViewAgendarReunionListaPuntos: HelperRecyclerViewAgendarReunionListaPuntos
+    @Inject
+    lateinit var helperAutocompleteConvocantesAgendarReunion: HelperAutocompleteConvocantesAgendarReunion
 
     private lateinit var binding: FragmentAgendarReunionAsambleaBinding
     //endregion
@@ -125,6 +128,7 @@ class AgendarReunionFragment : BaseFragment<AgendarReunionViewModel> (){
 
     //region precarga
     private fun precargarVista() {
+        precargarConvocantesDisponibles()
         precargarSpinnerTipoReunion()
         precargarFechaReunionAsamblea()
         precargarHoraReunionAsamblea()
@@ -132,6 +136,23 @@ class AgendarReunionFragment : BaseFragment<AgendarReunionViewModel> (){
         precargarReciclerView()
         precargarCargaFragment()
         precargarReunionAgendada()
+    }
+
+    private fun precargarConvocantesDisponibles() {
+        traerViewModel()
+            .traerAfiliadosConvocantes()
+            .observe(viewLifecycleOwner){
+                helperAutocompleteConvocantesAgendarReunion
+                    .conListaConvocantesDiponibles(listaConvocantes = it)
+                    .conAutocompleteView(autoCompleteTextView = binding.autocompleteAgendarReunionAsambleaFiltroConvocante)
+                    .conRecyclerView(recyclerView = binding.recyclerviewAgendarReunionAsambleaConvocantes)
+                    .conRadioButtonGroup(radioGroup = binding.radioButtonGroupSelectorFiltro)
+                    .conRadioButtonDocumento(radioButtonDocumento = binding.radioButtonAgendarReunionAsambleaNumerodocumento)
+                    .conRadioButtonNombres(radioButtonNombre = binding.radioButtonAgendarReunionAsambleaNombres)
+                    .conMostrarLoading(mostrarLoading = ::mostrarLoading)
+                    .conOcultarLoading(ocultarLoading = ::ocultarLoading)
+                    .configurarAutocompleteRecycler()
+            }
     }
 
     private fun precargarSpinnerTipoReunion() {
@@ -227,6 +248,7 @@ class AgendarReunionFragment : BaseFragment<AgendarReunionViewModel> (){
     }
 
     //endregion
+
     //endregion
 
     //endregion

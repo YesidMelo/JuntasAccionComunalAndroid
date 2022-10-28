@@ -27,6 +27,7 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.JacDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Jac_Afiliado_Direccion_Dao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.RolAfiliacionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Telefono_Dao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.ConvocatesDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.ListaAsistenciaDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.PuntosReunionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.ReunionAsambleaDao
@@ -52,6 +53,7 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.JACEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.Jac_Afiliado_Direccion_Entity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.RolAfiliacionEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.TelefonosEntity
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.reunionAsamblea.ConvocantesEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.reunionAsamblea.ListaAsistenciaEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.reunionAsamblea.PuntosReunionEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.reunionAsamblea.ReunionAsambleaEntity
@@ -71,6 +73,7 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.login.JACEnSesionVi
         Afiliado_Jac_Comite_Entity::class,
         Afiliado_Jac_EstadoAfiliacionEntity::class,
         Afiliado_Telefono_Entity::class,
+        ConvocantesEntity::class,
         ComitesEntity::class,
         CorreosEntity::class,
         CredencialesSesionEntity::class,
@@ -126,6 +129,7 @@ abstract class BaseDatosApp : RoomDatabase() {
     abstract fun afiliado_Jac_EstadoAfiliacionDao() : Afiliado_Jac_EstadoAfiliacionDao
     abstract fun afiliado_Telefono_Dao() : Afiliado_Telefono_Dao
     abstract fun comitesDao() : ComitesDao
+    abstract fun convocatesDao() : ConvocatesDao
     abstract fun correoDao() : CorreoDao
     abstract fun credencialesSesionDao(): CredencialesSesionDao
     abstract fun direccionDao() : DireccionDao

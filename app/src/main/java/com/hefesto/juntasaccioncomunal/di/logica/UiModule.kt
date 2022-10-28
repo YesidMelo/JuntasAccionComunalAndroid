@@ -4,6 +4,7 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.base.casosUso.CargarEs
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.TraerListaActasParaGenerarPDFCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.TraerTiposReunionCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.agendarReunion.AgendarReunionAsambleaCasoUso
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.agendarReunion.TraerListaAfiliadosDisponiblesParaConvocarCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.crearActa.TraerListaAfiliadosParaAsistenciaCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.crearActa.TraerListaReunionesParaCreacionActaCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.guardarActa.GuardarActaReunionCasoUso
@@ -111,11 +112,13 @@ class UiModule {
     fun providesAgendarReunionAsambleaUI(
         cargarEscuchadorExcepcionesCasoUso: CargarEscuchadorExcepcionesCasoUso,
         traerTiposReunionCasoUso: TraerTiposReunionCasoUso,
-        agendarReunionAsambleaCasoUso: AgendarReunionAsambleaCasoUso
+        agendarReunionAsambleaCasoUso: AgendarReunionAsambleaCasoUso,
+        traerListaAfiliadosDisponiblesParaConvocarCasoUso: TraerListaAfiliadosDisponiblesParaConvocarCasoUso
     ) : AgendarReunionUI = AgendarReunionUI(
         cargarEscuchadorExcepciones = cargarEscuchadorExcepcionesCasoUso,
         traerTiposReunionCasoUso = traerTiposReunionCasoUso,
-        agendarReunionAsambleaCasoUso = agendarReunionAsambleaCasoUso
+        agendarReunionAsambleaCasoUso = agendarReunionAsambleaCasoUso,
+        traerListaAfiliadosDisponiblesParaConvocarCasoUso = traerListaAfiliadosDisponiblesParaConvocarCasoUso
     )
 
     @Provides

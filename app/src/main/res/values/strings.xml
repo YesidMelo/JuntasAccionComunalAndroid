@@ -163,4 +163,6 @@
     <string name="lista_generar_acta_en_pdf">Lista generar acta en pdf</string>
     <string name="generar_acta_pdf">Generar acta pdf</string>
     <string name="detalle_acta">Detalle acta</string>
+    <string name="convoca">Convoca</string>
+    <string name="nombres">Nombres</string>
 </resources>
