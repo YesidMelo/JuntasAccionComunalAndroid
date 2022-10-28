@@ -160,5 +160,7 @@
     <string name="no_ha_seleccionado_hora_fin_reunion_valida">No ha seleccionado la hora de finalizacion valida intentalo de nuevo</string>
     <string name="no_tiene_reuniones_pendientes_por_acta">No tiene reuniones pendietes para generar acta.</string>
     <string name="no_tienes_afiliados_en_este_momento">No tienes afiliados en este momento</string>
-    <string name="generar_acta_en_pdf">Generar acta en pdf</string>
+    <string name="lista_generar_acta_en_pdf">Lista generar acta en pdf</string>
+    <string name="generar_acta_pdf">Generar acta pdf</string>
+    <string name="detalle_acta">Detalle acta</string>
 </resources>

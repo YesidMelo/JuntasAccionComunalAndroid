@@ -26,7 +26,7 @@ fun ReunionAsambleaEntity.convertirAReunionAsambleaCreacionActaModel(): ReunionA
 fun PuntosReunionEntity.convertirAPuntoReunionParaCreacionActaModel() : PuntoReunionParaCreacionActaModel {
     return PuntoReunionParaCreacionActaModel(
         puntoReunionId = this.puntoReunionId,
-        reunionId = this.puntoReunionId,
+        reunionId = this.reunionId,
         tituloPunto = this.tituloPunto,
         detallePunto = this.detallePunto,
         votosAFavor =  this.votosAFavor,

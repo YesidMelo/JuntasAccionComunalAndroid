@@ -11,7 +11,7 @@ interface ReunionAsambleaDao : BaseDao<ReunionAsambleaEntity> {
     @Query("SELECT * from ReunionAsambleaEntity t where t.creoActa = 0 and t.jacId = :jacId")
     fun traerListaReunionesParaCreacionActas(jacId: Int) : List<ReunionAsambleaEntity>
 
-    @Query("SELECT * from ReunionAsambleaEntity t where t.creoActa = 1 and t.jacId = :jacId")
+    @Query("SELECT * from ReunionAsambleaEntity t where t.creoActa = 1 and t.jacId = :jacId order by t.fechaRegistro desc")
     fun traerListaReunionesParaGeneracionPDF(jacId: Int) : List<ReunionAsambleaEntity>
 
 }

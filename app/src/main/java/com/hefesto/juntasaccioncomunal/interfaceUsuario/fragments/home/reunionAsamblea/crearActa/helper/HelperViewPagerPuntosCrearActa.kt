@@ -45,7 +45,6 @@ class HelperViewPagerPuntosCrearActa {
 
     fun cargarPaginas() {
         configurarViewPager()
-        inicializarPaginas()
     }
 
     fun traerCargaPaginasFinalizo() = cargaPaginasFinalizo
@@ -72,16 +71,17 @@ class HelperViewPagerPuntosCrearActa {
             TabLayoutMediator(tabLayout, viewPager){
                 tab, position ->
                 tab.setText("Punto ${adapter.listaFragments[position].puntoNo}")
-                viewPager.currentItem = position
             }.attach()
-            viewPager.currentItem = 0
+            inicializarPaginas()
         }
     }
 
-
+    //TODO ojo revisar el cambio de fragment cuando tiene mas de tres puntos dado que se genera el error. es mejor hacer el ambio paso a paso con botones
     private fun inicializarPaginas() {
+        cargaPaginasFinalizo.postValue(true)
+        return
         GlobalScope.launch {
-            delay(1000)
+            delay(10000)
             for (pagina in 0 until adapter.listaFragments.size) {
                 viewPager.post { viewPager.currentItem = pagina }
                 delay(500)

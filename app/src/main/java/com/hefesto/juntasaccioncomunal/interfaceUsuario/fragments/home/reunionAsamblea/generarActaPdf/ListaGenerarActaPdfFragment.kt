@@ -1,27 +1,31 @@
 package com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarActaPdf
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.hefesto.juntasaccioncomunal.databinding.FragmentGeneraractaPdfBinding
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarActaPdf.helpers.HelperRecyclerListaActasReunionesParaPDF
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarActaPdf.subfragments.DetalleActaWebFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
 import javax.inject.Inject
 
-class GenerarActaPdfFragment : BaseFragment<GenerarActaPdfViewModel>() {
+class ListaGenerarActaPdfFragment : BaseFragment<GenerarActaPdfViewModel>() {
 
     //region variables
     @Inject
     lateinit var generarActaPdfViewModel: GenerarActaPdfViewModel
+
+    @Inject
+    lateinit var helperRecyclerListaActasReunionesParaPDF: HelperRecyclerListaActasReunionesParaPDF
 
     private lateinit var binding: FragmentGeneraractaPdfBinding
     //endregion
 
     override fun traerViewModel(): GenerarActaPdfViewModel = generarActaPdfViewModel
 
-    override fun traerNodoNavegacion(): NodosNavegacionFragments = NodosNavegacionFragments.GENERAR_ACTA_PDF
+    override fun traerNodoNavegacion(): NodosNavegacionFragments = NodosNavegacionFragments.LISTA_GENERAR_ACTA_PDF
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -73,7 +77,16 @@ class GenerarActaPdfFragment : BaseFragment<GenerarActaPdfViewModel>() {
         traerViewModel()
             .traerListaREunionesLiveData()
             .observe(viewLifecycleOwner) {
-                Log.e("ERr", "Ha cargado")
+                helperRecyclerListaActasReunionesParaPDF
+                    .conRecyclerView(recyclerView = binding.recyclerviewListasParaActa)
+                    .conListaActas(listaActas = it)
+                    .conEscuchadorItemSeleccionado {
+                        navegacionAplicacion.navegarBeginTransaction(
+                            a = NodosNavegacionFragments.DETALLE_GENERAR_ACTA_PDF,
+                            bundle = Bundle().apply { putSerializable(DetalleActaWebFragment.DETALLE_ACTA, it) }
+                        )
+                    }
+                    .cargarRecycler()
             }
     }
     //endregion

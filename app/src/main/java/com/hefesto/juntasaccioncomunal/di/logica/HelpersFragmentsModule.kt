@@ -15,6 +15,8 @@ import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAs
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.helper.HelperFiltroBusquedaAfiliadoActaAsistencia
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.helper.HelperViewPagerFormulariosCompletarActas
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.helper.HelperViewPagerPuntosCrearActa
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarActaPdf.helpers.HelperGeneradorHtmlParaGenerarPDF
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarActaPdf.helpers.HelperRecyclerListaActasReunionesParaPDF
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.listaReunionesCreacionActa.helpers.HelperRecyclerViewListaReunionesCrearActa
 import dagger.Module
 import dagger.Provides
@@ -75,6 +77,12 @@ class HelpersFragmentsModule {
 
     @Provides
     fun providesHelperFiltroBusquedaAfiliadoActaAsistencia(): HelperFiltroBusquedaAfiliadoActaAsistencia = HelperFiltroBusquedaAfiliadoActaAsistencia()
+
+    @Provides
+    fun providesHelperRecyclerListaActasReunionesParaPDF(): HelperRecyclerListaActasReunionesParaPDF = HelperRecyclerListaActasReunionesParaPDF()
+
+    @Provides
+    fun providesHelperGeneradorHtmlParaGenerarPDF(): HelperGeneradorHtmlParaGenerarPDF = HelperGeneradorHtmlParaGenerarPDF()
     //endregion
 
     //endregion

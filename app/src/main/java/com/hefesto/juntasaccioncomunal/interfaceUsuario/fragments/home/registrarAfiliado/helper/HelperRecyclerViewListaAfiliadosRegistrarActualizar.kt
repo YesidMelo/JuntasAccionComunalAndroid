@@ -36,6 +36,7 @@ class HelperRecyclerViewListaAfiliadosRegistrarActualizar {
 
     fun filtrar(texto: String?, filtro: Filtro) {
         GlobalScope.launch {
+            if (recyclerView == null) return@launch
             if (filtrando) return@launch
             filtrando = true
             if (texto.isNullOrEmpty()) {
