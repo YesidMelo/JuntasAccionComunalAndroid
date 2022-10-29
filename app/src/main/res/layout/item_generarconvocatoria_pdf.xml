@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="@dimen/dimension16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimension16dp"
+            android:padding="@dimen/dimension16dp">
+
+            <TextView
+                android:id="@+id/textView_generarConvocatoriaPDF_asunto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/asunto"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView_generarConvocatoriaPDF_detalleasunto"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/asunto"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView_generarConvocatoriaPDF_asunto"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView_listaCreacionActa_fechaConvocatoria"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fecha_reunion_asamblea"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView_generarConvocatoriaPDF_asunto" />
+
+            <TextView
+                android:id="@+id/textView_generarConvocatoriaPDF_detallefechaconvocatoria"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/hint_seleccion_fecha"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView_listaCreacionActa_fechaConvocatoria"
+                app:layout_constraintTop_toBottomOf="@+id/textView_generarConvocatoriaPDF_detalleasunto" />
+
+            <TextView
+                android:id="@+id/textView_generarConvocatoriaPDF_horaConvocatoria"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hora_reunion"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView_listaCreacionActa_fechaConvocatoria" />
+
+            <TextView
+                android:id="@+id/textView_generarConvocatoriaPDF_detalleHoraConvocatoria"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/hint_hora"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView_generarConvocatoriaPDF_horaConvocatoria"
+                app:layout_constraintTop_toBottomOf="@+id/textView_generarConvocatoriaPDF_detallefechaconvocatoria" />
+
+            <TextView
+                android:id="@+id/textView_listareuninoes_tipoReunion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tipo_reunion"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView_generarConvocatoriaPDF_horaConvocatoria" />
+
+            <TextView
+                android:id="@+id/textView_generarConvocatoriaPDF_detalleTipoReunion"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/reunion_directiva_informativa"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView_listareuninoes_tipoReunion"
+                app:layout_constraintTop_toBottomOf="@+id/textView_generarConvocatoriaPDF_detalleHoraConvocatoria" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

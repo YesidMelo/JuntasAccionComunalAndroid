@@ -18,6 +18,7 @@ import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAs
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.subfragment.PuntosSubfragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarActaPdf.ListaGenerarActaPdfFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarActaPdf.subfragments.DetalleActaWebFragment
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.listaConvocatoriasReuniones.ListaConvocatoriasFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.listaReunionesCreacionActa.ListaReunionesCreacionActaFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.login.iniciarSesion.IniciarSesionFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.login.registrarAfiliado.RegistrarAfiliadoFragment
@@ -81,6 +82,9 @@ abstract class FragmentBuilder {
 
     @ContributesAndroidInjector(modules = [HomeActivityModule::class])
     abstract fun providesDetalleActaWebFragment() : DetalleActaWebFragment
+
+    @ContributesAndroidInjector(modules = [HomeActivityModule::class])
+    abstract fun providesListaConvocatoriasFragment() : ListaConvocatoriasFragment
 
 
     //endregion

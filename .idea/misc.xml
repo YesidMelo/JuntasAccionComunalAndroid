@@ -24,6 +24,7 @@
         <entry key="..\:/Users/Yesid/Desktop/Accesos directos/JuntasAccionComunal/app/src/main/res/layout/fragment_generaracta_pdf.xml" value="0.14492753623188406" />
         <entry key="..\:/Users/Yesid/Desktop/Accesos directos/JuntasAccionComunal/app/src/main/res/layout/fragment_iniciar_sesion.xml" value="0.33" />
         <entry key="..\:/Users/Yesid/Desktop/Accesos directos/JuntasAccionComunal/app/src/main/res/layout/fragment_lista_afiliados_modificacion_directivas.xml" value="0.33" />
+        <entry key="..\:/Users/Yesid/Desktop/Accesos directos/JuntasAccionComunal/app/src/main/res/layout/fragment_listareuniones_convocatorias.xml" value="0.17844202898550723" />
         <entry key="..\:/Users/Yesid/Desktop/Accesos directos/JuntasAccionComunal/app/src/main/res/layout/fragment_listareuniones_creacionacta.xml" value="0.22" />
         <entry key="..\:/Users/Yesid/Desktop/Accesos directos/JuntasAccionComunal/app/src/main/res/layout/fragment_panel_control.xml" value="0.33" />
         <entry key="..\:/Users/Yesid/Desktop/Accesos directos/JuntasAccionComunal/app/src/main/res/layout/fragment_registrar_afiliado_home.xml" value="0.25" />
@@ -35,6 +36,7 @@
         <entry key="..\:/Users/Yesid/Desktop/Accesos directos/JuntasAccionComunal/app/src/main/res/layout/item_agendarreunion_convocante.xml" value="0.22" />
         <entry key="..\:/Users/Yesid/Desktop/Accesos directos/JuntasAccionComunal/app/src/main/res/layout/item_agendarreunion_puntoreunion.xml" value="0.22" />
         <entry key="..\:/Users/Yesid/Desktop/Accesos directos/JuntasAccionComunal/app/src/main/res/layout/item_crearacta_listaasistencia.xml" value="0.33" />
+        <entry key="..\:/Users/Yesid/Desktop/Accesos directos/JuntasAccionComunal/app/src/main/res/layout/item_generarconvocatoria_pdf.xml" value="0.1" />
         <entry key="..\:/Users/Yesid/Desktop/Accesos directos/JuntasAccionComunal/app/src/main/res/layout/item_generarpdf_reunion.xml" value="0.33" />
         <entry key="..\:/Users/Yesid/Desktop/Accesos directos/JuntasAccionComunal/app/src/main/res/layout/item_reunionasamblea_crearacta.xml" value="0.2808988764044944" />
         <entry key="..\:/Users/Yesid/Desktop/Accesos directos/JuntasAccionComunal/app/src/main/res/layout/item_reuniongenerarpdf.xml" value="0.14492753623188406" />

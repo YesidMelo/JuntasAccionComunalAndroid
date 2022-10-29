@@ -13,6 +13,7 @@ import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.registrar
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.agendarReunion.AgendarReunionViewModel
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.CrearActaViewModel
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarActaPdf.GenerarActaPdfViewModel
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.listaConvocatoriasReuniones.ListaConvocatoriasViewModel
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.listaReunionesCreacionActa.ListaReunionesCreacionActaViewModel
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.casosUso.CargarEscuchadorExcepcionesCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.ConfiguracionAfiliadoEnDirectivaUI
@@ -22,6 +23,7 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.PanelControlFr
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.asambleaReunion.AgendarReunionUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.asambleaReunion.CrearActaUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.asambleaReunion.GenerarActaPDFUI
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.asambleaReunion.ListaConvocatoriasReunionUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.asambleaReunion.ListaReunionesCreacionActaUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.registroAfiliado.ContactoAfiliadoUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.registroAfiliado.DatosBasicosAfiliadoUI
@@ -123,6 +125,14 @@ class HomeActivityModule {
     ) = GenerarActaPdfViewModel(
         generarActaPDFUI = generarActaPDFUI
     )
+
+    @Provides
+    fun providesListaConvocatoriasViewModel(
+        listaConvocatoriasReunionUI: ListaConvocatoriasReunionUI
+    ): ListaConvocatoriasViewModel = ListaConvocatoriasViewModel (
+        listaConvocatoriasReunionUI = listaConvocatoriasReunionUI
+    )
+
 
     //endregion
 

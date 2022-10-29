@@ -11,6 +11,7 @@ import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAs
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.CrearActaFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarActaPdf.ListaGenerarActaPdfFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarActaPdf.subfragments.DetalleActaWebFragment
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.listaConvocatoriasReuniones.ListaConvocatoriasFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.listaReunionesCreacionActa.ListaReunionesCreacionActaFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.login.iniciarSesion.IniciarSesionFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.login.registrarAfiliado.RegistrarAfiliadoFragment
@@ -49,7 +50,8 @@ enum class NodosNavegacionFragments constructor(
     DETALLE_PUNTO_REUNION,
     LISTA_ASISTENCIA_REUNION,
     LISTA_GENERAR_ACTA_PDF(titulo = R.string.lista_generar_acta_en_pdf, fragment = ListaGenerarActaPdfFragment::class.java, identificador = "lista generar acta en pdf"),
-    DETALLE_GENERAR_ACTA_PDF(titulo = R.string.detalle_acta, fragment = DetalleActaWebFragment::class.java, identificador = "detalle acta web")
+    DETALLE_GENERAR_ACTA_PDF(titulo = R.string.detalle_acta, fragment = DetalleActaWebFragment::class.java, identificador = "detalle acta web"),
+    LISTA_GENERAR_CONVOCATORIA_PDF(titulo = R.string.lista_reuniones_para_convocatoria, fragment = ListaConvocatoriasFragment::class.java, identificador = "Lista convocatorias"),
     //endregion
 
     //endregion

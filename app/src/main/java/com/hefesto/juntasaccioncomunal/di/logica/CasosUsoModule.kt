@@ -4,6 +4,8 @@ import com.hefesto.juntasaccioncomunal.MiAplicacion
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.casosUso.CargarEscuchadorExcepcionesCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.casosUso.CargarEscuchadorExcepcionesCasoUsoImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.repositorios.BaseRepositorio
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.TraerListaActasParaConvocatoriasPDFCasoUso
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.TraerListaActasParaConvocatoriasPDFCasoUsoImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.TraerListaActasParaGenerarPDFCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.TraerListaActasParaGenerarPDFCasoUsoImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.TraerTiposReunionCasoUso
@@ -171,6 +173,13 @@ class CasosUsoModule {
 
     @Provides
     fun providesTraerTiposReunionCasoUso(): TraerTiposReunionCasoUso = TraerTiposReunionCasoUsoImpl(context = MiAplicacion.traerInstancia()!!.applicationContext)
+
+    @Provides
+    fun providesTraerListaActasParaConvocatoriasPDFCasoUso(
+        homeRepositorio: HomeRepositorio
+    ): TraerListaActasParaConvocatoriasPDFCasoUso = TraerListaActasParaConvocatoriasPDFCasoUsoImpl(
+        homeRepositorio = homeRepositorio
+    )
 
     //endregion
 

@@ -4,6 +4,7 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.he
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.reunionAsamblea.HelperCrearActaDB
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.reunionAsamblea.HelperListaAfiliadosAsistenciaDB
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.reunionAsamblea.HelperListaConvocantesReunionDisponiblesDB
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.reunionAsamblea.HelperListaReunionesParaConvocatoriasPDFDB
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.reunionAsamblea.HelperListaReunionesParaCrearActasDB
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.reunionAsamblea.HelperListaReunionesParaCrearPDFDB
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.actasParaPDF.ReunionParaGenerarPDFModel
@@ -11,6 +12,7 @@ import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.agen
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.agendarReunion.DetalleReunionAAgendarModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.crearActa.AfiliadoActaAsistenciaModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.crearActa.ReunionAsambleaCreacionActaModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.reunionParaConvocatoriaPDF.ReunionParaGenerarConvocatoriaPDFModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
@@ -22,6 +24,7 @@ interface HelperReunionAsambleaDB {
     fun guardarActa( asistencia: MutableList<AfiliadoActaAsistenciaModel>, detalleReunion: ReunionAsambleaCreacionActaModel ) :  Flow<Boolean>
     fun traerListaReunionesParaGenerarPDF(): Flow<List<ReunionParaGenerarPDFModel>>
     fun traerListaPosiblesConvocantesReunion() : Flow<List<ConvocanteReunionAsambleaAAgendarModel>>
+    fun traerListaReunionesParaConvocatoriasPDF(): Flow<List<ReunionParaGenerarConvocatoriaPDFModel>>
 }
 
 class HelperReunionAsambleaDBImpl constructor(
@@ -30,7 +33,8 @@ class HelperReunionAsambleaDBImpl constructor(
     @JvmField @Inject var helperListaAfiliadosAsistenciaDB: HelperListaAfiliadosAsistenciaDB,
     @JvmField @Inject var helperCrearActaDB: HelperCrearActaDB,
     @JvmField @Inject var helperListaReunionesParaCrearPDFDB: HelperListaReunionesParaCrearPDFDB,
-    @JvmField @Inject var helperListaConvocantesReunionDisponiblesDB: HelperListaConvocantesReunionDisponiblesDB
+    @JvmField @Inject var helperListaConvocantesReunionDisponiblesDB: HelperListaConvocantesReunionDisponiblesDB,
+    @JvmField @Inject var helperListaReunionesParaConvocatoriasPDFDB: HelperListaReunionesParaConvocatoriasPDFDB
 ) : HelperReunionAsambleaDB {
 
     override fun agendarReunion(detalleReunionAAgendarModel: DetalleReunionAAgendarModel): Flow<Boolean> = flow {
@@ -63,6 +67,11 @@ class HelperReunionAsambleaDBImpl constructor(
 
     override fun traerListaPosiblesConvocantesReunion(): Flow<List<ConvocanteReunionAsambleaAAgendarModel>> = flow {
         val lista = helperListaConvocantesReunionDisponiblesDB.traerListaConvocantes()
+        emit(lista)
+    }
+
+    override fun traerListaReunionesParaConvocatoriasPDF(): Flow<List<ReunionParaGenerarConvocatoriaPDFModel>> = flow {
+        val lista = helperListaReunionesParaConvocatoriasPDFDB.traerListaReunionesParaGenerarConvocatoria()
         emit(lista)
     }
 

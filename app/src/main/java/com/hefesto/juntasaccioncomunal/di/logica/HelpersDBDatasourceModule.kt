@@ -59,6 +59,8 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.he
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.reunionAsamblea.HelperListaAfiliadosAsistenciaDBImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.reunionAsamblea.HelperListaConvocantesReunionDisponiblesDB
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.reunionAsamblea.HelperListaConvocantesReunionDisponiblesDBImpl
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.reunionAsamblea.HelperListaReunionesParaConvocatoriasPDFDB
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.reunionAsamblea.HelperListaReunionesParaConvocatoriasPDFDBImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.reunionAsamblea.HelperListaReunionesParaCrearActasDB
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.reunionAsamblea.HelperListaReunionesParaCrearActasDBImpl
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.reunionAsamblea.HelperListaReunionesParaCrearPDFDB
@@ -250,6 +252,19 @@ class HelpersDBDatasourceModule {
         memoriaCache = memoriaCache
     )
 
+    @Provides
+    fun providesHelperListaReunionesParaConvocatoriasPDFDB(
+        reunionDao: ReunionAsambleaDao,
+        puntosReunionDao: PuntosReunionDao,
+        convocatesDao: ConvocatesDao,
+        memoriaCache: MemoriaCache
+    ) : HelperListaReunionesParaConvocatoriasPDFDB = HelperListaReunionesParaConvocatoriasPDFDBImpl(
+        reunionAsambleaDao = reunionDao,
+        puntosReunionDao = puntosReunionDao,
+        convocantesDao = convocatesDao,
+        memoriaCache = memoriaCache
+    )
+
     //endregion
 
     //endregion
@@ -292,14 +307,16 @@ class HelpersDBDatasourceModule {
         helperListaAfiliadosAsistenciaDB: HelperListaAfiliadosAsistenciaDB,
         helperCrearActaDB: HelperCrearActaDB,
         helperListaReunionesParaCrearPDFDB: HelperListaReunionesParaCrearPDFDB,
-        helperListaConvocantesReunionDisponiblesDB : HelperListaConvocantesReunionDisponiblesDB
+        helperListaConvocantesReunionDisponiblesDB : HelperListaConvocantesReunionDisponiblesDB,
+        helperListaReunionesParaConvocatoriasPDFDB: HelperListaReunionesParaConvocatoriasPDFDB
     ) : HelperReunionAsambleaDB = HelperReunionAsambleaDBImpl(
         helperAgendarReunionDB = helperAgendarReunionDB,
         helperListaReunionesParaCrearActasDB = helperListaReunionesParaCrearActasDB,
         helperListaAfiliadosAsistenciaDB = helperListaAfiliadosAsistenciaDB,
         helperCrearActaDB = helperCrearActaDB,
         helperListaReunionesParaCrearPDFDB = helperListaReunionesParaCrearPDFDB,
-        helperListaConvocantesReunionDisponiblesDB = helperListaConvocantesReunionDisponiblesDB
+        helperListaConvocantesReunionDisponiblesDB = helperListaConvocantesReunionDisponiblesDB,
+        helperListaReunionesParaConvocatoriasPDFDB = helperListaReunionesParaConvocatoriasPDFDB
     )
     //endregion
     //endregion

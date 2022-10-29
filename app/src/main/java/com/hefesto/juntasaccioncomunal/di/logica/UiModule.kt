@@ -1,6 +1,7 @@
 package com.hefesto.juntasaccioncomunal.di.logica
 
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.casosUso.CargarEscuchadorExcepcionesCasoUso
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.TraerListaActasParaConvocatoriasPDFCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.TraerListaActasParaGenerarPDFCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.TraerTiposReunionCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asambleaReunion.agendarReunion.AgendarReunionAsambleaCasoUso
@@ -26,6 +27,7 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.PanelControlFr
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.asambleaReunion.AgendarReunionUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.asambleaReunion.CrearActaUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.asambleaReunion.GenerarActaPDFUI
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.asambleaReunion.ListaConvocatoriasReunionUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.asambleaReunion.ListaReunionesCreacionActaUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.registroAfiliado.ContactoAfiliadoUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.registroAfiliado.DatosBasicosAfiliadoUI
@@ -150,6 +152,14 @@ class UiModule {
         traerListaActasParaGenerarPDFCasoUso = traerListaActasParaGenerarPDFCasoUso
     )
 
+    @Provides
+    fun providesListaConvocatoriasReunionUI(
+        cargarEscuchadorExcepcionesCasoUso: CargarEscuchadorExcepcionesCasoUso,
+        traerListaActasParaConvocatoriasPDFCasoUso: TraerListaActasParaConvocatoriasPDFCasoUso
+    ) : ListaConvocatoriasReunionUI = ListaConvocatoriasReunionUI(
+        escuchadorExcepcionesCasoUso = cargarEscuchadorExcepcionesCasoUso,
+        traerListaActasParaConvocatoriasPDFCasoUso = traerListaActasParaConvocatoriasPDFCasoUso
+    )
 
     //endregion
 

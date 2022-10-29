@@ -11,6 +11,7 @@ import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.agen
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.agendarReunion.DetalleReunionAAgendarModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.crearActa.AfiliadoActaAsistenciaModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.crearActa.ReunionAsambleaCreacionActaModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.reunionParaConvocatoriaPDF.ReunionParaGenerarConvocatoriaPDFModel
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.FuncionesRolApp
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.Flow
@@ -34,6 +35,7 @@ interface HomeRepositorio {
     fun guardarActa( asistencia: MutableList<AfiliadoActaAsistenciaModel>, detalleReunion: ReunionAsambleaCreacionActaModel ) :  Flow<Boolean>
     fun traerListaReunionesParaGenerarPDF(): Flow<List<ReunionParaGenerarPDFModel>>
     fun traerListaPosiblesConvocantesReunion() : Flow<List<ConvocanteReunionAsambleaAAgendarModel>>
+    fun traerListaReunionesParaConvocatoriasPDF(): Flow<List<ReunionParaGenerarConvocatoriaPDFModel>>
     //endregion
 }
 
@@ -112,6 +114,9 @@ class HomeRepositorioImpl constructor(
 
     override fun traerListaPosiblesConvocantesReunion(): Flow<List<ConvocanteReunionAsambleaAAgendarModel>>
     = homeDBDatasource.traerListaPosiblesConvocantesReunion()
+
+    override fun traerListaReunionesParaConvocatoriasPDF(): Flow<List<ReunionParaGenerarConvocatoriaPDFModel>>
+    = homeDBDatasource.traerListaReunionesParaConvocatoriasPDF()
 
     //endregion
 }

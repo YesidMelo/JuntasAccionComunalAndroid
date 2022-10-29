@@ -18,6 +18,7 @@ import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAs
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.helper.HelperViewPagerPuntosCrearActa
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarActaPdf.helpers.HelperGeneradorHtmlParaGenerarPDF
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarActaPdf.helpers.HelperRecyclerListaActasReunionesParaPDF
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.listaConvocatoriasReuniones.helpers.HelperRecyclerListaReunionesParaConvocatoria
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.listaReunionesCreacionActa.helpers.HelperRecyclerViewListaReunionesCrearActa
 import dagger.Module
 import dagger.Provides
@@ -87,6 +88,9 @@ class HelpersFragmentsModule {
 
     @Provides
     fun providesHelperAutocompleteConvocantesAgendarReunion() = HelperAutocompleteConvocantesAgendarReunion()
+
+    @Provides
+    fun providesHelperRecyclerListaReunionesParaConvocatoria(): HelperRecyclerListaReunionesParaConvocatoria = HelperRecyclerListaReunionesParaConvocatoria()
     //endregion
 
     //endregion
