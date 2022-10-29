@@ -52,6 +52,13 @@ class NoTieneElMinimoDePuntosDeUnaAsambleaExcepcion : LogicaExcepcion(
     stringResTitulo = R.string.agendar_reunion,
     tipoExcepcion = TiposExcepciones.GENERADO_USUARIO
 )
+
+class NoTieneConvocantesAsambleaReunionExcepcion : LogicaExcepcion(
+    mensaje = "No ha ingresado los convocantes para la reunion.",
+    stringResMensaje = R.string.no_ha_ingresado_lista_convocantes,
+    stringResTitulo = R.string.agendar_reunion,
+    tipoExcepcion = TiposExcepciones.GENERADO_USUARIO
+)
 //endregion
 
 //region Guardar acta

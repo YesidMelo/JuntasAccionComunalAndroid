@@ -6,6 +6,7 @@ import com.hefesto.juntasaccioncomunal.logica.excepciones.FalloCreacionDetalleRe
 import com.hefesto.juntasaccioncomunal.logica.excepciones.NoHaSeleccionadoLaFechaDeLaReunionExcepcion
 import com.hefesto.juntasaccioncomunal.logica.excepciones.NoHaSeleccionadoLaHoraDeLaReunionExcepcion
 import com.hefesto.juntasaccioncomunal.logica.excepciones.NoHaSeleccionadoTipoReunionExcepcion
+import com.hefesto.juntasaccioncomunal.logica.excepciones.NoTieneConvocantesAsambleaReunionExcepcion
 import com.hefesto.juntasaccioncomunal.logica.excepciones.NoTieneElMinimoDePuntosDeUnaAsambleaExcepcion
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.agendarReunion.DetalleReunionAAgendarModel
 
@@ -43,6 +44,11 @@ class HelperValidacionesReunionAAgendar constructor(
 
     fun validarListaPuntos() : HelperValidacionesReunionAAgendar {
         if (modelo.puntosReunion.isEmpty()) throw NoTieneElMinimoDePuntosDeUnaAsambleaExcepcion()
+        return this
+    }
+
+    fun validarConvocantes() : HelperValidacionesReunionAAgendar {
+        if (modelo.listaConvocantes.isEmpty()) throw NoTieneConvocantesAsambleaReunionExcepcion()
         return this
     }
 }

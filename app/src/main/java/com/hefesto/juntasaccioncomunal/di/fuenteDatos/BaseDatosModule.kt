@@ -23,6 +23,7 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.JacDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Jac_Afiliado_Direccion_Dao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.RolAfiliacionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Telefono_Dao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.ConvocatesDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.ListaAsistenciaDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.PuntosReunionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.ReunionAsambleaDao
@@ -55,6 +56,9 @@ class BaseDatosModule {
 
     @Provides
     fun providesComiteDao(baseDatosApp: BaseDatosApp) : ComitesDao = baseDatosApp.comitesDao()
+
+    @Provides
+    fun providesConvocantesDao(baseDatosApp: BaseDatosApp) : ConvocatesDao = baseDatosApp.convocatesDao()
 
     @Provides
     fun providesCorreoDao(baseDatosApp: BaseDatosApp): CorreoDao = baseDatosApp.correoDao()

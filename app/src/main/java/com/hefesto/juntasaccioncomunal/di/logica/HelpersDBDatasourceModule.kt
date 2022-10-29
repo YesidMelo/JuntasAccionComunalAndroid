@@ -22,6 +22,7 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.JacDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Jac_Afiliado_Direccion_Dao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.RolAfiliacionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Telefono_Dao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.ConvocatesDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.ListaAsistenciaDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.PuntosReunionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.ReunionAsambleaDao
@@ -185,10 +186,12 @@ class HelpersDBDatasourceModule {
     //region reunion asamblea
     @Provides
     fun providesHelperAgendarReunionDB(
+        convocatesDao: ConvocatesDao,
         reunionAsambleaDao: ReunionAsambleaDao,
         puntosReunionDao: PuntosReunionDao,
         memoriaCache: MemoriaCache
     ) : HelperAgendarReunionDB = HelperAgendarReunionDBImpl(
+        convocatesDao= convocatesDao,
         reunionAsambleaDao = reunionAsambleaDao,
         puntosReunionDao = puntosReunionDao,
         memoriaCache = memoriaCache

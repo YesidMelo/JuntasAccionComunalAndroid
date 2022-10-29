@@ -165,4 +165,5 @@
     <string name="detalle_acta">Detalle acta</string>
     <string name="convoca">Convoca</string>
     <string name="nombres">Nombres</string>
+    <string name="no_ha_ingresado_lista_convocantes">No ha ingresado los convocantes de la reunion</string>
 </resources>

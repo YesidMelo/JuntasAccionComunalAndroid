@@ -7,11 +7,10 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.asambleaReunio
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.agendarReunion.DetalleReunionAAgendarModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.agendarReunion.PuntoReunionAgendarReunionAsambleaModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.TipoReunionModel
-import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.crearActa.ConvocanteReunionAsambleaModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.agendarReunion.ConvocanteReunionAsambleaAAgendarModel
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.TipoReunion
 import com.hefesto.juntasaccioncomunal.logica.utilidades.extenciones.ManejarErrores
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.util.*
 import javax.inject.Inject
@@ -27,7 +26,7 @@ class AgendarReunionViewModel constructor(
     private val horaReunionLiveData = MutableLiveData<Date?>()
     private val adicionarPuntoLiveData = MutableLiveData<Boolean>()
     private val reunionAgendadaLiveData = MutableLiveData<Boolean>()
-    private val listaAfiliadosConvocadoresLivedata = MutableLiveData<List<ConvocanteReunionAsambleaModel>>()
+    private val listaAfiliadosConvocadoresLivedata = MutableLiveData<List<ConvocanteReunionAsambleaAAgendarModel>>()
     //endregion
 
     override fun traerBaseUI(): BaseUI = agendarReunionUI
@@ -47,7 +46,8 @@ class AgendarReunionViewModel constructor(
     fun agendarReunion(
         tituloReunion: String,
         tipoReunion: TipoReunion,
-        listaPuntosReunion : List<PuntoReunionAgendarReunionAsambleaModel>
+        listaPuntosReunion : List<PuntoReunionAgendarReunionAsambleaModel>,
+        listaConvocantes: List<ConvocanteReunionAsambleaAAgendarModel>
     ) {
         GlobalScope.launch {
             val detalleReunion = DetalleReunionAAgendarModel(
@@ -55,7 +55,8 @@ class AgendarReunionViewModel constructor(
                 tipoReunion = tipoReunion,
                 fechaReunion = fechaReunionLiveData.value,
                 horaReunion = horaReunionLiveData.value,
-                puntosReunion = listaPuntosReunion
+                puntosReunion = listaPuntosReunion,
+                listaConvocantes = listaConvocantes
             )
 
             agendarReunionUI
@@ -80,7 +81,7 @@ class AgendarReunionViewModel constructor(
         return listaTipoReunionLiveData
     }
 
-    fun traerAfiliadosConvocantes() : MutableLiveData<List<ConvocanteReunionAsambleaModel>> {
+    fun traerAfiliadosConvocantes() : MutableLiveData<List<ConvocanteReunionAsambleaAAgendarModel>> {
         GlobalScope.launch {
             agendarReunionUI
                 .traerListaAfiliadosDisponiblesConvocatoria()

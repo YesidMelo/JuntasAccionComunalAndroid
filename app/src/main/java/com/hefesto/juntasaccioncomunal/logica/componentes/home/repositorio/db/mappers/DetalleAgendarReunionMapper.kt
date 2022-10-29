@@ -1,7 +1,9 @@
 package com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.mappers
 
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.reunionAsamblea.ConvocantesEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.reunionAsamblea.PuntosReunionEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.reunionAsamblea.ReunionAsambleaEntity
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.agendarReunion.ConvocanteReunionAsambleaAAgendarModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.agendarReunion.DetalleReunionAAgendarModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.agendarReunion.PuntoReunionAgendarReunionAsambleaModel
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.FormatosFecha
@@ -29,10 +31,14 @@ fun PuntoReunionAgendarReunionAsambleaModel.convertirAPuntoReunionEntity() : Pun
     )
 }
 
-fun DetalleReunionAAgendarModel.traerListaPuntosReunion() : List<PuntosReunionEntity> {
-    val lista = this.puntosReunion.convertirAListaPuntoReunionEntity()
-    lista.forEach {
-        it.reunionId = this.reunionAsambleaId
+
+fun DetalleReunionAAgendarModel.traerListaConvocantesEntity() : List<ConvocantesEntity> {
+    val lista = emptyList<ConvocantesEntity>().toMutableList()
+    this.listaConvocantes.forEach {
+        lista.add(ConvocantesEntity(
+            reunionId = this.reunionAsambleaId,
+            afiliadoId = it.afiliadoId
+        ))
     }
     return lista
 }
@@ -40,6 +46,15 @@ fun DetalleReunionAAgendarModel.traerListaPuntosReunion() : List<PuntosReunionEn
 //endregion
 
 //region lista
+
+
+fun DetalleReunionAAgendarModel.traerListaPuntosReunion() : List<PuntosReunionEntity> {
+    val lista = this.puntosReunion.convertirAListaPuntoReunionEntity()
+    lista.forEach {
+        it.reunionId = this.reunionAsambleaId
+    }
+    return lista
+}
 
 fun List<PuntoReunionAgendarReunionAsambleaModel>.convertirAListaPuntoReunionEntity() : List<PuntosReunionEntity> {
     val lista = emptyList<PuntosReunionEntity>().toMutableList()

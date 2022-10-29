@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.agendarReunion.adapters.ListaConvocantesAgendarCitaAdapter
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.utilidades.ArrayAdapterPersonalizado
-import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.crearActa.ConvocanteReunionAsambleaModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.agendarReunion.ConvocanteReunionAsambleaAAgendarModel
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -20,15 +20,15 @@ class HelperAutocompleteConvocantesAgendarReunion {
     private lateinit var radioGroup: RadioGroup
     private lateinit var radioButtonDocumento: RadioButton
     private lateinit var radioButtonNombres: RadioButton
-    private lateinit var adapterAutocompleteView : ArrayAdapterPersonalizado<ConvocanteReunionAsambleaModel>
+    private lateinit var adapterAutocompleteView : ArrayAdapterPersonalizado<ConvocanteReunionAsambleaAAgendarModel>
     private lateinit var listaConvocantesAgendarCitaAdapter: ListaConvocantesAgendarCitaAdapter
     private lateinit var mostrarLoading : ()-> Unit
     private lateinit var ocultarLoading : ()-> Unit
 
     private var filtro = Filtro.DOCUMENTO
-    private var listaPosiblesConvocantes = emptyList<ConvocanteReunionAsambleaModel>().toMutableList()
-    private var listaConvocantesEnFiltro = emptyList<ConvocanteReunionAsambleaModel>().toMutableList()
-    private var listaConvocantesEnRecycler = emptyList<ConvocanteReunionAsambleaModel>().toMutableList()
+    private var listaPosiblesConvocantes = emptyList<ConvocanteReunionAsambleaAAgendarModel>().toMutableList()
+    private var listaConvocantesEnFiltro = emptyList<ConvocanteReunionAsambleaAAgendarModel>().toMutableList()
+    private var listaConvocantesEnRecycler = emptyList<ConvocanteReunionAsambleaAAgendarModel>().toMutableList()
     //endregion
 
     //region metodos publicos
@@ -57,7 +57,7 @@ class HelperAutocompleteConvocantesAgendarReunion {
         return this
     }
 
-    fun conListaConvocantesDiponibles(listaConvocantes: List<ConvocanteReunionAsambleaModel>) : HelperAutocompleteConvocantesAgendarReunion {
+    fun conListaConvocantesDiponibles(listaConvocantes: List<ConvocanteReunionAsambleaAAgendarModel>) : HelperAutocompleteConvocantesAgendarReunion {
         this.listaPosiblesConvocantes = listaConvocantes.toMutableList()
         this.listaConvocantesEnFiltro.addAll(listaConvocantes)
         return this
@@ -141,7 +141,7 @@ class HelperAutocompleteConvocantesAgendarReunion {
                     mostrarLoading.invoke()
                     autoCompleteTextView.setText("")
                 }
-                val item : ConvocanteReunionAsambleaModel = adapterView.getItemAtPosition(position) as ConvocanteReunionAsambleaModel
+                val item : ConvocanteReunionAsambleaAAgendarModel = adapterView.getItemAtPosition(position) as ConvocanteReunionAsambleaAAgendarModel
                 adicionarElementoARecycler(itemAAdicionar = item)
                 generarNuevaListaParaFiltro()
 
@@ -158,11 +158,11 @@ class HelperAutocompleteConvocantesAgendarReunion {
         }
     }
 
-    private fun textoAMostrar(item : ConvocanteReunionAsambleaModel?) : String {
+    private fun textoAMostrar(item : ConvocanteReunionAsambleaAAgendarModel?) : String {
         return "${item?.nombres?:""} ${item?.apellidos?:""}"
     }
 
-    private fun adicionarElementoARecycler(itemAAdicionar : ConvocanteReunionAsambleaModel) {
+    private fun adicionarElementoARecycler(itemAAdicionar : ConvocanteReunionAsambleaAAgendarModel) {
         val listaRecycler = listaConvocantesEnRecycler.filter { return@filter it.afiliadoId == itemAAdicionar.afiliadoId }
         if (listaRecycler.isNotEmpty()) return
         listaConvocantesEnRecycler.add(itemAAdicionar)
@@ -191,7 +191,7 @@ class HelperAutocompleteConvocantesAgendarReunion {
         recyclerView.adapter = listaConvocantesAgendarCitaAdapter
     }
 
-    private fun accionItemSeleccionado(itemSeleccionado : ConvocanteReunionAsambleaModel) {
+    private fun accionItemSeleccionado(itemSeleccionado : ConvocanteReunionAsambleaAAgendarModel) {
         mostrarLoading.invoke()
 
         listaConvocantesEnRecycler.remove(itemSeleccionado)

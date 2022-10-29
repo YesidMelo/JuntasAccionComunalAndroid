@@ -7,11 +7,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.hefesto.juntasaccioncomunal.R
-import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.crearActa.ConvocanteReunionAsambleaModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.agendarReunion.ConvocanteReunionAsambleaAAgendarModel
 
 class ListaConvocantesAgendarCitaAdapter constructor(
-    private val listaConvocantes : List<ConvocanteReunionAsambleaModel>,
-    private val selectorItem: (ConvocanteReunionAsambleaModel)->Unit
+    private val listaConvocantes : List<ConvocanteReunionAsambleaAAgendarModel>,
+    private val selectorItem: (ConvocanteReunionAsambleaAAgendarModel)->Unit
 ) : RecyclerView.Adapter<ListaConvocantesAgendarCitaAdapter.Item>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Item {
@@ -32,10 +32,10 @@ class ListaConvocantesAgendarCitaAdapter constructor(
     inner class Item(val view: View) : RecyclerView.ViewHolder(view) {
 
         //region variables
-        private lateinit var detalle : ConvocanteReunionAsambleaModel
+        private lateinit var detalle : ConvocanteReunionAsambleaAAgendarModel
         //endregion
 
-        fun llenar(detalle : ConvocanteReunionAsambleaModel) : Item {
+        fun llenar(detalle : ConvocanteReunionAsambleaAAgendarModel) : Item {
             this.detalle = detalle
             llenarItem()
             return this
