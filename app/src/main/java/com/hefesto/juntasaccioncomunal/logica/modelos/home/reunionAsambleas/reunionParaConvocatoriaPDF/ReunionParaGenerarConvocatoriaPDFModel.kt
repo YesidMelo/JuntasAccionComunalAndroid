@@ -12,5 +12,6 @@ data class ReunionParaGenerarConvocatoriaPDFModel (
     var fechaYHoraProgramacionReunion: Date?= null,
     var listaPuntos: List<PuntoReunionGeneracionConvocatoriaPDFModel>? = null,
     var jacId: Int? = null,
-    var listaConvocantes: List<ConvocanteReunionGenerarConvocatoriaPDFModel>?= null
+    var listaConvocantes: List<ConvocanteReunionGenerarConvocatoriaPDFModel>?= null,
+    var sitio: String?= null
 ) : BaseModel()

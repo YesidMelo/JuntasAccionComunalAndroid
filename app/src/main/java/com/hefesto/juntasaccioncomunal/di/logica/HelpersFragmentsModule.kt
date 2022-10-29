@@ -18,6 +18,7 @@ import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAs
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.helper.HelperViewPagerPuntosCrearActa
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarActaPdf.helpers.HelperGeneradorHtmlParaGenerarPDF
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarActaPdf.helpers.HelperRecyclerListaActasReunionesParaPDF
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarConvocatoriaReunionPdf.HelperConfigurarConvocatoriaHtml
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.listaConvocatoriasReuniones.helpers.HelperRecyclerListaReunionesParaConvocatoria
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.listaReunionesCreacionActa.helpers.HelperRecyclerViewListaReunionesCrearActa
 import dagger.Module
@@ -91,6 +92,9 @@ class HelpersFragmentsModule {
 
     @Provides
     fun providesHelperRecyclerListaReunionesParaConvocatoria(): HelperRecyclerListaReunionesParaConvocatoria = HelperRecyclerListaReunionesParaConvocatoria()
+
+    @Provides
+    fun providesHelperConfigurarConvocatoriaHtml(): HelperConfigurarConvocatoriaHtml = HelperConfigurarConvocatoriaHtml()
     //endregion
 
     //endregion

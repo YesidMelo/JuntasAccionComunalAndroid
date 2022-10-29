@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.hefesto.juntasaccioncomunal.databinding.FragmentListareunionesConvocatoriasBinding
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarConvocatoriaReunionPdf.DetalleConvocatoriaFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.listaConvocatoriasReuniones.helpers.HelperRecyclerListaReunionesParaConvocatoria
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
 import javax.inject.Inject
@@ -60,7 +61,12 @@ class ListaConvocatoriasFragment : BaseFragment<ListaConvocatoriasViewModel>() {
                 helperRecyclerListaReunionesParaConvocatoria
                     .conListaReuniones(listaReuniones = it)
                     .conRecyclerView(recyclerView = binding.recyclerviewListaConvocatorias)
-                    .conItemSeleccionado {  }
+                    .conItemSeleccionado {
+                        navegacionAplicacion.navegarBeginTransaction(
+                            a = NodosNavegacionFragments.DETALLE_GENERAR_CONVOCATORIA_PDF,
+                            bundle = Bundle().apply { putSerializable(DetalleConvocatoriaFragment.DETALLE_CONVOCATORIA, it) }
+                        )
+                    }
                     .cargarRecycler()
             }
     }

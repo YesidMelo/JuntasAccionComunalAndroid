@@ -16,7 +16,8 @@ fun ReunionAsambleaEntity.convertirAReunionParaGenerarConvocatoriaPDFModel(): Re
         tipoReunion = TipoReunion.buscarTipoReunionPorId(id = this.tipoReunionId),
         fechaRegistro = this.fechaRegistro?.convertirADate(formatoEntrada = FormatosFecha.ISO_8610),
         fechaYHoraProgramacionReunion = this.fechaYHoraProgramacionReunion?.convertirADate(formatoEntrada = FormatosFecha.ISO_8610),
-        jacId = this.jacId
+        jacId = this.jacId,
+        sitio = this.sitioReunion
     )
 }
 
