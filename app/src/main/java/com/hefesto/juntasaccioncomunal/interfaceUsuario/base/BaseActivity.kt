@@ -7,6 +7,7 @@ import androidx.annotation.StringRes
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
+import com.hefesto.juntasaccioncomunal.R
 import com.hefesto.juntasaccioncomunal.di.ui.BaseActivityDagger
 import com.hefesto.juntasaccioncomunal.logica.excepciones.LogicaExcepcion
 import com.hefesto.juntasaccioncomunal.logica.excepciones.TiposExcepciones
@@ -16,6 +17,8 @@ import com.hefesto.juntasaccioncomunal.interfaceUsuario.dialogo.DialogoInformati
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.dialogo.DialogoLoading
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.NavegacionAplicacion
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionActividades
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.utilidades.gestorPermisos.GestorPermisos
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.utilidades.gestorPermisos.PermisosAplicacionEnum
 import org.jetbrains.annotations.NotNull
 import java.util.*
 import javax.inject.Inject
@@ -30,6 +33,8 @@ abstract class BaseActivity<T: BaseViewModel> : BaseActivityDagger<T>(), Lifecyc
     //region inyecciones
     @Inject
     lateinit var navegacionAplicacion : NavegacionAplicacion
+    @Inject
+    lateinit var gestorPermisos: GestorPermisos
     //endregion
     private var lifecycleRegistry: LifecycleRegistry? = null
 
@@ -39,10 +44,9 @@ abstract class BaseActivity<T: BaseViewModel> : BaseActivityDagger<T>(), Lifecyc
 
     //region ciclo de vida normal
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        gestorPermisos.conActivity(activity = this)
         navegacionAplicacion.conActivity(activity = this)
         configuracionCicloVida(savedInstanceState = savedInstanceState)
     }
@@ -57,7 +61,14 @@ abstract class BaseActivity<T: BaseViewModel> : BaseActivityDagger<T>(), Lifecyc
         navegacionAplicacion.volverBeginTransaction(onBackPressed = { super.onBackPressed() })
     }
 
-
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        gestorPermisos.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    }
     //endregion
 
 
@@ -86,6 +97,23 @@ abstract class BaseActivity<T: BaseViewModel> : BaseActivityDagger<T>(), Lifecyc
             )
 
         }
+    }
+
+    fun funcionSeguraConPermisos(
+        vararg permiso: PermisosAplicacionEnum,
+        accionTieneTodosLosPermisos: ()-> Unit,
+    ) {
+        gestorPermisos.ejecutarAccionBasadoEnPermisos(
+            permiso = permiso,
+            accionTieneTodosLosPermisos = accionTieneTodosLosPermisos,
+            accionNoTieneTodosLosPermisos = {
+                mostrarDialogo(
+                    tipoDialogo = DialogoInformativo.TipoDialogo.ERROR_USUARIO,
+                    titulo = R.string.permisos_requeridos,
+                    mensaje = R.string.no_ha_seleccionado_todos_los_permisos_requeridos
+                )
+            }
+        )
     }
 
     //region dialogos

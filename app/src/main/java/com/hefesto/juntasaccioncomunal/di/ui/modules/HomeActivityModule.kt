@@ -15,6 +15,7 @@ import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAs
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarActaPdf.GenerarActaPdfViewModel
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.listaConvocatoriasReuniones.ListaConvocatoriasViewModel
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.listaReunionesCreacionActa.ListaReunionesCreacionActaViewModel
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.utilidades.gestorPermisos.GestorPermisos
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.casosUso.CargarEscuchadorExcepcionesCasoUso
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.ConfiguracionAfiliadoEnDirectivaUI
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.ui.HomeActivityUI
@@ -36,6 +37,12 @@ import dagger.Provides
 
 @Module
 class HomeActivityModule {
+
+    //region permisos
+    @Provides
+    fun providesGestorPermisos() : GestorPermisos = GestorPermisos()
+
+    //endregion
 
     //region afiliados
     @Provides

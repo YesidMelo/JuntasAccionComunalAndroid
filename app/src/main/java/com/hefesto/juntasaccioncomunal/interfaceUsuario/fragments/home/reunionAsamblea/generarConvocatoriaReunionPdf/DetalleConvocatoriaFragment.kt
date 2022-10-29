@@ -1,6 +1,7 @@
 package com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarConvocatoriaReunionPdf
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import com.hefesto.juntasaccioncomunal.databinding.FragmentDetalleconvocatoriaBi
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.listaConvocatoriasReuniones.ListaConvocatoriasViewModel
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.utilidades.gestorPermisos.PermisosAplicacionEnum
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.reunionParaConvocatoriaPDF.ReunionParaGenerarConvocatoriaPDFModel
 import javax.inject.Inject
 
@@ -31,6 +33,7 @@ class DetalleConvocatoriaFragment : BaseFragment<ListaConvocatoriasViewModel>() 
     ): View {
         binding = FragmentDetalleconvocatoriaBinding.inflate(inflater)
         llenarWebView()
+        confugurarBoton()
         return binding.root
     }
 
@@ -40,6 +43,17 @@ class DetalleConvocatoriaFragment : BaseFragment<ListaConvocatoriasViewModel>() 
             .conWebView(webView = binding.webViewDetalleConvocatoria)
             .conReunion(reunionParaGenerarConvocatoriaPDFModel = convocatoria)
             .cargarConvocatoria()
+    }
+
+    private fun confugurarBoton() {
+        binding.buttonGenerarConvocatoriaPdf.setOnClickListener {
+            funcionSeguraConPermisos(
+                PermisosAplicacionEnum.ESCRITURA_DOCUMENTOS, PermisosAplicacionEnum.LECTURA_DOCUMENTO,
+                accionTieneTodosLosPermisos = {
+                    Log.e("Err", "Tengo los permisos")
+                }
+            )
+        }
     }
 
     companion object {

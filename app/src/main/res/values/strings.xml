@@ -171,4 +171,6 @@
     <string name="no_ha_ingresado_sitio_reunion">No ha ingresado sitio reunion.</string>
     <string name="lista_reuniones_para_convocatoria">Lista para convocatorias</string>
     <string name="detalle_convocatoria">Detalle convocatoria</string>
+    <string name="permisos_requeridos">Permisos requridos</string>
+    <string name="no_ha_seleccionado_todos_los_permisos_requeridos">No ha habilitados todos los permisos requeridos para esta accion.</string>
 </resources>

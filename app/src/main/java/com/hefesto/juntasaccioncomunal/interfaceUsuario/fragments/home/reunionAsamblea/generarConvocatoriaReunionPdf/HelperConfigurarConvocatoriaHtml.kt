@@ -24,7 +24,7 @@ class HelperConfigurarConvocatoriaHtml {
     }
 
     fun cargarConvocatoria() {
-        convocatoriaHtml = "<html><body>${cuerpoConvocatoria()}</body></html>"
+        convocatoriaHtml = "<html><body width>${cuerpoConvocatoria()}</body></html>"
         webView.settings.javaScriptEnabled = true
         webView.loadDataWithBaseURL(null, convocatoriaHtml, "text/html", "utf-8", null)
     }

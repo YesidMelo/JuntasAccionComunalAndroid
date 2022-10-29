@@ -8,11 +8,18 @@ import com.hefesto.juntasaccioncomunal.interfaceUsuario.activities.login.LoginAc
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.login.iniciarSesion.IniciarSesionFragmentViewModel
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.login.registrarAfiliado.RegistrarAfiliadoFragmentViewModel
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.login.registrarJAC.RegistrarJACFragmentViewModel
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.utilidades.gestorPermisos.GestorPermisos
 import dagger.Module
 import dagger.Provides
 
 @Module
 class LoginActivityModule {
+
+    //region permisos
+    @Provides
+    fun providesGestorPermisos() : GestorPermisos = GestorPermisos()
+
+    //endregion
 
     @Provides
     fun providesLoginActivityViewModel(loginActivityUI: LoginActivityUI)

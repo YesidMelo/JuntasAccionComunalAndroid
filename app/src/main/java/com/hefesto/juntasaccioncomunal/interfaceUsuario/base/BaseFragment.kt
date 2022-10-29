@@ -11,6 +11,7 @@ import com.hefesto.juntasaccioncomunal.di.ui.BaseFragmentDagger
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.dialogo.DialogoInformativo
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.NavegacionAplicacion
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.utilidades.gestorPermisos.PermisosAplicacionEnum
 import org.jetbrains.annotations.NotNull
 import java.util.*
 import javax.inject.Inject
@@ -104,6 +105,13 @@ abstract class BaseFragment<T : BaseViewModel> : BaseFragmentDagger<T>(), Lifecy
 
     fun conEscuchadorAccionBotonAtras(escuchadorAccionBotonAtras : (()->Unit)) {
         (activity as BaseActivity<*>).escuchadorAccionBotonAtras = escuchadorAccionBotonAtras
+    }
+
+    fun funcionSeguraConPermisos(
+        vararg permiso: PermisosAplicacionEnum,
+        accionTieneTodosLosPermisos: ()-> Unit,
+    ) {
+        (activity as BaseActivity<*>).funcionSeguraConPermisos(permiso = permiso, accionTieneTodosLosPermisos = accionTieneTodosLosPermisos)
     }
 
     //endregion
