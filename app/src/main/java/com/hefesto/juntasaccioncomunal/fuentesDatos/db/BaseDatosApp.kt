@@ -62,6 +62,7 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.home.AfiliadoAsiste
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.home.AfiliadoContactoRegistroActualizacionView
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.home.AfiliadoDetalleEnJacView
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.home.AfiliadoModificacionDirectivaView
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.home.ConvocantesDisponiblesView
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.login.AfiliadoEnSesionView
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.login.JACEnSesionView
 
@@ -100,6 +101,7 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.login.JACEnSesionVi
         AfiliadoDetalleEnJacView::class,
         AfiliadoEnSesionView::class,
         AfiliadoModificacionDirectivaView::class,
+        ConvocantesDisponiblesView::class,
         CredencialesSesionView::class,
         JACEnSesionView::class,
     ],

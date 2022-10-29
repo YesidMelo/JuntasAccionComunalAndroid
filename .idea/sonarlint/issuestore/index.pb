@@ -97,8 +97,6 @@ eapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/views/login/A
 Öapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/repositorios/db/helpers/HelperTraerDetalleUsuarioSesion.kt,f\b\fbd91b54d6bad2730d6d6d69316b2822f75babac
 ™
 zapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/repositorios/db/mapper/UsuarioEnSesionMapper.kt,2\f\2f657cd4014a6767e0324ef216532029d314b03c
-ú
-lapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/repositorio/HomeCacheDatasource.kt,f\6\f6b4fa1fb73befdeed8cb9a2108bcab0502755dd
 î
 dapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/utilidades/enumeradores/EstadoAfiliacion.kt,5\7\5772f59c82becc0b40be3c53c14d0416eb6f5a6b
 ∏
@@ -337,8 +335,6 @@ qapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/views/home/Af
 ∞app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/detalleAfiliadoRegistroActualizacion/subfragments/detalleEnJACAfiliado/DetalleEnJacFragment.kt,3\3\337de72a722bd17740caa26632f2aa12796df28c
 ›
 ¨app/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/repositorio/db/helpers/listaAfiliadosRegistroActualizacion/HelperListaAfiliadosCargarDetalleJAC.kt,8\0\801bb76501c7e38121b66627139a4ff10d2dd4f1
-ò
-happ/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/views/home/AfiliadoDetalleEnJacView.kt,e\8\e8a69618de088fa7b591e11cf6ecfc4c99f45418
 ‡
 Øapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/repositorio/db/helpers/listaAfiliadosRegistroActualizacion/HelperListaAfiliadosCargarDatosContacto.kt,4\5\45796ff68350fac0cb7c6245be02c3d7c7416bee
 ∂
@@ -481,8 +477,6 @@ Qapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/BaseDao.
 ¢app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/reunionAsamblea/listaReunionesCreacionActa/ListaReunionesCreacionActaFragment.kt,3\2\32cd622118ae61f839cdbe467798c26266152cc6
 µ
 Ñapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/registrarAfiliado/RegistrarAfiliadoHomeFragment.kt,b\a\baeb8956d261b8d274e2ce61be620182319e1dd4
-ì
-capp/src/main/java/com/hefesto/juntasaccioncomunal/logica/utilidades/enumeradores/FuncionesRolApp.kt,3\d\3d1c4bdb471182f49b202fa7266fb8b3b97f473b
 á
 Wapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/base/BaseFragment.kt,7\e\7e1cb1add2b84f48364a0e4da2726cdb4f81ab01
 }
@@ -499,8 +493,6 @@ sapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/entities/reun
 qapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/entities/reunionAsamblea/PuntosReunionEntity.kt,1\b\1b5ecb9536560bfe621a7a8fc493c726a663d5e3
 ´
 {app/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/repositorio/db/mappers/GeneracionActaPdfMapper.kt,e\1\e1cf4ff635b93cac4597d739ea1a82e8f54ef91f
-ã
-[app/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/login/AfiliadoDao.kt,5\d\5d13b9b34038c732a9f4e7608bd4b97a05a7c776
 †
 papp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/ui/asambleaReunion/GenerarActaPDFUI.kt,5\a\5af5f1b84004ec9d7335a164122764cbf42e4745
 ª
@@ -527,11 +519,7 @@ vapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/navegacion/e
 óapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/reunionAsamblea/generarActaPdf/subfragments/DetalleActaWebFragment.kt,6\b\6bc9e0114138009ffeaef1bccb1318f2636a278a
 ∂
 Öapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/repositorio/db/mappers/ReunionAsambleaCreacionActaMapper.kt,5\b\5b5cb9640d409a7453762d2e22db0f49b5473c0f
-“
-°app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/registrarAfiliado/helper/HelperRecyclerViewListaAfiliadosRegistrarActualizar.kt,9\4\94a82d4850ba9f4d50dd04c0ad1c99007c9a79b9
 œ
 ûapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/reunionAsamblea/crearActa/helper/HelperViewPagerFormulariosCompletarActas.kt,e\3\e3570a7cb56b7d07a71be49506cc9d1e758ee4f1
-¶
-vapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/panelControl/PanelControlFragment.kt,0\2\025bf3b88d2a103136ca77633b85fdd92ca72cbe
 ¿
 èapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/reunionAsamblea/generarActaPdf/ListaGenerarActaPdfFragment.kt,1\c\1c33616126e89bbdec2c2268c6f9f8ea30200a2e

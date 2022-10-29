@@ -7,6 +7,7 @@ import com.hefesto.juntasaccioncomunal.logica.modelos.home.AfiliadoParaModificac
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.DatosBasicosAfiliadoActualizarRegistrarInformacionModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.registroAfiliado.CompiladoInformacionAfiliadoParaRegistroModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.actasParaPDF.ReunionParaGenerarPDFModel
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.agendarReunion.ConvocanteReunionAsambleaAAgendarModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.agendarReunion.DetalleReunionAAgendarModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.crearActa.AfiliadoActaAsistenciaModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.crearActa.ReunionAsambleaCreacionActaModel
@@ -32,6 +33,7 @@ interface HomeRepositorio {
     fun traerListaAfiliadosAsistencia(): Flow<List<AfiliadoActaAsistenciaModel>>
     fun guardarActa( asistencia: MutableList<AfiliadoActaAsistenciaModel>, detalleReunion: ReunionAsambleaCreacionActaModel ) :  Flow<Boolean>
     fun traerListaReunionesParaGenerarPDF(): Flow<List<ReunionParaGenerarPDFModel>>
+    fun traerListaPosiblesConvocantesReunion() : Flow<List<ConvocanteReunionAsambleaAAgendarModel>>
     //endregion
 }
 
@@ -107,6 +109,9 @@ class HomeRepositorioImpl constructor(
 
     override fun traerListaReunionesParaGenerarPDF(): Flow<List<ReunionParaGenerarPDFModel>>
     = homeDBDatasource.traerListaReunionesParaGenerarPDF()
+
+    override fun traerListaPosiblesConvocantesReunion(): Flow<List<ConvocanteReunionAsambleaAAgendarModel>>
+    = homeDBDatasource.traerListaPosiblesConvocantesReunion()
 
     //endregion
 }

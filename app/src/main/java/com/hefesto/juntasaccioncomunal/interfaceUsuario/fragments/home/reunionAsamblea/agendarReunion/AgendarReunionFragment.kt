@@ -16,6 +16,8 @@ import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.agendarReunion.PuntoReunionAgendarReunionAsambleaModel
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.FormatosFecha
 import com.hefesto.juntasaccioncomunal.logica.utilidades.extenciones.convertirAFormato
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import java.util.*
 import javax.inject.Inject
 
@@ -53,13 +55,15 @@ class AgendarReunionFragment : BaseFragment<AgendarReunionViewModel> (){
 
     //region botones
     private fun configurarBotones() {
-        configurarBotonAtras()
-        configurarSeleccionFecha()
-        configurarSeleccionHora()
-        configurarAdicionarPunto()
-        configurarBotonGuardar()
-        configurarBotonCancelar()
-        configurarBotonAgendarReunion()
+        GlobalScope.launch {
+            configurarBotonAtras()
+            configurarSeleccionFecha()
+            configurarSeleccionHora()
+            configurarAdicionarPunto()
+            configurarBotonGuardar()
+            configurarBotonCancelar()
+            configurarBotonAgendarReunion()
+        }
     }
 
     private fun configurarBotonAtras() {

@@ -17,6 +17,7 @@ enum class FuncionesRolApp constructor(
     AGENDAR_REUNION(id = 3, nombre = "Agendar reunion", rolesEncargado = arrayOf(RolesEnApp.JAC, RolesEnApp.SECRETARIO), lottieRes = R.raw.lottie_calendario, stringRes = R.string.agendar_reunion),
     CREAR_ACTA_REUNION(id = 4, nombre = "Crear acta reunion", rolesEncargado = arrayOf(RolesEnApp.JAC, RolesEnApp.SECRETARIO), lottieRes = R.raw.lottie_acta_reunion, stringRes = R.string.crear_acta_reunion),
     GENERAR_ACTA_REUNION_PDF(id = 5, nombre = "Generar Acta reunion PDF", rolesEncargado = arrayOf(RolesEnApp.JAC, RolesEnApp.SECRETARIO), lottieRes = R.raw.lottie_pdf, stringRes = R.string.lista_generar_acta_en_pdf),
+    GENERAR_CONVOCATORIA_PDF(id = 6, nombre = "Generar Convocatoria reunion PDF", rolesEncargado = arrayOf(RolesEnApp.JAC, RolesEnApp.SECRETARIO), lottieRes = R.raw.lottie_pdf, stringRes = R.string.generar_convocatoria_reunionPDF),
     ;
 
     fun traerId() = id

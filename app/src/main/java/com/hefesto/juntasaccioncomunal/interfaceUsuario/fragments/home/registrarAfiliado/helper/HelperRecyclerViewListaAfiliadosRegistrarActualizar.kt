@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 class HelperRecyclerViewListaAfiliadosRegistrarActualizar {
 
     //region variables
-    private lateinit var recyclerView: RecyclerView
+    private var recyclerView: RecyclerView? = null
     private var listaAfiliados = emptyList<DatosBasicosAfiliadoActualizarRegistrarInformacionModel>().toMutableList()
     private lateinit var adapter: ListaAfiliadosRecyclerViewAdapter
     private lateinit var escuchadorItemSeleccionado: (DatosBasicosAfiliadoActualizarRegistrarInformacionModel)->Unit
@@ -42,23 +42,24 @@ class HelperRecyclerViewListaAfiliadosRegistrarActualizar {
             if (texto.isNullOrEmpty()) {
                 reiniciarListaFiltrada()
                 filtrando = false
-                recyclerView.post { recyclerView.adapter?.notifyDataSetChanged() }
+                recyclerView?.post { recyclerView?.adapter?.notifyDataSetChanged() }
                 return@launch
             }
             when (filtro) {
                 Filtro.NOMBRE -> filtrarPorNombre(texto = texto)
                 Filtro.DOCUMENTO -> filtrarPorDocumento(texto = texto)
             }
-            recyclerView.post { recyclerView.adapter?.notifyDataSetChanged() }
+            recyclerView?.post { recyclerView?.adapter?.notifyDataSetChanged() }
             filtrando = false
         }
     }
 
     fun cargarLista() {
+        if (recyclerView == null) return
         adapter = ListaAfiliadosRecyclerViewAdapter(listaAfiliados = listaFiltrada, escuchadorItemSeleccionado = escuchadorItemSeleccionado)
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(recyclerView.context)
-        recyclerView.hasFixedSize()
+        recyclerView!!.adapter = adapter
+        recyclerView!!.layoutManager = LinearLayoutManager(recyclerView!!.context)
+        recyclerView!!.hasFixedSize()
         reiniciarListaFiltrada()
     }
 
