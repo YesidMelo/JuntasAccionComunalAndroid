@@ -47,10 +47,10 @@
             android:id="@+id/spinner_agendarReunionAsamblea_tipoReunion"
             android:layout_width="0dp"
             android:layout_height="48dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="@+id/textInputLayout_agendarReunionAsamblea_asunto"
             app:layout_constraintStart_toStartOf="@+id/textInputLayout_agendarReunionAsamblea_asunto"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout_agendarReunionAsamblea_asunto"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout_agendarReunion_sitio"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <TextView
@@ -268,6 +268,24 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout_agendarReunion_sitio"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout_agendarReunionAsamblea_asunto">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText_agendarReunion_sitio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/sitio" />
+        </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

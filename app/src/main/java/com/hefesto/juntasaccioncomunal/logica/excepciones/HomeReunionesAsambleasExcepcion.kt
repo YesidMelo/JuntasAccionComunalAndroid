@@ -59,6 +59,13 @@ class NoTieneConvocantesAsambleaReunionExcepcion : LogicaExcepcion(
     stringResTitulo = R.string.agendar_reunion,
     tipoExcepcion = TiposExcepciones.GENERADO_USUARIO
 )
+
+class NoHaIngresadoUnSitioReunionExcepcion : LogicaExcepcion(
+    mensaje = "No ha ingresado sitio",
+    stringResMensaje = R.string.no_ha_ingresado_sitio_reunion,
+    stringResTitulo = R.string.agendar_reunion,
+    tipoExcepcion = TiposExcepciones.GENERADO_USUARIO
+)
 //endregion
 
 //region Guardar acta

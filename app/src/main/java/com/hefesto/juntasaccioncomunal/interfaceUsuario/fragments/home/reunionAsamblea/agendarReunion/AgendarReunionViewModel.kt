@@ -47,7 +47,8 @@ class AgendarReunionViewModel constructor(
         tituloReunion: String,
         tipoReunion: TipoReunion,
         listaPuntosReunion : List<PuntoReunionAgendarReunionAsambleaModel>,
-        listaConvocantes: List<ConvocanteReunionAsambleaAAgendarModel>
+        listaConvocantes: List<ConvocanteReunionAsambleaAAgendarModel>,
+        sitioReunion: String
     ) {
         GlobalScope.launch {
             val detalleReunion = DetalleReunionAAgendarModel(
@@ -56,7 +57,8 @@ class AgendarReunionViewModel constructor(
                 fechaReunion = fechaReunionLiveData.value,
                 horaReunion = horaReunionLiveData.value,
                 puntosReunion = listaPuntosReunion,
-                listaConvocantes = listaConvocantes
+                listaConvocantes = listaConvocantes,
+                sitioReunion = sitioReunion
             )
 
             agendarReunionUI

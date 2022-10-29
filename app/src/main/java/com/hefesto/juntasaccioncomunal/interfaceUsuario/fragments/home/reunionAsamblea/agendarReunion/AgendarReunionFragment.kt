@@ -123,7 +123,8 @@ class AgendarReunionFragment : BaseFragment<AgendarReunionViewModel> (){
                             listaPuntosReunion = helperRecyclerViewAgendarReunionListaPuntos.traerListaPuntos(),
                             tituloReunion = binding.editTextAgendarReunionAsambleaAsunto.text.toString(),
                             tipoReunion = helperSpinnerTiposReunion.traerSeleccionado().tipoReunion,
-                            listaConvocantes = helperAutocompleteConvocantesAgendarReunion.traerListaConvocantes()
+                            listaConvocantes = helperAutocompleteConvocantesAgendarReunion.traerListaConvocantes(),
+                            sitioReunion = binding.editTextAgendarReunionSitio.text?.toString()?:""
                         )
                 }
             )

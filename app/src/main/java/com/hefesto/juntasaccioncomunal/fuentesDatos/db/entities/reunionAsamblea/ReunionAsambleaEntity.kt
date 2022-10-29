@@ -15,5 +15,6 @@ data class ReunionAsambleaEntity(
     var creoActa : Boolean = false,
     var horaInicio: String? = null,
     var horaFin:String? = null,
-    var jacId: Int? = null
+    var jacId: Int? = null,
+    var sitioReunion: String?= null
 ) : BaseEntity()

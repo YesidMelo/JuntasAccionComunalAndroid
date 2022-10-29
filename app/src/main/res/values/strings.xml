@@ -167,4 +167,6 @@
     <string name="nombres">Nombres</string>
     <string name="no_ha_ingresado_lista_convocantes">No ha ingresado los convocantes de la reunion</string>
     <string name="generar_convocatoria_reunionPDF">Generar convocatoria reunion pdf</string>
+    <string name="sitio">Sitio</string>
+    <string name="no_ha_ingresado_sitio_reunion">No ha ingresado sitio reunion.</string>
 </resources>

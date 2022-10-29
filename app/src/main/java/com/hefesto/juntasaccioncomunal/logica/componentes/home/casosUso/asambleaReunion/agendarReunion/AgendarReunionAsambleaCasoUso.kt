@@ -24,6 +24,7 @@ class AgendarReunionAsambleaCasoUsoImpl constructor(
             .validarHora()
             .validarListaPuntos()
             .validarConvocantes()
+            .validarSitio()
         homeRepositorio
             .agendarReunionAsamblea(detalleReunionAAgendarModel = detalleReunionAAgendarModel)
             .collect{ emit(it) }
