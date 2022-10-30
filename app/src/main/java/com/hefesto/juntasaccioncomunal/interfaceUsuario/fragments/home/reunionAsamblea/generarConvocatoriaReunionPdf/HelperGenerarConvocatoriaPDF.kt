@@ -1,11 +1,14 @@
 package com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarConvocatoriaReunionPdf
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Paint
 import android.graphics.Typeface
 import android.graphics.pdf.PdfDocument
 import android.os.Environment
 import android.text.TextPaint
+import android.util.Base64
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.hefesto.juntasaccioncomunal.R
@@ -77,6 +80,7 @@ class HelperGenerarConvocatoriaPDF {
     private fun crearPagina(pdfDocument: PdfDocument) {
         val pagina1 : PdfDocument.Page = pdfDocument.startPage(configurarPaginas(numeroPagina = 1))
         var posicionY = 70f
+        ponerMarcaAgua(pagina1 = pagina1, posicionY = posicionY)
         posicionY = ponerAsunto(pagina1 = pagina1, posicionY = posicionY)
         posicionY = ponerSitioFechaHora(pagina1 = pagina1, posicionY = posicionY)
         posicionY = ordenDelDiaYConvocantes(pagina1 = pagina1, posicionY = posicionY + 50)
@@ -85,6 +89,15 @@ class HelperGenerarConvocatoriaPDF {
     }
 
     //region asunto
+
+    private fun ponerMarcaAgua(pagina1: PdfDocument.Page, posicionY : Float) {
+        val logo = convocatoria.logoJAC
+        val detalleImagen = Base64.decode(logo, Base64.DEFAULT)
+        val bitmap = BitmapFactory.decodeByteArray(detalleImagen, 0, detalleImagen.size)
+        val bitmapEscalada = Bitmap.createScaledBitmap(bitmap, 350, 500, false)
+        pagina1.canvas.drawBitmap(bitmapEscalada,250f,50f, null)
+    }
+
     private fun ponerAsunto(pagina1: PdfDocument.Page, posicionY : Float) : Float {
         val tamanioEncabezado = 25f
         val tamanioDetalleEncabezado = 30f

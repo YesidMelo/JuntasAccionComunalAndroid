@@ -479,8 +479,6 @@ Japp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/DialogosBuilder.kt,c\5
 ‹app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/reunionAsamblea/generarActaPdf/GenerarActaPdfViewModel.kt,9\9\99a524e86b4abfc573ef7d1175ac17da43fcf84c
 Æ
 •app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/reunionAsamblea/generarActaPdf/adapters/ListaActasParaPDFAdapter.kt,8\4\84ddd0a94ab384f0bacbc935f088f58eb719df49
-¡
-qapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/utilidades/generadorPDF/ConfiguracionPagina.kt,e\5\e51672b61b950b60c84da690b67dd1e50e871450
 ¶
 …app/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/repositorio/db/helpers/reunionAsamblea/HelperCrearActaDB.kt,8\a\8ac35ab67a083b221fde0dcf5890892561d5dceb
 È
@@ -588,8 +586,6 @@ japp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/views/home/Co
 oapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/entities/reunionAsamblea/ConvocantesEntity.kt,b\f\bfe1a5a10f766bc5961aba0c7d1509f20e161d70
 —
 gapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/reunionAsamblea/ConvocatesDao.kt,1\b\1b97f7378abdb22583d0bd5581e1fb71750eebe4
-Ï
-žapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/repositorio/db/helpers/reunionAsamblea/HelperListaReunionesParaConvocatoriasPDFDB.kt,3\e\3e29c8335ccca6249d287e5b22ea9012f89dae65
 Ò
 ¡app/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/home/reunionAsambleas/reunionParaConvocatoriaPDF/ConvocanteReunionGenerarConvocatoriaPDFModel.kt,e\7\e768178118ec39818d36bba5e4a0777b6e758ef8
 ’
@@ -630,3 +626,23 @@ Vapp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/modules/LoginActivityMo
 Sapp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/modules/NavegacionModule.kt,0\1\0122f457ac31b7eb18820f67253e2e329aa893a2
 ‡
 Wapp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/modules/SplashActivityModule.kt,d\3\d395ede37a0824f33775b562d7bd04946c9a73e9
+ž
+napp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/utilidades/gestorPermisos/GestorPermisos.kt,f\6\f69b0f4686b0206a323989009567baba74156047
+P
+ app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
+¥
+uapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/utilidades/generadorPDF/AuxiliaresGeneracionPDF.kt,b\3\b3c8350ef3a6c4ab02b48526d3b70b2e3bc65f55
+Œ
+\app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/dialogo/DialogoLoading.kt,0\0\00db1165a9ce3ae40a266c59191c3e3efe346edb
+‡
+Wapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/base/BaseActivity.kt,0\3\032ca2367588f5c56d800cd70c8b1e34c3fe85b9
+‡
+Wapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/base/BaseFragment.kt,7\e\7e1cb1add2b84f48364a0e4da2726cdb4f81ab01
+Ï
+žapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/reunionAsamblea/generarConvocatoriaReunionPdf/DetalleConvocatoriaFragment.kt,f\7\f76610594a6c15ad90940cfa7249c43bf62a563c
+Ô
+£app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/reunionAsamblea/generarConvocatoriaReunionPdf/HelperConfigurarConvocatoriaHtml.kt,d\9\d934a78b8bfb9e4df0b48f9fe97b2d82fc25b307
+Ì
+›app/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/home/reunionAsambleas/reunionParaConvocatoriaPDF/ReunionParaGenerarConvocatoriaPDFModel.kt,4\a\4a2f87f9fd440948971be42bee541f09ba8027b0
+Ï
+žapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/repositorio/db/helpers/reunionAsamblea/HelperListaReunionesParaConvocatoriasPDFDB.kt,3\e\3e29c8335ccca6249d287e5b22ea9012f89dae65

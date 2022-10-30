@@ -9,6 +9,7 @@ import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.ma
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.reunionParaConvocatoriaPDF.PuntoReunionGeneracionConvocatoriaPDFModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.reunionParaConvocatoriaPDF.ReunionParaGenerarConvocatoriaPDFModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.iniciarSesion.UsuarioEnSesionModel
+import com.hefesto.juntasaccioncomunal.logica.utilidades.constantes.ImagenesStringBase64
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.IdentificadorElementosCacheEnum
 import javax.inject.Inject
 
@@ -27,12 +28,22 @@ class HelperListaReunionesParaConvocatoriasPDFDBImpl constructor(
         val usuarioEnSesionModel = memoriaCache.traerObjeto<UsuarioEnSesionModel>(llave = IdentificadorElementosCacheEnum.USUARIO_EN_SESION)?:return emptyList()
         val jacId = usuarioEnSesionModel.jacId?:return emptyList()
         val lista = reunionAsambleaDao.traerListaReunionesParaCreacionActas(jacId = jacId).convertirAListReunionParaGenerarConvocatoriaPDFModel()
+        //todo eliminar este metodo esta imagen debe venir del servidor
+        ponerLogoBosaSantabarbara(lista = lista)
         traerListaPuntos(lista = lista)
         traerListaConvocantes(lista = lista)
         return lista
     }
 
     //region metodos privados
+
+    //todo eliminar este metodo el logo debe venir del servidor o de db
+    private fun ponerLogoBosaSantabarbara(lista : List<ReunionParaGenerarConvocatoriaPDFModel>) {
+        lista.forEach {
+            it.logoJAC = ImagenesStringBase64.LogoBosaSantaBarbara
+        }
+    }
+
     private fun traerListaPuntos(lista : List<ReunionParaGenerarConvocatoriaPDFModel>) {
         if (lista.isEmpty()) return
 
