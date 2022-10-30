@@ -135,9 +135,9 @@ abstract class BaseActivity<T: BaseViewModel> : BaseActivityDagger<T>(), Lifecyc
         )
     }
 
-    fun mostrarProgress() = DialogoLoading.mostrarProgress(activity = this)
+    fun mostrarProgress() { runOnUiThread { DialogoLoading.mostrarProgress(activity = this) } }
 
-    fun ocultarProgress() = DialogoLoading.ocultarrProgress()
+    fun ocultarProgress() { runOnUiThread { DialogoLoading.ocultarrProgress() }}
 
     fun mostrarDialogoCalendario(
         accionFechaSeleccionada: ((Date) -> Unit)?,

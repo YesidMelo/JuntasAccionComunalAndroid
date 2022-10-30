@@ -1,12 +1,13 @@
 package com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarConvocatoriaReunionPdf
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.hefesto.juntasaccioncomunal.R
 import com.hefesto.juntasaccioncomunal.databinding.FragmentDetalleconvocatoriaBinding
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.dialogo.DialogoInformativo
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.listaConvocatoriasReuniones.ListaConvocatoriasViewModel
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.utilidades.gestorPermisos.PermisosAplicacionEnum
@@ -35,9 +36,12 @@ class DetalleConvocatoriaFragment : BaseFragment<ListaConvocatoriasViewModel>() 
     ): View {
         binding = FragmentDetalleconvocatoriaBinding.inflate(inflater)
         llenarWebView()
-        confugurarBoton()
+        confugurarBotonGenerarPDF()
+        configurarBotonAtras()
+        configurarLivedataFinalizoGeneracionPDF()
         return binding.root
     }
+
 
     private fun llenarWebView() {
         val convocatoria = (arguments?.getSerializable(DETALLE_CONVOCATORIA) as? ReunionParaGenerarConvocatoriaPDFModel)?:return
@@ -47,18 +51,39 @@ class DetalleConvocatoriaFragment : BaseFragment<ListaConvocatoriasViewModel>() 
             .cargarConvocatoria()
     }
 
-    private fun confugurarBoton() {
+    private fun confugurarBotonGenerarPDF() {
         val convocatoria = (arguments?.getSerializable(DETALLE_CONVOCATORIA) as? ReunionParaGenerarConvocatoriaPDFModel)?:return
         binding.buttonGenerarConvocatoriaPdf.setOnClickListener {
             funcionSeguraConPermisos(
                 PermisosAplicacionEnum.ESCRITURA_DOCUMENTOS, PermisosAplicacionEnum.LECTURA_DOCUMENTO,
                 accionTieneTodosLosPermisos = {
                     helperGenerarConvocatoriaPDF
+                        .conContext(context = binding.webViewDetalleConvocatoria.context)
                         .conConvocatoria(convocatoria = convocatoria)
+                        .conMostrarLoading(mostrarLoading = ::mostrarLoading)
+                        .conOcultarLoading(ocultarLoading = ::ocultarLoading)
                         .generarPDF()
                 }
             )
         }
+    }
+
+    private fun configurarBotonAtras() {
+        conEscuchadorAccionBotonAtras { navegarAtras() }
+    }
+
+    private fun configurarLivedataFinalizoGeneracionPDF() {
+        helperGenerarConvocatoriaPDF
+            .traerSeGeneroPDFLiveData()
+            .observe(viewLifecycleOwner) {
+                if (!it)return@observe
+                mostrarDialogo(
+                    tipoDialogo = DialogoInformativo.TipoDialogo.INFORMATIVO,
+                    titulo = R.string.generar_convocatoria_reunionPDF,
+                    mensaje = R.string.se_ha_generado_el_pdf_correctamente,
+                    accionAceptar = ::navegarAtras
+                )
+            }
     }
 
     companion object {

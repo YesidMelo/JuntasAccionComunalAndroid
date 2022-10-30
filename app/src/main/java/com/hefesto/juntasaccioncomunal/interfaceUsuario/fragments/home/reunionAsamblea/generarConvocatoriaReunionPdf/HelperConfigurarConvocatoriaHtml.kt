@@ -37,6 +37,7 @@ class HelperConfigurarConvocatoriaHtml {
         cuerpo+= "${hora()} "
         cuerpo+= "${ordenDia()} "
         cuerpo+= "${convocantes()} "
+        cuerpo+= "${numeroAfiliadosActivos()} "
         return cuerpo
     }
 
@@ -74,6 +75,11 @@ class HelperConfigurarConvocatoriaHtml {
         }
         convocan+="</ol>"
         return convocan
+    }
+
+    private fun numeroAfiliadosActivos() : String {
+        val numeroAfiliados = reunionParaGenerarConvocatoriaPDFModel.numeroAfiliados?:return ""
+        return "<b>Numero Afiliados Activos</b>: $numeroAfiliados </br>"
     }
     //endregion
 }

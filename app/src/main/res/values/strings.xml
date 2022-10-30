@@ -173,4 +173,13 @@
     <string name="detalle_convocatoria">Detalle convocatoria</string>
     <string name="permisos_requeridos">Permisos requridos</string>
     <string name="no_ha_seleccionado_todos_los_permisos_requeridos">No ha habilitados todos los permisos requeridos para esta accion.</string>
+    <string name="fecha">Fecha</string>
+    <string name="orden_del_dia">Orden del dia</string>
+    <string name="firma_secretario">Firma secretario/a</string>
+    <string name="fecha_de_publicacion">Fecha de publicacion</string>
+    <string name="se_ha_generado_el_pdf_correctamente">Se ha generado el pdf correctamente. Se encuentra en la carpeta de descargas.</string>
+    <string-array name="la_junta_accion_comunal_convoca">
+        <item>La junta de accion comunal convoca a la comunidad a asamblea/reunion para brindar la informacion</item>
+        <item>y poder llegar a un consenso basados en el orden del dia.</item>
+    </string-array>
 </resources>
