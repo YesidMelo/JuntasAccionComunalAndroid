@@ -19,6 +19,8 @@ class DetalleConvocatoriaFragment : BaseFragment<ListaConvocatoriasViewModel>() 
     lateinit var listaConvocatoriasViewModel : ListaConvocatoriasViewModel
     @Inject
     lateinit var helperConfigurarConvocatoriaHtml: HelperConfigurarConvocatoriaHtml
+    @Inject
+    lateinit var helperGenerarConvocatoriaPDF: HelperGenerarConvocatoriaPDF
 
     lateinit var binding: FragmentDetalleconvocatoriaBinding
 
@@ -46,11 +48,14 @@ class DetalleConvocatoriaFragment : BaseFragment<ListaConvocatoriasViewModel>() 
     }
 
     private fun confugurarBoton() {
+        val convocatoria = (arguments?.getSerializable(DETALLE_CONVOCATORIA) as? ReunionParaGenerarConvocatoriaPDFModel)?:return
         binding.buttonGenerarConvocatoriaPdf.setOnClickListener {
             funcionSeguraConPermisos(
                 PermisosAplicacionEnum.ESCRITURA_DOCUMENTOS, PermisosAplicacionEnum.LECTURA_DOCUMENTO,
                 accionTieneTodosLosPermisos = {
-                    Log.e("Err", "Tengo los permisos")
+                    helperGenerarConvocatoriaPDF
+                        .conConvocatoria(convocatoria = convocatoria)
+                        .generarPDF()
                 }
             )
         }
