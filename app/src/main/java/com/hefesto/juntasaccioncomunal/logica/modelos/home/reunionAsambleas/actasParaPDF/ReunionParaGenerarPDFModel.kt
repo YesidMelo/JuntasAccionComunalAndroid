@@ -13,5 +13,6 @@ data class ReunionParaGenerarPDFModel constructor(
     var creoActa : Boolean = false,
     var horaInicio: Date?= null,
     var horaFin: Date?= null,
-    var listaPuntos: List<PuntoReunionParaGenerarPDFModel>? = null
+    var listaPuntos: List<PuntoReunionParaGenerarPDFModel>? = null,
+    var numeroActa: Int? = null
 ): BaseModel()

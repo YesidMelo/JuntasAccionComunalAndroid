@@ -18,7 +18,8 @@ fun ReunionAsambleaEntity.convertirAReunionParaGenerarPDFModel() : ReunionParaGe
         fechaYHoraProgramacionReunion = this.fechaYHoraProgramacionReunion?.convertirADate(formatoEntrada = FormatosFecha.ISO_8610),
         creoActa = this.creoActa,
         horaInicio = this.horaInicio?.convertirADate(formatoEntrada = FormatosFecha.ISO_8610),
-        horaFin = this.horaFin?.convertirADate(formatoEntrada = FormatosFecha.ISO_8610)
+        horaFin = this.horaFin?.convertirADate(formatoEntrada = FormatosFecha.ISO_8610),
+        numeroActa = this.numeroActa
     )
 }
 

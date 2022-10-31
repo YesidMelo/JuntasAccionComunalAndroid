@@ -1,13 +1,15 @@
 package com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarActaPdf.subfragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.hefesto.juntasaccioncomunal.databinding.SubfragmentDetalleactaWebBinding
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarActaPdf.GenerarActaPdfViewModel
-import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarActaPdf.helpers.HelperGeneradorHtmlParaGenerarPDF
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarActaPdf.helpers.HelperGeneradorHtmlActaPDF
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarActaPdf.helpers.HelperGeneradorPDFActa
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.actasParaPDF.ReunionParaGenerarPDFModel
 import javax.inject.Inject
@@ -19,7 +21,10 @@ class DetalleActaWebFragment :  BaseFragment<GenerarActaPdfViewModel>() {
     lateinit var generarActaPdfViewModel: GenerarActaPdfViewModel
 
     @Inject
-    lateinit var helperGeneradorHtmlParaGenerarPDF: HelperGeneradorHtmlParaGenerarPDF
+    lateinit var helperGeneradorHtmlActaPDF: HelperGeneradorHtmlActaPDF
+
+    @Inject
+    lateinit var helperGeneradorPDFActa: HelperGeneradorPDFActa
 
     private lateinit var binding: SubfragmentDetalleactaWebBinding
     //endregion
@@ -45,6 +50,8 @@ class DetalleActaWebFragment :  BaseFragment<GenerarActaPdfViewModel>() {
     private fun precargarVista() {
         configurarBotones()
         precargarDetalleActa()
+        precargarFinalizoPDFLiveData()
+        configuracionBotonGenerarPDF()
     }
 
     //region configurar botones
@@ -56,15 +63,35 @@ class DetalleActaWebFragment :  BaseFragment<GenerarActaPdfViewModel>() {
     private fun configurarBotonAtras() {
         conEscuchadorAccionBotonAtras { navegarAtras() }
     }
+
+    private fun configuracionBotonGenerarPDF() {
+        binding.buttonGenerarActaPdf.setOnClickListener {
+            val modelo = (arguments?.getSerializable(DETALLE_ACTA) as? ReunionParaGenerarPDFModel)?:return@setOnClickListener
+            helperGeneradorPDFActa
+                .conReunionParaGenerarPDFModel(reunionParaGenerarPDFModel = modelo)
+                .conMostrarLoading (::mostrarLoading)
+                .conOcultarLoading (::ocultarLoading)
+                .crearPDF()
+        }
+    }
     //endregion
 
     //region cargarActa
     private fun precargarDetalleActa() {
         val modelo = (arguments?.getSerializable(DETALLE_ACTA) as? ReunionParaGenerarPDFModel)?:return
-        helperGeneradorHtmlParaGenerarPDF
+        helperGeneradorHtmlActaPDF
             .conWebView(webView = binding.webviewPrevisualizacion)
             .conReunionParaGenerarPDFModel(reunionParaGenerarPDFModel = modelo)
             .generarActaHtml()
+    }
+
+    private fun precargarFinalizoPDFLiveData() {
+        helperGeneradorPDFActa
+            .traerCreoPDFLiveData()
+            .observe(viewLifecycleOwner) {
+                if(!it) return@observe
+                Log.e("Err","Finalizo la creacion del pdf")
+            }
     }
     //endregion
 

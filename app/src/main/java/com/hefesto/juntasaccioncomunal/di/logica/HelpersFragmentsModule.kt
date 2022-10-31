@@ -16,7 +16,8 @@ import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAs
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.helper.HelperFiltroBusquedaAfiliadoActaAsistencia
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.helper.HelperViewPagerFormulariosCompletarActas
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.helper.HelperViewPagerPuntosCrearActa
-import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarActaPdf.helpers.HelperGeneradorHtmlParaGenerarPDF
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarActaPdf.helpers.HelperGeneradorHtmlActaPDF
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarActaPdf.helpers.HelperGeneradorPDFActa
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarActaPdf.helpers.HelperRecyclerListaActasReunionesParaPDF
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarConvocatoriaReunionPdf.HelperConfigurarConvocatoriaHtml
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarConvocatoriaReunionPdf.HelperGenerarConvocatoriaPDF
@@ -86,7 +87,7 @@ class HelpersFragmentsModule {
     fun providesHelperRecyclerListaActasReunionesParaPDF(): HelperRecyclerListaActasReunionesParaPDF = HelperRecyclerListaActasReunionesParaPDF()
 
     @Provides
-    fun providesHelperGeneradorHtmlParaGenerarPDF(): HelperGeneradorHtmlParaGenerarPDF = HelperGeneradorHtmlParaGenerarPDF()
+    fun providesHelperGeneradorHtmlParaGenerarPDF(): HelperGeneradorHtmlActaPDF = HelperGeneradorHtmlActaPDF()
 
     @Provides
     fun providesHelperAutocompleteConvocantesAgendarReunion() = HelperAutocompleteConvocantesAgendarReunion()
@@ -99,6 +100,9 @@ class HelpersFragmentsModule {
 
     @Provides
     fun providesHelperGenerarConvocatoriaPDF(): HelperGenerarConvocatoriaPDF = HelperGenerarConvocatoriaPDF()
+
+    @Provides
+    fun providesHelperGeneradorPDFActa(): HelperGeneradorPDFActa = HelperGeneradorPDFActa()
     //endregion
 
     //endregion

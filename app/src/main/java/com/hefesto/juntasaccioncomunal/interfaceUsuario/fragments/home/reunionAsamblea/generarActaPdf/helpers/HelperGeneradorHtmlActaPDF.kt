@@ -7,7 +7,7 @@ import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.FormatosFe
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.TipoReunion
 import com.hefesto.juntasaccioncomunal.logica.utilidades.extenciones.convertirAFormato
 
-class HelperGeneradorHtmlParaGenerarPDF {
+class HelperGeneradorHtmlActaPDF {
 
     //region variables
     private lateinit var reunionParaGenerarPDFModel: ReunionParaGenerarPDFModel
@@ -15,12 +15,12 @@ class HelperGeneradorHtmlParaGenerarPDF {
     private var actaHtml : String = ""
     //endregion
 
-    fun conReunionParaGenerarPDFModel(reunionParaGenerarPDFModel: ReunionParaGenerarPDFModel) : HelperGeneradorHtmlParaGenerarPDF {
+    fun conReunionParaGenerarPDFModel(reunionParaGenerarPDFModel: ReunionParaGenerarPDFModel) : HelperGeneradorHtmlActaPDF {
         this.reunionParaGenerarPDFModel = reunionParaGenerarPDFModel
         return this
     }
 
-    fun conWebView(webView: WebView) : HelperGeneradorHtmlParaGenerarPDF {
+    fun conWebView(webView: WebView) : HelperGeneradorHtmlActaPDF {
         this.webView = webView
         return this
     }
