@@ -227,6 +227,7 @@ class HelperGenerarConvocatoriaPDF {
         posicionYFinal = lineasFirma(pagina1 = pagina1, posicionYFinal)
         detalleFirma(pagina1 = pagina1, posicionYFinal)
         detalleFechaPublicacion(pagina1 = pagina1, posicionYFinal)
+        detalleNoAfiliadosActivos(pagina1 = pagina1, posicionYFinal)
         return posicionYFinal
     }
 
@@ -260,6 +261,18 @@ class HelperGenerarConvocatoriaPDF {
         val posicionX = margenIzquierda + anchoLinea + separacion
         pagina1.canvas.drawText("${context.getString(R.string.fecha_de_publicacion)} ", posicionX, posicionYFinal, formatoDetalle(textSize = tamanioLetra))
     }
+
+    private fun detalleNoAfiliadosActivos(pagina1: PdfDocument.Page, posicionY : Float) {
+        val tamanioLetra = 20f
+        val posisicionYFinal = posicionY + tamanioLetra
+        val posicionX = 500f
+        pagina1.canvas.drawText(
+            "${context.getString(R.string.no_afiliados_activos)}: ${convocatoria.numeroAfiliados?:0}",
+            posicionX,
+            posisicionYFinal,
+            formatoDetalle(textSize = tamanioLetra)
+        )
+    }
     //endregion
 
     //endregion
@@ -289,7 +302,6 @@ class HelperGenerarConvocatoriaPDF {
         val file = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "Convocatoria.pdf")
         try {
             pdfDocument.writeTo(FileOutputStream(file))
-            Log.e("Err", "Se ha generado el documento")
         }catch (e :Exception) {
             Log.e("Err", "surgio un problema", e)
         }
