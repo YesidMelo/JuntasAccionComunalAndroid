@@ -30,7 +30,8 @@ fun PuntosReunionEntity.convertirAPuntoReunionParaCreacionActaModel() : PuntoReu
         tituloPunto = this.tituloPunto,
         detallePunto = this.detallePunto,
         votosAFavor =  this.votosAFavor,
-        votosEnContra = this.votosEnContra
+        votosEnContra = this.votosEnContra,
+        tieneVotacion = this.tieneVotacion
     )
 }
 
@@ -41,7 +42,8 @@ fun PuntoReunionParaCreacionActaModel.convertirAPuntosReunionEntity() : PuntosRe
         tituloPunto = this.tituloPunto,
         detallePunto = this.detallePunto,
         votosAFavor = this.votosAFavor,
-        votosEnContra = this.votosEnContra
+        votosEnContra = this.votosEnContra,
+        tieneVotacion = this.tieneVotacion
     )
 }
 

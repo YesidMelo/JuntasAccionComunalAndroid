@@ -8,5 +8,6 @@ data class PuntoReunionParaCreacionActaModel constructor(
     var tituloPunto: String? = null,
     var detallePunto: String? = null,
     var votosAFavor: Int? = null,
-    var votosEnContra: Int? = null
+    var votosEnContra: Int? = null,
+    var tieneVotacion: Boolean? = null
 ) : BaseModel()

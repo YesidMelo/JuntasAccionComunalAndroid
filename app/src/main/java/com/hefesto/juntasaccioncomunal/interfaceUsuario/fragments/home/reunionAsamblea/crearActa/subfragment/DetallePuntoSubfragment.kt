@@ -53,7 +53,17 @@ class DetallePuntoSubfragment : BaseFragment<CrearActaViewModel>() {
         val tipo = tipoReunion?:return
         if (tipo == TipoReunion.REUNION_DIRECTIVA_INFORMATIVA) return
         if (tipo == TipoReunion.ASAMBLEA_INFORMATIVA) return
-        binding.constraintLayoutCrearActaContadorVotos.visibility = View.VISIBLE
+        binding.constraintLayoutCrearActaContadorVotos.visibility = View.GONE
+        binding.switchCrearActaTienVotacion.visibility = View.VISIBLE
+        binding.switchCrearActaTienVotacion.setOnCheckedChangeListener { _, check ->
+            puntoReunionParaCreacionActaModel.tieneVotacion = check
+            if (check) {
+                binding.constraintLayoutCrearActaContadorVotos.visibility = View.VISIBLE
+                return@setOnCheckedChangeListener
+            }
+            binding.constraintLayoutCrearActaContadorVotos.visibility = View.GONE
+        }
+
     }
 
     //region ingresarInformacion
@@ -76,7 +86,6 @@ class DetallePuntoSubfragment : BaseFragment<CrearActaViewModel>() {
         binding.edittextCrearActaDetallePunto.addTextChangedListener {
             edittext ->
             puntoReunionParaCreacionActaModel.detallePunto = edittext?.toString()
-            Log.e("Err","")
         }
     }
     //endregion

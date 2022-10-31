@@ -83,7 +83,7 @@ class HelperGenerarConvocatoriaPDF {
         ponerMarcaAgua(pagina1 = pagina1, posicionY = posicionY)
         posicionY = ponerAsunto(pagina1 = pagina1, posicionY = posicionY)
         posicionY = ponerSitioFechaHora(pagina1 = pagina1, posicionY = posicionY)
-        posicionY = ordenDelDiaYConvocantes(pagina1 = pagina1, posicionY = posicionY + 50)
+        posicionY = ordenDelDiaYConvocantes(pagina1 = pagina1, posicionY = posicionY + 25)
         posicionY = pie(pagina1 = pagina1, posicionY = posicionY + 50)
         pdfDocument.finishPage(pagina1)
     }
@@ -113,38 +113,41 @@ class HelperGenerarConvocatoriaPDF {
     //region Sitio, fecha Hora de la reunion
     private fun ponerSitioFechaHora(pagina1: PdfDocument.Page, posicionY : Float) : Float {
         val tamanioLetra = 20f
-        val posicionYSalida = posicionY
+        var posicionYSalida = posicionY
 
-        ponerSitio(pagina1 = pagina1, posicionY = posicionY, tamanioLetra = tamanioLetra)
-        ponerFecha(pagina1 = pagina1, posicionY = posicionY, tamanioLetra = tamanioLetra)
-        ponerHora(pagina1 = pagina1, posicionY = posicionY, tamanioLetra = tamanioLetra)
+        posicionYSalida = ponerSitio(pagina1 = pagina1, posicionY = posicionYSalida, tamanioLetra = tamanioLetra)
+        posicionYSalida = ponerFecha(pagina1 = pagina1, posicionY = posicionYSalida, tamanioLetra = tamanioLetra)
+        posicionYSalida = ponerHora(pagina1 = pagina1, posicionY = posicionYSalida, tamanioLetra = tamanioLetra)
         return posicionYSalida + tamanioLetra * 2
     }
 
-    private fun ponerSitio(pagina1: PdfDocument.Page, posicionY : Float, tamanioLetra : Float) {
+    private fun ponerSitio(pagina1: PdfDocument.Page, posicionY : Float, tamanioLetra : Float) : Float {
         val posicionPrincipal = margenIzquierda
         val encabezado = "${context.getString(R.string.sitio)}:"
         pagina1.canvas.drawText(encabezado, posicionPrincipal, posicionY, formatoResalto(textSize = tamanioLetra))
         val posicionX = 11 + posicionPrincipal + (encabezado.length * AuxiliaresGeneracionPDF.traerAnchoM(tamanio = tamanioLetra))/2
         pagina1.canvas.drawText(" ${convocatoria.sitio?:""} ", posicionX, posicionY, formatoDetalle(textSize = tamanioLetra))
+        return posicionY + tamanioLetra
     }
 
-    private fun ponerFecha(pagina1: PdfDocument.Page, posicionY : Float, tamanioLetra : Float) {
-        val posicionPrincipal = margenIzquierda + 160f
+    private fun ponerFecha(pagina1: PdfDocument.Page, posicionY : Float, tamanioLetra : Float) : Float {
+        val posicionPrincipal = margenIzquierda
         val encabezado = "${context.getString(R.string.fecha)}:"
         pagina1.canvas.drawText(encabezado, posicionPrincipal, posicionY, formatoResalto(textSize = tamanioLetra))
         val posicionX = 20 + posicionPrincipal + (encabezado.length * AuxiliaresGeneracionPDF.traerAnchoM(tamanio = tamanioLetra))/2
         val fecha = convocatoria.fechaYHoraProgramacionReunion?.convertirAFormato(formato = FormatosFecha.ANIO_MES_DIA_GIONES)
         pagina1.canvas.drawText(" ${fecha?:""} ", posicionX, posicionY, formatoDetalle(textSize = tamanioLetra))
+        return posicionY + tamanioLetra
     }
 
-    private fun ponerHora(pagina1: PdfDocument.Page, posicionY : Float, tamanioLetra : Float) {
-        val posicionPrincipal = margenIzquierda + 360f
+    private fun ponerHora(pagina1: PdfDocument.Page, posicionY : Float, tamanioLetra : Float) : Float {
+        val posicionPrincipal = margenIzquierda
         val encabezado = "${context.getString(R.string.hora_reunion)}:"
         pagina1.canvas.drawText(encabezado, posicionPrincipal, posicionY, formatoResalto(textSize = tamanioLetra))
         val posicionX = 40 + posicionPrincipal + (encabezado.length * AuxiliaresGeneracionPDF.traerAnchoM(tamanio = tamanioLetra))/2
         val hora = convocatoria.fechaYHoraProgramacionReunion?.convertirAFormato(formato = FormatosFecha.HORA_MINUTO_12H)
         pagina1.canvas.drawText(" ${hora?:""} ", posicionX, posicionY, formatoDetalle(textSize = tamanioLetra))
+        return posicionY + tamanioLetra
     }
     //endregion
 
@@ -179,7 +182,7 @@ class HelperGenerarConvocatoriaPDF {
     private fun convocantes(pagina1: PdfDocument.Page, posicionY : Float) : Float {
         val tamanioLetra = 20f
         var posicionFinalY = posicionY
-        val posicionX = margenIzquierda + 460f
+        val posicionX = margenIzquierda + 360f
         val separacionX = 40f
 
         pagina1.canvas.drawText("${context.getString(R.string.convoca)}: ", posicionX, posicionFinalY, formatoResalto(textSize = tamanioLetra))

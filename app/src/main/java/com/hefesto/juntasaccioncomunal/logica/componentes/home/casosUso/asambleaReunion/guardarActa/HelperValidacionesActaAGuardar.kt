@@ -51,6 +51,7 @@ class HelperValidacionesActaAGuardar constructor(
         if(!seDebenTomarEnCuentaLosVotos()) return this
         val listaPuntos = detalleReunion.listaPuntos?: throw EstaReunionNoTienePuntosADiscutirExcepcion()
         for (punto  in listaPuntos) {
+            if (punto.tieneVotacion == null || !punto.tieneVotacion!!) continue
             if (punto.votosAFavor == null) throw NoHaIngresadoVotosAFavorPuntoExcepcion()
             if (punto.votosEnContra == null) throw NoHaIngresadoVotosEnContraPuntoExcepcion()
             if (punto.votosAFavor!! < 0) throw NoHaIngresadoUnaCantidadDeVotosValidaExcepcion()

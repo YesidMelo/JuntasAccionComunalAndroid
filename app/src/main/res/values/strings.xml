@@ -179,6 +179,7 @@
     <string name="fecha_de_publicacion">Fecha de publicacion</string>
     <string name="se_ha_generado_el_pdf_correctamente">Se ha generado el pdf correctamente. Se encuentra en la carpeta de descargas.</string>
     <string name="no_afiliados_activos">No. afiliados activos</string>
+    <string name="tiene_votacion">Tiene votacion</string>
     <string-array name="la_junta_accion_comunal_convoca">
         <item>La junta de accion comunal convoca a la comunidad a asamblea/reunion para brindar la informacion</item>
         <item>y poder llegar a un consenso basados en el orden del dia.</item>

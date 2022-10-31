@@ -12,5 +12,6 @@ data class PuntosReunionEntity(
     var tituloPunto: String? = null,
     var detallePunto: String? = null,
     var votosAFavor: Int? = null,
-    var votosEnContra: Int? = null
+    var votosEnContra: Int? = null,
+    var tieneVotacion: Boolean?= null
 ) : BaseEntity()
