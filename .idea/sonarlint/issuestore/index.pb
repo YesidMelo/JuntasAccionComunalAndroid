@@ -413,24 +413,16 @@ aapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/utilidades/enumeradore
 êapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/home/reunionAsambleas/agendarReunion/PuntoReunionAgendarReunionAsambleaModel.kt,d\4\d4b25b6c1d10e1ca4995ac5e2dd51f57d90531c9
 ∆
 ïapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/reunionAsamblea/crearActa/adapters/ViewPagerPuntosReunionAdapter.kt,9\6\96c554b22511c726887c8c40069b02a18b78f07f
-…
-òapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/casosUso/asambleaReunion/crearActa/TraerListaAfiliadosParaAsistenciaCasoUso.kt,0\6\065a82fd7f297ec174e3dbaf326bbeb04abe9301
 ‰
 ≥app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/listaAfiliadosModificacionDirectivas/helpers/HelperRecyclerListaAfiliadosModificacionDirectiva.kt,0\e\0e972867e43456470bcca671413cbb8acbbd5839
 ◊
 ¶app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/listaAfiliadosModificacionDirectivas/ListaAfiliadosModificacionDirectivasFragment.kt,f\1\f13cbd7bd049e886efa34a8e63b5334369dd2872
 »
 óapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/reunionAsamblea/crearActa/adapters/ListaAfiliadosAsistenciaAdapter.kt,d\8\d8d6668787351c69c5d6b29f8514fae4c16d11cd
-õ
-kapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/ui/asambleaReunion/CrearActaUI.kt,3\b\3b58db35376a06c8eaba041a50a973d78587a0b5
-≈
-îapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/reunionAsamblea/crearActa/subfragment/AsistenciaReunionFragment.kt,5\8\58dffcf2c61b4389f0578ffd706a8325d9f7c844
 Ω
 åapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/reunionAsamblea/crearActa/subfragment/PuntosSubfragment.kt,2\9\29c3b8d3712a49a30eab82cbd79d37c3294ec056
 º
 ãapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/casosUso/asambleaReunion/guardarActa/GuardarActaReunionCasoUso.kt,d\0\d00d8a7ca345f4d7f5b8380479f52b454bf12a39
-≤
-Åapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/reunionAsamblea/crearActa/CrearActaViewModel.kt,3\5\35547587d36a3829fa435a33e197ac70bd5f47f5
 ê
 `app/src/main/java/com/hefesto/juntasaccioncomunal/logica/utilidades/extenciones/DateExtension.kt,0\9\0988e794cafa57f76c49c38b32f6619320628776
 ©
@@ -441,8 +433,6 @@ Xapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/entities/Base
 fapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/views/home/AfiliadoAsistenciaView.kt,8\9\89ac65706b1b3005eb6598e0ca951bb78d9bb837
 Ø
 app/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/home/reunionAsambleas/crearActa/AfiliadoActaAsistenciaModel.kt,5\0\508b0dff2a56fab53122813e5756292cc666328e
-≈
-îapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/repositorio/db/helpers/reunionAsamblea/HelperListaAfiliadosAsistenciaDB.kt,8\f\8fd1d9a10d03b576c2a53e85594a9862cc614c1b
 £
 sapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/entities/reunionAsamblea/ListaAsistenciaEntity.kt,1\3\1374e174c46444c56711f6b49a979bb601fd4ec8
 Å
@@ -491,8 +481,6 @@ Japp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/DialogosBuilder.kt,c\5
 japp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/utilidades/ArrayAdapterPersonalizado.kt,c\3\c3bfd37220fb2191ec4c62f048696e0655a7df7b
 ’
 §app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/reunionAsamblea/generarActaPdf/helpers/HelperRecyclerListaActasReunionesParaPDF.kt,9\0\903802954fd11f54b04ae5fc160f0b127a95d08f
-—
-†app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/reunionAsamblea/crearActa/helper/HelperFiltroBusquedaAfiliadoActaAsistencia.kt,7\6\76670edcdfad0229f69c9c7d7c4756d66ee44c24
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
@@ -506,8 +494,6 @@ capp/src/main/java/com/hefesto/juntasaccioncomunal/logica/utilidades/enumeradore
 äapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/repositorio/db/helpers/reunionAsamblea/HelperAgendarReunionDB.kt,2\c\2cbcc9134b3114b735de4871f4e46e95e5461321
 ú
 lapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/repositorio/HomeCacheDatasource.kt,f\6\f6b4fa1fb73befdeed8cb9a2108bcab0502755dd
-ã
-[app/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/login/AfiliadoDao.kt,5\d\5d13b9b34038c732a9f4e7608bd4b97a05a7c776
 ò
 happ/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/views/home/AfiliadoDetalleEnJacView.kt,e\8\e8a69618de088fa7b591e11cf6ecfc4c99f45418
 “
@@ -546,10 +532,6 @@ xapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/base/casos
 Ñapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/home/reunionAsambleas/crearActa/ReunionAsambleaCreacionActaModel.kt,b\0\b0a10b41131a18b59c25fd2b9b6f27c2f12e0bf4
 ¿
 èapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/home/reunionAsambleas/agendarReunion/ConvocanteReunionAsambleaAAgendarModel.kt,3\e\3e0158857bbb8283b07983257342800d0164e105
-´
-{app/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/repositorio/db/helpers/HelperReunionAsambleaDB.kt,f\2\f2743527844edf176136456ed8b9d382df713a35
-ú
-lapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/repositorio/db/HomeDBDatasource.kt,1\5\1590009f14b12f220ead60c3fb8636c280b0055a
 }
 Mapp/src/main/java/com/hefesto/juntasaccioncomunal/di/logica/CasosUsoModule.kt,d\6\d65605d1bf69a2c0906de2bd3c64a108fa8ecbd1
 w

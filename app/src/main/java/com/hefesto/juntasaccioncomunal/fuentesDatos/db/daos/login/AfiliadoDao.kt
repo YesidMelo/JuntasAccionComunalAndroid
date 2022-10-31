@@ -21,7 +21,7 @@ interface AfiliadoDao : BaseDao<AfiliadoEntity> {
     @Query("SELECT * FROM AfiliadoEntity t WHERE t.tipoDocumento = :tipoDocumento AND t.documento = :documento")
     fun traerAfiliadoEntityPorTipoDocumentoYDocumento(tipoDocumento: Int, documento: String) : AfiliadoEntity?
 
-    @Query("SELECT * FROM AfiliadoAsistenciaView t WHERE t.jacId = :jacId")
+    @Query("SELECT * FROM AfiliadoAsistenciaView t WHERE t.jacId = :jacId GROUP by afiliadoid")
     fun traerAfiliadosParaAsistencia(jacId: Int) : List<AfiliadoAsistenciaView>
 
     @Query("SELECT * FROM AfiliadoEnSesionView a WHERE a.correo = :correo")

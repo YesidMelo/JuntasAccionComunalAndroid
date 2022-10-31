@@ -33,7 +33,12 @@ class HelperFiltroBusquedaAfiliadoActaAsistencia {
 
     fun conListaAfiliados(listaAfiliados: List<AfiliadoActaAsistenciaModel>) : HelperFiltroBusquedaAfiliadoActaAsistencia {
         this.listaAfiliados = listaAfiliados
-        listaAfiliados.forEach { listaAfiliadosEnFiltro.add(it) }
+
+        for(item in listaAfiliados) {
+            val listaFiltrada = listaAfiliadosEnFiltro.filter { return@filter it.afiliadoId == item.afiliadoId  }
+            if (listaFiltrada.isNotEmpty()) continue
+            listaAfiliadosEnFiltro.add(item)
+        }
         return this
     }
 
