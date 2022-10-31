@@ -48,8 +48,6 @@ class CrearActaFragment  : BaseFragment<CrearActaViewModel>(){
     //region botones
     private fun configurarBotones() {
         configurarBotonAtras()
-        configurarHoraInicioReunion()
-        configurarHoraFinReunion()
         configurarGuardarActa()
     }
 
@@ -57,23 +55,6 @@ class CrearActaFragment  : BaseFragment<CrearActaViewModel>(){
         conEscuchadorAccionBotonAtras { navegarAtras() }
     }
 
-    private fun configurarHoraInicioReunion() {
-        binding.textViewCrearActaDetalleHoraInicio.setOnClickListener {
-            mostrarDialogoHora {
-                binding.textViewCrearActaDetalleHoraInicio.text = it.convertirAFormato(formato = FormatosFecha.HORA_MINUTO_12H)
-                traerViewModel().traerDetalleReunionLiveData().value?.horaInicio = it
-            }
-        }
-    }
-
-    private fun configurarHoraFinReunion() {
-        binding.textViewCrearActaDetalleHoraFin.setOnClickListener {
-            mostrarDialogoHora {
-                binding.textViewCrearActaDetalleHoraFin.text = it.convertirAFormato(formato = FormatosFecha.HORA_MINUTO_12H)
-                traerViewModel().traerDetalleReunionLiveData().value?.horaFin = it
-            }
-        }
-    }
 
     //region guardar acta
     private fun configurarGuardarActa() {
@@ -101,14 +82,10 @@ class CrearActaFragment  : BaseFragment<CrearActaViewModel>(){
 
     private fun habiliarBotones() {
         binding.buttonCrearActaEjecutarCreacionActa.isEnabled = true
-        binding.textViewCrearActaDetalleHoraInicio.isEnabled = true
-        binding.textViewCrearActaDetalleHoraFin.isEnabled = true
     }
 
     private fun deshabilitarBotones() {
         binding.buttonCrearActaEjecutarCreacionActa.isEnabled = false
-        binding.textViewCrearActaDetalleHoraInicio.isEnabled = false
-        binding.textViewCrearActaDetalleHoraFin.isEnabled = false
     }
 
     //endregion

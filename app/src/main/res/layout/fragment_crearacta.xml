@@ -89,75 +89,18 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout_crearActa_detalleHoras"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_crearActa_tituloFormulario">
-
-        <TextView
-            android:id="@+id/textView_crearActa_horaInicio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/hora_inicio"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView_crearActa_detalleHoraInicio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:drawableRight="@android:drawable/ic_lock_idle_alarm"
-            android:text="@string/hint_hora"
-            app:layout_constraintStart_toEndOf="@+id/textView_crearActa_horaInicio"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView_crearActa_horaFin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="@string/hora_finalizacion"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_crearActa_horaInicio" />
-
-        <TextView
-            android:id="@+id/textView_crearActa_detalleHoraFin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:drawableRight="@android:drawable/ic_lock_idle_alarm"
-            android:text="@string/hint_hora"
-            app:layout_constraintStart_toEndOf="@+id/textView_crearActa_horaFin"
-            app:layout_constraintTop_toBottomOf="@+id/textView_crearActa_detalleHoraInicio" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/textView_crearActa_tituloFormulario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/complementar_informacion_acta"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout_detallereunion" />
-
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tablayout_formularios_finalizacion"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout_crearActa_detalleHoras">
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout_detallereunion">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/completar_informacion_acta" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"

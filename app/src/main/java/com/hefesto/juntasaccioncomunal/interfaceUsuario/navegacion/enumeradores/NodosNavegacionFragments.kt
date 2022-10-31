@@ -50,6 +50,7 @@ enum class NodosNavegacionFragments constructor(
     PUNTO_REUNION,
     DETALLE_PUNTO_REUNION,
     LISTA_ASISTENCIA_REUNION,
+    COMPLETAR_INFORMACION_ACTA,
     LISTA_GENERAR_ACTA_PDF(titulo = R.string.lista_generar_acta_en_pdf, fragment = ListaGenerarActaPdfFragment::class.java, identificador = "lista generar acta en pdf"),
     DETALLE_GENERAR_ACTA_PDF(titulo = R.string.detalle_acta, fragment = DetalleActaWebFragment::class.java, identificador = "detalle acta web"),
     LISTA_GENERAR_CONVOCATORIA_PDF(titulo = R.string.lista_reuniones_para_convocatoria, fragment = ListaConvocatoriasFragment::class.java, identificador = "Lista convocatorias"),

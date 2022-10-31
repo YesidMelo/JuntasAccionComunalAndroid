@@ -3,6 +3,7 @@ package com.hefesto.juntasaccioncomunal.logica.componentes.home.casosUso.asamble
 import com.hefesto.juntasaccioncomunal.logica.excepciones.EstaReunionNoTienePuntosADiscutirExcepcion
 import com.hefesto.juntasaccioncomunal.logica.excepciones.LaListaDeAsistenciaEstaVaciaExcepcion
 import com.hefesto.juntasaccioncomunal.logica.excepciones.NoHaIngresadoDetalleAAlgunPuntoExcepcion
+import com.hefesto.juntasaccioncomunal.logica.excepciones.NoHaIngresadoNumeroDocumentoHomeExcepcion
 import com.hefesto.juntasaccioncomunal.logica.excepciones.NoHaIngresadoUnaCantidadDeVotosValidaExcepcion
 import com.hefesto.juntasaccioncomunal.logica.excepciones.NoHaIngresadoVotosAFavorPuntoExcepcion
 import com.hefesto.juntasaccioncomunal.logica.excepciones.NoHaIngresadoVotosEnContraPuntoExcepcion
@@ -58,6 +59,12 @@ class HelperValidacionesActaAGuardar constructor(
             if (punto.votosEnContra!! < 0) throw NoHaIngresadoUnaCantidadDeVotosValidaExcepcion()
         }
         return  this
+    }
+
+    fun ingresoNumeroActa() : HelperValidacionesActaAGuardar {
+        if (detalleReunion.numeroActa == null) throw NoHaIngresadoNumeroDocumentoHomeExcepcion()
+        if (detalleReunion.numeroActa!! < 0) throw NoHaIngresadoNumeroDocumentoHomeExcepcion()
+        return this
     }
 
     fun asistencia(): HelperValidacionesActaAGuardar {

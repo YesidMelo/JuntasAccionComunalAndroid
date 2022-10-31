@@ -132,4 +132,11 @@ class LaListaDeAsistenciaEstaVaciaExcepcion: LogicaExcepcion(
     TiposExcepciones.GENERADO_USUARIO
 )
 
+class NoHaIngresadoElNumeroDeActaExcepcion: LogicaExcepcion(
+    mensaje = "Sin numero acta",
+    stringResMensaje = R.string.no_ha_ingresado_numero_acta,
+    stringResTitulo = R.string.crear_acta_reunion,
+    TiposExcepciones.GENERADO_USUARIO
+)
+
 //endregion

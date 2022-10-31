@@ -53,7 +53,6 @@ class DetallePuntoSubfragment : BaseFragment<CrearActaViewModel>() {
         val tipo = tipoReunion?:return
         if (tipo == TipoReunion.REUNION_DIRECTIVA_INFORMATIVA) return
         if (tipo == TipoReunion.ASAMBLEA_INFORMATIVA) return
-        binding.constraintLayoutCrearActaContadorVotos.visibility = View.GONE
         binding.switchCrearActaTienVotacion.visibility = View.VISIBLE
         binding.switchCrearActaTienVotacion.setOnCheckedChangeListener { _, check ->
             puntoReunionParaCreacionActaModel.tieneVotacion = check

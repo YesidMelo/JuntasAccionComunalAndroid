@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.CrearActaViewModel
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.subfragment.AsistenciaReunionFragment
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.subfragment.ComplementoActaFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.crearActa.subfragment.PuntosSubfragment
 
 class ViewPagerFormulariosActaReunionAdapter constructor(
@@ -20,7 +21,14 @@ class ViewPagerFormulariosActaReunionAdapter constructor(
     private fun inicializarLista() {
         listaFragments = emptyList<Fragment>().toMutableList()
         listaFragments.add(traerDetallePuntoSubfragment())
+        listaFragments.add(traerComplementoActaFragment())
         listaFragments.add(traerAsistenciaReunionFragment())
+    }
+
+    private fun traerComplementoActaFragment() : ComplementoActaFragment {
+        val fragment = ComplementoActaFragment()
+        fragment.crearActaViewModel = crearActaViewModel
+        return fragment
     }
 
     private fun traerDetallePuntoSubfragment() : PuntosSubfragment {

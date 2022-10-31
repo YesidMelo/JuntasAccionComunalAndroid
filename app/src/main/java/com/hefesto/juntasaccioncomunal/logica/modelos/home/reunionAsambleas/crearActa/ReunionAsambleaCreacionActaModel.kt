@@ -14,5 +14,6 @@ data class ReunionAsambleaCreacionActaModel constructor(
     var horaInicio: Date?= null,
     var horaFin: Date?= null,
     var listaPuntos: List<PuntoReunionParaCreacionActaModel>? = null,
-    var jacId: Int? = null
+    var jacId: Int? = null,
+    var numeroActa: Int?= null
 ): BaseModel()

@@ -29,6 +29,7 @@ class GuardarActaReunionCasoUsoImpl constructor(
             .completoElDetalleTodosLosPuntos()
             .ingresoVotosAFavorYEncontra()
             .asistencia()
+            .ingresoNumeroActa()
 
         homeRepositorio
             .guardarActa(asistencia = asistencia, detalleReunion = detalleReunion)
