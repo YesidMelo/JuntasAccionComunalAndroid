@@ -80,12 +80,28 @@ class DetallePuntoSubfragment : BaseFragment<CrearActaViewModel>() {
     //region escuchadores
     private fun escuchadorEditTexts() {
         escuchadorDetallePunto()
+        escuchadorVotosAFavor()
+        escuchadorVotosEnContra()
     }
 
     private fun escuchadorDetallePunto() {
         binding.edittextCrearActaDetallePunto.addTextChangedListener {
             edittext ->
             puntoReunionParaCreacionActaModel.detallePunto = edittext?.toString()
+        }
+    }
+
+    private fun escuchadorVotosAFavor() {
+        binding.edittextCrearActaVotosAFavor.addTextChangedListener {
+                edittext ->
+            puntoReunionParaCreacionActaModel.votosAFavor = edittext?.toString()?.toIntOrNull()
+        }
+    }
+
+    private fun escuchadorVotosEnContra() {
+        binding.edittextCrearActaVotosEnContra.addTextChangedListener {
+                edittext ->
+            puntoReunionParaCreacionActaModel.votosEnContra = edittext?.toString()?.toIntOrNull()
         }
     }
     //endregion

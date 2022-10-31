@@ -76,17 +76,18 @@ class HelperViewPagerPuntosCrearActa {
         }
     }
 
-    //TODO ojo revisar el cambio de fragment cuando tiene mas de tres puntos dado que se genera el error. es mejor hacer el ambio paso a paso con botones
     private fun inicializarPaginas() {
-        cargaPaginasFinalizo.postValue(true)
-        return
+
         GlobalScope.launch {
-            delay(10000)
+            delay(1000)
             for (pagina in 0 until adapter.listaFragments.size) {
                 viewPager.post { viewPager.currentItem = pagina }
                 delay(500)
             }
-            viewPager.post { viewPager.currentItem = 0 }
+            for(pagina in adapter.listaFragments.size downTo 0) {
+                viewPager.post { viewPager.currentItem = pagina }
+                delay(500)
+            }
             cargaPaginasFinalizo.postValue(true)
         }
     }

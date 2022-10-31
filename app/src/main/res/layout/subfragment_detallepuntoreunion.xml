@@ -60,7 +60,8 @@
                 android:id="@+id/edittext_crearActa_votosEnContra"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/votos_en_contra" />
+                android:hint="@string/votos_en_contra"
+                android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
