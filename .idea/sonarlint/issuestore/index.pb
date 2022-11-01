@@ -453,8 +453,6 @@ Japp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/DialogosBuilder.kt,c\5
 •app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/reunionAsamblea/generarActaPdf/adapters/ListaActasParaPDFAdapter.kt,8\4\84ddd0a94ab384f0bacbc935f088f58eb719df49
 ¶
 …app/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/repositorio/db/helpers/reunionAsamblea/HelperCrearActaDB.kt,8\a\8ac35ab67a083b221fde0dcf5890892561d5dceb
-·
-†app/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/home/reunionAsambleas/actasParaPDF/PuntoReunionParaGenerarPDFModel.kt,1\1\118ee38f26e776410e23dac3295bc854e4a19103
 <
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
 ?
@@ -646,12 +644,8 @@ Uapp/src/main/java/com/hefesto/juntasaccioncomunal/di/logica/HelpersFragmentsMod
 app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/reunionAsamblea/generarActaPdf/ListaGenerarActaPdfFragment.kt,1\c\1c33616126e89bbdec2c2268c6f9f8ea30200a2e
 ¼
 ‹app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/reunionAsamblea/generarActaPdf/GenerarActaPdfViewModel.kt,9\9\99a524e86b4abfc573ef7d1175ac17da43fcf84c
-È
-—app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/reunionAsamblea/generarActaPdf/helpers/generadorPDF/DetalleItemPdf.kt,d\f\dfb0eba0ed33ce7d3215ea4f133377c942a2e21b
 ¥
 uapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/utilidades/generadorPDF/AuxiliaresGeneracionPDF.kt,b\3\b3c8350ef3a6c4ab02b48526d3b70b2e3bc65f55
-Ð
-Ÿapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/reunionAsamblea/generarConvocatoriaReunionPdf/HelperGenerarConvocatoriaPDF.kt,3\8\383d938a256dac10c79c280a3c141b30f2215c98
 È
 —app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/reunionAsamblea/generarActaPdf/subfragments/DetalleActaWebFragment.kt,6\b\6bc9e0114138009ffeaef1bccb1318f2636a278a
 «

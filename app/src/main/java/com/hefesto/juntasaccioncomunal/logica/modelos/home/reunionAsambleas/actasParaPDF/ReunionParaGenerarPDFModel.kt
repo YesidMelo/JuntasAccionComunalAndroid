@@ -22,4 +22,5 @@ data class ReunionParaGenerarPDFModel constructor(
     var numeroAfiliadosActivos: Int? = null,
     var presidente: ConvocantesReunionGenerarPDFModel? = null,
     var secretario: ConvocantesReunionGenerarPDFModel? = null,
+    var marcaAgua: String? = null
 ): BaseModel()

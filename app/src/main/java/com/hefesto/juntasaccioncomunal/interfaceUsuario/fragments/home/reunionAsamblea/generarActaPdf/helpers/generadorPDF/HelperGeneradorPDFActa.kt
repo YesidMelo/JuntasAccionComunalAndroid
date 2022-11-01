@@ -22,6 +22,7 @@ class HelperGeneradorPDFActa {
     private lateinit var mostrarLoading : ()->Unit
     private lateinit var ocultarLoading : ()->Unit
     private lateinit var context: Context
+    private var tamanioLetra : Float = 11f
     private val creoPDFLiveData = MutableLiveData<Boolean>()
     private val configuracionDocumentoPDF = ConfiguracionDocumentoPDF()
     private val generadorPaginasPDF = GeneradorPaginasPDF()
@@ -60,6 +61,7 @@ class HelperGeneradorPDFActa {
                 .conConfiguracionDocumentoPDF(configuracionDocumentoPDF = configuracionDocumentoPDF)
                 .conListaItems(listaItems = listaItems)
                 .conPdfDocument(pdfDocument = pdfDocument)
+                .conMarcaDeAgua(marcaAguaBase64 = reunionParaGenerarPDFModel.marcaAgua)
                 .llenarPDF()
 
             generarArchivo(pdfDocument = pdfDocument)
@@ -82,13 +84,16 @@ class HelperGeneradorPDFActa {
         lista.add(generarPresidente())
         lista.add(generarSecretario())
         lista.add(generarOrdenDelDia())
+        lista.add(generarDesarrolloOrdenDelDia())
+        lista.add(generarFirmaSecretario())
+        lista.add(generarFirmaPresidente())
         return lista
     }
 
     private fun generarNumeroActa() : DetalleItemPdf {
         return DetalleItemPdf().apply {
             this.detalle = "${context.getString(R.string.numero_acta)}: ${reunionParaGenerarPDFModel.numeroActa?:1}"
-            this.tamanioLetra = 15f
+            this.tamanioLetra = this@HelperGeneradorPDFActa.tamanioLetra
             this.tipo = TipoAAplicar.NORMAL
         }
     }
@@ -96,7 +101,7 @@ class HelperGeneradorPDFActa {
     private fun generarLugar() : DetalleItemPdf {
         return DetalleItemPdf().apply {
             this.detalle = "${context.getString(R.string.lugar)}: ${reunionParaGenerarPDFModel.sitio?:""}"
-            this.tamanioLetra = 12f
+            this.tamanioLetra = this@HelperGeneradorPDFActa.tamanioLetra
             this.tipo = TipoAAplicar.NORMAL
         }
     }
@@ -104,7 +109,7 @@ class HelperGeneradorPDFActa {
     private fun generarFecha() : DetalleItemPdf {
         return DetalleItemPdf().apply {
             this.detalle = "${context.getString(R.string.fecha)}: ${reunionParaGenerarPDFModel.fechaYHoraProgramacionReunion?.convertirAFormato(formato = FormatosFecha.ANIO_MES_DIA_GIONES)?:""}"
-            this.tamanioLetra = 12f
+            this.tamanioLetra = this@HelperGeneradorPDFActa.tamanioLetra
             this.tipo = TipoAAplicar.NORMAL
         }
     }
@@ -112,7 +117,7 @@ class HelperGeneradorPDFActa {
     private fun generarConvocantes() : DetalleItemPdf {
         return DetalleItemPdf().apply {
             this.detalle = "${context.getString(R.string.convoca)}:\n"
-            this.tamanioLetra = 12f
+            this.tamanioLetra = this@HelperGeneradorPDFActa.tamanioLetra
             this.tipo = TipoAAplicar.NORMAL
 
             if (reunionParaGenerarPDFModel.listaConvocantes == null) return@apply
@@ -126,7 +131,7 @@ class HelperGeneradorPDFActa {
     private fun generarNumeroAsistentes() : DetalleItemPdf {
         return DetalleItemPdf().apply {
             this.detalle = "${context.getString(R.string.numero_asistentes)}: ${reunionParaGenerarPDFModel.numeroAsistentes?:0}"
-            this.tamanioLetra = 12f
+            this.tamanioLetra = this@HelperGeneradorPDFActa.tamanioLetra
             this.tipo = TipoAAplicar.NORMAL
         }
     }
@@ -137,7 +142,7 @@ class HelperGeneradorPDFActa {
             val afiliadosActivos = reunionParaGenerarPDFModel.numeroAfiliadosActivos?:1
             val quorum = (numeroAsistentes.toFloat()/afiliadosActivos)
             this.detalle = "${context.getString(R.string.quorum)}: $quorum"
-            this.tamanioLetra = 12f
+            this.tamanioLetra = this@HelperGeneradorPDFActa.tamanioLetra
             this.tipo = TipoAAplicar.NORMAL
         }
     }
@@ -145,7 +150,7 @@ class HelperGeneradorPDFActa {
     private fun generarPresidente() : DetalleItemPdf {
         return DetalleItemPdf().apply {
             this.detalle = "${context.getString(R.string.presidente)}: ${reunionParaGenerarPDFModel.presidente?.nombre?:""} ${reunionParaGenerarPDFModel.presidente?.apellido?:""}"
-            this.tamanioLetra = 12f
+            this.tamanioLetra = this@HelperGeneradorPDFActa.tamanioLetra
             this.tipo = TipoAAplicar.NORMAL
         }
     }
@@ -153,19 +158,54 @@ class HelperGeneradorPDFActa {
     private fun generarSecretario() : DetalleItemPdf {
         return DetalleItemPdf().apply {
             this.detalle = "${context.getString(R.string.secretario)}: ${reunionParaGenerarPDFModel.secretario?.nombre?:""} ${reunionParaGenerarPDFModel.secretario?.apellido?:""}\n"
-            this.tamanioLetra = 12f
+            this.tamanioLetra = this@HelperGeneradorPDFActa.tamanioLetra
             this.tipo = TipoAAplicar.NORMAL
         }
     }
 
     private fun generarOrdenDelDia() : DetalleItemPdf {
         return DetalleItemPdf().apply {
-            this.tamanioLetra = 12f
+            this.tamanioLetra = this@HelperGeneradorPDFActa.tamanioLetra
             this.tipo = TipoAAplicar.NORMAL
             this.detalle = "${context.getString(R.string.orden_del_dia)}:\n\n"
             for (contador in 0 until reunionParaGenerarPDFModel.listaPuntos!!.size) {
                 detalle += "\t${contador + 1}. ${reunionParaGenerarPDFModel.listaPuntos!![contador].tituloPunto?:""}\n"
             }
+        }
+    }
+
+    private fun generarDesarrolloOrdenDelDia() : DetalleItemPdf {
+        return DetalleItemPdf().apply {
+            this.tamanioLetra = this@HelperGeneradorPDFActa.tamanioLetra
+            this.tipo = TipoAAplicar.NORMAL
+            this.detalle = "${context.getString(R.string.desarrollo_orden_del_dia)}:\n\n"
+            for (contador in 0 until reunionParaGenerarPDFModel.listaPuntos!!.size) {
+                detalle += "${contador + 1}. ${reunionParaGenerarPDFModel.listaPuntos!![contador].tituloPunto?:""}:\n"
+                detalle += "${reunionParaGenerarPDFModel.listaPuntos!![contador].detallePunto?:""}."
+                if (!reunionParaGenerarPDFModel.listaPuntos!![contador].tieneVotacion) {
+                    detalle += "\n\n"
+                    continue
+                }
+                detalle += "\n\n${context.getString(R.string.votos_a_favor)}: ${reunionParaGenerarPDFModel.listaPuntos!![contador].votosAFavor?:0} "
+                detalle += "${context.getString(R.string.votos_en_contra)}: ${reunionParaGenerarPDFModel.listaPuntos!![contador].votosEnContra?:0}\n\n"
+            }
+        }
+    }
+
+    private fun generarFirmaSecretario() : DetalleItemPdf {
+        return DetalleItemPdf().apply {
+            this.detalle = "${context.getString(R.string.secretario)}: ${reunionParaGenerarPDFModel.secretario?.nombre?:""} ${reunionParaGenerarPDFModel.secretario?.apellido?:""}\n\n\n"
+            this.tamanioLetra = this@HelperGeneradorPDFActa.tamanioLetra
+            this.tipo = TipoAAplicar.NORMAL
+            this.esFirma = true
+        }
+    }
+    private fun generarFirmaPresidente() : DetalleItemPdf {
+        return DetalleItemPdf().apply {
+            this.detalle = "${context.getString(R.string.presidente)}: ${reunionParaGenerarPDFModel.presidente?.nombre?:""} ${reunionParaGenerarPDFModel.presidente?.apellido?:""}"
+            this.tamanioLetra = this@HelperGeneradorPDFActa.tamanioLetra
+            this.tipo = TipoAAplicar.NORMAL
+            this.esFirma = true
         }
     }
 

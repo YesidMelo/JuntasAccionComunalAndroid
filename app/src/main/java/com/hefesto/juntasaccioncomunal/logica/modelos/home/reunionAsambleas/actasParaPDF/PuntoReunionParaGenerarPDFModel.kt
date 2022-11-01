@@ -8,5 +8,7 @@ data class PuntoReunionParaGenerarPDFModel constructor(
     var tituloPunto: String? = null,
     var detallePunto: String? = null,
     var votosAFavor: Int? = null,
-    var votosEnContra: Int? = null
+    var votosEnContra: Int? = null,
+    //todo implementar en el mapper
+    var tieneVotacion: Boolean = false,
 ) : BaseModel()

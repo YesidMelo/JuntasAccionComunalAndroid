@@ -1,8 +1,12 @@
 package com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarActaPdf.helpers.generadorPDF
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.Paint
 import android.graphics.Typeface
 import android.graphics.pdf.PdfDocument
 import android.text.TextPaint
+import android.util.Base64
 import kotlinx.coroutines.delay
 
 class GeneradorPaginasPDF {
@@ -14,6 +18,7 @@ class GeneradorPaginasPDF {
     private var posicionYPagina = 0f
     private var paginaActual : PdfDocument.Page? = null
     private var contadorPagina = 1
+    private var marcaAgua: String? = null
     //endregion
 
     //region metodos publicos
@@ -33,6 +38,11 @@ class GeneradorPaginasPDF {
         return this
     }
 
+    fun conMarcaDeAgua(marcaAguaBase64: String?) : GeneradorPaginasPDF {
+        this.marcaAgua = marcaAguaBase64
+        return this
+    }
+
     suspend fun llenarPDF() {
         for (item in listaItems) {
             generarLineas(detalle = item)
@@ -45,6 +55,35 @@ class GeneradorPaginasPDF {
 
     //region metodos privados
 
+    //region generar pagina
+    private fun generarPagina() {
+        if (paginaActual == null) {
+            paginaActual = pdfDocument.startPage(configuracionDocumentoPDF.traerPageInfo(numeroPagina = contadorPagina))
+            posicionYPagina = configuracionDocumentoPDF.traerMargenAlto()
+            ponerMarcaAgua(pagina = paginaActual!!)
+            return
+        }
+
+        val margenInferior = configuracionDocumentoPDF.traerAltoPagina() - configuracionDocumentoPDF.traerMargenAbajo()
+        if (posicionYPagina < margenInferior ) return
+
+        pdfDocument.finishPage(paginaActual!!)
+        contadorPagina++
+        paginaActual = pdfDocument.startPage(configuracionDocumentoPDF.traerPageInfo(numeroPagina = contadorPagina))
+        posicionYPagina = configuracionDocumentoPDF.traerMargenAlto()
+        ponerMarcaAgua(pagina = paginaActual!!)
+    }
+
+    private fun ponerMarcaAgua(pagina: PdfDocument.Page) {
+        val logo = marcaAgua?:return
+        if (logo.isEmpty()) return
+        val detalleImagen = Base64.decode(logo, Base64.DEFAULT)
+        val bitmap = BitmapFactory.decodeByteArray(detalleImagen, 0, detalleImagen.size)
+        val bitmapEscalada = Bitmap.createScaledBitmap(bitmap, 350, 500, false)
+        pagina.canvas.drawBitmap(bitmapEscalada,250f,50f, null)
+    }
+
+    //endregion
 
     //region generar lineas
     private suspend fun generarLineas(detalle: DetalleItemPdf) {
@@ -99,24 +138,15 @@ class GeneradorPaginasPDF {
     }
     //endregion
 
-    private suspend fun generarPagina() {
-        if (paginaActual == null) {
-            paginaActual = pdfDocument.startPage(configuracionDocumentoPDF.traerPageInfo(numeroPagina = contadorPagina))
-            posicionYPagina = configuracionDocumentoPDF.traerMargenAlto()
-            return
+    private fun generarLinea(texto : String, detalle: DetalleItemPdf) {
+        generarPagina()
+        if (detalle.esFirma && texto.isNotEmpty()) {
+            val puntoInicial = Pair(first = configuracionDocumentoPDF.traerMargenIzquierda(), second = posicionYPagina)
+            val puntoFinal = Pair(first = configuracionDocumentoPDF.traerMargenIzquierda() + 250f, second = posicionYPagina)
+            paginaActual!!.canvas.drawLine(puntoInicial.first, puntoInicial.second, puntoFinal.first, puntoFinal.second, Paint())
+            posicionYPagina += detalle.tamanioLetra
         }
 
-        val margenInferior = configuracionDocumentoPDF.traerAltoPagina() - configuracionDocumentoPDF.traerMargenAbajo()
-        if (posicionYPagina < margenInferior ) return
-
-        pdfDocument.finishPage(paginaActual!!)
-        contadorPagina++
-        paginaActual = pdfDocument.startPage(configuracionDocumentoPDF.traerPageInfo(numeroPagina = contadorPagina))
-        posicionYPagina = configuracionDocumentoPDF.traerMargenAlto()
-    }
-
-    private suspend fun generarLinea(texto : String, detalle: DetalleItemPdf) {
-        generarPagina()
         val posicionX = if (!texto.contains("\t")) configuracionDocumentoPDF.traerMargenIzquierda() else configuracionDocumentoPDF.traerMargenIzquierda()+ configuracionDocumentoPDF.traerAnchoTab()
         paginaActual!!.canvas.drawText(
             texto,
