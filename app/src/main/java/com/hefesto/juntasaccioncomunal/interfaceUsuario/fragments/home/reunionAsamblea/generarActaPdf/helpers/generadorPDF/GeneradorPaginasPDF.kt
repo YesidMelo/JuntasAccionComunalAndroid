@@ -4,6 +4,7 @@ import android.graphics.Typeface
 import android.graphics.pdf.PdfDocument
 import android.text.TextPaint
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.utilidades.generadorPDF.AuxiliaresGeneracionPDF
+import kotlinx.coroutines.delay
 
 class GeneradorPaginasPDF {
 
@@ -33,7 +34,7 @@ class GeneradorPaginasPDF {
         return this
     }
 
-    fun llenarPDF() {
+    suspend fun llenarPDF() {
         for (item in listaItems) {
             generarLineas(detalle = item)
         }
@@ -46,12 +47,10 @@ class GeneradorPaginasPDF {
 
 
     //region generar lineas
-    private fun generarLineas(detalle: DetalleItemPdf) {
-        generarPagina()
-        val pagina = paginaActual?: return
-
+    private suspend fun generarLineas(detalle: DetalleItemPdf) {
         for (item in generarSplitString(detalle = detalle)) {
-            generarLinea(texto = item, detalle= detalle, pagina = pagina)
+            generarPagina()
+            generarLinea(texto = item, detalle= detalle)
         }
     }
 
@@ -84,12 +83,12 @@ class GeneradorPaginasPDF {
 
         pdfDocument.finishPage(paginaActual!!)
         contadorPagina++
-        pdfDocument.startPage(configuracionDocumentoPDF.traerPageInfo(numeroPagina = contadorPagina))
+        paginaActual = pdfDocument.startPage(configuracionDocumentoPDF.traerPageInfo(numeroPagina = contadorPagina))
         posicionYPagina = configuracionDocumentoPDF.traerMargenAlto()
     }
 
-    private fun generarLinea(texto : String, detalle: DetalleItemPdf, pagina: PdfDocument.Page) {
-        pagina.canvas.drawText(
+    private fun generarLinea(texto : String, detalle: DetalleItemPdf) {
+        paginaActual!!.canvas.drawText(
             texto,
             configuracionDocumentoPDF.traerMargenIzquierda(),
             posicionYPagina,
@@ -99,6 +98,7 @@ class GeneradorPaginasPDF {
             }
         )
         posicionYPagina += detalle.tamanioLetra
+        generarPagina()
     }
 
     //endregion

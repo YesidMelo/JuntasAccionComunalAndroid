@@ -65,7 +65,30 @@ class HelperGeneradorPDFActa {
         val lista = emptyList<DetalleItemPdf>().toMutableList()
         val detalle = DetalleItemPdf().apply {
             this.tamanioLetra = 20f
-            this.detalle= "ñiashflalkjfgajgfjshfdlakshdfñkjashfkahsñdkfhasñkdfasñovhahvkjahñfkhasñkdfhañkshdfkajsdhfñkasdfñiagsdivblkjvblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf"
+            this.detalle= "ñiashflalkjfgajgfjshfdlakshdfñkjashfkahsñdkfhasñkdfasñovhahvkjahñfkhasñkdfhañkshdfkajsdhfñkasdfñiagsdivblkj" +
+                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf"+
+                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf"+
+                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf"+
+                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf" +
+                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf" +
+                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf" +
+                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf" +
+                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf" +
+                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf" +
+                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf" +
+                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf" +
+                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf" +
+                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf" +
+                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf" +
+                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf" +
+                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf" +
+                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf" +
+                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf" +
+                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf" +
+                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf" +
+                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf" +
+                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf" +
+                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf"
             this.tipo = TipoAAplicar.NORMAL
         }
         lista.add(detalle)

@@ -5,7 +5,7 @@ import android.graphics.pdf.PdfDocument
 class ConfiguracionDocumentoPDF {
     //region variables
     private val altoPagina = 842
-    private val anchoPagina = 395
+    private val anchoPagina = 595
     private val margenAlto = 50f
     private val margenBajo = 50f
     private val margenIzquierda = 50f
