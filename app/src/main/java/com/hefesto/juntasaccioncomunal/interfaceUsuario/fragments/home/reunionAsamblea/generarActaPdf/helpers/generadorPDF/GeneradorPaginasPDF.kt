@@ -3,7 +3,6 @@ package com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionA
 import android.graphics.Typeface
 import android.graphics.pdf.PdfDocument
 import android.text.TextPaint
-import com.hefesto.juntasaccioncomunal.interfaceUsuario.utilidades.generadorPDF.AuxiliaresGeneracionPDF
 import kotlinx.coroutines.delay
 
 class GeneradorPaginasPDF {
@@ -37,6 +36,7 @@ class GeneradorPaginasPDF {
     suspend fun llenarPDF() {
         for (item in listaItems) {
             generarLineas(detalle = item)
+            delay(200)
         }
         pdfDocument.finishPage(paginaActual!!)
     }
@@ -49,19 +49,24 @@ class GeneradorPaginasPDF {
     //region generar lineas
     private suspend fun generarLineas(detalle: DetalleItemPdf) {
         for (item in generarSplitString(detalle = detalle)) {
-            generarPagina()
             generarLinea(texto = item, detalle= detalle)
         }
     }
 
     private fun generarSplitString(detalle: DetalleItemPdf) : List<String> {
         val lista = emptyList<String>().toMutableList()
+        val ancho = configuracionDocumentoPDF.traerMargenIzquierda() + (detalle.detalle.length * (detalle.tamanioLetra/2))
+        if (ancho < configuracionDocumentoPDF.traerAnchoPagina() - configuracionDocumentoPDF.traerMargenDerecha()) {
+            lista.add(detalle.detalle)
+            return lista
+        }
+
         var itemLista = ""
         for (caracter in detalle.detalle) {
             itemLista += caracter
-            val ancho = configuracionDocumentoPDF.traerMargenIzquierda() + (itemLista.length * (detalle.tamanioLetra/2))
+            val anchoFor = configuracionDocumentoPDF.traerMargenIzquierda() + (itemLista.length * (detalle.tamanioLetra/2))
 
-            if (ancho < configuracionDocumentoPDF.traerAnchoPagina() - configuracionDocumentoPDF.traerMargenDerecha()) continue
+            if (anchoFor < configuracionDocumentoPDF.traerAnchoPagina() - configuracionDocumentoPDF.traerMargenDerecha()) continue
             itemLista.toMutableList().removeLast()
             lista.add(itemLista)
             itemLista = caracter.toString()
@@ -71,7 +76,7 @@ class GeneradorPaginasPDF {
     }
 
 
-    private fun generarPagina() {
+    private suspend fun generarPagina() {
         if (paginaActual == null) {
             paginaActual = pdfDocument.startPage(configuracionDocumentoPDF.traerPageInfo(numeroPagina = contadorPagina))
             posicionYPagina = configuracionDocumentoPDF.traerMargenAlto()
@@ -87,7 +92,8 @@ class GeneradorPaginasPDF {
         posicionYPagina = configuracionDocumentoPDF.traerMargenAlto()
     }
 
-    private fun generarLinea(texto : String, detalle: DetalleItemPdf) {
+    private suspend fun generarLinea(texto : String, detalle: DetalleItemPdf) {
+        generarPagina()
         paginaActual!!.canvas.drawText(
             texto,
             configuracionDocumentoPDF.traerMargenIzquierda(),

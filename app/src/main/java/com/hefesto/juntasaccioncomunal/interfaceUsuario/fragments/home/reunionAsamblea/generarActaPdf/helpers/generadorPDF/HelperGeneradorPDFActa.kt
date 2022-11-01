@@ -1,12 +1,16 @@
 package com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarActaPdf.helpers.generadorPDF
 
+import android.content.Context
 import android.graphics.pdf.PdfDocument
 import android.os.Environment
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.hefesto.juntasaccioncomunal.R
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarConvocatoriaReunionPdf.HelperGenerarConvocatoriaPDF
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.actasParaPDF.ReunionParaGenerarPDFModel
+import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.FormatosFecha
+import com.hefesto.juntasaccioncomunal.logica.utilidades.extenciones.convertirAFormato
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.io.File
 import java.io.FileOutputStream
@@ -17,10 +21,16 @@ class HelperGeneradorPDFActa {
     private lateinit var reunionParaGenerarPDFModel: ReunionParaGenerarPDFModel
     private lateinit var mostrarLoading : ()->Unit
     private lateinit var ocultarLoading : ()->Unit
+    private lateinit var context: Context
     private val creoPDFLiveData = MutableLiveData<Boolean>()
     private val configuracionDocumentoPDF = ConfiguracionDocumentoPDF()
     private val generadorPaginasPDF = GeneradorPaginasPDF()
     //endregion
+
+    fun conContext(context: Context) : HelperGeneradorPDFActa {
+        this.context = context
+        return this
+    }
 
     fun conReunionParaGenerarPDFModel(reunionParaGenerarPDFModel: ReunionParaGenerarPDFModel) : HelperGeneradorPDFActa {
         this.reunionParaGenerarPDFModel = reunionParaGenerarPDFModel
@@ -45,10 +55,10 @@ class HelperGeneradorPDFActa {
             mostrarLoading.invoke()
 
             val pdfDocument = PdfDocument()
-
+            val listaItems = generarListaItems()
             generadorPaginasPDF
                 .conConfiguracionDocumentoPDF(configuracionDocumentoPDF = configuracionDocumentoPDF)
-                .conListaItems(listaItems = generarListaItems())
+                .conListaItems(listaItems = listaItems)
                 .conPdfDocument(pdfDocument = pdfDocument)
                 .llenarPDF()
 
@@ -63,36 +73,100 @@ class HelperGeneradorPDFActa {
     //region metodos privados
     private fun generarListaItems() : MutableList<DetalleItemPdf> {
         val lista = emptyList<DetalleItemPdf>().toMutableList()
-        val detalle = DetalleItemPdf().apply {
-            this.tamanioLetra = 20f
-            this.detalle= "ñiashflalkjfgajgfjshfdlakshdfñkjashfkahsñdkfhasñkdfasñovhahvkjahñfkhasñkdfhañkshdfkajsdhfñkasdfñiagsdivblkj" +
-                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf"+
-                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf"+
-                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf"+
-                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf" +
-                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf" +
-                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf" +
-                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf" +
-                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf" +
-                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf" +
-                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf" +
-                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf" +
-                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf" +
-                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf" +
-                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf" +
-                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf" +
-                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf" +
-                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf" +
-                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf" +
-                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf" +
-                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf" +
-                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf" +
-                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf" +
-                    "vblajkbvljahbjasgljahsgfdlaigfiaiyfalj,hdbfakjhfljhkasdfjhsjfkhgaskjdfgaksjhfdgkjhasgf"
+        lista.add(generarNumeroActa())
+        lista.add(generarLugar())
+        lista.add(generarFecha())
+        lista.add(generarConvocantes())
+        lista.add(generarNumeroAsistentes())
+        lista.add(generarQuorum())
+        lista.add(generarPresidente())
+        lista.add(generarSecretario())
+        lista.add(generarOrdenDelDia())
+        return lista
+    }
+
+    private fun generarNumeroActa() : DetalleItemPdf {
+        return DetalleItemPdf().apply {
+            this.detalle = "${context.getString(R.string.numero_acta)}: ${reunionParaGenerarPDFModel.numeroActa?:1}"
+            this.tamanioLetra = 15f
             this.tipo = TipoAAplicar.NORMAL
         }
-        lista.add(detalle)
-        return lista
+    }
+
+    private fun generarLugar() : DetalleItemPdf {
+        return DetalleItemPdf().apply {
+            this.detalle = "${context.getString(R.string.lugar)}: ${reunionParaGenerarPDFModel.sitio?:""}"
+            this.tamanioLetra = 12f
+            this.tipo = TipoAAplicar.NORMAL
+        }
+    }
+
+    private fun generarFecha() : DetalleItemPdf {
+        return DetalleItemPdf().apply {
+            this.detalle = "${context.getString(R.string.fecha)}: ${reunionParaGenerarPDFModel.fechaYHoraProgramacionReunion?.convertirAFormato(formato = FormatosFecha.ANIO_MES_DIA_GIONES)?:""}"
+            this.tamanioLetra = 12f
+            this.tipo = TipoAAplicar.NORMAL
+        }
+    }
+
+    private fun generarConvocantes() : DetalleItemPdf {
+        return DetalleItemPdf().apply {
+            this.detalle = "${context.getString(R.string.convoca)}:\n"
+            this.tamanioLetra = 12f
+            this.tipo = TipoAAplicar.NORMAL
+
+            if (reunionParaGenerarPDFModel.listaConvocantes == null) return@apply
+
+            for (contador in 0 until reunionParaGenerarPDFModel.listaConvocantes!!.size) {
+                this.detalle+= "\t${contador+1}. ${reunionParaGenerarPDFModel.listaConvocantes!![contador].nombre} ${reunionParaGenerarPDFModel.listaConvocantes!![contador].apellido}"
+            }
+        }
+    }
+
+    private fun generarNumeroAsistentes() : DetalleItemPdf {
+        return DetalleItemPdf().apply {
+            this.detalle = "${context.getString(R.string.numero_asistentes)}: ${reunionParaGenerarPDFModel.numeroAsistentes?:0}"
+            this.tamanioLetra = 12f
+            this.tipo = TipoAAplicar.NORMAL
+        }
+    }
+
+    private fun generarQuorum() : DetalleItemPdf {
+        return DetalleItemPdf().apply {
+            val numeroAsistentes = reunionParaGenerarPDFModel.numeroAsistentes?:0
+            val afiliadosActivos = reunionParaGenerarPDFModel.numeroAfiliadosActivos?:1
+            val quorum = (numeroAsistentes.toFloat()/afiliadosActivos)
+            this.detalle = "${context.getString(R.string.quorum)}: $quorum"
+            this.tamanioLetra = 12f
+            this.tipo = TipoAAplicar.NORMAL
+        }
+    }
+
+    private fun generarPresidente() : DetalleItemPdf {
+        return DetalleItemPdf().apply {
+            this.detalle = "${context.getString(R.string.presidente)}: ${reunionParaGenerarPDFModel.presidente?.nombre?:""} ${reunionParaGenerarPDFModel.presidente?.apellido?:""}"
+            this.tamanioLetra = 12f
+            this.tipo = TipoAAplicar.NORMAL
+        }
+    }
+
+    private fun generarSecretario() : DetalleItemPdf {
+        return DetalleItemPdf().apply {
+            this.detalle = "${context.getString(R.string.secretario)}: ${reunionParaGenerarPDFModel.secretario?.nombre?:""} ${reunionParaGenerarPDFModel.secretario?.apellido?:""}"
+            this.tamanioLetra = 12f
+            this.tipo = TipoAAplicar.NORMAL
+        }
+    }
+
+    private fun generarOrdenDelDia() : DetalleItemPdf {
+        return DetalleItemPdf().apply {
+            this.tamanioLetra = 12f
+            this.tipo = TipoAAplicar.NORMAL
+            this.detalle = "${context.getString(R.string.orden_del_dia)}:\n"
+            for (contador in 0 until reunionParaGenerarPDFModel.listaPuntos!!.size) {
+                detalle += "\t${contador + 1}. ${reunionParaGenerarPDFModel.listaPuntos!![contador].tituloPunto?:""}"
+            }
+        }
     }
 
     //region generar documento pdf

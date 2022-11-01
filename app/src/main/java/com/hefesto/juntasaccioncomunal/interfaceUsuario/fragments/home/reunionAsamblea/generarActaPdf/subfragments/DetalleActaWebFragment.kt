@@ -72,6 +72,7 @@ class DetalleActaWebFragment :  BaseFragment<GenerarActaPdfViewModel>() {
                 accionTieneTodosLosPermisos = {
                     val modelo = (arguments?.getSerializable(DETALLE_ACTA) as? ReunionParaGenerarPDFModel)?:return@funcionSeguraConPermisos
                     helperGeneradorPDFActa
+                        .conContext(context = it.context)
                         .conReunionParaGenerarPDFModel(reunionParaGenerarPDFModel = modelo)
                         .conMostrarLoading (::mostrarLoading)
                         .conOcultarLoading (::ocultarLoading)
