@@ -77,12 +77,12 @@ class HelperGeneradorPDFActa {
         lista.add(generarNumeroActa())
         lista.add(generarLugar())
         lista.add(generarFecha())
-        lista.add(generarConvocantes())
         lista.add(generarNumeroAsistentes())
         lista.add(generarNumeroAfiliadosActivos())
         lista.add(generarQuorum())
         lista.add(generarPresidente())
         lista.add(generarSecretario())
+        lista.add(generarConvocantes())
         lista.add(generarOrdenDelDia())
         lista.add(generarDesarrolloOrdenDelDia())
         lista.add(generarFirmaSecretario())
@@ -149,8 +149,8 @@ class HelperGeneradorPDFActa {
         return DetalleItemPdf().apply {
             val numeroAsistentes = reunionParaGenerarPDFModel.numeroAsistentes?:0
             val afiliadosActivos = reunionParaGenerarPDFModel.numeroAfiliadosActivos?:1
-            val quorum = (numeroAsistentes.toFloat()/afiliadosActivos)
-            this.detalle = "${context.getString(R.string.quorum)}: $quorum"
+            val quorum = ((numeroAsistentes.toFloat()/afiliadosActivos) * 100).toInt()
+            this.detalle = "${context.getString(R.string.quorum)}: $quorum %"
             this.tamanioLetra = this@HelperGeneradorPDFActa.tamanioLetra
             this.tipo = TipoAAplicar.NORMAL
         }
