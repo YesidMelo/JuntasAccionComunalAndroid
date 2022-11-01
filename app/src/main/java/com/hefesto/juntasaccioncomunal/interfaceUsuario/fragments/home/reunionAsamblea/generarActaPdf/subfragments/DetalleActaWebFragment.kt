@@ -9,8 +9,9 @@ import com.hefesto.juntasaccioncomunal.databinding.SubfragmentDetalleactaWebBind
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarActaPdf.GenerarActaPdfViewModel
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarActaPdf.helpers.HelperGeneradorHtmlActaPDF
-import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarActaPdf.helpers.HelperGeneradorPDFActa
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarActaPdf.helpers.generadorPDF.HelperGeneradorPDFActa
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.utilidades.gestorPermisos.PermisosAplicacionEnum
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.actasParaPDF.ReunionParaGenerarPDFModel
 import javax.inject.Inject
 
@@ -66,12 +67,17 @@ class DetalleActaWebFragment :  BaseFragment<GenerarActaPdfViewModel>() {
 
     private fun configuracionBotonGenerarPDF() {
         binding.buttonGenerarActaPdf.setOnClickListener {
-            val modelo = (arguments?.getSerializable(DETALLE_ACTA) as? ReunionParaGenerarPDFModel)?:return@setOnClickListener
-            helperGeneradorPDFActa
-                .conReunionParaGenerarPDFModel(reunionParaGenerarPDFModel = modelo)
-                .conMostrarLoading (::mostrarLoading)
-                .conOcultarLoading (::ocultarLoading)
-                .crearPDF()
+            funcionSeguraConPermisos(
+                PermisosAplicacionEnum.LECTURA_DOCUMENTO, PermisosAplicacionEnum.ESCRITURA_DOCUMENTOS,
+                accionTieneTodosLosPermisos = {
+                    val modelo = (arguments?.getSerializable(DETALLE_ACTA) as? ReunionParaGenerarPDFModel)?:return@funcionSeguraConPermisos
+                    helperGeneradorPDFActa
+                        .conReunionParaGenerarPDFModel(reunionParaGenerarPDFModel = modelo)
+                        .conMostrarLoading (::mostrarLoading)
+                        .conOcultarLoading (::ocultarLoading)
+                        .crearPDF()
+                }
+            )
         }
     }
     //endregion
