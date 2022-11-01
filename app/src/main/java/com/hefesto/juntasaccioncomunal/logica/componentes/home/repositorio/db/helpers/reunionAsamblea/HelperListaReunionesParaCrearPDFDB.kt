@@ -32,7 +32,8 @@ class HelperListaReunionesParaCrearPDFDBImpl constructor(
         val jacId = usuarioEnSesionModel.jacId?:return emptyList()
         val lista = reunionAsambleaDao.traerListaReunionesParaGeneracionPDF(jacId = jacId).convertirAListaReunionParaGenerarPDFModel()
         ponerMarcaAgua(lista = lista)
-        ponerAsistentes(lista = lista)
+        ponerConvocantes(lista = lista)
+        traerNumeroAsistentes(lista = lista)
         traerPuntosAListaReuniones(lista = lista)
         return lista
     }
@@ -46,12 +47,19 @@ class HelperListaReunionesParaCrearPDFDBImpl constructor(
         }
     }
 
-    private fun ponerAsistentes(lista : List<ReunionParaGenerarPDFModel>) {
+    private fun ponerConvocantes(lista : List<ReunionParaGenerarPDFModel>) {
         if (lista.isEmpty()) return
         for (item in lista) {
             val reunionId = item.reunionAsambleaId?:continue
             val listaConvocantes = convocantesDao.traerListaConvocantesActaPorReunionId(reunionId = reunionId)
             item.listaConvocantes = listaConvocantes
+        }
+    }
+
+    private fun traerNumeroAsistentes(lista : List<ReunionParaGenerarPDFModel>)  {
+        if (lista.isEmpty()) return
+        for (item in lista) {
+            item.numeroAsistentes = listaAsistenciaDao.traerNumeroAsistentesPorReunionId(reunionId = item.reunionAsambleaId!!)
         }
     }
 

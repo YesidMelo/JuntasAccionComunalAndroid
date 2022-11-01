@@ -8,5 +8,6 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.reunionAsamblea.
 @Dao
 interface ListaAsistenciaDao : BaseDao<ListaAsistenciaEntity> {
 
-
+    @Query("SELECT count(DISTINCT t.afiliadoId) as asistentes from ListaAsistenciaEntity t where t.reunionasistenciaid = :reunionId")
+    fun traerNumeroAsistentesPorReunionId(reunionId: Int): Int
 }
