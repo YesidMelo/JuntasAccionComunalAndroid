@@ -187,6 +187,7 @@
     <string name="numero_asistentes">Numero asistentes</string>
     <string name="quorum">Quorum</string>
     <string name="desarrollo_orden_del_dia">Desarrollo orden del dia</string>
+    <string name="numero_afiliados_activos">Numero afiliados activos</string>
     <string-array name="la_junta_accion_comunal_convoca">
         <item>La junta de accion comunal convoca a la comunidad a asamblea/reunion para brindar la informacion</item>
         <item>y poder llegar a un consenso basados en el orden del dia.</item>

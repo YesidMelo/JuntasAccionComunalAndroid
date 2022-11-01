@@ -2,6 +2,7 @@ package com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.h
 
 import com.hefesto.juntasaccioncomunal.fuentesDatos.cache.MemoriaCache
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.AfiliadoDao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Jac_EstadoAfiliacionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.ConvocatesDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.ListaAsistenciaDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.PuntosReunionDao
@@ -25,7 +26,7 @@ class HelperListaReunionesParaCrearPDFDBImpl constructor(
     @JvmField @Inject var listaAsistenciaDao: ListaAsistenciaDao,
     @JvmField @Inject var memoriaCache: MemoriaCache,
     @JvmField @Inject var puntosReunionDao: PuntosReunionDao,
-    @JvmField @Inject var reunionAsambleaDao: ReunionAsambleaDao,
+    @JvmField @Inject var reunionAsambleaDao: ReunionAsambleaDao
 ) : HelperListaReunionesParaCrearPDFDB {
 
     override suspend fun traerLista(): List<ReunionParaGenerarPDFModel> {
@@ -38,6 +39,8 @@ class HelperListaReunionesParaCrearPDFDBImpl constructor(
         traerNumeroAsistentes(lista = lista)
         traerNumeroAfiliadosActivos(lista = lista, jacId = jacId)
         traerPuntosAListaReuniones(lista = lista)
+        traerPresidenteReunion(lista= lista)
+        traerSecretarioReunion(lista= lista)
         return lista
     }
 
@@ -78,6 +81,20 @@ class HelperListaReunionesParaCrearPDFDBImpl constructor(
             val reunionId = item.reunionAsambleaId?:continue
             val puntos = puntosReunionDao.traerListaPuntosDeLaReunionPorReunionId(reunionId = reunionId)
             item.listaPuntos = puntos.convertirAListaPuntoReunionParaGenerarPDFModel()
+        }
+    }
+
+    private fun traerPresidenteReunion(lista : List<ReunionParaGenerarPDFModel>) {
+        for (item in lista) {
+            val reunionId = item.reunionAsambleaId?:continue
+            item.presidente = reunionAsambleaDao.traerPresidenteReunionPorReunionId(reunionId = reunionId)
+        }
+    }
+
+    private fun traerSecretarioReunion(lista : List<ReunionParaGenerarPDFModel>) {
+        for (item in lista) {
+            val reunionId = item.reunionAsambleaId?:continue
+            item.secretario = reunionAsambleaDao.traerSecretarioReunionPorReunionId(reunionId = reunionId)
         }
     }
 

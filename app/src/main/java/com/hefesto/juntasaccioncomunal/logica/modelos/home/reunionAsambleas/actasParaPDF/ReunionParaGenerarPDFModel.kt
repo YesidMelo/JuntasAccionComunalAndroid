@@ -19,7 +19,6 @@ data class ReunionParaGenerarPDFModel constructor(
     var marcaAgua: String? = null,
     var listaConvocantes: List<ConvocantesReunionGenerarActaPDFModel>? = null,
     var numeroAsistentes :Int?= null,
-    //todo falta por traer desde db
     var numeroAfiliadosActivos: Int? = null,
     var presidente: ConvocantesReunionGenerarActaPDFModel? = null,
     var secretario: ConvocantesReunionGenerarActaPDFModel? = null,

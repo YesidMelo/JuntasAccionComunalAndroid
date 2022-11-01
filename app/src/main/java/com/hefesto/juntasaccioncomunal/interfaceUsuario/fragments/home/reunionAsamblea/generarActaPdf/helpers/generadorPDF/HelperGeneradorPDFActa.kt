@@ -79,6 +79,7 @@ class HelperGeneradorPDFActa {
         lista.add(generarFecha())
         lista.add(generarConvocantes())
         lista.add(generarNumeroAsistentes())
+        lista.add(generarNumeroAfiliadosActivos())
         lista.add(generarQuorum())
         lista.add(generarPresidente())
         lista.add(generarSecretario())
@@ -131,6 +132,14 @@ class HelperGeneradorPDFActa {
     private fun generarNumeroAsistentes() : DetalleItemPdf {
         return DetalleItemPdf().apply {
             this.detalle = "${context.getString(R.string.numero_asistentes)}: ${reunionParaGenerarPDFModel.numeroAsistentes?:0}"
+            this.tamanioLetra = this@HelperGeneradorPDFActa.tamanioLetra
+            this.tipo = TipoAAplicar.NORMAL
+        }
+    }
+
+    private fun generarNumeroAfiliadosActivos() : DetalleItemPdf {
+        return DetalleItemPdf().apply {
+            this.detalle = "${context.getString(R.string.numero_afiliados_activos)}: ${reunionParaGenerarPDFModel.numeroAfiliadosActivos?:0}"
             this.tamanioLetra = this@HelperGeneradorPDFActa.tamanioLetra
             this.tipo = TipoAAplicar.NORMAL
         }

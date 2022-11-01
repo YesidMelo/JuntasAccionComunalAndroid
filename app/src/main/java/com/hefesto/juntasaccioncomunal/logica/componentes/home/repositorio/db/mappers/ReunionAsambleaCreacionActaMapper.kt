@@ -20,7 +20,8 @@ fun ReunionAsambleaEntity.convertirAReunionAsambleaCreacionActaModel(): ReunionA
         fechaYHoraProgramacionReunion = this.fechaYHoraProgramacionReunion?.convertirADate(formatoEntrada = FormatosFecha.ISO_8610),
         creoActa = this.creoActa,
         jacId = this.jacId,
-        numeroActa = this.numeroActa
+        numeroActa = this.numeroActa,
+        sitio = this.sitioReunion
     )
 }
 
@@ -58,7 +59,8 @@ fun ReunionAsambleaCreacionActaModel.convertirAReunionAsambleaEntity(): ReunionA
         horaFin = this.horaFin?.convertirAFormato(formato = FormatosFecha.ISO_8610),
         horaInicio = this.horaInicio?.convertirAFormato(formato = FormatosFecha.ISO_8610),
         jacId = this.jacId,
-        numeroActa = this.numeroActa
+        numeroActa = this.numeroActa,
+        sitioReunion = this.sitio
     )
 }
 
