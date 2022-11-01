@@ -18,8 +18,8 @@ data class ReunionParaGenerarPDFModel constructor(
     var sitio: String? = null,
     var marcaAgua: String? = null,
     var listaConvocantes: List<ConvocantesReunionGenerarActaPDFModel>? = null,
-    //todo falta por traer desde db
     var numeroAsistentes :Int?= null,
+    //todo falta por traer desde db
     var numeroAfiliadosActivos: Int? = null,
     var presidente: ConvocantesReunionGenerarActaPDFModel? = null,
     var secretario: ConvocantesReunionGenerarActaPDFModel? = null,

@@ -1,6 +1,7 @@
 package com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.reunionAsamblea
 
 import com.hefesto.juntasaccioncomunal.fuentesDatos.cache.MemoriaCache
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.AfiliadoDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.ConvocatesDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.ListaAsistenciaDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.PuntosReunionDao
@@ -19,11 +20,12 @@ interface HelperListaReunionesParaCrearPDFDB {
 }
 
 class HelperListaReunionesParaCrearPDFDBImpl constructor(
-    @JvmField @Inject var listaAsistenciaDao: ListaAsistenciaDao,
+    @JvmField @Inject var afiliadoDao: AfiliadoDao,
     @JvmField @Inject var convocantesDao: ConvocatesDao,
-    @JvmField @Inject var reunionAsambleaDao: ReunionAsambleaDao,
-    @JvmField @Inject var puntosReunionDao: PuntosReunionDao,
+    @JvmField @Inject var listaAsistenciaDao: ListaAsistenciaDao,
     @JvmField @Inject var memoriaCache: MemoriaCache,
+    @JvmField @Inject var puntosReunionDao: PuntosReunionDao,
+    @JvmField @Inject var reunionAsambleaDao: ReunionAsambleaDao,
 ) : HelperListaReunionesParaCrearPDFDB {
 
     override suspend fun traerLista(): List<ReunionParaGenerarPDFModel> {
@@ -34,6 +36,7 @@ class HelperListaReunionesParaCrearPDFDBImpl constructor(
         ponerMarcaAgua(lista = lista)
         ponerConvocantes(lista = lista)
         traerNumeroAsistentes(lista = lista)
+        traerNumeroAfiliadosActivos(lista = lista, jacId = jacId)
         traerPuntosAListaReuniones(lista = lista)
         return lista
     }
@@ -60,6 +63,13 @@ class HelperListaReunionesParaCrearPDFDBImpl constructor(
         if (lista.isEmpty()) return
         for (item in lista) {
             item.numeroAsistentes = listaAsistenciaDao.traerNumeroAsistentesPorReunionId(reunionId = item.reunionAsambleaId!!)
+        }
+    }
+
+    private fun traerNumeroAfiliadosActivos(lista : List<ReunionParaGenerarPDFModel>, jacId: Int)  {
+        if (lista.isEmpty()) return
+        for (item in lista) {
+            item.numeroAfiliadosActivos = afiliadoDao.traerNumeroAfiliadosActivosPorJacIdYReunionId(jacId = jacId, reunionId = item.reunionAsambleaId!!)
         }
     }
 

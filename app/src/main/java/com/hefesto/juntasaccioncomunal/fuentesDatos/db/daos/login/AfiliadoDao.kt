@@ -38,4 +38,20 @@ interface AfiliadoDao : BaseDao<AfiliadoEntity> {
 
     @Query("SELECT t.* FROM AfiliadoDetalleEnJacView t WHERE t.afiliadoId = :afiliadoId and t.jacId = :jacId")
     fun traerAfiliadoDetalleJAC(afiliadoId: Int, jacId: Int) : AfiliadoDetalleEnJacView?
+
+    @Query("SELECT count(DISTINCT tabla.afiliadoId) as activos  from " +
+            "(SELECT " +
+            "*" +
+            "from " +
+            "Afiliado_Jac_EstadoAfiliacionEntity ajae, " +
+            "    ReunionAsambleaEntity rae " +
+            "where " +
+            "ajae.jacid = rae.jacid and" +
+            "    ajae.estadoafiliacionid = 2 and" +
+            "    ajae.fechaactualizacion < rae.fechaRegistro and " +
+            "    ajae.jacid = :jacId and" +
+            "   rae.reunionAsambleaId = :reunionId " +
+            "order by " +
+            "ajae.fechaactualizacion DESC) tabla")
+    fun traerNumeroAfiliadosActivosPorJacIdYReunionId(jacId: Int, reunionId: Int) : Int
 }
