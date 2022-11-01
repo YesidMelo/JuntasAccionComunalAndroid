@@ -194,7 +194,7 @@ class HelperGeneradorPDFActa {
 
     private fun generarFirmaSecretario() : DetalleItemPdf {
         return DetalleItemPdf().apply {
-            this.detalle = "${context.getString(R.string.secretario)}: ${reunionParaGenerarPDFModel.secretario?.nombre?:""} ${reunionParaGenerarPDFModel.secretario?.apellido?:""}\n\n\n"
+            this.detalle = "\n\n\n${context.getString(R.string.secretario)}: ${reunionParaGenerarPDFModel.secretario?.nombre?:""} ${reunionParaGenerarPDFModel.secretario?.apellido?:""}\n\n\n"
             this.tamanioLetra = this@HelperGeneradorPDFActa.tamanioLetra
             this.tipo = TipoAAplicar.NORMAL
             this.esFirma = true

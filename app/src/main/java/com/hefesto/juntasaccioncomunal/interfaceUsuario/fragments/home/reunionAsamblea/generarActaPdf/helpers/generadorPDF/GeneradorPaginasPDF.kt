@@ -78,9 +78,14 @@ class GeneradorPaginasPDF {
         val logo = marcaAgua?:return
         if (logo.isEmpty()) return
         val detalleImagen = Base64.decode(logo, Base64.DEFAULT)
+        val anchoImagenEscalada = 350
+        val altoImagenEscalada = 500
         val bitmap = BitmapFactory.decodeByteArray(detalleImagen, 0, detalleImagen.size)
-        val bitmapEscalada = Bitmap.createScaledBitmap(bitmap, 350, 500, false)
-        pagina.canvas.drawBitmap(bitmapEscalada,250f,50f, null)
+        val bitmapEscalada = Bitmap.createScaledBitmap(bitmap, anchoImagenEscalada, altoImagenEscalada, false)
+
+        val posicionX = (configuracionDocumentoPDF.traerAnchoPagina().toFloat()/2) - (anchoImagenEscalada.toFloat()/2)
+        val posicionY = (configuracionDocumentoPDF.traerAltoPagina().toFloat()/2) - (altoImagenEscalada.toFloat()/2)
+        pagina.canvas.drawBitmap(bitmapEscalada,posicionX,posicionY, null)
     }
 
     //endregion

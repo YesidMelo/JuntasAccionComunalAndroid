@@ -339,8 +339,6 @@ gapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/entities/gene
 uapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/splash/repositorios/helpers/HelperCargarTipos.kt,b\c\bcf9d240cbe68c73ef938da98e55909d8e776691
 û
 napp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/splash/repositorios/SplashDBDatasource.kt,6\7\6773fdb53049471664d7e73bd03d7a45e4fd0df4
-ú
-lapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/reunionAsamblea/ListaAsistenciaDao.kt,1\d\1d578737aa9c746ec93676ba5d00502daa43d2dd
 ê
 `app/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/general/TipoReunionDao.kt,f\f\ffbe2cf4901a32223481f9a61365fcb232d11e4c
 π
@@ -445,8 +443,6 @@ Mapp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/BaseFragmentDagger.kt,
 papp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/ui/asambleaReunion/GenerarActaPDFUI.kt,5\a\5af5f1b84004ec9d7335a164122764cbf42e4745
 ª
 äapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/casosUso/asambleaReunion/TraerListaActasParaGenerarPDFCasoUso.kt,9\7\97b173f38542d227d7b62abaa8bb9f5328417617
-«
-ñapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/repositorio/db/helpers/reunionAsamblea/HelperListaReunionesParaCrearPDFDB.kt,c\d\cd0c24714544abf764ece24a0a0655e16aa5d42b
 z
 Japp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/DialogosBuilder.kt,c\5\c5649a7a04ee7697ef74bd346d8f65ddaa73bbda
 ∆
@@ -528,8 +524,6 @@ gapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/reunionA
 °app/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/home/reunionAsambleas/reunionParaConvocatoriaPDF/ConvocanteReunionGenerarConvocatoriaPDFModel.kt,e\7\e768178118ec39818d36bba5e4a0777b6e758ef8
 í
 bapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/entities/login/AfiliadoEntity.kt,0\5\05342e67a77dcf72c581061081237c43014c9843
-à
-Xapp/src/main/java/com/hefesto/juntasaccioncomunal/di/logica/HelpersDBDatasourceModule.kt,8\a\8a628eee23dc35322e4cedbdebe103fec8e0c12d
 €
 ™app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/reunionAsamblea/listaConvocatoriasReuniones/adapters/ListaConvocatoriasParaPDFAdapter.kt,3\5\350704752b130c90ca9f15ad5da3ab892b70bd53
 Ê

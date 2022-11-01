@@ -236,10 +236,12 @@ class HelpersDBDatasourceModule {
     fun providesHelperListaReunionesParaCrearPDFDB(
         reunionDao: ReunionAsambleaDao,
         puntosReunionDao: PuntosReunionDao,
+        listaAsistenciaDao: ListaAsistenciaDao,
         memoriaCache: MemoriaCache
     ) : HelperListaReunionesParaCrearPDFDB = HelperListaReunionesParaCrearPDFDBImpl(
         reunionAsambleaDao = reunionDao,
         puntosReunionDao = puntosReunionDao,
+        listaAsistenciaDao = listaAsistenciaDao,
         memoriaCache = memoriaCache
     )
 
