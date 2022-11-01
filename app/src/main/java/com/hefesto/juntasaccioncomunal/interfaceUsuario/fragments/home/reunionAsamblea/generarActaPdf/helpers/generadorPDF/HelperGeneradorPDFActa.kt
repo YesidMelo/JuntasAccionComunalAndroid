@@ -152,7 +152,7 @@ class HelperGeneradorPDFActa {
 
     private fun generarSecretario() : DetalleItemPdf {
         return DetalleItemPdf().apply {
-            this.detalle = "${context.getString(R.string.secretario)}: ${reunionParaGenerarPDFModel.secretario?.nombre?:""} ${reunionParaGenerarPDFModel.secretario?.apellido?:""}"
+            this.detalle = "${context.getString(R.string.secretario)}: ${reunionParaGenerarPDFModel.secretario?.nombre?:""} ${reunionParaGenerarPDFModel.secretario?.apellido?:""}\n"
             this.tamanioLetra = 12f
             this.tipo = TipoAAplicar.NORMAL
         }
@@ -162,9 +162,9 @@ class HelperGeneradorPDFActa {
         return DetalleItemPdf().apply {
             this.tamanioLetra = 12f
             this.tipo = TipoAAplicar.NORMAL
-            this.detalle = "${context.getString(R.string.orden_del_dia)}:\n"
+            this.detalle = "${context.getString(R.string.orden_del_dia)}:\n\n"
             for (contador in 0 until reunionParaGenerarPDFModel.listaPuntos!!.size) {
-                detalle += "\t${contador + 1}. ${reunionParaGenerarPDFModel.listaPuntos!![contador].tituloPunto?:""}"
+                detalle += "\t${contador + 1}. ${reunionParaGenerarPDFModel.listaPuntos!![contador].tituloPunto?:""}\n"
             }
         }
     }

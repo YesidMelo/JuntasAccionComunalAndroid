@@ -10,6 +10,7 @@ class ConfiguracionDocumentoPDF {
     private val margenBajo = 50f
     private val margenIzquierda = 50f
     private val margenDerecha = 50f
+    private val anchoTab = 15f
     //region
 
     fun traerAltoPagina() = altoPagina
@@ -18,6 +19,7 @@ class ConfiguracionDocumentoPDF {
     fun traerMargenAbajo() = margenBajo
     fun traerMargenIzquierda() = margenIzquierda
     fun traerMargenDerecha() = margenDerecha
+    fun traerAnchoTab() = anchoTab
 
     fun traerPageInfo(numeroPagina : Int) : PdfDocument.PageInfo
     = PdfDocument.PageInfo.Builder(anchoPagina, altoPagina, numeroPagina).create()

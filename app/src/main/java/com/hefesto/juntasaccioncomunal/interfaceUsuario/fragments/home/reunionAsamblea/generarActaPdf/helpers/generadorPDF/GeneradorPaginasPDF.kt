@@ -53,16 +53,39 @@ class GeneradorPaginasPDF {
         }
     }
 
+    //region generar splits en string
     private fun generarSplitString(detalle: DetalleItemPdf) : List<String> {
         val lista = emptyList<String>().toMutableList()
-        val ancho = configuracionDocumentoPDF.traerMargenIzquierda() + (detalle.detalle.length * (detalle.tamanioLetra/2))
+
+        lista.addAll(
+            if (!detalle.detalle.contains("\n"))
+                generarSplitConDetalleSinSaltosDeLinea(detalle = detalle)
+            else
+                generarSplitConSaltosDeLinea(detalle = detalle)
+        )
+        return lista
+    }
+
+    private fun generarSplitConSaltosDeLinea(detalle: DetalleItemPdf) : List<String> {
+        val lista = emptyList<String>().toMutableList()
+        val detalleSplit = detalle.detalle.split("\n")
+        for (item in detalleSplit){
+            lista.addAll(generarSplitConDetalleSinSaltosDeLinea(detalle = detalle, stringARevisar = item))
+        }
+        return lista
+    }
+
+    private fun generarSplitConDetalleSinSaltosDeLinea(detalle: DetalleItemPdf, stringARevisar: String?= null): List<String> {
+        val lista = emptyList<String>().toMutableList()
+        val string = stringARevisar?:detalle.detalle
+        val ancho = configuracionDocumentoPDF.traerMargenIzquierda() + (string.length * (detalle.tamanioLetra/2))
         if (ancho < configuracionDocumentoPDF.traerAnchoPagina() - configuracionDocumentoPDF.traerMargenDerecha()) {
-            lista.add(detalle.detalle)
+            lista.add(string)
             return lista
         }
 
         var itemLista = ""
-        for (caracter in detalle.detalle) {
+        for (caracter in string) {
             itemLista += caracter
             val anchoFor = configuracionDocumentoPDF.traerMargenIzquierda() + (itemLista.length * (detalle.tamanioLetra/2))
 
@@ -74,7 +97,7 @@ class GeneradorPaginasPDF {
         }
         return lista
     }
-
+    //endregion
 
     private suspend fun generarPagina() {
         if (paginaActual == null) {
@@ -94,9 +117,10 @@ class GeneradorPaginasPDF {
 
     private suspend fun generarLinea(texto : String, detalle: DetalleItemPdf) {
         generarPagina()
+        val posicionX = if (!texto.contains("\t")) configuracionDocumentoPDF.traerMargenIzquierda() else configuracionDocumentoPDF.traerMargenIzquierda()+ configuracionDocumentoPDF.traerAnchoTab()
         paginaActual!!.canvas.drawText(
             texto,
-            configuracionDocumentoPDF.traerMargenIzquierda(),
+            posicionX,
             posicionYPagina,
             when(detalle.tipo) {
                 TipoAAplicar.NORMAL -> formatoDetalle(textSize = detalle.tamanioLetra)
