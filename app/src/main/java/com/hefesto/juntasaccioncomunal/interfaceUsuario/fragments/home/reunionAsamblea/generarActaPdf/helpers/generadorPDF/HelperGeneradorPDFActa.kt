@@ -6,7 +6,6 @@ import android.os.Environment
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.hefesto.juntasaccioncomunal.R
-import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarConvocatoriaReunionPdf.HelperGenerarConvocatoriaPDF
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.actasParaPDF.ReunionParaGenerarPDFModel
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.FormatosFecha
 import com.hefesto.juntasaccioncomunal.logica.utilidades.extenciones.convertirAFormato
@@ -116,15 +115,16 @@ class HelperGeneradorPDFActa {
 
     private fun generarConvocantes() : DetalleItemPdf {
         return DetalleItemPdf().apply {
-            this.detalle = "${context.getString(R.string.convoca)}:\n"
+            this.detalle = "\n${context.getString(R.string.convoca)}:\n\n"
             this.tamanioLetra = this@HelperGeneradorPDFActa.tamanioLetra
             this.tipo = TipoAAplicar.NORMAL
 
             if (reunionParaGenerarPDFModel.listaConvocantes == null) return@apply
 
             for (contador in 0 until reunionParaGenerarPDFModel.listaConvocantes!!.size) {
-                this.detalle+= "\t${contador+1}. ${reunionParaGenerarPDFModel.listaConvocantes!![contador].nombre} ${reunionParaGenerarPDFModel.listaConvocantes!![contador].apellido}"
+                this.detalle+= "\t${contador+1}. ${reunionParaGenerarPDFModel.listaConvocantes!![contador].nombres} ${reunionParaGenerarPDFModel.listaConvocantes!![contador].apellidos}"
             }
+            this.detalle += "\n\n"
         }
     }
 
@@ -149,7 +149,7 @@ class HelperGeneradorPDFActa {
 
     private fun generarPresidente() : DetalleItemPdf {
         return DetalleItemPdf().apply {
-            this.detalle = "${context.getString(R.string.presidente)}: ${reunionParaGenerarPDFModel.presidente?.nombre?:""} ${reunionParaGenerarPDFModel.presidente?.apellido?:""}"
+            this.detalle = "${context.getString(R.string.presidente)}: ${reunionParaGenerarPDFModel.presidente?.nombres?:""} ${reunionParaGenerarPDFModel.presidente?.apellidos?:""}"
             this.tamanioLetra = this@HelperGeneradorPDFActa.tamanioLetra
             this.tipo = TipoAAplicar.NORMAL
         }
@@ -157,7 +157,7 @@ class HelperGeneradorPDFActa {
 
     private fun generarSecretario() : DetalleItemPdf {
         return DetalleItemPdf().apply {
-            this.detalle = "${context.getString(R.string.secretario)}: ${reunionParaGenerarPDFModel.secretario?.nombre?:""} ${reunionParaGenerarPDFModel.secretario?.apellido?:""}\n"
+            this.detalle = "${context.getString(R.string.secretario)}: ${reunionParaGenerarPDFModel.secretario?.nombres?:""} ${reunionParaGenerarPDFModel.secretario?.apellidos?:""}\n"
             this.tamanioLetra = this@HelperGeneradorPDFActa.tamanioLetra
             this.tipo = TipoAAplicar.NORMAL
         }
@@ -194,7 +194,7 @@ class HelperGeneradorPDFActa {
 
     private fun generarFirmaSecretario() : DetalleItemPdf {
         return DetalleItemPdf().apply {
-            this.detalle = "\n\n\n${context.getString(R.string.secretario)}: ${reunionParaGenerarPDFModel.secretario?.nombre?:""} ${reunionParaGenerarPDFModel.secretario?.apellido?:""}\n\n\n"
+            this.detalle = "\n\n\n${context.getString(R.string.secretario)}: ${reunionParaGenerarPDFModel.secretario?.nombres?:""} ${reunionParaGenerarPDFModel.secretario?.apellidos?:""}\n\n\n"
             this.tamanioLetra = this@HelperGeneradorPDFActa.tamanioLetra
             this.tipo = TipoAAplicar.NORMAL
             this.esFirma = true
@@ -202,7 +202,7 @@ class HelperGeneradorPDFActa {
     }
     private fun generarFirmaPresidente() : DetalleItemPdf {
         return DetalleItemPdf().apply {
-            this.detalle = "${context.getString(R.string.presidente)}: ${reunionParaGenerarPDFModel.presidente?.nombre?:""} ${reunionParaGenerarPDFModel.presidente?.apellido?:""}"
+            this.detalle = "${context.getString(R.string.presidente)}: ${reunionParaGenerarPDFModel.presidente?.nombres?:""} ${reunionParaGenerarPDFModel.presidente?.apellidos?:""}"
             this.tamanioLetra = this@HelperGeneradorPDFActa.tamanioLetra
             this.tipo = TipoAAplicar.NORMAL
             this.esFirma = true

@@ -6,7 +6,6 @@ import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.Punt
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.ReunionAsambleaDao
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.mappers.convertirAListReunionParaGenerarConvocatoriaPDFModel
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.mappers.convertirAListaPuntoReunionGeneracionConvocatoriaPDFModel
-import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.reunionParaConvocatoriaPDF.PuntoReunionGeneracionConvocatoriaPDFModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.reunionParaConvocatoriaPDF.ReunionParaGenerarConvocatoriaPDFModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.iniciarSesion.UsuarioEnSesionModel
 import com.hefesto.juntasaccioncomunal.logica.utilidades.constantes.ImagenesStringBase64
@@ -58,7 +57,7 @@ class HelperListaReunionesParaConvocatoriasPDFDBImpl constructor(
         if (lista.isEmpty()) return
         for (item in lista) {
             val reunionId = item.reunionAsambleaId?:continue
-            val listaConvocantes = convocantesDao.traerListaConvocantesPorReunionId(reunionId = reunionId)
+            val listaConvocantes = convocantesDao.traerListaConvocantesConvocatoriaPorReunionId(reunionId = reunionId)
             item.listaConvocantes = listaConvocantes
         }
     }

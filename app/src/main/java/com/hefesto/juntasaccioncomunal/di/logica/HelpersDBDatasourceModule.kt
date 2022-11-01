@@ -237,11 +237,13 @@ class HelpersDBDatasourceModule {
         reunionDao: ReunionAsambleaDao,
         puntosReunionDao: PuntosReunionDao,
         listaAsistenciaDao: ListaAsistenciaDao,
+        convocatesDao: ConvocatesDao,
         memoriaCache: MemoriaCache
     ) : HelperListaReunionesParaCrearPDFDB = HelperListaReunionesParaCrearPDFDBImpl(
         reunionAsambleaDao = reunionDao,
         puntosReunionDao = puntosReunionDao,
         listaAsistenciaDao = listaAsistenciaDao,
+        convocantesDao = convocatesDao,
         memoriaCache = memoriaCache
     )
 

@@ -17,10 +17,10 @@ data class ReunionParaGenerarPDFModel constructor(
     var numeroActa: Int? = null,
     var sitio: String? = null,
     var marcaAgua: String? = null,
+    var listaConvocantes: List<ConvocantesReunionGenerarActaPDFModel>? = null,
     //todo falta por traer desde db
-    var listaConvocantes: List<ConvocantesReunionGenerarPDFModel>? = null,
     var numeroAsistentes :Int?= null,
     var numeroAfiliadosActivos: Int? = null,
-    var presidente: ConvocantesReunionGenerarPDFModel? = null,
-    var secretario: ConvocantesReunionGenerarPDFModel? = null,
+    var presidente: ConvocantesReunionGenerarActaPDFModel? = null,
+    var secretario: ConvocantesReunionGenerarActaPDFModel? = null,
 ): BaseModel()

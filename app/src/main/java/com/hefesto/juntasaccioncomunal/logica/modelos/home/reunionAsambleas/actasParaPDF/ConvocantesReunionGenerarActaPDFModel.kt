@@ -2,8 +2,8 @@ package com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.act
 
 import com.hefesto.juntasaccioncomunal.logica.modelos.BaseModel
 
-data class ConvocantesReunionGenerarPDFModel (
+data class ConvocantesReunionGenerarActaPDFModel (
     var afiliadoId: Int?,
-    var nombre: String?= null,
-    var apellido: String? = null
+    var nombres: String?= null,
+    var apellidos: String? = null
 ) : BaseModel()

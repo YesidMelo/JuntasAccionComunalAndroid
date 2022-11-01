@@ -1,6 +1,7 @@
 package com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.reunionAsamblea
 
 import com.hefesto.juntasaccioncomunal.fuentesDatos.cache.MemoriaCache
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.ConvocatesDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.ListaAsistenciaDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.PuntosReunionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.ReunionAsambleaDao
@@ -19,6 +20,7 @@ interface HelperListaReunionesParaCrearPDFDB {
 
 class HelperListaReunionesParaCrearPDFDBImpl constructor(
     @JvmField @Inject var listaAsistenciaDao: ListaAsistenciaDao,
+    @JvmField @Inject var convocantesDao: ConvocatesDao,
     @JvmField @Inject var reunionAsambleaDao: ReunionAsambleaDao,
     @JvmField @Inject var puntosReunionDao: PuntosReunionDao,
     @JvmField @Inject var memoriaCache: MemoriaCache,
@@ -45,8 +47,11 @@ class HelperListaReunionesParaCrearPDFDBImpl constructor(
     }
 
     private fun ponerAsistentes(lista : List<ReunionParaGenerarPDFModel>) {
+        if (lista.isEmpty()) return
         for (item in lista) {
-            item.marcaAgua = ImagenesStringBase64.LogoBosaSantaBarbara
+            val reunionId = item.reunionAsambleaId?:continue
+            val listaConvocantes = convocantesDao.traerListaConvocantesActaPorReunionId(reunionId = reunionId)
+            item.listaConvocantes = listaConvocantes
         }
     }
 
