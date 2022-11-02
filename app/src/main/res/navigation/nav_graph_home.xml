@@ -63,7 +63,7 @@
     <fragment
         android:id="@+id/detalle_afiliado_a_registrar_actualizar"
         android:label="registrar/actualizar afiliado"
-        android:name="com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.DetalleAfiliadoRegistroActualizacionFragment"
+        android:name="com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.Afiliado.detalleAfiliadoActualizacion.DetalleAfiliadoRegistroActualizacionFragment"
         tools:layout="@layout/fragment_registroactualizacion_afiliadohome"
         >
         <action

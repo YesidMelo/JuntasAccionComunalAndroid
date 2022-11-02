@@ -1,4 +1,4 @@
-package com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.subfragments.datosBasicosAfiliado
+package com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.Afiliado.detalleAfiliadoActualizacion.subfragments.datosBasicosAfiliado
 
 import androidx.lifecycle.MutableLiveData
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseViewModel

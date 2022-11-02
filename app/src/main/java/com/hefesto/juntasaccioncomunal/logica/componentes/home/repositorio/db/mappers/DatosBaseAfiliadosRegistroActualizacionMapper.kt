@@ -2,12 +2,9 @@ package com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.m
 
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.home.AfiliadoActualizacionRegistroView
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.views.home.AfiliadoContactoRegistroActualizacionView
-import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.detalleAfiliadoRegistroActualizacion.subfragments.contactoAfiliado.ContactoAfiliadoRegistroActualizacionViewModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.DatosBasicosAfiliadoActualizarRegistrarInformacionModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.DatosContactoAfiliadoModel
-import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.EstadoAfiliacion
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.FormatosFecha
-import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.RolesEnApp
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.TipoDocumento
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.TipoTelefono
 import com.hefesto.juntasaccioncomunal.logica.utilidades.extenciones.convertirADate
