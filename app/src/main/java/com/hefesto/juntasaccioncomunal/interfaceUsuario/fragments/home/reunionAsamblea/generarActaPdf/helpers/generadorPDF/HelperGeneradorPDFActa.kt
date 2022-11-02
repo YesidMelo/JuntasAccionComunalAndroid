@@ -103,9 +103,13 @@ class HelperGeneradorPDFActa {
             this.tamanioLetra = this@HelperGeneradorPDFActa.tamanioLetra
             this.tipo = TipoAAplicar.NORMAL
             if (reunionParaGenerarPDFModel.detalleJac== null) return@apply
-            this.detalle = "\t\t\t${reunionParaGenerarPDFModel.detalleJac?.nombreJAc?:""}\n"
-            this.detalle += "\t\t\t ${context.getString(R.string.nit)}: ${reunionParaGenerarPDFModel.detalleJac?.nit}\n"
-            this.detalle += "\t\t\t ${context.getString(R.string.pj)}: ${reunionParaGenerarPDFModel.detalleJac?.PJ}\n\n\n"
+            var tab = ""
+            for (contador in 0 until 60) {
+                tab += "\t"
+            }
+            this.detalle = "$tab ${reunionParaGenerarPDFModel.detalleJac?.nombreJAc?:""}\n"
+            this.detalle += "$tab ${context.getString(R.string.nit)}: ${reunionParaGenerarPDFModel.detalleJac?.nit}\n"
+            this.detalle += "$tab ${context.getString(R.string.pj)}: ${reunionParaGenerarPDFModel.detalleJac?.PJ}\n\n\n"
         }
     }
 
