@@ -38,20 +38,63 @@ class HelperGeneradorHtmlActaPDF {
         webView.loadDataWithBaseURL(null, actaHtml, "text/html", "utf-8", null)
     }
 
+
+
      private fun cuerpoActa() : String {
-         var detalleCuerpo= "${generarFecha()}</br></br>"
+         var detalleCuerpo= ""
+         detalleCuerpo += "${generarNumeroActa()}</br></br>"
+         detalleCuerpo += "${generarFecha()}</br></br>"
+         detalleCuerpo += "${generarLugar()}</br></br>"
          detalleCuerpo += "${generarTipoActa()}</br></br>"
+         detalleCuerpo += "${generarPresidente()}</br></br>"
+         detalleCuerpo += "${generarSecretario()}</br></br>"
+         detalleCuerpo += "${generarQuorum()}</br></br>"
+         detalleCuerpo += "${generarConvocantes()}</br></br>"
          detalleCuerpo += "${generarOrdenDia()}</br></br>"
          detalleCuerpo += "${generarDesarrollo()}</br></br>"
          return detalleCuerpo
      }
 
+    private fun generarNumeroActa() : String {
+        return "<b>Numero acta:</b> ${reunionParaGenerarPDFModel.numeroActa?:""}"
+    }
+
     private fun generarFecha() : String {
-        return "Bogotá D.C. ${reunionParaGenerarPDFModel.fechaRegistro!!.convertirAFormato(formato = FormatosFecha.ANIO_MES_DIA_GIONES)}"
+        return "<b>fecha:</b> ${reunionParaGenerarPDFModel.fechaRegistro!!.convertirAFormato(formato = FormatosFecha.ANIO_MES_DIA_GIONES)}"
+    }
+
+    private fun generarLugar() : String {
+        return "<b>Lugar:</b> ${reunionParaGenerarPDFModel.sitio?:""}"
     }
 
     private fun generarTipoActa() :String {
         return "<b>Tipo Acta:</b> ${webView.context.getString(reunionParaGenerarPDFModel.tipoReunion!!.traerStringRes())}"
+    }
+
+    private fun generarPresidente() :String {
+        return "<b>Presidente:</b> ${reunionParaGenerarPDFModel.presidente?.nombres?:""} ${reunionParaGenerarPDFModel.presidente?.apellidos?:""}"
+    }
+
+    private fun generarSecretario() :String {
+        return "<b>Secretario:</b> ${reunionParaGenerarPDFModel.secretario?.nombres?:""} ${reunionParaGenerarPDFModel.secretario?.apellidos?:""}"
+    }
+
+    private fun generarQuorum() :String {
+        val numeroAsistentes = reunionParaGenerarPDFModel.numeroAsistentes?:0
+        val numeroAfiliadosActivos = reunionParaGenerarPDFModel.numeroAfiliadosActivos?:1
+        val porcentaje = (numeroAsistentes/numeroAfiliadosActivos)*100
+        return "<b>Quorum:</b> $porcentaje %"
+    }
+
+    private fun generarConvocantes() :String {
+        if (reunionParaGenerarPDFModel.listaConvocantes.isNullOrEmpty()) return ""
+        var convocantes = "<b>Convocantes:</b>"
+        convocantes += "<ol>"
+        for (item in reunionParaGenerarPDFModel.listaConvocantes!!) {
+            convocantes += "<li>${item.nombres} ${item.apellidos}</li>"
+        }
+        convocantes += "</ol>"
+        return convocantes
     }
 
     private fun generarOrdenDia() : String {

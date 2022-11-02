@@ -77,6 +77,14 @@ class ListaGenerarActaPdfFragment : BaseFragment<GenerarActaPdfViewModel>() {
         traerViewModel()
             .traerListaREunionesLiveData()
             .observe(viewLifecycleOwner) {
+                if(it.isEmpty()) {
+                    binding.textViewSinActasListaParaActasPDF.visibility = View.VISIBLE
+                    binding.recyclerviewListasParaActa.visibility = View.GONE
+                   return@observe
+                }
+                binding.textViewSinActasListaParaActasPDF.visibility = View.GONE
+                binding.recyclerviewListasParaActa.visibility = View.VISIBLE
+
                 helperRecyclerListaActasReunionesParaPDF
                     .conRecyclerView(recyclerView = binding.recyclerviewListasParaActa)
                     .conListaActas(listaActas = it)

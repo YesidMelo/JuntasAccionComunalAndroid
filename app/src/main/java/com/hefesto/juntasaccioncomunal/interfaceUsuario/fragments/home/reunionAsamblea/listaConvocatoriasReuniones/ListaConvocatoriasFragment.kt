@@ -58,6 +58,13 @@ class ListaConvocatoriasFragment : BaseFragment<ListaConvocatoriasViewModel>() {
         traerViewModel()
             .traerListaReunionesLiveData()
             .observe(viewLifecycleOwner) {
+                if (it.isEmpty()) {
+                    binding.textViewNoTieneConvocatoriasPendientes.visibility = View.VISIBLE
+                    binding.recyclerviewListaConvocatorias.visibility = View.GONE
+                    return@observe
+                }
+                binding.textViewNoTieneConvocatoriasPendientes.visibility = View.GONE
+                binding.recyclerviewListaConvocatorias.visibility = View.VISIBLE
                 helperRecyclerListaReunionesParaConvocatoria
                     .conListaReuniones(listaReuniones = it)
                     .conRecyclerView(recyclerView = binding.recyclerviewListaConvocatorias)
