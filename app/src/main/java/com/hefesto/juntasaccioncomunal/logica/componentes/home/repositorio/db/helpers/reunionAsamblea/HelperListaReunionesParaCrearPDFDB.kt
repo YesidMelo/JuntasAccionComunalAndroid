@@ -3,10 +3,12 @@ package com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.h
 import com.hefesto.juntasaccioncomunal.fuentesDatos.cache.MemoriaCache
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.AfiliadoDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.Afiliado_Jac_EstadoAfiliacionDao
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.JacDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.ConvocatesDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.ListaAsistenciaDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.PuntosReunionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.ReunionAsambleaDao
+import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.mappers.convertirADetalleJACActaPDFModel
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.mappers.convertirAListaPuntoReunionParaGenerarPDFModel
 import com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.mappers.convertirAListaReunionParaGenerarPDFModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.actasParaPDF.ReunionParaGenerarPDFModel
@@ -23,10 +25,11 @@ interface HelperListaReunionesParaCrearPDFDB {
 class HelperListaReunionesParaCrearPDFDBImpl constructor(
     @JvmField @Inject var afiliadoDao: AfiliadoDao,
     @JvmField @Inject var convocantesDao: ConvocatesDao,
+    @JvmField @Inject var jacDao: JacDao,
     @JvmField @Inject var listaAsistenciaDao: ListaAsistenciaDao,
     @JvmField @Inject var memoriaCache: MemoriaCache,
     @JvmField @Inject var puntosReunionDao: PuntosReunionDao,
-    @JvmField @Inject var reunionAsambleaDao: ReunionAsambleaDao
+    @JvmField @Inject var reunionAsambleaDao: ReunionAsambleaDao,
 ) : HelperListaReunionesParaCrearPDFDB {
 
     override suspend fun traerLista(): List<ReunionParaGenerarPDFModel> {
@@ -41,6 +44,7 @@ class HelperListaReunionesParaCrearPDFDBImpl constructor(
         traerPuntosAListaReuniones(lista = lista)
         traerPresidenteReunion(lista= lista)
         traerSecretarioReunion(lista= lista)
+        traerDetalleJac(lista= lista, jacId = jacId)
         return lista
     }
 
@@ -95,6 +99,13 @@ class HelperListaReunionesParaCrearPDFDBImpl constructor(
         for (item in lista) {
             val reunionId = item.reunionAsambleaId?:continue
             item.secretario = reunionAsambleaDao.traerSecretarioReunionPorReunionId(reunionId = reunionId)
+        }
+    }
+
+    private fun traerDetalleJac(jacId: Int, lista : List<ReunionParaGenerarPDFModel>) {
+        for (item in lista) {
+            val jacEntity = jacDao.traerJacPorId(jacId = jacId)
+            item.detalleJac = jacEntity?.convertirADetalleJACActaPDFModel()
         }
     }
 

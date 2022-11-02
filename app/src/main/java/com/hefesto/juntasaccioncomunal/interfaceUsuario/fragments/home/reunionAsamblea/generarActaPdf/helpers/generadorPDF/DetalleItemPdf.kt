@@ -4,5 +4,5 @@ class DetalleItemPdf {
     var tamanioLetra : Float = 0f
     var detalle : String = ""
     var tipo: TipoAAplicar = TipoAAplicar.NORMAL
-    var esFirma : Boolean = false
+    var configuracionDetalleItem : ConfiguracionDetalleItem = ConfiguracionDetalleItem.NORMAL
 }

@@ -6,6 +6,7 @@ import android.os.Environment
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.hefesto.juntasaccioncomunal.R
+import com.hefesto.juntasaccioncomunal.logica.excepciones.SugioUnProblemaEnLaGeneracionDeActaExcepcion
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.actasParaPDF.ReunionParaGenerarPDFModel
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.FormatosFecha
 import com.hefesto.juntasaccioncomunal.logica.utilidades.extenciones.convertirAFormato
@@ -20,6 +21,7 @@ class HelperGeneradorPDFActa {
     private lateinit var reunionParaGenerarPDFModel: ReunionParaGenerarPDFModel
     private lateinit var mostrarLoading : ()->Unit
     private lateinit var ocultarLoading : ()->Unit
+    private lateinit var notificarFallo : (Exception)->Unit
     private lateinit var context: Context
     private var tamanioLetra : Float = 11f
     private val creoPDFLiveData = MutableLiveData<Boolean>()
@@ -44,6 +46,11 @@ class HelperGeneradorPDFActa {
 
     fun conOcultarLoading(ocultarLoading : ()->Unit) : HelperGeneradorPDFActa {
         this.ocultarLoading = ocultarLoading
+        return this
+    }
+
+    fun conEscuchadorExcepcion(notificarFallo : (Exception)->Unit) : HelperGeneradorPDFActa {
+        this.notificarFallo = notificarFallo
         return this
     }
 
@@ -74,6 +81,7 @@ class HelperGeneradorPDFActa {
     //region metodos privados
     private fun generarListaItems() : MutableList<DetalleItemPdf> {
         val lista = emptyList<DetalleItemPdf>().toMutableList()
+        lista.add(generarEncabezado())
         lista.add(generarNumeroActa())
         lista.add(generarLugar())
         lista.add(generarFecha())
@@ -88,6 +96,17 @@ class HelperGeneradorPDFActa {
         lista.add(generarFirmaSecretario())
         lista.add(generarFirmaPresidente())
         return lista
+    }
+
+    private fun generarEncabezado() : DetalleItemPdf {
+        return DetalleItemPdf().apply {
+            this.tamanioLetra = this@HelperGeneradorPDFActa.tamanioLetra
+            this.tipo = TipoAAplicar.NORMAL
+            if (reunionParaGenerarPDFModel.detalleJac== null) return@apply
+            this.detalle = "\t\t\t${reunionParaGenerarPDFModel.detalleJac?.nombreJAc?:""}\n"
+            this.detalle += "\t\t\t ${context.getString(R.string.nit)}: ${reunionParaGenerarPDFModel.detalleJac?.nit}\n"
+            this.detalle += "\t\t\t ${context.getString(R.string.pj)}: ${reunionParaGenerarPDFModel.detalleJac?.PJ}\n\n\n"
+        }
     }
 
     private fun generarNumeroActa() : DetalleItemPdf {
@@ -206,7 +225,7 @@ class HelperGeneradorPDFActa {
             this.detalle = "\n\n\n${context.getString(R.string.secretario)}: ${reunionParaGenerarPDFModel.secretario?.nombres?:""} ${reunionParaGenerarPDFModel.secretario?.apellidos?:""}\n\n\n"
             this.tamanioLetra = this@HelperGeneradorPDFActa.tamanioLetra
             this.tipo = TipoAAplicar.NORMAL
-            this.esFirma = true
+            this.configuracionDetalleItem = ConfiguracionDetalleItem.FIRMA
         }
     }
     private fun generarFirmaPresidente() : DetalleItemPdf {
@@ -214,7 +233,7 @@ class HelperGeneradorPDFActa {
             this.detalle = "${context.getString(R.string.presidente)}: ${reunionParaGenerarPDFModel.presidente?.nombres?:""} ${reunionParaGenerarPDFModel.presidente?.apellidos?:""}"
             this.tamanioLetra = this@HelperGeneradorPDFActa.tamanioLetra
             this.tipo = TipoAAplicar.NORMAL
-            this.esFirma = true
+            this.configuracionDetalleItem = ConfiguracionDetalleItem.FIRMA
         }
     }
 
@@ -225,6 +244,7 @@ class HelperGeneradorPDFActa {
             pdfDocument.writeTo(FileOutputStream(file))
         }catch (e :Exception) {
             Log.e("Err", "surgio un problema", e)
+            notificarFallo.invoke(SugioUnProblemaEnLaGeneracionDeActaExcepcion())
         }
     }
     //endregion

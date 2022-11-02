@@ -15,6 +15,8 @@ fun JACRegistroModel.convertirAJACEntity() : JACEntity {
         jacID = this.jacId,
         nombreJAC = this.NombreJAC,
         codigoJAC = this.CodigoJAC,
+        Nit = this.Nit,
+        PJ = this.PJ
     )
 }
 

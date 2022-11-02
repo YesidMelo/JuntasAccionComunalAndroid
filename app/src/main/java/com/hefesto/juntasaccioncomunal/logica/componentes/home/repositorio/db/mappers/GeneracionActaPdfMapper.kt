@@ -1,7 +1,9 @@
 package com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.mappers
 
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.login.JACEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.reunionAsamblea.PuntosReunionEntity
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.entities.reunionAsamblea.ReunionAsambleaEntity
+import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.actasParaPDF.DetalleJACActaPDFModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.actasParaPDF.PuntoReunionParaGenerarPDFModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.actasParaPDF.ReunionParaGenerarPDFModel
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.FormatosFecha
@@ -32,6 +34,14 @@ fun PuntosReunionEntity.convertirAPuntoReunionParaGenerarPDFModel() : PuntoReuni
         detallePunto = this.detallePunto,
         votosAFavor = this.votosAFavor,
         votosEnContra = this.votosEnContra
+    )
+}
+
+fun JACEntity.convertirADetalleJACActaPDFModel(): DetalleJACActaPDFModel {
+    return DetalleJACActaPDFModel(
+        nombreJAc = this.nombreJAC,
+        nit = this.Nit,
+        PJ = this.PJ
     )
 }
 

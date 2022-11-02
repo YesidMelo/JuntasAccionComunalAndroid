@@ -17,4 +17,8 @@ interface JacDao : BaseDao<JACEntity> {
 
     @Query("SELECT * FROM JACEnSesionView jac WHERE jac.correo = :correo")
     fun traerJAcEnSesion(correo: String): JACEnSesionView?
+
+    @Query("SELECT * FROM JACEntity jac WHERE jac.jacID = :jacId")
+    fun traerJacPorId(jacId: Int): JACEntity?
+
 }

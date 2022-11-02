@@ -73,8 +73,6 @@ fapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/login/Af
 japp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/login/Jac_Afiliado_Direccion_Dao.kt,8\9\89be028447ffcf4378cc8cb799a401f6d316a5bb
 ü
 oapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/login/repositorios/LoginCacheDatasource.kt,d\1\d1c01caa4052b47cbf8b67f184aa0a588a90a9a4
-Ü
-Vapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/login/JacDao.kt,0\b\0b6dc2d47cc51e37be271f33284d038c162c821b
 ç
 ]app/src/main/java/com/hefesto/juntasaccioncomunal/logica/utilidades/enumeradores/RegexEnum.kt,0\0\008f7eb17038aac3cdc03d63c36cd3e17221976b
 ó
@@ -574,13 +572,7 @@ vapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/navegacion/e
 sapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/entities/reunionAsamblea/ReunionAsambleaEntity.kt,d\3\d3e712fb04848569eb6f1b3a9e2451862b26da08
 Ö
 Uapp/src/main/java/com/hefesto/juntasaccioncomunal/di/logica/HelpersFragmentsModule.kt,5\7\577c2324966bb600ca2eb03db9f300d942875816
-∆
-ïapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/reunionAsamblea/generarActaPdf/helpers/generadorPDF/TipoAAplicar.kt,b\b\bb99cf388b912ec88e861a85e81147146e4b97cd
 º
 ãapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/reunionAsamblea/generarActaPdf/GenerarActaPdfViewModel.kt,9\9\99a524e86b4abfc573ef7d1175ac17da43fcf84c
 •
 uapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/utilidades/generadorPDF/AuxiliaresGeneracionPDF.kt,b\3\b3c8350ef3a6c4ab02b48526d3b70b2e3bc65f55
-»
-óapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/reunionAsamblea/generarActaPdf/subfragments/DetalleActaWebFragment.kt,6\b\6bc9e0114138009ffeaef1bccb1318f2636a278a
-´
-{app/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/repositorio/db/mappers/GeneracionActaPdfMapper.kt,e\1\e1cf4ff635b93cac4597d739ea1a82e8f54ef91f

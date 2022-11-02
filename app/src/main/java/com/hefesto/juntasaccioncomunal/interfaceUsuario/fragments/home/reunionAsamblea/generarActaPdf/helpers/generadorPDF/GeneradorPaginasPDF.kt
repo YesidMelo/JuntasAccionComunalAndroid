@@ -7,6 +7,7 @@ import android.graphics.Typeface
 import android.graphics.pdf.PdfDocument
 import android.text.TextPaint
 import android.util.Base64
+import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.delay
 
 class GeneradorPaginasPDF {
@@ -145,12 +146,23 @@ class GeneradorPaginasPDF {
 
     private fun generarLinea(texto : String, detalle: DetalleItemPdf) {
         generarPagina()
-        if (detalle.esFirma && texto.isNotEmpty()) {
-            val puntoInicial = Pair(first = configuracionDocumentoPDF.traerMargenIzquierda(), second = posicionYPagina)
-            val puntoFinal = Pair(first = configuracionDocumentoPDF.traerMargenIzquierda() + 250f, second = posicionYPagina)
-            paginaActual!!.canvas.drawLine(puntoInicial.first, puntoInicial.second, puntoFinal.first, puntoFinal.second, Paint())
-            posicionYPagina += detalle.tamanioLetra
-        }
+        ponerGionFirma(texto = texto, detalle = detalle)
+        ponerTextoNormal(texto = texto, detalle= detalle)
+        ponerTextoEncabezado(texto = texto, detalle = detalle)
+        generarPagina()
+    }
+
+    private fun ponerGionFirma(texto : String, detalle: DetalleItemPdf) {
+        if (detalle.configuracionDetalleItem != ConfiguracionDetalleItem.FIRMA) return
+        if (texto.isEmpty()) return
+        val puntoInicial = Pair(first = configuracionDocumentoPDF.traerMargenIzquierda(), second = posicionYPagina)
+        val puntoFinal = Pair(first = configuracionDocumentoPDF.traerMargenIzquierda() + 250f, second = posicionYPagina)
+        paginaActual!!.canvas.drawLine(puntoInicial.first, puntoInicial.second, puntoFinal.first, puntoFinal.second, Paint())
+        posicionYPagina += detalle.tamanioLetra
+    }
+
+    private fun ponerTextoNormal(texto : String, detalle: DetalleItemPdf) {
+        if(detalle.configuracionDetalleItem == ConfiguracionDetalleItem.ENCABEZADO) return
 
         val posicionX = if (!texto.contains("\t")) configuracionDocumentoPDF.traerMargenIzquierda() else configuracionDocumentoPDF.traerMargenIzquierda()+ configuracionDocumentoPDF.traerAnchoTab()
         paginaActual!!.canvas.drawText(
@@ -163,7 +175,22 @@ class GeneradorPaginasPDF {
             }
         )
         posicionYPagina += detalle.tamanioLetra
-        generarPagina()
+    }
+
+    private fun ponerTextoEncabezado(texto : String, detalle: DetalleItemPdf) {
+        if(detalle.configuracionDetalleItem != ConfiguracionDetalleItem.ENCABEZADO) return
+        val anchoTabs = texto.filter { return@filter it.toString() == "\t" }.count()
+        val posicionX = configuracionDocumentoPDF.traerMargenIzquierda() + anchoTabs
+        paginaActual!!.canvas.drawText(
+            texto,
+            posicionX,
+            posicionYPagina,
+            when(detalle.tipo) {
+                TipoAAplicar.NORMAL -> formatoDetalle(textSize = detalle.tamanioLetra)
+                TipoAAplicar.RESALTADO -> formatoResalto(textSize = detalle.tamanioLetra)
+            }
+        )
+        posicionYPagina += detalle.tamanioLetra
     }
 
     //endregion

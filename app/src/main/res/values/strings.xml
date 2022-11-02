@@ -196,6 +196,9 @@
     <string name="observaciones">observaciones</string>
     <string name="no_tiene_convocatorias_pendientes">No tiene convocatorias pendientes</string>
     <string name="no_tiene_actas">No tiene actas en estos momentos.</string>
+    <string name="no_se_pudo_crear_acta_pdf">Surgio un problema al crear el acta en pdf. Ve a descargas y elimina el archivo Acta.pdf y vuelvelo a intentar</string>
+    <string name="crear_convocatoria">Crear convocatoria</string>
+    <string name="se_ha_creado_el_pdf_correctamente">Se ha creado el pdf correctamente.</string>
     <string-array name="la_junta_accion_comunal_convoca">
         <item>La junta de accion comunal convoca a la comunidad a asamblea/reunion para brindar la informacion</item>
         <item>y poder llegar a un consenso basados en el orden del dia.</item>

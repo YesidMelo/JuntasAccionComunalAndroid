@@ -5,8 +5,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.hefesto.juntasaccioncomunal.R
 import com.hefesto.juntasaccioncomunal.databinding.SubfragmentDetalleactaWebBinding
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.dialogo.DialogoInformativo
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarActaPdf.GenerarActaPdfViewModel
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarActaPdf.helpers.HelperGeneradorHtmlActaPDF
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.reunionAsamblea.generarActaPdf.helpers.generadorPDF.HelperGeneradorPDFActa
@@ -76,6 +78,11 @@ class DetalleActaWebFragment :  BaseFragment<GenerarActaPdfViewModel>() {
                         .conReunionParaGenerarPDFModel(reunionParaGenerarPDFModel = modelo)
                         .conMostrarLoading (::mostrarLoading)
                         .conOcultarLoading (::ocultarLoading)
+                        .conEscuchadorExcepcion {
+                            funcionSegura(funcion = {
+                                throw it
+                            })
+                        }
                         .crearPDF()
                 }
             )
@@ -97,7 +104,15 @@ class DetalleActaWebFragment :  BaseFragment<GenerarActaPdfViewModel>() {
             .traerCreoPDFLiveData()
             .observe(viewLifecycleOwner) {
                 if(!it) return@observe
-                Log.e("Err","Finalizo la creacion del pdf")
+                mostrarDialogo(
+                    tipoDialogo = DialogoInformativo.TipoDialogo.INFORMATIVO,
+                    titulo = R.string.crear_acta_reunion,
+                    mensaje = R.string.se_ha_creado_el_pdf_correctamente,
+                    accionAceptar = {
+                        binding.buttonGenerarActaPdf.isEnabled = false
+                        navegarAtras()
+                    }
+                )
             }
     }
     //endregion

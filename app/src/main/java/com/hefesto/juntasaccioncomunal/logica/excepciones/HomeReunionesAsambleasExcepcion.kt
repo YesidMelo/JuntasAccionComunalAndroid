@@ -142,6 +142,14 @@ class NoHaIngresadoElNumeroDeActaExcepcion: LogicaExcepcion(
 class SugioUnProblemaEnLaGeneracionDeConvocatoriaExcepcion: LogicaExcepcion(
     mensaje = "No se pudo generar la convocatoria en pdf",
     stringResMensaje = R.string.no_se_pudo_crear_convocatoria_pdf,
+    stringResTitulo = R.string.crear_convocatoria,
+    TiposExcepciones.GENERADO_SISTEMA
+)
+
+
+class SugioUnProblemaEnLaGeneracionDeActaExcepcion: LogicaExcepcion(
+    mensaje = "No se pudo generar la Acta en pdf",
+    stringResMensaje = R.string.no_se_pudo_crear_acta_pdf,
     stringResTitulo = R.string.crear_acta_reunion,
     TiposExcepciones.GENERADO_SISTEMA
 )
