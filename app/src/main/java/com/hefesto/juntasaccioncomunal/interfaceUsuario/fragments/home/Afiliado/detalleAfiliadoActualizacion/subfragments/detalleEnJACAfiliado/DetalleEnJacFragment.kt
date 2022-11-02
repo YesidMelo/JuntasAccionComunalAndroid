@@ -47,7 +47,9 @@ class DetalleEnJacFragment :
         return traerViewModel()
             .conComiteSeleccionado(comitesEnJAC = helperSpinnerComitesEnJacHome.traerComiteSeleccionado())
             .conEstadoAfiliacion(estadoAfiliacion = helperSpinnerEstadosAfiliadoHome.traerEstadoAfiliado())
-            .traerDetalleEnJACParaRegistroModel()
+            .traerDetalleEnJACParaRegistroModel().apply {
+                this.observacionEstadoAfiliacion = binding.editTextDetalleAfiliadoenJAcObservaciones.text.toString()
+            }
     }
 
     //region metodos privados

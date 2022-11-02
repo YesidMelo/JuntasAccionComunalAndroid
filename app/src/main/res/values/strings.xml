@@ -193,6 +193,7 @@
     <string name="pj">P.J.</string>
     <string name="no_ha_ingresado_nit_junta">No ha ingresado nit de la junta</string>
     <string name="no_ha_ingresado_pj_junta">No ha ingresado el P.J. de la junta</string>
+    <string name="observaciones">observaciones</string>
     <string-array name="la_junta_accion_comunal_convoca">
         <item>La junta de accion comunal convoca a la comunidad a asamblea/reunion para brindar la informacion</item>
         <item>y poder llegar a un consenso basados en el orden del dia.</item>

@@ -231,8 +231,6 @@ capp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/login/Af
 ‡app/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/home/registroAfiliado/CompiladoInformacionAfiliadoParaRegistroModel.kt,b\d\bd2d48676784f1ae0d13a60ff93fa3de373c5d92
 •
 eapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/daos/login/Afiliado_Telefono_Dao.kt,5\4\548f8eca10771b3a549581b72ad34dc269febda7
-§
-wapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/modelos/home/registroAfiliado/DetalleEnJACParaRegistroModel.kt,6\3\63b2c2de5588eb217e5ea79f005becfa54980c1d
 ž
 napp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/entities/login/Afiliado_Jac_Comite_Entity.kt,b\0\b0ea04729e049de118a5b8acf9f0bec8e035f8c8
 §
