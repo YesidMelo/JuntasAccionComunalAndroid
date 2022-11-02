@@ -1,4 +1,4 @@
-package com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.configuracionAfiliadoEnDirectiva
+package com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.Afiliado.configuracionAfiliadoEnDirectiva
 
 import androidx.lifecycle.MutableLiveData
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseViewModel

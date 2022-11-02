@@ -37,7 +37,7 @@
     <fragment
         android:id="@+id/configuracionAfiliadoEnDirectiva"
         android:label="Configuracion afiliado en directiva"
-        android:name="com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.configuracionAfiliadoEnDirectiva.ConfiguracionAfiliadoEnDirectivaFragment"
+        android:name="com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.Afiliado.configuracionAfiliadoEnDirectiva.ConfiguracionAfiliadoEnDirectivaFragment"
         tools:layout="@layout/fragment_configuracion_afiliado_modificacion_directiva"
         >
         <action
