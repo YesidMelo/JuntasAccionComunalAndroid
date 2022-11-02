@@ -195,8 +195,6 @@ xapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/navegacion/e
 xapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/navegacion/helpers/helpersFragments/HelperFragment.kt,2\8\28dea7e928013b7aa8f9c8401b925582f8d32dc4
 –
 fapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/activities/splash/SplashActivity.kt,f\a\fa85378c00a25a3fd699a80d1df93af588040c28
-©
-yapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/login/iniciarSesion/IniciarSesionFragment.kt,0\f\0f401913687109659de760b400ed1e4fa788de55
 •
 eapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/navegacion/NavegacionAplicacion.kt,4\4\4464956d055d4e2841220eb338f611f5ba14a78b
 Ï

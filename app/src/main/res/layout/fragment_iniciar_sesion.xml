@@ -87,6 +87,7 @@
                 android:maxLines="3"
                 android:padding="@dimen/dimension16dp"
                 android:text="@string/registrarse_afiliado"
+                android:visibility="gone"
                 app:autoSizeMaxTextSize="@dimen/texto16sp"
                 app:autoSizeMinTextSize="@dimen/dimension12sp"
                 app:autoSizeStepGranularity="1sp"
