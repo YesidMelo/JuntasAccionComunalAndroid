@@ -48,7 +48,7 @@
     <fragment
         android:id="@+id/registrar_afiliado_home"
         android:label="regitrar afiliado"
-        android:name="com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.registrarAfiliado.RegistrarAfiliadoHomeFragment"
+        android:name="com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.Afiliado.registrarAfiliado.RegistrarAfiliadoHomeFragment"
         tools:layout="@layout/fragment_registrar_afiliado_home"
         >
 

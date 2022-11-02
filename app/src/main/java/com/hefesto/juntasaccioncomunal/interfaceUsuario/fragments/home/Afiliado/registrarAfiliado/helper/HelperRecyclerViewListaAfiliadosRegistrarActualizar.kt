@@ -1,8 +1,8 @@
-package com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.registrarAfiliado.helper
+package com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.Afiliado.registrarAfiliado.helper
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.registrarAfiliado.adapter.ListaAfiliadosRecyclerViewAdapter
+import com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.Afiliado.registrarAfiliado.adapter.ListaAfiliadosRecyclerViewAdapter
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.DatosBasicosAfiliadoActualizarRegistrarInformacionModel
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
