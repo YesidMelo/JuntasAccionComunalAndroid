@@ -1,4 +1,4 @@
-package com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.listaAfiliadosModificacionDirectivas.adapters
+package com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.Afiliado.listaAfiliadosModificacionDirectivas.adapters
 
 import android.view.LayoutInflater
 import android.view.View

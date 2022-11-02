@@ -1,4 +1,4 @@
-package com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.listaAfiliadosModificacionDirectivas
+package com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.Afiliado.listaAfiliadosModificacionDirectivas
 
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseViewModel
 import com.hefesto.juntasaccioncomunal.logica.componentes.base.ui.BaseUI

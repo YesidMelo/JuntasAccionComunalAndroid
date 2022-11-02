@@ -23,7 +23,7 @@
     <fragment
         android:id="@+id/listaAfiliadosModificacionDirectiva"
         android:label="lista afiliados modificacion directivas"
-        android:name="com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.listaAfiliadosModificacionDirectivas.ListaAfiliadosModificacionDirectivasFragment"
+        android:name="com.hefesto.juntasaccioncomunal.interfaceUsuario.fragments.home.Afiliado.listaAfiliadosModificacionDirectivas.ListaAfiliadosModificacionDirectivasFragment"
         tools:layout="@layout/fragment_lista_afiliados_modificacion_directivas"
         >
         <action
