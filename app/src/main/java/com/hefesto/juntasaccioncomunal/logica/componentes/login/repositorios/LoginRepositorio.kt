@@ -7,13 +7,14 @@ import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarAfiliado.Af
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarAfiliado.JACDisponibleParaAfiliadoModel
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarJAC.JACRegistroModel
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 interface LoginRepositorio {
     fun iniciarSesion(usuarioInicioSesionModel: UsuarioInicioSesionModel) : MutableLiveData<Boolean?>
-    fun registrarJAC(jacRegistroModel: JACRegistroModel) : MutableLiveData<Boolean?>
+    fun registrarJAC(jacRegistroModel: JACRegistroModel) : Flow<Boolean?>
     fun registrarAfiliado(afiliadoARegistrarModel: AfiliadoARegistrarModel) : MutableLiveData<Boolean?>
     fun traerJacsRegistradas(): MutableLiveData<List<JACDisponibleParaAfiliadoModel>?>
 }
@@ -28,7 +29,6 @@ class LoginRepositorioImpl constructor(
     //region variables
     private val iniciarSesionLiveData = MutableLiveData<Boolean?>()
     private val escuchadorRegistroAfiliadoExitoso = MutableLiveData<Boolean?>()
-    private val registroExitosoJAC = MutableLiveData<Boolean?>()
     private val listaJACLivedata = MutableLiveData<List<JACDisponibleParaAfiliadoModel>?>()
     //endregion
 
@@ -53,14 +53,8 @@ class LoginRepositorioImpl constructor(
         return iniciarSesionLiveData
     }
 
-    override fun registrarJAC(jacRegistroModel: JACRegistroModel): MutableLiveData<Boolean?> {
-        GlobalScope.launch {
-            loginDBDatasource
-                .registrarJAC(jacRegistroModel = jacRegistroModel)
-                .collect{registroExitosoJAC.postValue(it)}
-        }
-        return registroExitosoJAC
-    }
+    override fun registrarJAC(jacRegistroModel: JACRegistroModel): Flow<Boolean?>
+    = loginDBDatasource.registrarJAC(jacRegistroModel = jacRegistroModel)
 
     override fun registrarAfiliado(afiliadoARegistrarModel: AfiliadoARegistrarModel): MutableLiveData<Boolean?> {
         GlobalScope.launch {

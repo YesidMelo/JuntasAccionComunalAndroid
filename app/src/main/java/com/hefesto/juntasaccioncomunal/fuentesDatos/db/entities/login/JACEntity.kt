@@ -9,5 +9,7 @@ data class JACEntity(
     @PrimaryKey(autoGenerate = true) var jacID: Int? = null,
     var nombreJAC: String?,
     var codigoJAC: String?,
-    var credencialesSesion: Int? = null
+    var credencialesSesion: Int? = null,
+    var Nit: String? = null,
+    var PJ: String? = null,
 ) : BaseEntity()

@@ -9,4 +9,6 @@ data class JACRegistroModel(
     var Correo: String? = null,
     var Contrasenia: String? = null,
     var RepetirContrasenia: String? = null,
+    var Nit: String? = null,
+    var PJ: String? = null
 ) : BaseModel()

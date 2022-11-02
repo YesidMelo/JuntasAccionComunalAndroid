@@ -7,23 +7,30 @@ import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarJAC.JACRegi
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.RegexEnum
 import com.hefesto.juntasaccioncomunal.logica.utilidades.correoValido
 import com.hefesto.juntasaccioncomunal.logica.utilidades.validarConRegex
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 interface RegistrarJACCasoUso {
-    fun invoke(jacRegistroModel: JACRegistroModel) : MutableLiveData<Boolean?>
+    fun invoke(jacRegistroModel: JACRegistroModel) : Flow<Boolean?>
 }
 
 class RegistrarJACCasoUsoImpl constructor(
     @JvmField @Inject var loginRepositorio: LoginRepositorio
 ) : RegistrarJACCasoUso {
 
-    override fun invoke(jacRegistroModel: JACRegistroModel): MutableLiveData<Boolean?> {
+    override fun invoke(jacRegistroModel: JACRegistroModel): Flow<Boolean?> = flow {
         validarNombreJAC(jacRegistroModel = jacRegistroModel)
         validarCodigoJAC(jacRegistroModel = jacRegistroModel)
         validarCorreo(jacRegistroModel = jacRegistroModel)
         validarContrasenia(jacRegistroModel = jacRegistroModel)
         validarRepetirContrasenia(jacRegistroModel = jacRegistroModel)
-        return loginRepositorio.registrarJAC(jacRegistroModel = jacRegistroModel)
+        validarNit(jacRegistroModel = jacRegistroModel)
+        validarPJ(jacRegistroModel = jacRegistroModel)
+
+        loginRepositorio
+            .registrarJAC(jacRegistroModel = jacRegistroModel)
+            .collect{ emit(it)}
     }
 
     //region metodos privados
@@ -56,6 +63,16 @@ class RegistrarJACCasoUsoImpl constructor(
         if(jacRegistroModel.RepetirContrasenia.isNullOrBlank()) throw RepetirContraseniaRegistroJACVacioExcepcion()
         if(!validarConRegex(string = jacRegistroModel.RepetirContrasenia!!, regex = RegexEnum.CONSTRASENIA)) throw RepetirContraseniaRegistrarJACNoEsValidoException()
         if(jacRegistroModel.Contrasenia != jacRegistroModel.RepetirContrasenia) throw ElCampoContraseniaYRepetirContraseniaNoCoincidenRegistrarJacException()
+    }
+
+    private fun validarNit(jacRegistroModel: JACRegistroModel) {
+        if(jacRegistroModel.Nit.isNullOrEmpty()) throw NoHaIngresadoNitJuntaExcepcion()
+        if(jacRegistroModel.Nit.isNullOrBlank()) throw NoHaIngresadoNitJuntaExcepcion()
+    }
+
+    private fun validarPJ(jacRegistroModel: JACRegistroModel) {
+        if(jacRegistroModel.PJ.isNullOrEmpty()) throw NoHaIngresadoPJJuntaExcepcion()
+        if(jacRegistroModel.PJ.isNullOrBlank()) throw NoHaIngresadoPJJuntaExcepcion()
     }
     //endregion
 }

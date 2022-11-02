@@ -12,5 +12,6 @@ class RegistrarJACFragmentUI constructor(
     @JvmField @Inject var escuchadorExcepciones: CargarEscuchadorExcepcionesCasoUso
 ) :  BaseUI(cargarEscuchadorExcepcionesCasoUso = escuchadorExcepciones) {
 
+    fun traerEscuchadorErrores() = escuchadorExcepciones.invoke()
     fun registrarJAC(jacRegistroModel: JACRegistroModel) = registrarJACCasoUso.invoke(jacRegistroModel = jacRegistroModel)
 }

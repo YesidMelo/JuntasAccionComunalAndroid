@@ -20,6 +20,8 @@ def contraseniaPruebas = "CONTRASENIA_PRUEBAS"
 def nombreJAC = "NOMBRE_JAC"
 def codigoJAC = "CODIGO_JAC"
 def repetirConstraseniaPruebas = "REPETIR_CONSTRASENIA_JAC"
+def NitJac = "NIT"
+def PJJac = "PJ"
 //endregionn
 
 
@@ -50,6 +52,8 @@ android {
             buildConfigField("String", "$codigoJAC", "${secretsProd["codigoJAC"]}")
             buildConfigField("String", "$nombreJAC", "${secretsProd["nombreJAC"]}")
             buildConfigField("String", "$repetirConstraseniaPruebas", "${secretsProd["repetirConstraseniaPruebas"]}")
+            buildConfigField("String", "$NitJac", "${secretsProd["Nit"]}")
+            buildConfigField("String", "$PJJac", "${secretsProd["PJ"]}")
         }
 
         debug {
@@ -63,6 +67,8 @@ android {
             buildConfigField("String", "$codigoJAC", "${secretsDev["codigoJAC"]}")
             buildConfigField("String", "$nombreJAC", "${secretsDev["nombreJAC"]}")
             buildConfigField("String", "$repetirConstraseniaPruebas", "${secretsDev["repetirConstraseniaPruebas"]}")
+            buildConfigField("String", "$NitJac", "${secretsDev["Nit"]}")
+            buildConfigField("String", "$PJJac", "${secretsDev["PJ"]}")
         }
     }
     

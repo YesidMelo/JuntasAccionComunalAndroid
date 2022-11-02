@@ -10,7 +10,6 @@ import com.hefesto.juntasaccioncomunal.databinding.FragmentRegistrarJacBinding
 import com.hefesto.juntasaccioncomunal.logica.modelos.login.registrarJAC.JACRegistroModel
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.base.BaseFragment
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.dialogo.DialogoInformativo
-import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.AccionesNavGrap
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.navegacion.enumeradores.NodosNavegacionFragments
 import javax.inject.Inject
 
@@ -67,7 +66,9 @@ class RegistrarJACFragment : BaseFragment<RegistrarJACFragmentViewModel>() {
                 CodigoJAC = binding.editTextCodigoJAC.text?.toString(),
                 Correo = binding.editTextCorreo.text?.toString(),
                 Contrasenia = binding.editTextContrasenia.text?.toString(),
-                RepetirContrasenia = binding.editTextRepetirContrasenia.text?.toString()
+                RepetirContrasenia = binding.editTextRepetirContrasenia.text?.toString(),
+                Nit = binding.editTextNit.text?.toString(),
+                PJ = binding.editTextPj.text?.toString(),
             ))
             .observe(viewLifecycleOwner) {
                 if (it == null) { mostrarLoading(); return@observe; }
@@ -114,6 +115,8 @@ class RegistrarJACFragment : BaseFragment<RegistrarJACFragmentViewModel>() {
         binding.editTextCodigoJAC.setText(BuildConfig.CODIGO_JAC)
         binding.editTextContrasenia.setText(BuildConfig.CONTRASENIA_PRUEBAS)
         binding.editTextRepetirContrasenia.setText(BuildConfig.REPETIR_CONSTRASENIA_JAC)
+        binding.editTextNit.setText(BuildConfig.NIT)
+        binding.editTextPj.setText(BuildConfig.PJ)
     }
     //endregion
 }

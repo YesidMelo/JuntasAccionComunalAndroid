@@ -262,3 +262,17 @@ class UsuarioNoEstaRegistradoExcepcion : LogicaExcepcion(
     stringResTitulo = R.string.iniciar_sesion,
     tipoExcepcion = TiposExcepciones.GENERADO_USUARIO
 )
+
+class NoHaIngresadoNitJuntaExcepcion : LogicaExcepcion(
+    mensaje = "El usuario no ha ingresado nit de la junta",
+    stringResMensaje = R.string.no_ha_ingresado_nit_junta,
+    stringResTitulo = R.string.registro_jac,
+    tipoExcepcion = TiposExcepciones.GENERADO_USUARIO
+)
+
+class NoHaIngresadoPJJuntaExcepcion : LogicaExcepcion(
+    mensaje = "El usuario no ha ingresado PJ de la junta",
+    stringResMensaje = R.string.no_ha_ingresado_pj_junta,
+    stringResTitulo = R.string.registro_jac,
+    tipoExcepcion = TiposExcepciones.GENERADO_USUARIO
+)
