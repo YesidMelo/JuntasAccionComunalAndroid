@@ -260,11 +260,13 @@ class HelpersDBDatasourceModule {
 
     @Provides
     fun providesHelperListaReunionesParaConvocatoriasPDFDB(
+        afiliadoDao: AfiliadoDao,
         reunionDao: ReunionAsambleaDao,
         puntosReunionDao: PuntosReunionDao,
         convocatesDao: ConvocatesDao,
         memoriaCache: MemoriaCache
     ) : HelperListaReunionesParaConvocatoriasPDFDB = HelperListaReunionesParaConvocatoriasPDFDBImpl(
+        afiliadoDao = afiliadoDao,
         reunionAsambleaDao = reunionDao,
         puntosReunionDao = puntosReunionDao,
         convocantesDao = convocatesDao,

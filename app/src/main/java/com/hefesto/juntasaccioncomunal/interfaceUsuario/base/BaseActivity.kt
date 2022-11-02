@@ -102,10 +102,23 @@ abstract class BaseActivity<T: BaseViewModel> : BaseActivityDagger<T>(), Lifecyc
     fun funcionSeguraConPermisos(
         vararg permiso: PermisosAplicacionEnum,
         accionTieneTodosLosPermisos: ()-> Unit,
+        aceptarFallo: (()-> Unit)? = null,
     ) {
         gestorPermisos.ejecutarAccionBasadoEnPermisos(
             permiso = permiso,
-            accionTieneTodosLosPermisos = accionTieneTodosLosPermisos,
+            accionTieneTodosLosPermisos = {
+                try {
+                    escuchadorAccionAceptarFallo = aceptarFallo
+                    accionTieneTodosLosPermisos.invoke()
+                } catch (e: LogicaExcepcion) {
+                    mostrarDialogo(
+                        tipoDialogo = if (e.tipoExcepcion == TiposExcepciones.GENERADO_USUARIO) DialogoInformativo.TipoDialogo.ERROR_USUARIO else DialogoInformativo.TipoDialogo.ERROR_SISTEMA,
+                        titulo = e.stringResTitulo,
+                        mensaje = e.stringResMensaje,
+                        accionAceptar = aceptarFallo
+                    )
+                }
+            },
             accionNoTieneTodosLosPermisos = {
                 mostrarDialogo(
                     tipoDialogo = DialogoInformativo.TipoDialogo.ERROR_USUARIO,

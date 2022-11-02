@@ -544,16 +544,8 @@ Sapp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/modules/NavegacionModul
 Wapp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/modules/SplashActivityModule.kt,d\3\d395ede37a0824f33775b562d7bd04946c9a73e9
 ž
 napp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/utilidades/gestorPermisos/GestorPermisos.kt,f\6\f69b0f4686b0206a323989009567baba74156047
-P
- app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
 Œ
 \app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/dialogo/DialogoLoading.kt,0\0\00db1165a9ce3ae40a266c59191c3e3efe346edb
-‡
-Wapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/base/BaseActivity.kt,0\3\032ca2367588f5c56d800cd70c8b1e34c3fe85b9
-‡
-Wapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/base/BaseFragment.kt,7\e\7e1cb1add2b84f48364a0e4da2726cdb4f81ab01
-Ï
-žapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/reunionAsamblea/generarConvocatoriaReunionPdf/DetalleConvocatoriaFragment.kt,f\7\f76610594a6c15ad90940cfa7249c43bf62a563c
 Ô
 £app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/reunionAsamblea/generarConvocatoriaReunionPdf/HelperConfigurarConvocatoriaHtml.kt,d\9\d934a78b8bfb9e4df0b48f9fe97b2d82fc25b307
 Ì
@@ -586,12 +578,8 @@ lapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/repos
 ”app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/reunionAsamblea/crearActa/helper/HelperViewPagerPuntosCrearActa.kt,b\f\bff7040ef992b2ae0df1750ed8b07998468dc588
 z
 Japp/src/main/java/com/hefesto/juntasaccioncomunal/di/ui/FragmentBuilder.kt,9\d\9dd8a9507b1cc239a8460037eecd573f5a0d74af
-Ï
-žapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/reunionAsamblea/crearActa/helper/HelperViewPagerFormulariosCompletarActas.kt,e\3\e3570a7cb56b7d07a71be49506cc9d1e758ee4f1
 ¦
 vapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/navegacion/enumeradores/NodosNavegacionFragments.kt,2\1\21d558508253f131de5c339956e648c54f2d9b72
-±
-€app/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/reunionAsamblea/crearActa/CrearActaFragment.kt,e\e\eebfeadc359a4d4d4f255cd38c6f5b7f62adc98e
 ½
 Œapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/fragments/home/reunionAsamblea/crearActa/subfragment/PuntosSubfragment.kt,2\9\29c3b8d3712a49a30eab82cbd79d37c3294ec056
 Å
@@ -606,8 +594,6 @@ vapp/src/main/java/com/hefesto/juntasaccioncomunal/interfaceUsuario/navegacion/e
 app/src/main/java/com/hefesto/juntasaccioncomunal/logica/componentes/home/repositorio/db/mappers/DetalleAgendarReunionMapper.kt,2\b\2b5027277170057e3c508c84110f9f59e20cb9a2
 £
 sapp/src/main/java/com/hefesto/juntasaccioncomunal/fuentesDatos/db/entities/reunionAsamblea/ReunionAsambleaEntity.kt,d\3\d3e712fb04848569eb6f1b3a9e2451862b26da08
-—
-gapp/src/main/java/com/hefesto/juntasaccioncomunal/logica/excepciones/HomeReunionesAsambleasExcepcion.kt,1\e\1ea6680729aff4f8e2eaf577bb0be809eb29df1b
 …
 Uapp/src/main/java/com/hefesto/juntasaccioncomunal/di/logica/HelpersFragmentsModule.kt,5\7\577c2324966bb600ca2eb03db9f300d942875816
 Æ

@@ -110,8 +110,9 @@ abstract class BaseFragment<T : BaseViewModel> : BaseFragmentDagger<T>(), Lifecy
     fun funcionSeguraConPermisos(
         vararg permiso: PermisosAplicacionEnum,
         accionTieneTodosLosPermisos: ()-> Unit,
+        aceptarFallo: (()-> Unit)? = null,
     ) {
-        (activity as BaseActivity<*>).funcionSeguraConPermisos(permiso = permiso, accionTieneTodosLosPermisos = accionTieneTodosLosPermisos)
+        (activity as BaseActivity<*>).funcionSeguraConPermisos(permiso = permiso, accionTieneTodosLosPermisos = accionTieneTodosLosPermisos, aceptarFallo = aceptarFallo)
     }
 
     //endregion

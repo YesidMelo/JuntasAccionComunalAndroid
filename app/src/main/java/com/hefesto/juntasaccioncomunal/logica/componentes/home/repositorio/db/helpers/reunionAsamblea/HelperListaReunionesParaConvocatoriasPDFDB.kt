@@ -1,6 +1,7 @@
 package com.hefesto.juntasaccioncomunal.logica.componentes.home.repositorio.db.helpers.reunionAsamblea
 
 import com.hefesto.juntasaccioncomunal.fuentesDatos.cache.MemoriaCache
+import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.login.AfiliadoDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.ConvocatesDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.PuntosReunionDao
 import com.hefesto.juntasaccioncomunal.fuentesDatos.db.daos.reunionAsamblea.ReunionAsambleaDao
@@ -20,6 +21,7 @@ class HelperListaReunionesParaConvocatoriasPDFDBImpl constructor(
     @JvmField @Inject var reunionAsambleaDao: ReunionAsambleaDao,
     @JvmField @Inject var puntosReunionDao: PuntosReunionDao,
     @JvmField @Inject var convocantesDao: ConvocatesDao,
+    @JvmField @Inject var afiliadoDao: AfiliadoDao,
     @JvmField @Inject var memoriaCache: MemoriaCache
 ) : HelperListaReunionesParaConvocatoriasPDFDB {
 
@@ -31,6 +33,7 @@ class HelperListaReunionesParaConvocatoriasPDFDBImpl constructor(
         ponerLogoBosaSantabarbara(lista = lista)
         traerListaPuntos(lista = lista)
         traerListaConvocantes(lista = lista)
+        traerNumeroAfiliadosActivos(lista = lista)
         return lista
     }
 
@@ -59,6 +62,12 @@ class HelperListaReunionesParaConvocatoriasPDFDBImpl constructor(
             val reunionId = item.reunionAsambleaId?:continue
             val listaConvocantes = convocantesDao.traerListaConvocantesConvocatoriaPorReunionId(reunionId = reunionId)
             item.listaConvocantes = listaConvocantes
+        }
+    }
+    private fun traerNumeroAfiliadosActivos(lista : List<ReunionParaGenerarConvocatoriaPDFModel>) {
+        if (lista.isEmpty()) return
+        for (item in lista) {
+            item.numeroAfiliados = afiliadoDao.traerNumeroAfiliadosActivosPorJacIdYReunionId(jacId = item.jacId!!, reunionId = item.reunionAsambleaId!!)
         }
     }
     //endregion

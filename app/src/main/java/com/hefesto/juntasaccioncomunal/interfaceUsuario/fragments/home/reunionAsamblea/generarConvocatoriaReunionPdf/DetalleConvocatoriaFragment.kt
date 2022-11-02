@@ -62,6 +62,11 @@ class DetalleConvocatoriaFragment : BaseFragment<ListaConvocatoriasViewModel>() 
                         .conConvocatoria(convocatoria = convocatoria)
                         .conMostrarLoading(mostrarLoading = ::mostrarLoading)
                         .conOcultarLoading(ocultarLoading = ::ocultarLoading)
+                        .conNotificacionFalla {
+                            funcionSegura(funcion = {
+                                throw it
+                            })
+                        }
                         .generarPDF()
                 }
             )

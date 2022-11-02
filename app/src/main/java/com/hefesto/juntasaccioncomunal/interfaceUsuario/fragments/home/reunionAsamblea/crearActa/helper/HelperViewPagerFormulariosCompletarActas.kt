@@ -59,7 +59,8 @@ class HelperViewPagerFormulariosCompletarActas {
             TabLayoutMediator(tabLayout, viewPager){
                 tab,position ->
                 val stringRes = when(position) {
-                    1 -> R.string.lista_asistencia
+                    1 -> R.string.complementar_informacion_acta
+                    2 -> R.string.lista_asistencia
                     else-> R.string.puntos_reunion
                 }
                 tab.setText(stringRes)

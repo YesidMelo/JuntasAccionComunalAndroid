@@ -13,6 +13,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.hefesto.juntasaccioncomunal.R
 import com.hefesto.juntasaccioncomunal.interfaceUsuario.utilidades.generadorPDF.AuxiliaresGeneracionPDF
+import com.hefesto.juntasaccioncomunal.logica.excepciones.SugioUnProblemaEnLaGeneracionDeConvocatoriaExcepcion
 import com.hefesto.juntasaccioncomunal.logica.modelos.home.reunionAsambleas.reunionParaConvocatoriaPDF.ReunionParaGenerarConvocatoriaPDFModel
 import com.hefesto.juntasaccioncomunal.logica.utilidades.enumeradores.FormatosFecha
 import com.hefesto.juntasaccioncomunal.logica.utilidades.extenciones.convertirAFormato
@@ -27,10 +28,16 @@ class HelperGenerarConvocatoriaPDF {
     private lateinit var convocatoria: ReunionParaGenerarConvocatoriaPDFModel
     private lateinit var mostrarLoading: ()->Unit
     private lateinit var ocultarLoading: ()->Unit
+    private lateinit var notificarFalla: (Exception)->Unit
     private lateinit var context: Context
     private val margenIzquierda = 40f
     private val seGeneroPDF = MutableLiveData<Boolean>()
     //endregion
+
+    fun conNotificacionFalla(notificarFalla: (Exception)->Unit) : HelperGenerarConvocatoriaPDF {
+        this.notificarFalla = notificarFalla
+        return this
+    }
 
     fun conMostrarLoading(mostrarLoading: ()->Unit) : HelperGenerarConvocatoriaPDF {
         this.mostrarLoading = mostrarLoading
@@ -306,6 +313,7 @@ class HelperGenerarConvocatoriaPDF {
             pdfDocument.writeTo(FileOutputStream(file))
         }catch (e :Exception) {
             Log.e("Err", "surgio un problema", e)
+            notificarFalla.invoke(SugioUnProblemaEnLaGeneracionDeConvocatoriaExcepcion())
         }
     }
     //endregion

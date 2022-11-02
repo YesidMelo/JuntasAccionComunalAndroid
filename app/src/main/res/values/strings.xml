@@ -188,6 +188,7 @@
     <string name="quorum">Quorum</string>
     <string name="desarrollo_orden_del_dia">Desarrollo orden del dia</string>
     <string name="numero_afiliados_activos">Numero afiliados activos</string>
+    <string name="no_se_pudo_crear_convocatoria_pdf">No se pudo crear la convocatoria. ve a la carpeta descargas y elimina el archivo Convocatoria.pdf e intentelo nuevamente</string>
     <string-array name="la_junta_accion_comunal_convoca">
         <item>La junta de accion comunal convoca a la comunidad a asamblea/reunion para brindar la informacion</item>
         <item>y poder llegar a un consenso basados en el orden del dia.</item>
